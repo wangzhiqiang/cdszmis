@@ -1,0 +1,170 @@
+package org.cdszmis.action;
+
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+
+import javax.annotation.Resource;
+
+import org.apache.commons.collections.map.HashedMap;
+import org.cdszmis.entity.DepartmentEntity;
+import org.cdszmis.entity.SysMenuEntity;
+import org.cdszmis.entity.UserEntity;
+import org.cdszmis.entity.UserGroupEntity;
+import org.cdszmis.service.DepartService;
+import org.cdszmis.service.UserGroupService;
+import org.cdszmis.service.UserService;
+import org.cdszmis.utils.Encipherment;
+import org.hibernate.HibernateException;
+
+import com.opensymphony.xwork2.ActionContext;
+import com.opensymphony.xwork2.ActionSupport;
+
+@SuppressWarnings("serial")
+public class UserAction extends ActionSupport {
+
+	@Resource private UserService userService;
+ 	@Resource private UserGroupService userGroupService;
+ 	@Resource private DepartService departService;
+	private UserEntity user;
+	private String groupids;
+	private Integer departid;
+
+	/**
+	 * 用户登录
+	 * 
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public String userlogin() {
+//		System.out.println(this.getClass().getName());
+		UserEntity u = null;
+		try {
+			String uspass = Encipherment.Enc_MD5_2(user.getUspass());
+//			 System.out.println(user.getGender());
+			u = userService.userlogin(user.getLoginname(), uspass);
+			if (u == null || u.equals("")) {
+				ActionContext.getContext().put("message", "用户名或密码错误");
+				return "message";
+			} else {
+				SysMenuEntity m=null;
+				UserGroupEntity group=null;
+				Map<Integer ,SysMenuEntity> smap=new HashedMap();
+				Map<Integer ,UserGroupEntity> umap=new HashedMap();
+				//迭代UserGroupEntity
+ 				Iterator<UserGroupEntity> ug=u.getUserGroupEntity().iterator();
+ 				while( ug .hasNext() ){
+ 					group=ug.next();
+ 					umap.put(group.getId(), group);
+ 					Iterator<SysMenuEntity> menu=group.getMenSysMenuEntities().iterator();
+ 				//SysMenuEntity 迭代
+ 					while (menu.hasNext()) {
+ 						  m=menu.next();
+ 						  smap.put(m.getId(), m);
+					}
+ 				}
+				ActionContext.getContext().getSession().put("menu", smap);
+				ActionContext.getContext().getSession().put("group", umap);
+				ActionContext.getContext().getSession().put("user", u);
+			}
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			ActionContext.getContext().put("message", "未知异常");
+			return "message";
+		}
+
+		return "success";
+	}
+
+	/**
+	 * 用户注册
+	 * 
+	 * @return
+	 */
+	public String userRegister() {
+		
+		if(user==null)
+		{
+			 //查询group
+		ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());
+		ActionContext.getContext().getSession().put("departlist", departService.departList());
+		 
+		}
+		else{
+			user.setUspass(Encipherment.Enc_MD5_2(user.getUspass()));
+		DepartmentEntity dp=new DepartmentEntity();
+		UserGroupEntity ug=null;
+		Set<UserGroupEntity> sug=new HashSet<UserGroupEntity>();
+		String a[] = groupids.split(",");  
+		 
+		dp=departService.findByid(departid);
+		 
+		 for(int i=0 ;i<a.length;i++)
+		 {
+			 ug=userGroupService.findByid(Integer.valueOf(a[i]));
+			 sug.add(ug);
+		 }
+		user.setUserGroupEntity(sug);
+		 
+		user.setDepartmentEntity(dp);
+		userService.userRegister(user);
+		 
+		}
+		return "register";
+	}
+
+	public String userlogoff() {
+		try {
+			ActionContext.getContext().getSession().remove("user");
+			ActionContext.getContext().getSession().remove("menu");
+			ActionContext.getContext().getSession().remove("group");
+		} catch (Exception e) {
+		}
+		return "login.jsp";
+	}
+
+	public String userMenu() {
+//		user = (UserEntity) ActionContext.getContext().getSession().get("user");
+//
+//		UserGroupEntity[] ug = (UserGroupEntity[]) user.getUserGroupEntity()
+//				.toArray();
+//		SysMenuEntity menu = null;
+//		Map<String, SysMenuEntity> map = new HashedMap();
+//		for (int i = 0; i < ug.length; i++) {
+//			SysMenuEntity sm[] = (SysMenuEntity[]) ug[i]
+//					.getMenSysMenuEntities().toArray();
+//			for (int j = 0; j < sm.length; j++) {
+//				map.put(sm[j].getMenuname(), sm[j]);
+//			}
+//
+//		}
+//		ActionContext.getContext().getSession().put("menu", map);
+		return null;
+	}
+
+	public UserEntity getUser() {
+		return user;
+	}
+
+	public void setUser(UserEntity user) {
+		this.user = user;
+	}
+
+	public String getGroupids() {
+		return groupids;
+	}
+
+	public void setGroupids(String groupids) {
+		this.groupids = groupids;
+	}
+
+	public Integer getDepartid() {
+		return departid;
+	}
+
+	public void setDepartid(Integer departid) {
+		this.departid = departid;
+	}
+
+}
