@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+				        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+				        http://www.springframework.org/schema/context
+						http://www.springframework.org/schema/context/spring-context-2.5.xsd
+				        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+					    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+	<!-- 配置自动扫描 -->
+	<context:component-scan base-package="org.cdszmis" />
+
+
+	<!-- jdbc.properties -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:jdbc.properties" />
+	</bean>
+
+	<!-- 数据源配置 采用c3p0 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+
+		<!--数据库连接配置 -->
+		<property name="driverClass">
+			<value>${jdbc.driverClassName}</value>
+		</property>
+		<property name="jdbcUrl">
+			<value>${jdbc.url}</value>
+		</property>
+		<property name="user">
+			<value>${jdbc.username}</value>
+		</property>
+		<property name="password">
+			<value>${jdbc.password}</value>
+		</property>
+		<!-- c3p0 配置 具体配置项解释参照 http://msq.iteye.com/blog/60387 -->
+		<property name="minPoolSize">
+			<value>${minPoolSize}</value>
+		</property>
+		<property name="maxPoolSize">
+			<value>${maxPoolSize}</value>
+		</property>
+		<property name="maxStatements">
+			<value>${maxStatements}</value>
+		</property>
+		<property name="initialPoolSize">
+			<value>${initialPoolSize}</value>
+		</property>
+		<property name="acquireIncrement">
+			<value>${acquireIncrement}</value>
+		</property>
+		<property name="idleConnectionTestPeriod">
+			<value>${idleConnectionTestPeriod}</value>
+		</property>
+		<property name="maxIdleTime">
+			<value>${maxIdleTime}</value>
+		</property>
+		<property name="acquireRetryAttempts">
+			<value>${acquireRetryAttempts}</value>
+		</property>
+		<property name="testConnectionOnCheckout">
+			<value>${testConnectionOnCheckout}</value>
+		</property>
+		<property name="breakAfterAcquireFailure">
+			<value>${breakAfterAcquireFailure}</value>
+		</property>
+	</bean>
+
+	<!-- Hibernate 配置 启用缓存 -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${jdbc.dialect}</prop>
+				<prop key="hibernate.hbm2ddl.auto">${hbm2ddl.auto}</prop>
+				<prop key="hibernate.show_sql">${show_sql}</prop>
+				<prop key="hibernate.jdbc.batch_size">${jdbc.batch_size}</prop>
+				<prop key="hibernate.cashe.use_second_level_cache">${cashe.use_second_level_cache}</prop>
+				<prop key="hibernate.cache.provider_class">${cache.provider_class}</prop>
+				<prop key="hibernate.cache.use_query_cache">${cache.use_query_cache}</prop>
+			</props>
+		</property>
+		<!-- 实体对象 -->
+		<property name="packagesToScan" value="org.cdszmis.entity" />
+
+	</bean>
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<!-- TransactionManager -->
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<!-- Advice -->
+	<tx:advice id="serviceManagerAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="find*" propagation="NOT_SUPPORTED"
+				read-only="true" />
+			<tx:method name="list*" propagation="NOT_SUPPORTED"
+				read-only="true" />
+			<tx:method name="get*" propagation="NOT_SUPPORTED"
+				read-only="true" />
+			<tx:method name="*" rollback-for="Exception.class" />
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- Advisor -->
+	<aop:config>
+		<aop:pointcut id="serviceManagerPointcut"
+			expression="(execution(* org.cdszmis.dao.*.*(..)) or execution(* org.cdszmis.utils.*.*(..)) or execution(* org.cdszmis.service.*.*(..)) )" />
+		<aop:advisor advice-ref="serviceManagerAdvice"
+			pointcut-ref="serviceManagerPointcut" />
+	</aop:config>
+</beans>

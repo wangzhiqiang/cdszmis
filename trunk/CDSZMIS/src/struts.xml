@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<constant name="struts.serve.static.browserCache " value="false" />
+	<constant name="struts.configuration.xml.reload" value="true" />
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.objectFactory" value="spring" />
+
+	<include file="Interceptor.xml"></include>
+
+	<package name="cdszmis" extends="Interceptor">
+		<action name="login" class="org.cdszmis.action.UserAction"
+			method="userlogin">
+			<result name="success">/main/main.jsp</result>
+		</action>
+	</package>
+
+	<package name="users" extends="Interceptor" namespace="/user">
+
+		<action name="user_*" class="org.cdszmis.action.UserAction"
+			method="{1}">
+			<interceptor-ref name="permissstack"></interceptor-ref>
+			<result name="success">/main/main.jsp</result>
+			<result name="register">/user/Register.jsp</result>
+			<result name="login.jsp">/login.jsp</result>
+		</action>
+	</package>
+
+	<package name="group" extends="Interceptor" namespace="/usergroup">
+		<action name="group_*" class="org.cdszmis.action.GroupAction"
+			method="{1}">
+			<interceptor-ref name="permissstack"></interceptor-ref>
+			<result name="success">/index.jsp</result>
+			<result name="add">/group/group.jsp</result>
+		</action>
+	</package>
+	<package name="files" extends="Interceptor" namespace="/files">
+		<action name="files_*" class="org.cdszmis.action.FilesAction"
+			method="{1}">
+			<interceptor-ref name="permissstack"></interceptor-ref>
+			<result name="success">/index.jsp</result>
+
+		</action>
+	</package>
+	
+	<package name="project" extends="Interceptor" namespace="/project">
+		<action name="pro_*" class="org.cdszmis.action.ProjectAction"
+			method="{1}">
+			<interceptor-ref name="permissstack"></interceptor-ref>
+			<result name="success">/index.jsp</result>
+		</action>
+	</package>
+	
+	<package name="depart" extends="Interceptor" namespace="/depart">
+		<action name="depart_*" class="org.cdszmis.action.DepartmentAction"
+			method="{1}">
+			<interceptor-ref name="permissstack"></interceptor-ref>
+			<result name="success">/index.jsp</result>
+			<result name="add">/department/departManager.jsp</result>
+			<result name="listdepart">/department/listdepart.jsp</result>
+		</action>
+	</package>
+</struts>
