@@ -25,6 +25,7 @@ import com.opensymphony.xwork2.ActionSupport;
 @SuppressWarnings("serial")
 public class UserAction extends ActionSupport {
 
+	
 	@Resource
 	private UserService userService;
 	@Resource
