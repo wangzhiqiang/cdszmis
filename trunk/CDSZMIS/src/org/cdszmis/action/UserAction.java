@@ -99,6 +99,7 @@ public class UserAction extends ActionSupport {
 		if (user != null && !user.equals("")) {
 			user.setUspass(Encipherment.Enc_MD5_2(user.getUspass()));
 			// /验证用户是否被注册
+			@SuppressWarnings ("rawtypes")
 			List ls = null;
 			try {
 				ls = userService.getUserByloginname(user.getLoginname());
