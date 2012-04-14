@@ -15,7 +15,7 @@ fx.Base.prototype = {
 		duration: 500,
 		onComplete: '',
 		transition: fx.sinoidal
-	}
+	};
 	Object.extend(this.options, options || {});
 	},
 
