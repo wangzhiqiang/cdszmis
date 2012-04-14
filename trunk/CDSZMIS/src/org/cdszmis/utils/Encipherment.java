@@ -60,15 +60,15 @@ public class Encipherment {
 		byte[] data = str.getBytes();
 
 		MessageDigest md5 = null;
-		BigInteger big = new BigInteger(data);
+		BigInteger big = null;
 		try {
+			big=new BigInteger(data);
 			md5 = MessageDigest.getInstance("MD5");
 			for (int i = 1; i <= 3; i++) {
 				md5.update(data);
 				data = md5.digest();
 			}
-		} catch (NoSuchAlgorithmException e) {
-			System.out.println("MD5 算法在该环境不可用");
+		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
 		}
