@@ -22,6 +22,7 @@ import org.hibernate.HibernateException;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
+
 @SuppressWarnings("serial")
 public class UserAction extends ActionSupport {
 
