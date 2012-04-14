@@ -36,6 +36,7 @@
 			<interceptor-ref name="permissstack"></interceptor-ref>
 			<result name="success">/index.jsp</result>
 			<result name="add">/group/group.jsp</result>
+			<result name="groupmenu">/group/groupmenu.jsp</result>
 		</action>
 	</package>
 	<package name="files" extends="Interceptor" namespace="/files">

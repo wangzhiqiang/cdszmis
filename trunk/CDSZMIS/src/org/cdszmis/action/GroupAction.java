@@ -7,6 +7,7 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
+import org.cdszmis.dao.PublicDao;
 import org.cdszmis.entity.SysMenuEntity;
 import org.cdszmis.entity.UserGroupEntity;
 import org.cdszmis.service.UserGroupService;
@@ -16,8 +17,8 @@ import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
 public class GroupAction extends ActionSupport {
-	@Resource
-	private UserGroupService userGroupService;
+	@Resource private UserGroupService userGroupService;
+	@Resource private PublicDao publicDao;
 	private String menuids;
 	private UserGroupEntity group;
 
@@ -51,6 +52,18 @@ public class GroupAction extends ActionSupport {
 		return "add";
 	}
 
+	
+	@SuppressWarnings ("rawtypes")
+	public String groupMenu(){
+		List allmenu=publicDao.queryList(SysMenuEntity.class);
+		List allgroup=publicDao.queryList(UserGroupEntity.class);
+		
+		ActionContext.getContext().put("allmenu",allmenu);
+		ActionContext.getContext().put("allgroup",allgroup);
+		
+		return "groupmenu";
+	}
+	
 	public String getMenuids() {
 		return menuids;
 	}
