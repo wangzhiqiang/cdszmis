@@ -1,0 +1,15 @@
+.leftdiv{
+	float:left;
+	width: 49%;
+	border:solid 1px #FFF;
+}
+.centerdiv{
+	float:left;
+	width: 5px;
+	border: solid 1px #FFF000;
+}
+.rightdiv{
+	float:left;
+	width: 49%;
+	border: solid  1px #FFFF00;
+}
