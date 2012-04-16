@@ -5,20 +5,25 @@
 <html>
   <head>
     <link href="${rooturl }/styles/banner.css" rel="stylesheet" type="text/css" />
+     <link href="${rooturl }/styles/groupmenu.css" rel="stylesheet" type="text/css" />
 	<script language="JavaScript" src="${rooturl }/scripts/jquery/jquery-1.5.2.js"></script>
 
   </head>
   
   <body>
-   groupmenu\\\\<br/>
-   <c:forEach items="${allgroup }" var="group">
+    groupmenu\\\\<br/>
+  <div class="leftdiv">
+  <c:forEach items="${allgroup }" var="group">
  	${group.id }:${group.groupname }:${group.namespace }:
 	<c:forEach items="${group.menSysMenuEntities }" var="g" varStatus="stat" >
 	  ${g.id }<c:if test="${!stat.last}">,</c:if>
 	</c:forEach>
 		<br>
    </c:forEach>
-   <br/><br/><br/><br/><br/>
+  </div>
+ <div class="centerdiv"></div>
+   
+  <div class="rightdiv">
    <c:forEach items="${allmenu }" var="menu1">
    	<c:if test="${menu1.pid==0 }"> ${menu1.id }:${menu1.menuname }<br/>
 	   	<c:forEach items="${allmenu }" var="menu2">
@@ -30,6 +35,6 @@
 	   </c:forEach>
 	 </c:if>
    </c:forEach>
-   
+   </div>
   </body>
 </html>

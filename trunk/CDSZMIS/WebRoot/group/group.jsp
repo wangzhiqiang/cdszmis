@@ -164,7 +164,7 @@ group
 	  <td><input type="radio" class="gpradio" name="radio"/></td>
 	  <td>${group.id }</td>
 	  <td>${group.groupname }</td>
-	  <td>${group.namespace }</td>
+	  <td>${group.namespace}</td>
 	  <td width="60%">
 		  <c:forEach items="${group.menSysMenuEntities }" var="gmus">
 		   ${gmus.id }:${gmus.menuname }&nbsp;
@@ -172,7 +172,7 @@ group
 	  </td> 
 	  <td style="display: none" id="groupsid">
 	  		<c:forEach items="${group.menSysMenuEntities }" var="g" varStatus="stat" >
-	 		 ${g.id }<c:if test="${!stat.last}">,</c:if>
+	 		 ${g.id}<c:if test="${!stat.last}">,</c:if>
 	  		</c:forEach>
 	  		
 	  </td>
