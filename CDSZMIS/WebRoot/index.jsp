@@ -4,10 +4,24 @@
 <html>
 <head>
 <title>index</title>
+<script language="JavaScript" src="${rooturl }/scripts/jquery/jquery-1.5.2.js"></script>
+<script language="JavaScript" src="${rooturl }/scripts/thickbox.js"></script>
+<link href="${rooturl }/styles/thickbox.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>index
-
-
+ 
+ <a href="#TB_inline?height=155&width=300&inlineId=tt" class="thickbox" style="text-decoration: none">加载层</a>
+ <div id="tt" style="display: none">
+  <table>
+  <tr>
+  	<td>asdfasd</td> <td>asdfasd</td>
+  </tr>
+   <tr>
+  	<td>asdfasd</td> <td>asdfasd</td>
+  </tr>
+  
+  </table>
+</div>
 </body>
 </html>
