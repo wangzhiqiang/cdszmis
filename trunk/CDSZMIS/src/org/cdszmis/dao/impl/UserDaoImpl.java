@@ -1,5 +1,7 @@
 package org.cdszmis.dao.impl;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -47,7 +49,14 @@ public class UserDaoImpl implements UserDao {
 
 		return null;
 	}
-
+	public List userSelect(String key){
+		if(key == null){
+			key = "";
+		}
+		String HSQL="from UserEntity obj where obj .usname like '"+key+"%' or obj.idcard like '"+key+"%' ";
+		 return   hibernateUtils.findlistByHsql(HSQL);
+ 
+	}
 	@SuppressWarnings("rawtypes")
 	public List userList(List<Integer> ids) {
 

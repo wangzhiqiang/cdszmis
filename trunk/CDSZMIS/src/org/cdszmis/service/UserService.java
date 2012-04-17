@@ -57,8 +57,15 @@ public abstract interface UserService {
 	@SuppressWarnings("rawtypes")
 	public List userList(List <Integer> ids);
 	
+	/**
+	 * 用户列表查询
+	 * @param key
+	 * @return
+	 */
+	public List selectList(String key);
 	@SuppressWarnings("rawtypes")
 	public List  getUserByloginname(String loginname);
+	
 	
 	
 }

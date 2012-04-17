@@ -52,7 +52,10 @@ public class UserServiceImpl implements UserService {
 	public UserEntity userGroupManager(List<Integer> groupids, int userid) {
 		return null;
 	}
-
+	public List selectList(String key){
+		
+		return userDaoImpl.userSelect(key);
+	}
 	@SuppressWarnings("rawtypes")
 	public List userList(List<Integer> ids) {
 		return null;
