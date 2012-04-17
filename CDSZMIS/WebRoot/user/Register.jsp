@@ -20,13 +20,18 @@
 	<form action="/user/user_userRegister" method="get">
 	<table>
 		<tr>
+			<td>ID</td>
+			<td><input name="user.id" type="text" />
+			</td>
+		</tr>
+		<tr>
 			<td>用户名</td>
-			<td><input name='user.usname' type="text" />
+			<td><input name="user.usname" type="text" />
 			</td>
 		</tr>
 		<tr>
 			<td>登录名</td>
-			<td><input name='user.loginname' type="text" />
+			<td><input name="user.loginname" type="text" />
 			</td>
 		</tr>
 		<tr>
@@ -37,11 +42,36 @@
 		<tr>
 			<td>性别</td>
 			<td>
-			<label name="user.sex">
-			<input name="sex" type="radio" value="男" checked="checked"/>男
-			<input  name="sex" type="radio" value="女" />女
+			<label name="user.gender">
+			<input name="gender" type="radio" value="男" checked="checked"/>男
+			<input  name="gender" type="radio" value="女" />女
 			</label>
-				</td>
+			</td>
+		</tr>
+		<tr>
+			<td>邮箱</td>
+			<td><input name="user.email" type="text" />
+			</td>
+		</tr>
+		<tr>
+			<td>手机</td>
+			<td><input name="user.phone" type="text" />
+			</td>
+		</tr>
+		<tr>
+			<td>办公室电话</td>
+			<td><input name="user.officenum" type="text" />
+			</td>
+		</tr>
+		<tr>
+			<td>身份证</td>
+			<td><input name="user.idcard" type="text" />
+			</td>
+		</tr>
+		<tr>
+			<td>出生日期</td>
+			<td><input name="user.date" type="text" />
+			</td>
 		</tr>
 		<tr>
 			<td>用户组</td>
@@ -79,12 +109,23 @@
 		</tr>
 		<tr>
 			<td>简介</td>
-			<td><textarea style="height: 50px;width: 200px;"></textarea></td>
+			<td><textarea name="introduction" style="height: 50px;width: 200px;"></textarea></td>
+		</tr>
+		
+		<tr>
+			<td>用户状态</td>
+			<td>
+			<label name="user.status">
+			<input name="status" type="radio" value="0" checked="checked"/>激活
+			<input  name="status" type="radio" value="1" />注销
+			</label>
+			</td>
 		</tr>
 		<tr>
 			<td><input value="提交" type="submit" /></td>
 			<td><input value="重置" type="reset" /></td>
 		</tr>
+
 	</table>
 </form>
 

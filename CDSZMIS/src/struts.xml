@@ -26,7 +26,9 @@
 			<interceptor-ref name="permissstack"></interceptor-ref>
 			<result name="success">/main/main.jsp</result>
 			<result name="register">/user/Register.jsp</result>
-			<result name="login.jsp">/login.jsp</result>
+			<result name="update">/user/Update.jsp</result>
+			<result name="managelist">/user/Managelist.jsp</result>
+			<result name="login.jsp">/login.jsp</result>	
 		</action>
 	</package>
 

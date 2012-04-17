@@ -142,7 +142,21 @@ public class UserAction extends ActionSupport {
 		}
 		return "login.jsp";
 	}
-
+	
+	public String userUpdate(){
+		
+		
+		
+		
+		return "update";
+	}
+	
+	public String userManagelist(){
+		
+		
+		return "managelist";
+		
+	}
 	public String userMenu() {
 		// user = (UserEntity)
 		// ActionContext.getContext().getSession().get("user");

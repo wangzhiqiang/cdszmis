@@ -21,6 +21,8 @@ insert into tb_depart(departname,departnode,responsibility,departowner,departpho
 insert into tb_depart(departname,departnode,responsibility,departowner,departphonenumber,status,createdate) values('测量设计所','日常办公部门,处理院内事物','人员调配,资源分配等','admin','12345678',1,'2011-03-11');
 
   
+  select * 
+  from tb_user userentity0_ where userentity0_.uspass='418296719726' and userentity0_.loginname='admin'
  
  
  
