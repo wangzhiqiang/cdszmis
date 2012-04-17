@@ -1,5 +1,6 @@
 package org.cdszmis.action;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.Set;
 import javax.annotation.Resource;
 
 import org.apache.commons.collections.map.HashedMap;
+import org.cdszmis.dao.UserDao;
 import org.cdszmis.entity.DepartmentEntity;
 import org.cdszmis.entity.SysMenuEntity;
 import org.cdszmis.entity.UserEntity;
@@ -17,7 +19,9 @@ import org.cdszmis.service.DepartService;
 import org.cdszmis.service.UserGroupService;
 import org.cdszmis.service.UserService;
 import org.cdszmis.utils.Encipherment;
+import org.cdszmis.utils.HibernateUtils;
 import org.hibernate.HibernateException;
+
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -160,6 +164,31 @@ public class UserAction extends ActionSupport {
 		return "managelist";
 		
 	}
+	
+
+	public String userSelect(){
+/*		String key = null;
+		UserEntity user = null;
+		
+		ActionContext.getContext().getSession()
+		.put("list", userService.selectList(key));
+	
+
+		List<UserEntity> list = new ArrayList<UserEntity>();
+		list = userService.selectList(key);
+		
+		Iterator iter = list.iterator();
+		while(iter.hasNext()){
+			user = (UserEntity) iter.next();
+			list.add(user);
+		}
+		ActionContext.getContext().put("list", list);*/
+		
+		return "ls";
+		
+	}
+	
+	
 	public String userMenu() {
 		// user = (UserEntity)
 		// ActionContext.getContext().getSession().get("user");
