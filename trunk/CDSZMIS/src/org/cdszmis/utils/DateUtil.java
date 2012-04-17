@@ -625,12 +625,12 @@ public class DateUtil {
 		return (int) (date.getTime() / 1000);
 	}
 
-	public static void main(String[] args) {
-		Date date1 = dateFormat("1981-01-01 00:00:00");
-		Date date2 = dateFormat("1900-12-31 00:00:00");
-		System.out.println(birthdayFormat(date1));
-		System.out.println(birthdayFormat(date2));
-	}
+//	public static void main(String[] args) {
+//		Date date1 = dateFormat("1981-01-01 00:00:00");
+//		Date date2 = dateFormat("1900-12-31 00:00:00");
+//		System.out.println(birthdayFormat(date1));
+//		System.out.println(birthdayFormat(date2));
+//	}
 
 	public static Date getNextDay(Date date) {
 		long time = (date.getTime() / 1000) + 60 * 60 * 24;
