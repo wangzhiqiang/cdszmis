@@ -124,6 +124,7 @@ public class UserAction extends ActionSupport {
 					user.setDepartmentEntity(dp);
 				}
 				userService.userRegister(user);
+				ActionContext.getContext().put("message",user.getLoginname()+"注册成功！");
 			} else {
 				ActionContext.getContext().put("message", "该登录名已经被注册！");
 				return "message";
