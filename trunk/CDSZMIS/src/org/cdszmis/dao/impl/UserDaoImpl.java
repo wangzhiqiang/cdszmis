@@ -31,7 +31,7 @@ public class UserDaoImpl implements UserDao {
 
 	public UserEntity userRegister(UserEntity user) {
 
-		return (UserEntity) hibernateUtils.save(user);
+		return (UserEntity) hibernateUtils.saveorupdate(user);
 	}
 
 	public UserEntity userManager(UserEntity user) {

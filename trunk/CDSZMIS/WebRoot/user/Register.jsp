@@ -19,11 +19,11 @@
 	Register
 	<form action="/user/user_userRegister" method="get">
 	<table>
-		<tr>
+		<!--  <tr>
 			<td>ID</td>
 			<td><input name="user.id" type="text" />
 			</td>
-		</tr>
+		</tr>-->
 		<tr>
 			<td>用户名</td>
 			<td><input name="user.usname" type="text" />
@@ -43,8 +43,8 @@
 			<td>性别</td>
 			<td>
 			<label name="user.gender">
-			<input name="gender" type="radio" value="男" checked="checked"/>男
-			<input  name="gender" type="radio" value="女" />女
+			<input name="user.gender" type="radio" value="男" checked="checked"/>男
+			<input  name="user.gender" type="radio" value="女" />女
 			</label>
 			</td>
 		</tr>
@@ -70,7 +70,7 @@
 		</tr>
 		<tr>
 			<td>出生日期</td>
-			<td><input name="user.date" type="text" />
+			<td><input name="user.birthday" type="text" />
 			</td>
 		</tr>
 		<tr>
