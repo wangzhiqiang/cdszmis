@@ -31,12 +31,12 @@ public class UserEntity implements Serializable {
 	private String uspass;
 	private String introduction;//简介
 	private String loginname;//登录名
-	private Date date;
+	private Date birthday;
 	private String idcard;
 	private String officenum;
 	private String phone;
 	private String email;
-	private String condition;//调动情况
+	private String conditions;//调动情况
 //	@ManyToMany(targetEntity=UserGroupEntity.class )
 	
 
@@ -89,12 +89,7 @@ public class UserEntity implements Serializable {
 	public void setLoginname(String loginname) {
 		this.loginname = loginname;
 	}
-	public Date getDate() {
-		return date;
-	}
-	public void setDate(Date date) {
-		this.date = date;
-	}
+	 
 	public String getIdcard() {
 		return idcard;
 	}
@@ -119,11 +114,18 @@ public class UserEntity implements Serializable {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getCondition() {
-		return condition;
+	 
+	public Date getBirthday() {
+		return birthday;
 	}
-	public void setCondition(String condition) {
-		this.condition = condition;
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
+	public String getConditions() {
+		return conditions;
+	}
+	public void setConditions(String conditions) {
+		this.conditions = conditions;
 	}
 	public Set<UserGroupEntity> getUserGroupEntity() {
 		return userGroupEntity;
