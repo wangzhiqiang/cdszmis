@@ -162,12 +162,28 @@ public class UserAction extends BaseAction {
 	}
 	
 	public String userUpdate(){
-		
+		if(ActionContext.getContext().get("grouplist")==null)
+		{
+			ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());
+		}
+		if(ActionContext.getContext().get("departlist")==null)
+		{
+			ActionContext.getContext().getSession().put("departlist", departService.departList());
+		}
 		return "update";
 	}
 	
 	public String userManagelist(){
 		
+		
+		if(ActionContext.getContext().get("grouplist")==null)
+		{
+			ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());
+		}
+		if(ActionContext.getContext().get("departlist")==null)
+		{
+			ActionContext.getContext().getSession().put("departlist", departService.departList());
+		}
 //		userService.selectList("123");
 		return "managelist";
 		
