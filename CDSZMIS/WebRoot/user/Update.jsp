@@ -1,15 +1,12 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-
- <link href="${rooturl }/styles/banner.css" rel="stylesheet" type="text/css" />
-<script language="JavaScript" src="${rooturl }/scripts/jquery/jquery-1.5.2.js"></script>
 <html>
   <head>
     
     <title>用户信息维护</title>
-
+ <link href="${rooturl }/styles/banner.css" rel="stylesheet" type="text/css" />
+<script language="JavaScript" src="${rooturl }/scripts/jquery/jquery-1.5.2.js"></script>
   </head>
   
   <body>
@@ -119,5 +116,80 @@
 	
 		</table>
 	</form>
+		
+<script>
+					var inputtext = false;
+					var allcolumnsover = false;
+					function testonfouce() {
+						inputtext = true;
+						showorhidden();
+						showcolumn();
+					}
+					function testonblur() {
+						inputtext = false;
+						showorhidden();
+					}
+					function divonfouce() {
+						allcolumnsover = true;
+						showorhidden();
+					}
+					function divonblur() {
+						allcolumnsover = false;
+						showorhidden();
+					}
+
+					function showorhidden() {
+						if (inputtext | allcolumnsover) {
+							document.getElementById('allcolumns').style.display = '';
+						} else {
+							document.getElementById('allcolumns').style.display = 'none';
+						}
+					}
+					function showcolumn() {
+						var value = document.getElementById("inputcolumn").value;
+						var allcolumns = document.getElementById("allcolumns").childNodes;
+						var temp = 0;
+						for ( var i = 0; i < allcolumns.length; i++) {
+							if (allcolumns[i].innerHTML.indexOf(value) > -1) {
+								allcolumns[i].style.display = "";
+								temp++;
+							} else {
+								allcolumns[i].style.display = "none";
+							}
+						}
+						if (temp > 10) {
+							document.getElementById("allcolumns").style.height = "560px";
+							document.getElementById("allcolumns").style.overflowY = "scroll";
+						} else {
+							document.getElementById("allcolumns").style.height = (temp * 26)
+									+ "px";
+							document.getElementById("allcolumns").style.overflowY = "hidden";
+						}
+					}
+				
+					
+					function setInputcolumn(obj) {
+						var ids = document.getElementById("inputcolumn").value;
+						var id = obj.value;
+						var temp = new Array();
+						if (ids == "") {
+							ids = id;
+						} else {
+							temp = ids.split(",");
+							 var l=temp.length;
+							for (i = 0; i <l;  i++) {
+					           if (id == temp[i]) {
+									temp.splice(i, 1);
+									ids = temp.join(",");
+									break;
+								}
+								if (i == l - 1) {
+									ids = ids + "," + id;
+								}
+							}
+						}
+						document.getElementById("inputcolumn").value = ids;
+					}
+				</script>
   </body>
 </html>

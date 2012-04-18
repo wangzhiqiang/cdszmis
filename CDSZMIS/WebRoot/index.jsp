@@ -12,16 +12,9 @@
 <body>index
  
  <a href="#TB_inline?height=155&width=300&inlineId=tt" class="thickbox" style="text-decoration: none">加载层</a>
+ 
  <div id="tt" style="display: none">
-  <table>
-  <tr>
-  	<td>asdfasd</td> <td>asdfasd</td>
-  </tr>
-   <tr>
-  	<td>asdfasd</td> <td>asdfasd</td>
-  </tr>
-  
-  </table>
-</div>
+ <p>${sessionids }</p>
+ </div>
 </body>
 </html>
