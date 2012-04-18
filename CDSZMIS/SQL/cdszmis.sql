@@ -29,7 +29,7 @@ CREATE TABLE `tb_depart` (
   `departname` varchar(255) DEFAULT NULL,
   `departnode` varchar(255) DEFAULT NULL,
   `departowner` varchar(255) DEFAULT NULL,
-  `departphonenumber` varchar(20) DEFAULT NULL,
+  `departphonenumber` varchar(255) DEFAULT NULL,
   `responsibility` varchar(255) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -218,50 +218,50 @@ CREATE TABLE `tb_sys_menu` (
 
 /*!40000 ALTER TABLE `tb_sys_menu` DISABLE KEYS */;
 INSERT INTO `tb_sys_menu` VALUES (1,'','系统管理系统',0,'');
-INSERT INTO `tb_sys_menu` VALUES (2,NULL,'文件办理系统',0,NULL);
-INSERT INTO `tb_sys_menu` VALUES (3,NULL,'任务管理系统',0,NULL);
-INSERT INTO `tb_sys_menu` VALUES (4,NULL,'部门管理',1,NULL);
-INSERT INTO `tb_sys_menu` VALUES (5,NULL,'用户管理',1,NULL);
-INSERT INTO `tb_sys_menu` VALUES (6,NULL,'用户组管理',1,NULL);
-INSERT INTO `tb_sys_menu` VALUES (7,NULL,'系统配置',1,NULL);
-INSERT INTO `tb_sys_menu` VALUES (8,NULL,'办理人员配置',2,NULL);
-INSERT INTO `tb_sys_menu` VALUES (9,NULL,'意见模板',2,NULL);
-INSERT INTO `tb_sys_menu` VALUES (10,NULL,'任务进度管理',3,NULL);
-INSERT INTO `tb_sys_menu` VALUES (11,NULL,'任务查询管理',3,NULL);
-INSERT INTO `tb_sys_menu` VALUES (12,NULL,'任务统计管理',3,NULL);
+INSERT INTO `tb_sys_menu` VALUES (2,NULL,'文件办理系统',0,'');
+INSERT INTO `tb_sys_menu` VALUES (3,NULL,'任务管理系统',0,'');
+INSERT INTO `tb_sys_menu` VALUES (4,NULL,'部门管理',1,'');
+INSERT INTO `tb_sys_menu` VALUES (5,NULL,'用户管理',1,'');
+INSERT INTO `tb_sys_menu` VALUES (6,NULL,'用户组管理',1,'');
+INSERT INTO `tb_sys_menu` VALUES (7,NULL,'系统配置',1,'');
+INSERT INTO `tb_sys_menu` VALUES (8,NULL,'办理人员配置',2,'');
+INSERT INTO `tb_sys_menu` VALUES (9,NULL,'意见模板',2,'');
+INSERT INTO `tb_sys_menu` VALUES (10,NULL,'任务进度管理',3,'');
+INSERT INTO `tb_sys_menu` VALUES (11,NULL,'任务查询管理',3,'');
+INSERT INTO `tb_sys_menu` VALUES (12,NULL,'任务统计管理',3,'');
 INSERT INTO `tb_sys_menu` VALUES (13,NULL,'部门信息维护',4,'/depart/depart_departmanager');
 INSERT INTO `tb_sys_menu` VALUES (14,NULL,'部门信息查询',4,'/depart/depart_findallDepart');
-INSERT INTO `tb_sys_menu` VALUES (15,NULL,'用户注销',5,'${rooturl}/');
-INSERT INTO `tb_sys_menu` VALUES (16,NULL,'用户信息查询',5,'${rooturl}/');
-INSERT INTO `tb_sys_menu` VALUES (17,NULL,'用户人事管理',5,'${rooturl}/');
-INSERT INTO `tb_sys_menu` VALUES (18,NULL,'用户权限分配',5,'${rooturl}/');
-INSERT INTO `tb_sys_menu` VALUES (19,NULL,'用户信息维护',5,'${rooturl}/');
-INSERT INTO `tb_sys_menu` VALUES (20,NULL,'用户分配',6,'${rooturl}/');
-INSERT INTO `tb_sys_menu` VALUES (21,NULL,'权限分配',6,'${rooturl}/');
+INSERT INTO `tb_sys_menu` VALUES (15,NULL,'用户注销',5,'/');
+INSERT INTO `tb_sys_menu` VALUES (16,NULL,'用户信息查询',5,'/');
+INSERT INTO `tb_sys_menu` VALUES (17,NULL,'用户人事管理',5,'/user/user_userManagelist');
+INSERT INTO `tb_sys_menu` VALUES (18,NULL,'用户权限分配',5,'/');
+INSERT INTO `tb_sys_menu` VALUES (19,NULL,'用户信息维护',5,'/user/user_userUpdate');
+INSERT INTO `tb_sys_menu` VALUES (20,NULL,'用户分配',6,'/');
+INSERT INTO `tb_sys_menu` VALUES (21,NULL,'权限分配',6,'/usergroup/group_groupMenu');
 INSERT INTO `tb_sys_menu` VALUES (22,NULL,'用户组信息维护',6,'/usergroup/group_groupManager');
-INSERT INTO `tb_sys_menu` VALUES (23,NULL,'职务管理',7,'${rooturl}/');
-INSERT INTO `tb_sys_menu` VALUES (24,NULL,'职称管理',7,'${rooturl}/');
-INSERT INTO `tb_sys_menu` VALUES (25,NULL,'办理人员列表',8,'${rooturl}/');
-INSERT INTO `tb_sys_menu` VALUES (26,NULL,'审批人员列表',8,'${rooturl}/');
-INSERT INTO `tb_sys_menu` VALUES (27,NULL,'抄送人员列表',8,'${rooturl}/');
-INSERT INTO `tb_sys_menu` VALUES (28,NULL,'办理意见模板',9,'${rooturl}/');
-INSERT INTO `tb_sys_menu` VALUES (29,NULL,'审批意见模板',9,'${rooturl}/');
-INSERT INTO `tb_sys_menu` VALUES (30,NULL,'抄送意见模板',9,'${rooturl}/');
-INSERT INTO `tb_sys_menu` VALUES (31,NULL,'取消意见模板',9,'${rooturl}/');
-INSERT INTO `tb_sys_menu` VALUES (32,NULL,'办理完成意见模板',9,'${rooturl}/');
-INSERT INTO `tb_sys_menu` VALUES (33,NULL,'项目登记',10,'${rooturl}/');
-INSERT INTO `tb_sys_menu` VALUES (34,NULL,'分派项目',10,'${rooturl}/');
-INSERT INTO `tb_sys_menu` VALUES (35,NULL,'所级安排',10,'${rooturl}/');
-INSERT INTO `tb_sys_menu` VALUES (36,NULL,'项目实施',10,'${rooturl}/');
-INSERT INTO `tb_sys_menu` VALUES (37,NULL,'总工审查',10,'${rooturl}/');
-INSERT INTO `tb_sys_menu` VALUES (38,NULL,'签字出图',10,'${rooturl}/');
-INSERT INTO `tb_sys_menu` VALUES (39,NULL,'出版发行',10,'${rooturl}/');
-INSERT INTO `tb_sys_menu` VALUES (40,NULL,'发行收费',10,'${rooturl}/');
-INSERT INTO `tb_sys_menu` VALUES (41,NULL,'归档',10,'${rooturl}/');
-INSERT INTO `tb_sys_menu` VALUES (42,NULL,'项目状态查询',11,'${rooturl}/');
-INSERT INTO `tb_sys_menu` VALUES (43,NULL,'项目进度查询',11,'${rooturl}/');
-INSERT INTO `tb_sys_menu` VALUES (44,NULL,'项目详细信息查询',11,'${rooturl}/');
-INSERT INTO `tb_sys_menu` VALUES (45,NULL,'按部门统计',12,'${rooturl}/');
+INSERT INTO `tb_sys_menu` VALUES (23,NULL,'职务管理',7,'/');
+INSERT INTO `tb_sys_menu` VALUES (24,NULL,'职称管理',7,'/');
+INSERT INTO `tb_sys_menu` VALUES (25,NULL,'办理人员列表',8,'/');
+INSERT INTO `tb_sys_menu` VALUES (26,NULL,'审批人员列表',8,'/');
+INSERT INTO `tb_sys_menu` VALUES (27,NULL,'抄送人员列表',8,'/');
+INSERT INTO `tb_sys_menu` VALUES (28,NULL,'办理意见模板',9,'/');
+INSERT INTO `tb_sys_menu` VALUES (29,NULL,'审批意见模板',9,'/');
+INSERT INTO `tb_sys_menu` VALUES (30,NULL,'抄送意见模板',9,'/');
+INSERT INTO `tb_sys_menu` VALUES (31,NULL,'取消意见模板',9,'/');
+INSERT INTO `tb_sys_menu` VALUES (32,NULL,'办理完成意见模板',9,'/');
+INSERT INTO `tb_sys_menu` VALUES (33,NULL,'项目登记',10,'/');
+INSERT INTO `tb_sys_menu` VALUES (34,NULL,'分派项目',10,'/');
+INSERT INTO `tb_sys_menu` VALUES (35,NULL,'所级安排',10,'/');
+INSERT INTO `tb_sys_menu` VALUES (36,NULL,'项目实施',10,'/');
+INSERT INTO `tb_sys_menu` VALUES (37,NULL,'总工审查',10,'/');
+INSERT INTO `tb_sys_menu` VALUES (38,NULL,'签字出图',10,'/');
+INSERT INTO `tb_sys_menu` VALUES (39,NULL,'出版发行',10,'/');
+INSERT INTO `tb_sys_menu` VALUES (40,NULL,'发行收费',10,'/');
+INSERT INTO `tb_sys_menu` VALUES (41,NULL,'归档',10,'/');
+INSERT INTO `tb_sys_menu` VALUES (42,NULL,'项目状态查询',11,'/');
+INSERT INTO `tb_sys_menu` VALUES (43,NULL,'项目进度查询',11,'/');
+INSERT INTO `tb_sys_menu` VALUES (44,NULL,'项目详细信息查询',11,'/');
+INSERT INTO `tb_sys_menu` VALUES (45,NULL,'按部门统计',12,'/');
 INSERT INTO `tb_sys_menu` VALUES (46,NULL,'用户注册',5,'/user/user_userRegister');
 /*!40000 ALTER TABLE `tb_sys_menu` ENABLE KEYS */;
 
@@ -285,14 +285,14 @@ CREATE TABLE `tb_sysdictionary` (
 #
 
 /*!40000 ALTER TABLE `tb_sysdictionary` DISABLE KEYS */;
-INSERT INTO `tb_sysdictionary` VALUES (1,'2011-03-11','院长','职务字典','position_01',0);
-INSERT INTO `tb_sysdictionary` VALUES (2,'2011-03-11','书记','职务字典','position_02',0);
-INSERT INTO `tb_sysdictionary` VALUES (3,'2011-03-11','副院长','职务字典','position_03',0);
-INSERT INTO `tb_sysdictionary` VALUES (4,'2011-03-11','总工程师','职务字典','position_04',0);
-INSERT INTO `tb_sysdictionary` VALUES (5,'2011-03-11','主任','职务字典','position_05',0);
-INSERT INTO `tb_sysdictionary` VALUES (6,'2011-03-11','所长','职务字典','position_06',0);
-INSERT INTO `tb_sysdictionary` VALUES (7,'2011-03-11','会计','职称字典','titles_01',0);
-INSERT INTO `tb_sysdictionary` VALUES (8,'2011-03-11','工程师','职称字典','titles_02',0);
+INSERT INTO `tb_sysdictionary` VALUES (1,'2011-03-11','院长','职务字典','position',0);
+INSERT INTO `tb_sysdictionary` VALUES (2,'2011-03-11','书记','职务字典','position',0);
+INSERT INTO `tb_sysdictionary` VALUES (3,'2011-03-11','副院长','职务字典','position',0);
+INSERT INTO `tb_sysdictionary` VALUES (4,'2011-03-11','总工程师','职务字典','postion',0);
+INSERT INTO `tb_sysdictionary` VALUES (5,'2011-03-11','主任','职务字典','position',0);
+INSERT INTO `tb_sysdictionary` VALUES (6,'2011-03-11','所长','职务字典','position',0);
+INSERT INTO `tb_sysdictionary` VALUES (7,'2011-03-11','会计','职称字典','titles',0);
+INSERT INTO `tb_sysdictionary` VALUES (8,'2011-03-11','工程师','职称字典','titles',0);
 /*!40000 ALTER TABLE `tb_sysdictionary` ENABLE KEYS */;
 
 #
@@ -323,10 +323,16 @@ CREATE TABLE `tb_templates` (
 DROP TABLE IF EXISTS `tb_user`;
 CREATE TABLE `tb_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `birthday` datetime DEFAULT NULL,
+  `conditions` varchar(255) DEFAULT NULL,
   `createdate` datetime DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
   `gender` varchar(255) DEFAULT NULL,
+  `idcard` varchar(255) DEFAULT NULL,
   `introduction` varchar(255) DEFAULT NULL,
   `loginname` varchar(255) DEFAULT NULL,
+  `officenum` varchar(255) DEFAULT NULL,
+  `phone` varchar(255) DEFAULT NULL,
   `status` int(11) NOT NULL,
   `usname` varchar(255) DEFAULT NULL,
   `uspass` varchar(255) DEFAULT NULL,
@@ -335,15 +341,17 @@ CREATE TABLE `tb_user` (
   `departmentEntity_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKA4FF6AFCF2DEE75C` (`departmentEntity_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 #
 # Dumping data for table tb_user
 #
 
 /*!40000 ALTER TABLE `tb_user` DISABLE KEYS */;
-INSERT INTO `tb_user` VALUES (1,NULL,NULL,NULL,'admin',0,'admin','418296719726',NULL,NULL,NULL);
-INSERT INTO `tb_user` VALUES (2,NULL,NULL,NULL,'123',0,'123','3224115',NULL,NULL,2);
+INSERT INTO `tb_user` VALUES (1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'admin',NULL,NULL,0,'admin','418296719726',NULL,NULL,NULL);
+INSERT INTO `tb_user` VALUES (2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'123',NULL,NULL,0,'123','418296719726',NULL,NULL,NULL);
+INSERT INTO `tb_user` VALUES (3,NULL,NULL,NULL,'','男','',NULL,'123456','','',0,'123456','3224115',NULL,NULL,2);
+INSERT INTO `tb_user` VALUES (4,'2012-12-12',NULL,NULL,'qwe','男','123',NULL,'qwe','123','123',0,'qwe','7436133',NULL,NULL,2);
 /*!40000 ALTER TABLE `tb_user` ENABLE KEYS */;
 
 #
@@ -380,16 +388,17 @@ CREATE TABLE `tb_usergroup` (
   `groupname` varchar(255) DEFAULT NULL,
   `namespace` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 #
 # Dumping data for table tb_usergroup
 #
 
 /*!40000 ALTER TABLE `tb_usergroup` DISABLE KEYS */;
-INSERT INTO `tb_usergroup` VALUES (1,NULL,'admin','/');
-INSERT INTO `tb_usergroup` VALUES (2,NULL,'kai','/group');
-INSERT INTO `tb_usergroup` VALUES (6,NULL,'123','123');
+INSERT INTO `tb_usergroup` VALUES (1,NULL,'admin',' /user,  /usergroup,  /files,  /project,  /depart');
+INSERT INTO `tb_usergroup` VALUES (2,NULL,'kai',' /user,  /usergroup,  /files,  /project,  /depart');
+INSERT INTO `tb_usergroup` VALUES (6,NULL,'123',' /user,  /usergroup,  /files');
+INSERT INTO `tb_usergroup` VALUES (14,NULL,'all',' /user,  /usergroup,  /files,  /project,  /depart');
 /*!40000 ALTER TABLE `tb_usergroup` ENABLE KEYS */;
 
 #
@@ -475,6 +484,36 @@ INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (6,15);
 INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (6,16);
 INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (6,18);
 INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (6,19);
+INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,1);
+INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,2);
+INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,3);
+INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,4);
+INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,5);
+INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,6);
+INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,7);
+INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,8);
+INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,9);
+INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,13);
+INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,14);
+INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,15);
+INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,16);
+INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,17);
+INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,18);
+INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,19);
+INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,20);
+INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,21);
+INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,22);
+INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,23);
+INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,24);
+INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,25);
+INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,26);
+INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,27);
+INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,28);
+INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,29);
+INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,30);
+INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,31);
+INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,32);
+INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,46);
 /*!40000 ALTER TABLE `tb_usergroup_tb_sys_menu` ENABLE KEYS */;
 
 #
