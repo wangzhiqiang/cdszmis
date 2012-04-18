@@ -9,6 +9,7 @@ import java.util.Set;
 import javax.annotation.Resource;
 
 import org.apache.commons.collections.map.HashedMap;
+import org.cdszmis.dao.PublicDao;
 import org.cdszmis.entity.DepartmentEntity;
 import org.cdszmis.entity.SysMenuEntity;
 import org.cdszmis.entity.UserEntity;
@@ -33,6 +34,7 @@ public class UserAction extends BaseAction {
 	private UserGroupService userGroupService;
 	@Resource
 	private DepartService departService;
+//	@Resource private PublicDao publicDao;
 	private UserEntity user;
 	private String groupids;
 	private Integer departid;
@@ -93,15 +95,24 @@ public class UserAction extends BaseAction {
 	public String userRegister() {
 		// 查询group depart
 		
-		if(ActionContext.getContext().get("grouplist")==null||ActionContext.getContext().get("departlist")==null)
+		if(ActionContext.getContext().get("grouplist")==null)
 		{
-		ActionContext.getContext().getSession()
-				.put("grouplist", userGroupService.groupList());
-		ActionContext.getContext().getSession()
-				.put("departlist", departService.departList());
+			ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());
 		}
+		if(ActionContext.getContext().get("departlist")==null)
+		{
+			ActionContext.getContext().getSession().put("departlist", departService.departList());
+		}
+//		if(ActionContext.getContext().get("menulist")==null){
+//			ActionContext.getContext().getSession().put("menulist", publicDao.queryList(SysMenuEntity.class));
+//		}
 		if (user != null && !user.equals("")) {
+			if(user.getUspass()!=null)
 			user.setUspass(Encipherment.Enc_MD5_2(user.getUspass()));
+			else{
+				ActionContext.getContext().put("message","密码不能为空");
+				return "message";
+			}
 			// /验证用户是否被注册
 			@SuppressWarnings ("rawtypes")
 			List ls = null;
