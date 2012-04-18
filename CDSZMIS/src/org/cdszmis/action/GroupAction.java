@@ -23,6 +23,7 @@ public class GroupAction extends ActionSupport {
 	private UserGroupEntity group;
 
 	public String groupManager() {
+ 
 		List<UserGroupEntity> ugl = new ArrayList<UserGroupEntity>();
 		List<SysMenuEntity> sml = new ArrayList<SysMenuEntity>();
 		ugl = userGroupService.groupList();

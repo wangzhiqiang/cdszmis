@@ -1,6 +1,5 @@
 package org.cdszmis.action;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -10,7 +9,6 @@ import java.util.Set;
 import javax.annotation.Resource;
 
 import org.apache.commons.collections.map.HashedMap;
-import org.cdszmis.dao.UserDao;
 import org.cdszmis.entity.DepartmentEntity;
 import org.cdszmis.entity.SysMenuEntity;
 import org.cdszmis.entity.UserEntity;
@@ -19,16 +17,14 @@ import org.cdszmis.service.DepartService;
 import org.cdszmis.service.UserGroupService;
 import org.cdszmis.service.UserService;
 import org.cdszmis.utils.Encipherment;
-import org.cdszmis.utils.HibernateUtils;
 import org.hibernate.HibernateException;
-
-
 import com.opensymphony.xwork2.ActionContext;
-import com.opensymphony.xwork2.ActionSupport;
+
+
 
 
 @SuppressWarnings("serial")
-public class UserAction extends ActionSupport {
+public class UserAction extends BaseAction {
 
 	
 	@Resource
@@ -95,11 +91,15 @@ public class UserAction extends ActionSupport {
 	 * @return
 	 */
 	public String userRegister() {
-		// 查询group
+		// 查询group depart
+		
+		if(ActionContext.getContext().get("grouplist")==null||ActionContext.getContext().get("departlist")==null)
+		{
 		ActionContext.getContext().getSession()
 				.put("grouplist", userGroupService.groupList());
 		ActionContext.getContext().getSession()
 				.put("departlist", departService.departList());
+		}
 		if (user != null && !user.equals("")) {
 			user.setUspass(Encipherment.Enc_MD5_2(user.getUspass()));
 			// /验证用户是否被注册
@@ -157,7 +157,7 @@ public class UserAction extends ActionSupport {
 	
 	public String userManagelist(){
 		
-		userService.selectList("123");
+//		userService.selectList("123");
 		return "managelist";
 		
 	}
