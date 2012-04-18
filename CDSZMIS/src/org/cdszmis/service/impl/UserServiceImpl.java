@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
 	 
 
 	public UserEntity userManager(UserEntity user) {
-		return null;
+		return userDaoImpl.userManager(user);
 	}
 
 	public UserEntity userGroupManager(Set<UserGroupEntity> group, UserEntity user) {

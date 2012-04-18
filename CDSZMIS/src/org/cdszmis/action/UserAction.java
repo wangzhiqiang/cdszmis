@@ -152,60 +152,26 @@ public class UserAction extends ActionSupport {
 	
 	public String userUpdate(){
 		
-		
-		
-		
 		return "update";
 	}
 	
 	public String userManagelist(){
 		
-		
+		userService.selectList("123");
 		return "managelist";
 		
 	}
 	
 
 	public String userSelect(){
-/*		String key = null;
-		UserEntity user = null;
-		
-		ActionContext.getContext().getSession()
-		.put("list", userService.selectList(key));
-	
 
-		List<UserEntity> list = new ArrayList<UserEntity>();
-		list = userService.selectList(key);
-		
-		Iterator iter = list.iterator();
-		while(iter.hasNext()){
-			user = (UserEntity) iter.next();
-			list.add(user);
-		}
-		ActionContext.getContext().put("list", list);*/
-		
 		return "ls";
 		
 	}
 	
 	
 	public String userMenu() {
-		// user = (UserEntity)
-		// ActionContext.getContext().getSession().get("user");
-		//
-		// UserGroupEntity[] ug = (UserGroupEntity[]) user.getUserGroupEntity()
-		// .toArray();
-		// SysMenuEntity menu = null;
-		// Map<String, SysMenuEntity> map = new HashedMap();
-		// for (int i = 0; i < ug.length; i++) {
-		// SysMenuEntity sm[] = (SysMenuEntity[]) ug[i]
-		// .getMenSysMenuEntities().toArray();
-		// for (int j = 0; j < sm.length; j++) {
-		// map.put(sm[j].getMenuname(), sm[j]);
-		// }
-		//
-		// }
-		// ActionContext.getContext().getSession().put("menu", map);
+		
 		return null;
 	}
 
