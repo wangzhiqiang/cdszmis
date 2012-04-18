@@ -3,7 +3,6 @@ package org.cdszmis.system.filter;
 import java.io.IOException;
 import java.util.Enumeration;
 
-import javax.annotation.Resource;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -12,9 +11,6 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.cdszmis.entity.DepartmentEntity;
-import org.cdszmis.entity.UserGroupEntity;
-import org.cdszmis.utils.HibernateUtils;
 
 /**
  * 
