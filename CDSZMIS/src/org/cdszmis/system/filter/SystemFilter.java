@@ -3,6 +3,7 @@ package org.cdszmis.system.filter;
 import java.io.IOException;
 import java.util.Enumeration;
 
+import javax.annotation.Resource;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -11,13 +12,16 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.cdszmis.entity.DepartmentEntity;
+import org.cdszmis.entity.UserGroupEntity;
+import org.cdszmis.utils.HibernateUtils;
 
 /**
  * 
  * @author WZQ
  */
 public class SystemFilter implements Filter {
-
+//	@Resource HibernateUtils hibernateUtils;
 	/**
 	 * 将传入的字符串替换
 	 * 
@@ -47,10 +51,9 @@ public class SystemFilter implements Filter {
 
 		HttpServletRequest request = (HttpServletRequest) servletrequest;
 		HttpServletResponse response = (HttpServletResponse) servletresponse;
-
 		SetPth(request);
 		htmlreplace(request);
-//		System.out.println(request.getAttribute("name"));
+//		setApplicationAttribute(request,response);
 		chain.doFilter(request, response);
 
 	}
@@ -92,6 +95,23 @@ public class SystemFilter implements Filter {
 			}
 		}
 
+	}
+	
+	final  void setApplicationAttribute(HttpServletRequest request,HttpServletResponse response){
+		
+		if (request.getAttribute("grouplist")==null||request.getAttribute("grouplist").equals(""))
+		{
+		try
+		{
+//			System.out.println("nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn");
+//			HibernateUtils hibernateUtils=new HibernateUtils();
+//			request.getSession().getServletContext().setAttribute("grouplist", hibernateUtils.findall(UserGroupEntity.class));
+//			request.getSession().getServletContext().setAttribute("departlist", hibernateUtils.findall(DepartmentEntity.class));
+		} catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		}
 	}
 
 }
