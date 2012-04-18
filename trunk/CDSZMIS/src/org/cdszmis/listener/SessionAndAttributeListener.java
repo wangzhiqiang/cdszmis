@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
  
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionAttributeListener;
 import javax.servlet.http.HttpSessionBindingEvent;
@@ -13,6 +14,10 @@ import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
 import org.cdszmis.entity.UserEntity;
+import org.cdszmis.service.DepartService;
+import org.cdszmis.service.UserGroupService;
+import org.cdszmis.utils.HibernateUtils;
+import com.opensymphony.xwork2.ActionContext;
 
 /**
  * 用户登录和网络访问监听
@@ -22,6 +27,9 @@ import org.cdszmis.entity.UserEntity;
  */
 public class SessionAndAttributeListener implements
 		HttpSessionAttributeListener, HttpSessionListener {
+	//@Resource HibernateUtils hibernateUtils;
+//@Resource UserGroupService userGroupService;
+//@Resource DepartService departService;
 	List<UserEntity> ls =null;
 	Map<Integer, String> mu = null;
 	public static int sessionids = 0;
@@ -92,6 +100,15 @@ public class SessionAndAttributeListener implements
 	public void sessionCreated(HttpSessionEvent arg0) {
 
 		try {
+ 
+//			try
+//			{
+//				arg0.getSession().getServletContext().setAttribute("grouplist", userGroupService.groupList());
+//				arg0.getSession().getServletContext().setAttribute("departlist",  departService.departList());
+//			} catch(Exception e)
+//			{
+//				e.printStackTrace();
+//			}
 			sessionids++;
 			arg0.getSession().getServletContext().setAttribute("sessionids", sessionids);
 			System.out.println("   SessionIDCreate:" + arg0.getSession().getId());
