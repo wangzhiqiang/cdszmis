@@ -38,6 +38,7 @@ private String isdel=null;
 		ActionContext.getContext().put("alldepart", dlist);
 		return "listdepart";
 	}
+	
 	public DepartmentEntity getDepart() {
 		return depart;
 	}
