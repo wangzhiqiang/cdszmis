@@ -4,10 +4,6 @@
 /*!40101 SET SQL_MODE='STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES */;
 /*!40103 SET SQL_NOTES='ON' */;
-/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=0 */;
-/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS */;
-/*!40014 SET FOREIGN_KEY_CHECKS=0 */;
 
 
 # Host: localhost    Database: cdszmis
@@ -39,10 +35,8 @@ CREATE TABLE `tb_depart` (
 # Dumping data for table tb_depart
 #
 
-/*!40000 ALTER TABLE `tb_depart` DISABLE KEYS */;
 INSERT INTO `tb_depart` VALUES (2,NULL,'研发部','啊是地方','王志强','15680769721','serta',0);
 INSERT INTO `tb_depart` VALUES (3,NULL,'人事部','阿呆沙发','实施','123455678','啊所发生',0);
-/*!40000 ALTER TABLE `tb_depart` ENABLE KEYS */;
 
 #
 # Source for table tb_files
@@ -62,8 +56,6 @@ CREATE TABLE `tb_files` (
 # Dumping data for table tb_files
 #
 
-/*!40000 ALTER TABLE `tb_files` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_files` ENABLE KEYS */;
 
 #
 # Source for table tb_prijectdepartarrangement
@@ -85,8 +77,6 @@ CREATE TABLE `tb_prijectdepartarrangement` (
 # Dumping data for table tb_prijectdepartarrangement
 #
 
-/*!40000 ALTER TABLE `tb_prijectdepartarrangement` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_prijectdepartarrangement` ENABLE KEYS */;
 
 #
 # Source for table tb_prijectstatus
@@ -110,8 +100,6 @@ CREATE TABLE `tb_prijectstatus` (
 # Dumping data for table tb_prijectstatus
 #
 
-/*!40000 ALTER TABLE `tb_prijectstatus` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_prijectstatus` ENABLE KEYS */;
 
 #
 # Source for table tb_project
@@ -141,8 +129,6 @@ CREATE TABLE `tb_project` (
 # Dumping data for table tb_project
 #
 
-/*!40000 ALTER TABLE `tb_project` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_project` ENABLE KEYS */;
 
 #
 # Source for table tb_projectarrangement
@@ -170,8 +156,6 @@ CREATE TABLE `tb_projectarrangement` (
 # Dumping data for table tb_projectarrangement
 #
 
-/*!40000 ALTER TABLE `tb_projectarrangement` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_projectarrangement` ENABLE KEYS */;
 
 #
 # Source for table tb_projectsubmit
@@ -195,8 +179,6 @@ CREATE TABLE `tb_projectsubmit` (
 # Dumping data for table tb_projectsubmit
 #
 
-/*!40000 ALTER TABLE `tb_projectsubmit` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_projectsubmit` ENABLE KEYS */;
 
 #
 # Source for table tb_sys_menu
@@ -216,7 +198,6 @@ CREATE TABLE `tb_sys_menu` (
 # Dumping data for table tb_sys_menu
 #
 
-/*!40000 ALTER TABLE `tb_sys_menu` DISABLE KEYS */;
 INSERT INTO `tb_sys_menu` VALUES (1,'','系统管理系统',0,'');
 INSERT INTO `tb_sys_menu` VALUES (2,NULL,'文件办理系统',0,'');
 INSERT INTO `tb_sys_menu` VALUES (3,NULL,'任务管理系统',0,'');
@@ -263,7 +244,6 @@ INSERT INTO `tb_sys_menu` VALUES (43,NULL,'项目进度查询',11,'/');
 INSERT INTO `tb_sys_menu` VALUES (44,NULL,'项目详细信息查询',11,'/');
 INSERT INTO `tb_sys_menu` VALUES (45,NULL,'按部门统计',12,'/');
 INSERT INTO `tb_sys_menu` VALUES (46,NULL,'用户注册',5,'/user/user_userRegister');
-/*!40000 ALTER TABLE `tb_sys_menu` ENABLE KEYS */;
 
 #
 # Source for table tb_sysdictionary
@@ -284,7 +264,6 @@ CREATE TABLE `tb_sysdictionary` (
 # Dumping data for table tb_sysdictionary
 #
 
-/*!40000 ALTER TABLE `tb_sysdictionary` DISABLE KEYS */;
 INSERT INTO `tb_sysdictionary` VALUES (1,'2011-03-11','院长','职务字典','position',0);
 INSERT INTO `tb_sysdictionary` VALUES (2,'2011-03-11','书记','职务字典','position',0);
 INSERT INTO `tb_sysdictionary` VALUES (3,'2011-03-11','副院长','职务字典','position',0);
@@ -293,7 +272,6 @@ INSERT INTO `tb_sysdictionary` VALUES (5,'2011-03-11','主任','职务字典','p
 INSERT INTO `tb_sysdictionary` VALUES (6,'2011-03-11','所长','职务字典','position',0);
 INSERT INTO `tb_sysdictionary` VALUES (7,'2011-03-11','会计','职称字典','titles',0);
 INSERT INTO `tb_sysdictionary` VALUES (8,'2011-03-11','工程师','职称字典','titles',0);
-/*!40000 ALTER TABLE `tb_sysdictionary` ENABLE KEYS */;
 
 #
 # Source for table tb_templates
@@ -313,8 +291,6 @@ CREATE TABLE `tb_templates` (
 # Dumping data for table tb_templates
 #
 
-/*!40000 ALTER TABLE `tb_templates` DISABLE KEYS */;
-/*!40000 ALTER TABLE `tb_templates` ENABLE KEYS */;
 
 #
 # Source for table tb_user
@@ -347,12 +323,10 @@ CREATE TABLE `tb_user` (
 # Dumping data for table tb_user
 #
 
-/*!40000 ALTER TABLE `tb_user` DISABLE KEYS */;
 INSERT INTO `tb_user` VALUES (1,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'admin',NULL,NULL,0,'admin','418296719726',NULL,NULL,NULL);
 INSERT INTO `tb_user` VALUES (2,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'123',NULL,NULL,0,'123','418296719726',NULL,NULL,NULL);
 INSERT INTO `tb_user` VALUES (3,NULL,NULL,NULL,'','男','',NULL,'123456','','',0,'123456','3224115',NULL,NULL,2);
 INSERT INTO `tb_user` VALUES (4,'2012-12-12',NULL,NULL,'qwe','男','123',NULL,'qwe','123','123',0,'qwe','7436133',NULL,NULL,2);
-/*!40000 ALTER TABLE `tb_user` ENABLE KEYS */;
 
 #
 # Source for table tb_user_tb_usergroup
@@ -371,11 +345,9 @@ CREATE TABLE `tb_user_tb_usergroup` (
 # Dumping data for table tb_user_tb_usergroup
 #
 
-/*!40000 ALTER TABLE `tb_user_tb_usergroup` DISABLE KEYS */;
 INSERT INTO `tb_user_tb_usergroup` VALUES (1,1);
 INSERT INTO `tb_user_tb_usergroup` VALUES (1,2);
 INSERT INTO `tb_user_tb_usergroup` VALUES (2,2);
-/*!40000 ALTER TABLE `tb_user_tb_usergroup` ENABLE KEYS */;
 
 #
 # Source for table tb_usergroup
@@ -394,12 +366,10 @@ CREATE TABLE `tb_usergroup` (
 # Dumping data for table tb_usergroup
 #
 
-/*!40000 ALTER TABLE `tb_usergroup` DISABLE KEYS */;
 INSERT INTO `tb_usergroup` VALUES (1,NULL,'admin',' /user,  /usergroup,  /files,  /project,  /depart');
 INSERT INTO `tb_usergroup` VALUES (2,NULL,'kai',' /user,  /usergroup,  /files,  /project,  /depart');
 INSERT INTO `tb_usergroup` VALUES (6,NULL,'123',' /user,  /usergroup,  /files');
 INSERT INTO `tb_usergroup` VALUES (14,NULL,'all',' /user,  /usergroup,  /files,  /project,  /depart');
-/*!40000 ALTER TABLE `tb_usergroup` ENABLE KEYS */;
 
 #
 # Source for table tb_usergroup_tb_sys_menu
@@ -418,7 +388,6 @@ CREATE TABLE `tb_usergroup_tb_sys_menu` (
 # Dumping data for table tb_usergroup_tb_sys_menu
 #
 
-/*!40000 ALTER TABLE `tb_usergroup_tb_sys_menu` DISABLE KEYS */;
 INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (1,1);
 INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (1,2);
 INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (1,3);
@@ -514,7 +483,6 @@ INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,30);
 INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,31);
 INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,32);
 INSERT INTO `tb_usergroup_tb_sys_menu` VALUES (14,46);
-/*!40000 ALTER TABLE `tb_usergroup_tb_sys_menu` ENABLE KEYS */;
 
 #
 #  Foreign keys for table tb_prijectdepartarrangement
@@ -568,7 +536,5 @@ ADD CONSTRAINT `FKC1F0C106933EABF0` FOREIGN KEY (`menSysMenuEntities_id`) REFERE
 ADD CONSTRAINT `FKC1F0C106F81A326C` FOREIGN KEY (`tb_usergroup_id`) REFERENCES `tb_usergroup` (`id`);
 
 
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
