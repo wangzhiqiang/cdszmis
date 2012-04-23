@@ -10,8 +10,11 @@ function logout(){
 	top.location = "${rooturl}/user/user_userlogoff";
 	return false;
 }
-</script>
-		<script language=JavaScript1.2>
+function gotoindex(){
+
+	top.location.href="/";
+	
+}
 function showsubmenu(sid) {
 	var whichEl = eval("submenu" + sid);
 	var menuTitle = eval("menuTitle" + sid);
@@ -46,10 +49,13 @@ function showsubmenu(sid) {
 				<td width="39%" valign="top">
 					<table width="100%" border="0" cellspacing="0" cellpadding="0">
 						<tr>
-							<td width="74%" height="38" class="admin_txt">
+							<td width="44%" height="38" class="admin_txt">
 								 
-								<b>${user.usname }</b> 您好,感谢登陆使用！
+								<b>${user.usname }</b> 您好,感谢登陆使用！<b onclick="gotoindex()" style="color: #FFF000">   首页</b>
 							</td>
+							 
+								
+							 
 							<td width="22%">
 								<a href="#" target="_self" onClick=	logout();><img src="${rooturl}/images/out.gif" alt="安全退出" width="46" height="20"
 										border="0">

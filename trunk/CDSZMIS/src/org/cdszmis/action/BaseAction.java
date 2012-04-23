@@ -13,23 +13,9 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class BaseAction extends ActionSupport{
-//	@Resource private PublicDao publicDao;
-//	@Resource private UserService userService;
-//	@Resource private DepartService departService;
-//	@Resource private UserGroupService userGroupService;
-//	 final static void base(){
-//			if(ActionContext.getContext().get("departlist")==null){
-//				 
-//				ActionContext.getContext().getApplication().put("departlist",publicDao.queryList(DepartmentEntity.class));
-//			}
-//			if(ActionContext.getContext().get("grouplist")==null)
-//			{
-//				ActionContext.getContext().getApplication().put("grouplist",publicDao.queryList(UserGroupEntity.class));
-//			}
-//			if(ActionContext.getContext().get("menulist")==null)
-//			{
-//				ActionContext.getContext().getApplication().put("menulist",publicDao.queryList(SysMenuEntity.class));
-//			}
-//	 
-//	 }
+
+	public String newslist(){
+		return SUCCESS;
+	}
+	
 }

@@ -5,6 +5,8 @@ import com.opensymphony.xwork2.ActionSupport;
 @SuppressWarnings("serial")
 public class FilesAction extends ActionSupport {
 	
-	
+	public String addFiles(){
+		return "add";
+	}
 
 }

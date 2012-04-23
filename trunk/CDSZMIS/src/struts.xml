@@ -17,6 +17,10 @@
 			method="userlogin">
 			<result name="success">/main/main.jsp</result>
 		</action>
+		<action name="newslist" class="org.cdszmis.action.BaseAction"
+			method="newslist">
+			<result name="success">/newslist.jsp</result>
+		</action>
 	</package>
 
 	<package name="users" extends="Interceptor" namespace="/user">
@@ -46,8 +50,7 @@
 		<action name="files_*" class="org.cdszmis.action.FilesAction"
 			method="{1}">
 			<interceptor-ref name="permissstack"></interceptor-ref>
-			<result name="success">/index.jsp</result>
-
+			<result name="add">/index.jsp</result>
 		</action>
 	</package>
 	

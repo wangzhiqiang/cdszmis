@@ -8,14 +8,16 @@ public class Maintest {
 
 	@Test
 	public void ttt(){ 
-	 String ss[]=null;
-	 String s="23+8";
-		ss=s.split("\\+");
-		
-		for(int i=0;i<ss.length;i++){
-			System.out.println(ss[i]);
-		}
+//	 String ss[]=null;
+//	 String s="23+8";
+//		ss=s.split("\\+");
+//		
+//		for(int i=0;i<ss.length;i++){
+//			System.out.println(ss[i]);
+//		}
+//	}
+//	 
+		  
 	}
-	 
 	 
 }

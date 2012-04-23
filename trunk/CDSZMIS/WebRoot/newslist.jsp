@@ -1,23 +1,27 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<title>login</title>
-<link href="${rooturl }/styles/login.css" rel="stylesheet" type="text/css">
+<html>
+<head>
+<title>index</title>
+ 
+<script language="JavaScript"
+	src="${rooturl }/scripts/jquery/jquery-1.5.2.js"></script>
+<script language="JavaScript" src="${rooturl }/scripts/thickbox.js"></script>
+<link href="${rooturl }/styles/thickbox.css" rel="stylesheet"
+	type="text/css" />
+</head>
+
 <body>
+ 
+	<a href="#TB_inline?height=140&width=230&inlineId=tt" class="thickbox"
+		style="text-decoration: none">登录后台管理</a>
 
-	<div class='header'>
-
-		<br>
-	</div>
-	<div class='content'>
-
-		<div class='c_left'>
-			<img src="${rooturl}/images/logo_1.png" class="logoimg">
-		</div>
-		<div class='c_right'>
+	<div id="tt" style="display: none">
 		<form action="/login" method="post">
-			<table class="tab_center">
+			<table align="center">
 				<tr>
-					<td colspan="3">
+					<td colspan="3" align="center">
 						用户登录
 					</td>
 				</tr>
@@ -66,11 +70,6 @@
 				</tr>
 			</table>
 			</form>
-			<div class='wel'></div>
-		</div>
-	</div>4
-
-	<div class='footer'>
-		footer
 	</div>
 </body>
+</html>
