@@ -74,6 +74,7 @@ public class SystemFilter implements Filter {
 		// 服务器路径
 		request.getSession().setAttribute("basepath", basePath);
 //		System.out.println("rooturl已经写入");
+		System.out.println(path+"\n+rooturl"+"\n"+basePath);
 		}
 
 	}
