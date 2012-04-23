@@ -59,6 +59,7 @@
 			method="{1}">
 			<interceptor-ref name="permissstack"></interceptor-ref>
 			<result name="success">/index.jsp</result>
+			<result name="add">/project/projectManage.jsp </result>
 		</action>
 	</package>
 	
