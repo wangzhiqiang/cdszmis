@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.cdszmis.entity.DepartmentEntity;
 import org.cdszmis.entity.ProjectArrangementEntity;
 import org.cdszmis.entity.ProjectDepartArrangementEntity;
 import org.cdszmis.entity.ProjectEntity;
@@ -48,7 +47,7 @@ public class ProjectDaoImpl implements org.cdszmis.dao.ProjectDao {
 		return (ProjectEntity) hibernateUtils.findobjByHsql("from ProjectEntity obj where obj.id="+id);
 	}
 	
-	public List<ProjectEntity> projectList()
+	public List <ProjectEntity> projectList()
 	{
 		return hibernateUtils.findall(ProjectEntity.class);
 	}
