@@ -230,7 +230,7 @@ INSERT INTO `tb_sys_menu` VALUES (29,NULL,'审批意见模板',9,'/');
 INSERT INTO `tb_sys_menu` VALUES (30,NULL,'抄送意见模板',9,'/');
 INSERT INTO `tb_sys_menu` VALUES (31,NULL,'取消意见模板',9,'/');
 INSERT INTO `tb_sys_menu` VALUES (32,NULL,'办理完成意见模板',9,'/');
-INSERT INTO `tb_sys_menu` VALUES (33,NULL,'项目登记',10,'/');
+INSERT INTO `tb_sys_menu` VALUES (33,NULL,'项目登记',10,'/project/pro_projectmanage');
 INSERT INTO `tb_sys_menu` VALUES (34,NULL,'分派项目',10,'/');
 INSERT INTO `tb_sys_menu` VALUES (35,NULL,'所级安排',10,'/');
 INSERT INTO `tb_sys_menu` VALUES (36,NULL,'项目实施',10,'/');
