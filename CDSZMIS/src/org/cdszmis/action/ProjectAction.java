@@ -1,6 +1,7 @@
 package org.cdszmis.action;
 
 import java.util.List;
+import javax.annotation.Resource;
 
 import org.cdszmis.entity.ProjectArrangementEntity;
 import org.cdszmis.entity.ProjectDepartArrangementEntity;
@@ -13,7 +14,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
 public class ProjectAction extends ActionSupport {
-	private ProjectService projectservice;
+	@Resource private ProjectService projectservice;
 	private ProjectEntity project;
 	private ProjectStatusEntity projectstatus;
 	ProjectArrangementEntity paentity;
