@@ -34,7 +34,7 @@ public class ProjectAction extends ActionSupport {
 
 			}
 		}
-		List<ProjectEntity> plist = projectservice.projectList();
+		List <ProjectEntity>  plist = projectservice.projectList();
 		ActionContext.getContext().put("allproject", plist);
 		return "add";
 	}

@@ -1,6 +1,7 @@
 package org.cdszmis.service.impl;
 
 import java.util.List;
+import javax.annotation.Resource;
 
 import org.cdszmis.dao.ProjectDao;
 import org.cdszmis.entity.ProjectArrangementEntity;
@@ -11,7 +12,7 @@ import org.cdszmis.service.ProjectService;
 import org.springframework.stereotype.Service;
 @Service
 public class ProjectServiceImpl implements ProjectService {
-	ProjectDao projectdao;
+	@Resource ProjectDao projectdao;
 
 	public String ArrangeChargePerson(ProjectDepartArrangementEntity pdaentity,
 			String chargeperson) {
