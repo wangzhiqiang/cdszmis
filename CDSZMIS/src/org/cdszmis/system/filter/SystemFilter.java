@@ -47,6 +47,9 @@ public class SystemFilter implements Filter {
 
 		HttpServletRequest request = (HttpServletRequest) servletrequest;
 		HttpServletResponse response = (HttpServletResponse) servletresponse;
+		
+		request.setCharacterEncoding("UTF-8");
+		response.setCharacterEncoding("UTF-8");
 		SetPth(request);
 		htmlreplace(request);
 //		setApplicationAttribute(request,response);
