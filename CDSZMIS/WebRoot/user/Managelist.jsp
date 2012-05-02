@@ -13,7 +13,7 @@
 	
 	$(document).ready(function(){
 		 $(".dpid").click(function(){
-			 
+		$("userid").val($.trim($(this).parent().parent().children().eq(1).html()));	
 		$("#usname").val($.trim($(this).parent().parent().children().eq(1).html()));	
         $("#loginname").val($.trim($(this).parent().parent().children().eq(2).html()));	
         $("#gender").val($.trim($(this).parent().parent().children().eq(3).html()));	
@@ -31,6 +31,7 @@
   
   <body>
 	<form action="/user/user_userManager" method="get">
+	<input id="userid" name="user.id" type="hidden" value=""></input>
 		<table>
 			<tr>
 				<td>用户名</td>
