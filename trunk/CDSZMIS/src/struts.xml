@@ -31,9 +31,10 @@
 			<result name="success">/main/main.jsp</result>
 			<result name="register">/user/Register.jsp</result>
 			<result name="update">/user/Update.jsp</result>
-			<result name="managelist">/user/Managelist.jsp</result>
+			<result name="managerlist">/user/Managelist.jsp</result>
 			<result name="login.jsp">/login.jsp</result>
 			<result name="ls">/user/Select.jsp</result>
+			<result name="updatemanager">/user/Managelist.jsp</result>
 		</action>
 	</package>
 

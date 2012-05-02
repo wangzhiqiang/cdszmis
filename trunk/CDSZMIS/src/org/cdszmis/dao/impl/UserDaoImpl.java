@@ -53,7 +53,7 @@ public class UserDaoImpl implements UserDao {
 		if(key == null){
 			key = "";
 		}
-		String HSQL="from UserEntity obj where obj .usname like '"+key+"%' or obj.idcard like '"+key+"%' ";
+		String HSQL="from UserEntity obj where obj .usname like '%"+key+"%' or obj.idcard like '%"+key+"%' ";
 		 return   hibernateUtils.findlistByHsql(HSQL);
  
 	}

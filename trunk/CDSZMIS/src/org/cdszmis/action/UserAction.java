@@ -9,6 +9,7 @@ import java.util.Set;
 import javax.annotation.Resource;
 
 import org.apache.commons.collections.map.HashedMap;
+import org.apache.derby.client.net.Request;
 import org.cdszmis.dao.PublicDao;
 import org.cdszmis.entity.DepartmentEntity;
 import org.cdszmis.entity.SysMenuEntity;
@@ -38,7 +39,7 @@ public class UserAction extends BaseAction {
 	private UserEntity user;
 	private String groupids;
 	private Integer departid;
-
+	private String keyword;
 	/**
 	 * 用户登录
 	 * 
@@ -162,20 +163,17 @@ public class UserAction extends BaseAction {
 	}
 	
 	public String userUpdate(){
-		if(ActionContext.getContext().get("grouplist")==null)
-		{
-			ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());
-		}
-		if(ActionContext.getContext().get("departlist")==null)
-		{
-			ActionContext.getContext().getSession().put("departlist", departService.departList());
-		}
+		
+		if(user != null)
+			userService.userManager(user);
+		List l = userService.selectList("");
+		ActionContext.getContext().getSession().put("list", l);
+		
 		return "update";
 	}
 	
 	public String userManagelist(){
 		
-		
 		if(ActionContext.getContext().get("grouplist")==null)
 		{
 			ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());
@@ -184,14 +182,46 @@ public class UserAction extends BaseAction {
 		{
 			ActionContext.getContext().getSession().put("departlist", departService.departList());
 		}
+		
+		
+		List l = userService.selectList("");
+		ActionContext.getContext().getSession().put("list", l);
 //		userService.selectList("123");
-		return "managelist";
+		return "managerlist";
 		
 	}
 	
+	public String userManager(){
+		if(ActionContext.getContext().get("grouplist")==null)
+		{
+			ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());
+		}
+		if(ActionContext.getContext().get("departlist")==null)
+		{
+			ActionContext.getContext().getSession().put("departlist", departService.departList());
+			
+		}
+		
+		if(user != null)
+		userService.userManager(user);
+		
+		List l = userService.selectList("");
+		ActionContext.getContext().getSession().put("list", l);
+		
+		return "updatemanager";
+
+	}
 
 	public String userSelect(){
+		
+		String key = null;
 
+		if(keyword != null){
+			key = keyword;
+		}
+		
+		List l = userService.selectList(key);
+		ActionContext.getContext().getSession().put("list", l);
 		return "ls";
 		
 	}
@@ -225,5 +255,15 @@ public class UserAction extends BaseAction {
 	public void setDepartid(Integer departid) {
 		this.departid = departid;
 	}
+
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+
+	public String getKeyword() {
+		return keyword;
+	}
+
+
 
 }
