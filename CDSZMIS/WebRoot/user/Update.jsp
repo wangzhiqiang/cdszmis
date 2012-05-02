@@ -7,19 +7,36 @@
     <title>用户信息维护</title>
  <link href="${rooturl }/styles/banner.css" rel="stylesheet" type="text/css" />
 <script language="JavaScript" src="${rooturl }/scripts/jquery/jquery-1.5.2.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		 $(".dpid").click(function(){
+			 
+				$("#usname").val($.trim($(this).parent().parent().children().eq(1).html()));	
+		        $("#loginname").val($.trim($(this).parent().parent().children().eq(2).html()));	
+		        $("#gender").val($.trim($(this).parent().parent().children().eq(3).html()));	
+		        $("#email").val($.trim($(this).parent().parent().children().eq(4).html()));	
+		        $("#phone").val($.trim($(this).parent().parent().children().eq(5).html()));	
+		        $("#officenum").val($.trim($(this).parent().parent().children().eq(6).html()));	
+		        $("#idcard").val($.trim($(this).parent().parent().children().eq(7).html()));	
+		        $("#birthday").val($.trim($(this).parent().parent().children().eq(8).html()));	
+		        $("#conditions").val($.trim($(this).parent().parent().children().eq(10).html()));		 
+		});
+	});
+</script>
   </head>
   
   <body>
-	<form action="/user/user_userUpdate" method="get">
+	<form action="/user/user_userUpdate" method="post">
 		<table>
 			<tr>
 				<td>用户名</td>
-				<td><input name='user.usname' type="text" />
+				<td><input id='usname' name='user.usname' type="text" />
 				</td>
 			</tr>
 			<tr>
 				<td>登录名</td>
-				<td><input name='user.loginname' type="text" />
+				<td><input id='loginname' name='user.loginname' type="text" />
 				</td>
 			</tr>
 			<tr>
@@ -38,27 +55,27 @@
 			</tr>
 			<tr>
 				<td>邮箱</td>
-				<td><input name='user.email' type="text" />
+				<td><input id='email' name='user.email' type="text" />
 				</td>
 			</tr>
 			<tr>
 				<td>手机</td>
-				<td><input name='user.phone' type="text" />
+				<td><input id='phone' name='user.phone' type="text" />
 				</td>
 			</tr>
 			<tr>
 				<td>办公室电话</td>
-				<td><input name='user.officenum' type="text" />
+				<td><input id='officenum' name='user.officenum' type="text" />
 				</td>
 			</tr>
 			<tr>
 				<td>身份证</td>
-				<td><input name='user.idcard' type="text" />
+				<td><input id='idcard' name='user.idcard' type="text" />
 				</td>
 			</tr>
 			<tr>
 				<td>出生日期</td>
-				<td><input name='user.date' type="text" />
+				<td><input id='birthday' name='user.birthday' type="text" />
 				</td>
 			</tr>
 			<tr>
@@ -113,9 +130,45 @@
 				<td><input value="提交" type="submit" /></td>
 				<td><input value="重置" type="reset" /></td>
 			</tr>
+	</table>
+</form>
 	
-		</table>
-	</form>
+<table border="1" width="80%">
+	<tr>
+		<td  width="40px;">选择</td>
+		<td>用户名</td>
+		<td>登录名</td>
+		<td>性别</td>
+		<td>邮箱</td>
+		<td>手机</td>
+		<td>办公室电话</td>
+		<td>身份证</td>
+		<td>出生日期</td>
+		<td>用户组</td>
+		<td>简介</td>
+	</tr>
+	<c:forEach items="${list}" var="l">
+		<tr>
+			<td width="30px;"><input class="dpid" type="radio" name="dpid"/></td> 
+			<td>${l.usname}</td>
+			<td>${l.loginname}</td>
+			<td>${l.gender}</td>
+			<td>${l.email}</td>
+			<td>${l.phone}</td>
+			<td>${l.officenum}</td>
+			<td>${l.idcard}</td>
+			<td>${l.birthday}</td>
+			<td>${l.introduction}</td>
+		</tr>
+	</c:forEach>
+
+
+
+</table>
+
+			
+
+
 		
 <script>
 					var inputtext = false;
