@@ -13,6 +13,8 @@
 	
 	$(document).ready(function(){
 		 $(".dpid").click(function(){
+			 
+			 
 		$("#usname").val($.trim($(this).parent().parent().children().eq(1).html()));	
         $("#loginname").val($.trim($(this).parent().parent().children().eq(2).html()));	
         $("#gender").val($.trim($(this).parent().parent().children().eq(3).html()));	
@@ -22,7 +24,7 @@
         $("#idcard").val($.trim($(this).parent().parent().children().eq(7).html()));	
         $("#birthday").val($.trim($(this).parent().parent().children().eq(8).html()));	
         $("#conditions").val($.trim($(this).parent().parent().children().eq(10).html()));	
-        $("#userid").val($.trim($(this).parent().parent().children().eq(11).html()));			 
+        $("#userid").val( $(this).val());			 
 			 
 		});
 	});
@@ -157,7 +159,7 @@
 	</tr>
 	<c:forEach items="${list}" var="l">
 		<tr>
-			<td width="30px;"><input class="dpid" type="radio" name="dpid"/></td> 
+			<td width="30px;"><input class="dpid" type="radio" name="dpid" value="${l.id }"/></td> 
 			<td>${l.usname}</td>
 			<td>${l.loginname}</td>
 			<td>${l.gender}</td>
@@ -168,7 +170,7 @@
 			<td>${l.birthday}</td>
 			<td></td>
 			<td>${l.conditions}</td>
-			<td width="40px;"><input type='hidden' /> ${l.id }</td>
+			
 
 		</tr>
 	</c:forEach>
