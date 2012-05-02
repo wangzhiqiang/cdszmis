@@ -9,8 +9,10 @@ import java.util.Set;
 import javax.annotation.Resource;
 
 import org.apache.commons.collections.map.HashedMap;
+ 
 import org.apache.derby.client.net.Request;
 import org.cdszmis.dao.PublicDao;
+ 
 import org.cdszmis.entity.DepartmentEntity;
 import org.cdszmis.entity.SysMenuEntity;
 import org.cdszmis.entity.UserEntity;
@@ -96,14 +98,11 @@ public class UserAction extends BaseAction {
 	public String userRegister() {
 		// 查询group depart
 		
-		if(ActionContext.getContext().get("grouplist")==null)
-		{
+		
 			ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());
-		}
-		if(ActionContext.getContext().get("departlist")==null)
-		{
+		
 			ActionContext.getContext().getSession().put("departlist", departService.departList());
-		}
+		
 //		if(ActionContext.getContext().get("menulist")==null){
 //			ActionContext.getContext().getSession().put("menulist", publicDao.queryList(SysMenuEntity.class));
 //		}
@@ -174,14 +173,11 @@ public class UserAction extends BaseAction {
 	
 	public String userManagelist(){
 		
-		if(ActionContext.getContext().get("grouplist")==null)
-		{
+	
 			ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());
-		}
-		if(ActionContext.getContext().get("departlist")==null)
-		{
+		
 			ActionContext.getContext().getSession().put("departlist", departService.departList());
-		}
+	
 		
 		
 		List l = userService.selectList("");
@@ -192,16 +188,8 @@ public class UserAction extends BaseAction {
 	}
 	
 	public String userManager(){
-		if(ActionContext.getContext().get("grouplist")==null)
-		{
 			ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());
-		}
-		if(ActionContext.getContext().get("departlist")==null)
-		{
 			ActionContext.getContext().getSession().put("departlist", departService.departList());
-			
-		}
-		
 		if(user != null)
 		userService.userManager(user);
 		
