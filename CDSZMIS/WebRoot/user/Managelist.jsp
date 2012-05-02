@@ -13,7 +13,6 @@
 	
 	$(document).ready(function(){
 		 $(".dpid").click(function(){
-		$("userid").val($.trim($(this).parent().parent().children().eq(1).html()));	
 		$("#usname").val($.trim($(this).parent().parent().children().eq(1).html()));	
         $("#loginname").val($.trim($(this).parent().parent().children().eq(2).html()));	
         $("#gender").val($.trim($(this).parent().parent().children().eq(3).html()));	
@@ -22,7 +21,8 @@
         $("#officenum").val($.trim($(this).parent().parent().children().eq(6).html()));	
         $("#idcard").val($.trim($(this).parent().parent().children().eq(7).html()));	
         $("#birthday").val($.trim($(this).parent().parent().children().eq(8).html()));	
-        $("#conditions").val($.trim($(this).parent().parent().children().eq(10).html()));			 
+        $("#conditions").val($.trim($(this).parent().parent().children().eq(10).html()));	
+        $("#userid").val($.trim($(this).parent().parent().children().eq(11).html()));			 
 			 
 		});
 	});
@@ -166,7 +166,9 @@
 			<td>${l.officenum}</td>
 			<td>${l.idcard}</td>
 			<td>${l.birthday}</td>
+			<td></td>
 			<td>${l.conditions}</td>
+			<td width="40px;"><input type='hidden' /> ${l.id }</td>
 
 		</tr>
 	</c:forEach>
