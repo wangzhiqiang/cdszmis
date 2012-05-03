@@ -31,16 +31,21 @@
 		$('#submit').click(function(){
 		 	 var uspass=$("#uspass").val();
 			 var email= $("#email").val();
-			　var pattern =/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;  
 	　　　　　//密码长度
-	     	if (uspass.length=<6&&uspass.length>=20){
+	     	if (uspass.length<5&&uspass.length>20){
 	     	alert("密码长度为6-20");	 
 	     		return false;
 	     	}
+	     	 
 	     	
 			//邮箱验证　
-			flag = pattern.test(email);  
-	　　　　　　if(!flag)  
+		 
+	　　　　　　if(email.search(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/) != -1)  
+	　　　　　　{  
+	　　　　　　　return true;  
+	　　　　　　}  
+	　　　　　　else  
+	　　　　　　　{  
 	　　　　　　　　alert("邮箱格式不正确");  
 	　　　　　　　　return false;  
 	　　　　　　}  
