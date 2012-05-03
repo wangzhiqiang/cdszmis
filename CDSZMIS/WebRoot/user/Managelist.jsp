@@ -32,7 +32,8 @@
 		 	 var uspass=$("#uspass").val();
 			 var email= $("#email").val();
 	　　　　　//密码长度
-	     	if (uspass.length<5&&uspass.length>20){
+	    
+	     	if (uspass.length<5||uspass.length>20){
 	     	alert("密码长度为6-20");	 
 	     		return false;
 	     	}
