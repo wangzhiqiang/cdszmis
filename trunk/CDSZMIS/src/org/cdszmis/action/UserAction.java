@@ -162,7 +162,8 @@ public class UserAction extends BaseAction {
 	}
 	
 	public String userUpdate(){
-		
+		ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());
+		ActionContext.getContext().getSession().put("departlist", departService.departList());
 		if(user != null)
 			userService.userManager(user);
 		List l = userService.selectList("");
@@ -171,8 +172,7 @@ public class UserAction extends BaseAction {
 		return "update";
 	}
 	
-	public String userManagelist(){
-		
+	public String userManagelist(){	
 	
 			ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());
 		
@@ -188,10 +188,12 @@ public class UserAction extends BaseAction {
 	}
 	
 	public String userManager(){
-			ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());
-			ActionContext.getContext().getSession().put("departlist", departService.departList());
-		if(user != null)
-		userService.userManager(user);
+		ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());
+		ActionContext.getContext().getSession().put("departlist", departService.departList());
+		if(user != null){
+			userService.userManager(user);
+		}
+		
 		
 		List l = userService.selectList("");
 		ActionContext.getContext().getSession().put("list", l);

@@ -12,9 +12,8 @@
 <script type="text/javascript">
 	
 	$(document).ready(function(){
-		 $(".dpid").click(function(){
-			 
-			 
+		$(".dpid").click(function(){
+		 
 		$("#usname").val($.trim($(this).parent().parent().children().eq(1).html()));	
         $("#loginname").val($.trim($(this).parent().parent().children().eq(2).html()));	
         $("#gender").val($.trim($(this).parent().parent().children().eq(3).html()));	
@@ -27,7 +26,24 @@
         $("#userid").val( $(this).val());			 
 			 
 		});
+
+		
+		$('#submit').click(function(){
+				var uspass = $('#uspass').val();
+				if(uspass.length >= 10&& uspass.length<6)
+					alert(" 密码6-10位  ");
+				
+				var emailStr=document.all.user.email.value;
+				alert(emailStr);
+				var emailPat=/^(.+)@(.+)$/;
+				var matchArray=emailStr.match(emailPat);
+				if (matchArray==null) {
+				alert("电子邮件地址必须包括 ( @ 和 . )")
+					});
+
+		
 	});
+
 </script>
   </head>
   
@@ -134,7 +150,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td><input value="提交" type="submit" /></td>
+				<td><input id="submit"  value="提交" type="submit" /></td>
 				<td><input value="重置" type="reset" /></td>
 			</tr>
 		</table>
