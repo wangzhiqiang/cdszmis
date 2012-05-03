@@ -29,17 +29,23 @@
 
 		
 		$('#submit').click(function(){
-				var uspass = $('#uspass').val();
-				if(uspass.length >= 10&& uspass.length<6)
-					alert(" 密码6-10位  ");
-				
-				var emailStr=document.all.user.email.value;
-				alert(emailStr);
-				var emailPat=/^(.+)@(.+)$/;
-				var matchArray=emailStr.match(emailPat);
-				if (matchArray==null) {
-				alert("电子邮件地址必须包括 ( @ 和 . )")
-					});
+		 	 var uspass=$("#uspass").val();
+			 var email= $("#email").val();
+			　var pattern = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;  
+	　　　　　//密码长度
+	     	if (uspass.length=<6&&uspass.length>=20){
+	     	alert("密码长度为6-20");	 
+	     		return false;
+	     	}
+	     	
+			//邮箱验证　
+			flag = pattern.test(email);  
+	　　　　　　if(!flag)  
+	　　　　　　　　alert("邮箱格式不正确");  
+	　　　　　　　　return false;  
+	　　　　　　}  
+		    
+		});
 
 		
 	});
@@ -64,7 +70,7 @@
 			</tr>
 			<tr>
 				<td>密码</td>
-				<td><input  name="user.uspass" type="password" />
+				<td><input id='uspass' name="user.uspass" type="password" />
 				</td>
 			</tr>
 			<tr>
@@ -150,7 +156,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td><input id="submit"  value="提交" type="submit" /></td>
+				<td><input id="submit"   value="提交" type="submit"  /></td>
 				<td><input value="重置" type="reset" /></td>
 			</tr>
 		</table>
