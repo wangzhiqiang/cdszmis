@@ -31,7 +31,7 @@
 		$('#submit').click(function(){
 		 	 var uspass=$("#uspass").val();
 			 var email= $("#email").val();
-			　var pattern = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;  
+			　var pattern =/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;  
 	　　　　　//密码长度
 	     	if (uspass.length=<6&&uspass.length>=20){
 	     	alert("密码长度为6-20");	 
