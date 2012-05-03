@@ -34,54 +34,35 @@
 			 var phone =  $("#phone").val();
 			 var idcard = $("#idcard").val();
 			 var birthday = $("#birthday").val();
-			 
 	　　　　　//密码长度
-	
 	     	if (uspass.length<6||uspass.length>20)
 		    	{
 	     			alert("密码长度为6-20");	 
 	     			return false;
 	     		}
 
-	     	 
-	     	
 			//邮箱验证　
-		 
-	　　　　 if(email.search(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/) != -1)  
+	　　　　 if(email.search(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/) == -1)  
 	　　　　　　{  
-	　　　　　　	　return true;  
-	　　　　　　}  
-	　　　　　　else  
-	　　　　　　　{  
 	　　　　　　　　alert("邮箱格式不正确");  
 	　　　　　　　　return false;  
 	　　　　　　}  
-
     		//手机严重  
-			if(phone.search(/^1[3|4|5|8][0-9]\d{8}$/) != -1)
+			if(phone.search(/^1[3|4|5|8][0-9]\d{8}$/) == -1)
 			{
-				return true;
-			}
-			else{
 				alert("手机号错误 ");
 				return false;
 				}
-
+ 
 			//身份证验证 
-			if(idcard.length == 18 || idcard.length == 15)
-			{
-				return true
-			}
-			else{
-				alert("18位身份证号 ");
+			if(idcard.length != 18 && idcard.length != 15)
+			 {
+				alert("输入正确的身份证号 ");
 				return false;
 			}
 
-			if(birthday.search(/^\d{4}-\d{2}-\d{2}$/) != -1)
+			if(!birthday.search(/^\d{4}-\d{2}-\d{2}$/) == -1)
 			{
-				return true
-			}
-			else{
 				alert("生日格式错误 yyyy-mm-dd");
 				return false;
 			}
