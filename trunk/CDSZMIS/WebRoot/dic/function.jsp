@@ -20,9 +20,9 @@
 			 
 		$("#dicid").val($.trim($(this).parent().parent().children().eq(1).html()));	
         $("#name").val($.trim($(this).parent().parent().children().eq(2).html()));	
-        $("#seq").val($.trim($(this).parent().parent().children().eq(4).html()));	
-        $("#status").val($.trim($(this).parent().parent().children().eq(3).html()));	
-        $("#properties").val($.trim($(this).parent().parent().children().eq(5).html()));				 
+        $("#seq").val($.trim($(this).parent().parent().children().eq(3).html()));	
+        $("#status").val($.trim($(this).parent().parent().children().eq(4).html()));	
+        $("#properties").val($.trim($(this).parent().parent().children().eq(4).html()));				 
 		});
 	});
 </script>
