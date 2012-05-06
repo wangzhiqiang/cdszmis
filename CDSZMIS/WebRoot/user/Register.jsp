@@ -116,8 +116,8 @@
 			<td>用户状态</td>
 			<td>
 			<label name="user.status">
-			<input name="status" type="radio" value="0" checked="checked"/>激活
-			<input  name="status" type="radio" value="1" />注销
+			<input name="user.status" type="radio" value="0" checked="checked" />激活
+			<input  name="user.status" type="radio" value="1" />注销
 			</label>
 			</td>
 		</tr>
