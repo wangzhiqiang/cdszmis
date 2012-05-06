@@ -63,8 +63,20 @@ public abstract interface UserService {
 	 * @return
 	 */
 	public List selectList(String key);
+	/**
+	 * 用户状态更改
+	 * @param id
+	 * @return
+	 */
+	public List userLogout(int id);
+	/**
+	 * 
+	 * @param loginname
+	 * @return
+	 */
 	@SuppressWarnings("rawtypes")
 	public List  getUserByloginname(String loginname);
+	
 	
 	
 	

@@ -59,4 +59,8 @@ public interface UserDao {
 	 * @return
 	 */
 	public List userSelect(String key);
+	/**
+	 * 用户状态更改
+	 */
+	public List userLogout(int id);
 }
