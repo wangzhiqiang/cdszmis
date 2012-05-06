@@ -166,7 +166,7 @@ public class UserAction extends BaseAction {
 		ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());
 		ActionContext.getContext().getSession().put("departlist", departService.departList());
 		if(user != null){
-			//user.setUsdeparts(departid);
+			user.setUsdeparts(departid);
 			userService.userManager(user);
 		}
 
