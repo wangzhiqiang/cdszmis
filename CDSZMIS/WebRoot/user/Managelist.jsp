@@ -55,12 +55,13 @@
 				}
  
 			//身份证验证 
-			if(idcard.length != 18 && idcard.length != 15)
+
+			if(idcard.search(/^\d{18|15}$/) == -1)
 			 {
 				alert("输入正确的身份证号 ");
 				return false;
 			}
-
+			
 			if(!birthday.search(/^\d{4}-\d{2}-\d{2}$/) == -1)
 			{
 				alert("生日格式错误 yyyy-mm-dd");
@@ -144,7 +145,7 @@
 							onMouseOver="divonfouce();" onMouseOut="divonblur();">
 							<div style="background-color:#efefef;border-bottom:1px solid #FFFFFF; cursor:hand;" >
 								<c:forEach items="${grouplist }" var="list">
-								   <input id="group" type=checkbox value="${list.id }" onclick="setInputcolumn(this)"> ${list.id }:${  list.groupname} <br/>
+								  <input id="group" name="user.usgroups" type=checkbox value="${list.id }:${  list.groupname}" onclick="setInputcolumn(this)"> ${list.id }:${  list.groupname}  <br/>
 								 </c:forEach>
 							</div>
 						</div>
@@ -157,7 +158,8 @@
 					<select name="departid">
 					<c:forEach items="${departlist }" var="dl">
 					  
-					<option value="${dl.id}">${dl.departname}</option>
+					<option  value="${dl.id}">${dl.departname}</option>
+					
 					</c:forEach>
 				</select>   
 				 </td>

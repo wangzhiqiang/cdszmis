@@ -42,6 +42,7 @@ public class UserAction extends BaseAction {
 	private String groupids;
 	private Integer departid;
 	private String keyword;
+	private String idcard;
 	/**
 	 * 用户登录
 	 * 
@@ -164,8 +165,11 @@ public class UserAction extends BaseAction {
 	public String userUpdate(){
 		ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());
 		ActionContext.getContext().getSession().put("departlist", departService.departList());
-		if(user != null)
+		if(user != null){
+			//user.setUsdeparts(departid);
 			userService.userManager(user);
+		}
+
 		List l = userService.selectList("");
 		ActionContext.getContext().getSession().put("list", l);
 		
@@ -174,9 +178,8 @@ public class UserAction extends BaseAction {
 	
 	public String userManagelist(){	
 	
-			ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());
-		
-			ActionContext.getContext().getSession().put("departlist", departService.departList());
+		ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());		
+		ActionContext.getContext().getSession().put("departlist", departService.departList());
 	
 		
 		
@@ -191,7 +194,9 @@ public class UserAction extends BaseAction {
 		ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());
 		ActionContext.getContext().getSession().put("departlist", departService.departList());
 		if(user != null){
+			user.setUsdeparts(departid);
 			userService.userManager(user);
+			
 		}
 		
 		
@@ -216,6 +221,17 @@ public class UserAction extends BaseAction {
 		
 	}
 	
+	public String userContent(){
+		
+		String card = null;
+		
+		if(idcard !=null ){
+			card = idcard;
+		}
+		List c = userService.selectList(card);
+		ActionContext.getContext().getSession().put("content", c );
+		return "Content";
+	}
 	
 	public String userMenu() {
 		
@@ -252,6 +268,14 @@ public class UserAction extends BaseAction {
 
 	public String getKeyword() {
 		return keyword;
+	}
+
+	public void setIdcard(String idcard) {
+		this.idcard = idcard;
+	}
+
+	public String getIdcard() {
+		return idcard;
 	}
 
 

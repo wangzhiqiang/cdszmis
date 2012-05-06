@@ -47,12 +47,14 @@ public class UserEntity implements Serializable {
 	@ManyToOne(targetEntity=DepartmentEntity.class  )
 	private DepartmentEntity departmentEntity;//用户部门
 	
-/*	private String usgroups;//用户组id 以':'隔开
-	private String usdeparts;//用户部门id 以':'隔开
-*/	private String ustitles;//职称id 以':'隔开
+	private String usgroups;//用户组id 以':'隔开
+
+	private Integer usdeparts;//用户部门id 以':'隔开
+	private String ustitles;//职称id 以':'隔开
 	private String uspositions;//职务id 以':'隔开
 	private Date createdate;//创建时间
 	private int status;// 激活  、注销
+	
 	public int getId() {
 		return id;
 	}
@@ -163,17 +165,17 @@ public class UserEntity implements Serializable {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-/*	public String getUsgroups() {
+	public String getUsgroups() {
 		return usgroups;
 	}
 	public void setUsgroups(String usgroups) {
 		this.usgroups = usgroups;
 	}
-	public String getUsdeparts() {
+	public Integer getUsdeparts() {
 		return usdeparts;
 	}
-	public void setUsdeparts(String usdeparts) {
+	public void setUsdeparts(Integer usdeparts) {
 		this.usdeparts = usdeparts;
 	}
- */
+ 
 }
