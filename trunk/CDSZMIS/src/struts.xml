@@ -73,4 +73,12 @@
 			<result name="listdepart">/department/listdepart.jsp</result>
 		</action>
 	</package>
+	<package name="systemdic" extends="Interceptor" namespace="/systemdic">
+		<action name="systemdic_*" class="org.cdszmis.action.SystemAction"
+			method="{1}">
+			<interceptor-ref name="permissstack"></interceptor-ref>
+			<result name="success">/index.jsp</result>
+			<result name="add">/dic/function.jsp</result>
+		</action>
+	</package>
 </struts>
