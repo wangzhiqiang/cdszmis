@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.Random;
 import javax.servlet.ServletContext;
 import org.apache.commons.io.FileUtils;
+import org.cdszmis.entity.AttachmentEntity;
 import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
@@ -23,7 +24,11 @@ public class FilesAction extends ActionSupport {
 		String targetDirectory = context.getRealPath("/upload");   
         String targetFileName = generateFileName(fileName);   
         File target = new File(targetDirectory, targetFileName);   
-           
+        AttachmentEntity attachment=new AttachmentEntity();
+        attachment.setFilename(fileName);
+        attachment.setFileurl(targetDirectory+"/"+targetFileName);
+        attachment.setFilesize( String.valueOf(FileUtils.sizeOfDirectory(file)));
+        attachment.setFiletype(fileName.substring(fileName.lastIndexOf(".")) );
         try
 		{
 			FileUtils.copyFile(file, target);
