@@ -21,7 +21,6 @@
 		<td>手机</td>
 		<td>办公室电话</td>
 		<td>身份证</td>
-		<td>出生日期</td>
 		<td>用户组</td>
 		<td>用户状态</td>
 		<td>状态更改</td>
@@ -34,7 +33,6 @@
 			<td>${l.phone}</td>
 			<td>${l.officenum}</td>
 			<td>${l.idcard}</td>
-			<td>${l.birthday}</td>
 			<td>${l.usgroups }</td>
 			<td><c:if test="${l.status ==0}">激活</c:if> <c:if test="${l.status ==1}">未激活</c:if></td>
 			
@@ -44,8 +42,8 @@
 				<td>
 				<input name="user.id" type="hidden" value="${l.id }"/>
 				<label name="user.status">
-				<input name="status" type="radio" value="0" checked="checked"/>激活
-				<input  name="status" type="radio" value="1" />注销
+				<input name="user.status" type="radio" value="0" checked="checked"/>激活
+				<input  name="user.status" type="radio" value="1" />注销
 				<td><input id="submit"   value="提交" type="submit"  /></td>
 				</label>
 				</td>

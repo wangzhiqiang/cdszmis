@@ -56,7 +56,7 @@
  
 			//身份证验证 
 
-			if(idcard.search(/^\d{18|15}$/) == -1)
+			if(idcard.length != 15 && idcard.length != 18)
 			 {
 				alert("输入正确的身份证号 ");
 				return false;

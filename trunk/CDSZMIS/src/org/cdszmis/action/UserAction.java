@@ -174,6 +174,8 @@ public class UserAction extends BaseAction {
 		ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());
 		ActionContext.getContext().getSession().put("departlist", departService.departList());
 		if(user != null){
+			String uspass = Encipherment.Enc_MD5_2(user.getUspass());
+			user.setUspass(uspass);
 			user.setUsdeparts(departid);
 			userService.userManager(user);
 		}
@@ -202,6 +204,8 @@ public class UserAction extends BaseAction {
 		ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());
 		ActionContext.getContext().getSession().put("departlist", departService.departList());
 		if(user != null){
+			String uspass = Encipherment.Enc_MD5_2(user.getUspass());
+			user.setUspass(uspass);
 			user.setUsdeparts(departid);
 			userService.userManager(user);
 			
@@ -244,10 +248,18 @@ public class UserAction extends BaseAction {
 	public String userLogout(){
 		ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());
 		ActionContext.getContext().getSession().put("departlist", departService.departList());
+		
 		if(user != null){
-			user.setStatus(1);
-			userService.userManager(user);
-			
+			List<UserEntity> ul =  userService.selectList(user.getIdcard());
+			UserEntity user1 = null;
+			if(ul != null){
+				Iterator<UserEntity> iter = ul.iterator();
+				while(iter.hasNext()){
+					user1 = iter.next();
+					user1.setStatus(user.getStatus());
+					userService.userManager(user1);
+				}
+			}			
 		}
 		
 		
