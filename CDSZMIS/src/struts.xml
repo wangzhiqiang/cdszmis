@@ -36,6 +36,7 @@
 			<result name="ls">/user/Select.jsp</result>
 			<result name="Content">/user/userContent.jsp</result>
 			<result name="updatemanager">/user/Managelist.jsp</result>
+			<result name="change">/user/Userlogout.jsp</result>
 		</action>
 	</package>
 
