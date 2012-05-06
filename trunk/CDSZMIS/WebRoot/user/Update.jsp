@@ -22,6 +22,47 @@
 		        $("#conditions").val($.trim($(this).parent().parent().children().eq(10).html()));	
 		        $("#userid").val( $(this).val());
 		});
+
+
+		 $('#submit').click(function(){
+		 	 var uspass = $("#uspass").val();
+			 var email =  $("#email").val();
+			 var phone =  $("#phone").val();
+			 var idcard = $("#idcard").val();
+			 var birthday = $("#birthday").val();
+	　　　　　//密码长度
+	     	if (uspass.length<6||uspass.length>20)
+		    	{
+	     			alert("密码长度为6-20");	 
+	     			return false;
+	     		}
+
+			//邮箱验证　
+	　　　　 if(email.search(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/) == -1)  
+	　　　　　　{  
+	　　　　　　　　alert("邮箱格式不正确");  
+	　　　　　　　　return false;  
+	　　　　　　}  
+    		//手机严重  
+			if(phone.search(/^1[3|4|5|8][0-9]\d{8}$/) == -1)
+			{
+				alert("手机号错误 ");
+				return false;
+				}
+ 
+			//身份证验证 
+			if(idcard.length != 18 && idcard.length != 15)
+			 {
+				alert("输入正确的身份证号 ");
+				return false;
+			}
+
+			if(!birthday.search(/^\d{4}-\d{2}-\d{2}$/) == -1)
+			{
+				alert("生日格式错误 yyyy-mm-dd");
+				return false;
+			}
+		});
 	});
 </script>
   </head>
@@ -95,7 +136,7 @@
 							onMouseOver="divonfouce();" onMouseOut="divonblur();">
 							<div style="background-color:#efefef;border-bottom:1px solid #FFFFFF; cursor:hand;" >
 								<c:forEach items="${grouplist }" var="list">
-								   <input id="group" type=checkbox value="${list.id }" onclick="setInputcolumn(this)"> ${list.id }:${  list.groupname} <br/>
+								   <input id="group" name="user.usgroups" type=checkbox value="${list.id }" onclick="setInputcolumn(this)"> ${list.id }:${  list.groupname} <br/>
 								 </c:forEach>
 							</div>
 						</div>
@@ -128,7 +169,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td><input value="提交" type="submit" /></td>
+				<td><input id="submit" value="提交" type="submit" /></td>
 				<td><input value="重置" type="reset" /></td>
 			</tr>
 	</table>

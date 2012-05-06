@@ -30,7 +30,7 @@
 	</tr>
 	<c:forEach items="${list}" var="l">
 	<tr>
-		<td>${l.usname}</td>
+		<td><a href="/user/user_userContent?idcard=${l.idcard}" >${l.usname}</td>
 		<td>${l.gender }</td>
 		<td>${l.idcard }</td>
 	</tr>

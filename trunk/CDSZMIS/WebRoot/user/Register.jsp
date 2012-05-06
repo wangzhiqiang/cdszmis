@@ -89,7 +89,7 @@
 						onMouseOver="divonfouce();" onMouseOut="divonblur();">
 						<div style="background-color:#efefef;border-bottom:1px solid #FFFFFF; cursor:hand;" >
 							<c:forEach items="${grouplist }" var="list">
-							   <input id="group" type=checkbox value="${list.id }" onclick="setInputcolumn(this)"> ${list.id }:${  list.groupname} <br/>
+							   <input id="group" name="user.usgroups" type=checkbox value="${list.id }" onclick="setInputcolumn(this)"> ${list.id }:${  list.groupname} <br/>
 							 </c:forEach>
 						</div>
 					</div>
