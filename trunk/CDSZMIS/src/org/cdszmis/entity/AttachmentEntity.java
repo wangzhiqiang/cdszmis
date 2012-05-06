@@ -12,6 +12,7 @@ import javax.persistence.Table;
  * @author WZQ
  *
  */
+@SuppressWarnings ("serial")
 @Entity
 @Table(name="tb_attachment")
 public class AttachmentEntity implements Serializable{
@@ -26,6 +27,50 @@ public class AttachmentEntity implements Serializable{
 	private String filestatus;
 	@ManyToOne(targetEntity=FilesEntity.class  )
 	private FilesEntity filesEntity;
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
+	}
+	public String getFiletype() {
+		return filetype;
+	}
+	public void setFiletype(String filetype) {
+		this.filetype = filetype;
+	}
+	public String getFilesize() {
+		return filesize;
+	}
+	public void setFilesize(String filesize) {
+		this.filesize = filesize;
+	}
+	public String getFileurl() {
+		return fileurl;
+	}
+	public void setFileurl(String fileurl) {
+		this.fileurl = fileurl;
+	}
+	public String getFilestatus() {
+		return filestatus;
+	}
+	public void setFilestatus(String filestatus) {
+		this.filestatus = filestatus;
+	}
+	public FilesEntity getFilesEntity() {
+		return filesEntity;
+	}
+	public void setFilesEntity(FilesEntity filesEntity) {
+		this.filesEntity = filesEntity;
+	}
+	
+	
 	
 	
 }
