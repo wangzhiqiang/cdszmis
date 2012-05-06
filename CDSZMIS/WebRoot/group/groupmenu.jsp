@@ -13,13 +13,20 @@
   <body>
     groupmenu\\\\<br/>
   <div class="leftdiv">
+  <table>
+  <tr>
+		  <td width="20"> <input type="checkbox" /> </td><td width="25">ID </td><td width="60">  用户组</td><td>用户组权限空间</td><td style="display:none;"> 用户组控制菜单</td>
+</tr>
   <c:forEach items="${allgroup }" var="group">
- 	${group.id }:${group.groupname }:${group.namespace }:
-	<c:forEach items="${group.menSysMenuEntities }" var="g" varStatus="stat" >
-	  ${g.id }<c:if test="${!stat.last}">,</c:if>
-	</c:forEach>
-		<br>
+	  <tr>
+		  <td> <input type="checkbox"value=''/> </td><td>${group.id } </td><td> ${group.groupname }</td><td>${group.namespace }</td>
+		  <td style="display:none;"> 
+		  <c:forEach items="${group.menSysMenuEntities }" var="g" varStatus="stat" >
+	     ${g.id }<c:if test="${!stat.last}">,</c:if>
+	     </c:forEach></td>
+	  </tr>
    </c:forEach>
+   </table>
   </div>
  <div class="centerdiv"></div>
    
@@ -36,5 +43,18 @@
 	 </c:if>
    </c:forEach>
    </div>
+   
+   
+   <script>
+   
+   $(function (){
+	   $':checkbox').cilck(function (){
+		   alert("sd");
+		   
+	   });
+	   
+   });
+   
+   </script>
   </body>
 </html>

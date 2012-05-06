@@ -52,10 +52,13 @@ public class UserAction extends BaseAction {
 	public String userlogin() {
 		// System.out.println(this.getClass().getName());
 		UserEntity u = null;
+		if(null==ActionContext.getContext().get("user")){
 		try {
+			if(user!=null){
 			String uspass = Encipherment.Enc_MD5_2(user.getUspass());
 			// System.out.println(user.getGender());
 			u = userService.userlogin(user.getLoginname(), uspass);
+			
 			if (u == null || u.equals("")) {
 				ActionContext.getContext().put("message", "用户名或密码错误");
 				return "message";
@@ -82,10 +85,15 @@ public class UserAction extends BaseAction {
 				ActionContext.getContext().getSession().put("group", umap);
 				ActionContext.getContext().getSession().put("user", u);
 			}
+			}else{
+				ActionContext.getContext().put("message", "请从登录入口进入");
+				return "message";
+			}
 		} catch (HibernateException e) {
 			e.printStackTrace();
 			ActionContext.getContext().put("message", "未知异常");
 			return "message";
+		}
 		}
 
 		return "success";
