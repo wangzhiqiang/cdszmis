@@ -58,12 +58,22 @@ public class UserServiceImpl implements UserService {
 		return userDaoImpl.userSelect(key);
 	}
 	@SuppressWarnings("rawtypes")
-	public List userList(List<Integer> ids) {
+	public List userList(int ids) {
 		return null;
 	}
 
 	@SuppressWarnings("rawtypes")
 	public List  getUserByloginname(String loginname) {
 		return publicDao.findObjectListByHsql("from  UserEntity obj where obj.loginname='"+loginname+"'");
+	}
+
+	public List userList(List<Integer> ids) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public List userLogout(int id) {
+		
+		return userDaoImpl.userLogout(id);
 	}
 }

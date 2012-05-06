@@ -250,7 +250,7 @@ public class UserAction extends BaseAction {
 		ActionContext.getContext().getSession().put("departlist", departService.departList());
 		
 		if(user != null){
-			List<UserEntity> ul =  userService.selectList(user.getIdcard());
+			List<UserEntity> ul =  userService.userLogout(user.getId());
 			UserEntity user1 = null;
 			if(ul != null){
 				Iterator<UserEntity> iter = ul.iterator();

@@ -59,12 +59,19 @@ public class UserDaoImpl implements UserDao {
 	}
 	@SuppressWarnings("rawtypes")
 	public List userList(List<Integer> ids) {
-
 		return null;
 	}
 	 
 	public boolean userGroupManager(Set<UserGroupEntity> group, UserEntity user) {
 		return false;
+	}
+
+
+
+	public List userLogout(int id) {
+		String HSQL="from UserEntity obj where obj .id=id";
+		return hibernateUtils.findlistByHsql(HSQL);
+		
 	}
 
 }
