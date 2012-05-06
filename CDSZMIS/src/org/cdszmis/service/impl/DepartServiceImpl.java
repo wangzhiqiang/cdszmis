@@ -5,12 +5,14 @@ import java.util.List;
 import javax.annotation.Resource;
 
 import org.cdszmis.dao.DepartDao;
+import org.cdszmis.dao.PublicDao;
 import org.cdszmis.entity.DepartmentEntity;
 import org.cdszmis.service.DepartService;
 import org.springframework.stereotype.Service;
 @Service
 public class DepartServiceImpl implements DepartService {
 @Resource DepartDao departDao;
+@Resource PublicDao publicDao;
 	public List<DepartmentEntity> departList() {
 		return departDao.departList();
 	}
@@ -29,6 +31,10 @@ public class DepartServiceImpl implements DepartService {
 	public boolean delDepart(DepartmentEntity depart) {
 		 
 		return departDao.delDepart(depart);
+	}
+	public List getListByHsql(String Hsql) {
+		 
+		return publicDao.findObjectListByHsql(Hsql);
 	}
 
 }
