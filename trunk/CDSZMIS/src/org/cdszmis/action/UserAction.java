@@ -233,6 +233,22 @@ public class UserAction extends BaseAction {
 		return "Content";
 	}
 	
+	public String userLogout(){
+		ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());
+		ActionContext.getContext().getSession().put("departlist", departService.departList());
+		if(user != null){
+			user.setStatus(1);
+			userService.userManager(user);
+			
+		}
+		
+		
+		List l = userService.selectList("");
+		ActionContext.getContext().getSession().put("list", l);
+		
+		return "change";
+	}
+	
 	public String userMenu() {
 		
 		return null;
