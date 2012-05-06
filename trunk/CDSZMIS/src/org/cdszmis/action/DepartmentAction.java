@@ -33,8 +33,16 @@ private String isdel=null;
 	}
 	
 	public String findallDepart(){
-		
-		List<DepartmentEntity> dlist=departService.departList();
+		String hsql="from DepartmentEntity obj where 1=1 ";
+		if(null!=depart){
+			if (null!=depart.getDepartname()){
+				hsql=hsql+"and obj.departname like '"+depart.getDepartname()+"%' ";
+			}if(null!=depart.getDepartowner()){
+				
+				hsql=hsql+"and obj.departowner like '"+depart.getDepartowner()+"%'";
+			}
+		}
+		List<DepartmentEntity> dlist=departService.getListByHsql(hsql);
 		ActionContext.getContext().put("alldepart", dlist);
 		return "listdepart";
 	}

@@ -10,4 +10,6 @@ public interface DepartService {
 	public DepartmentEntity departManager(DepartmentEntity depart);
 	public DepartmentEntity findByid(int id);
 	public boolean delDepart(DepartmentEntity depart);
+	
+	public List getListByHsql(String Hsql);
 }
