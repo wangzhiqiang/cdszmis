@@ -62,7 +62,15 @@
 			method="{1}">
 			<interceptor-ref name="permissstack"></interceptor-ref>
 			<result name="success">/index.jsp</result>
-			<result name="add">/project/projectManage.jsp </result>
+			<result name="add">/project/projectRegiste.jsp </result>
+			<result name="projectimpl">/project/projectImpl.jsp</result>
+			<result name="projectcheck">/project/projectCheck.jsp</result>
+			<result name="projectsign">/project/projectSign.jsp</result>
+			<result name="projectpublic">/project/projectPublic.jsp</result>
+			<result name="projectsale">/project/projectSale.jsp</result>
+			<result name="projectfilling">/project/projectFilling.jsp</result>
+			<result name="arrangedepart">/project/arrangeDepart.jsp</result>
+			<result name="arrangeperson">/project/arrangePerson.jsp</result>
 		</action>
 	</package>
 	

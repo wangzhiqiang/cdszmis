@@ -52,47 +52,28 @@ public class ProjectDaoImpl implements org.cdszmis.dao.ProjectDao {
 		return hibernateUtils.findall(ProjectEntity.class);
 	}
 	
-	public List<ProjectArrangementEntity> noarrangedProject(){
-		return (List<ProjectArrangementEntity>) hibernateUtils.findobjByHsql("from ProjectArrangementEntity obj where obj.departids="+"");
+	public List<ProjectArrangementEntity> noarrangedDepart(){
+		return (List<ProjectArrangementEntity>) hibernateUtils.findobjByHsql("from ProjectArrangementEntity obj where obj.departids!=null");
 	}
-	/**
-	 * 分派项目（确定项目承担的设计所，以及各个阶段相应的进度信息）
-	 * @param project
-	 * @return
-	 */
-	public String arrangeDepart(ProjectArrangementEntity paentity,String departids){
-		ProjectArrangementEntity paentity2=null;
-		paentity2=paentity;
-		if(paentity2.getDepartids().equals("")){
-			paentity2.setDepartids(departids);
-		}
-       return "success"	;
+	
+	public List<ProjectArrangementEntity> noarrangedPerson(){
+		return (List<ProjectArrangementEntity>) hibernateUtils.findobjByHsql("from ProjectDepartArrangementEntity obj where obj.chargeperson=null");
+	}
+	
+	public ProjectArrangementEntity arrangeDepart(ProjectArrangementEntity paentity,String departids){
+		
+	  	paentity.setDepartids(departids);
+          return paentity	;
 	} 
-	/**
-	 * 所级安排（设计所所长通过系统安排项目的负责人）
-	 * @param project
-	 * @return
-	 */
-	public  String ArrangeChargePerson(ProjectDepartArrangementEntity pdaentity, String chargeperson ){
-		ProjectDepartArrangementEntity pdaentity2;
-		pdaentity2=pdaentity;
-		if(pdaentity2.getChargeperson().equals("")){
-			pdaentity2.setChargeperson(chargeperson);
-			
-		}
-		return "success";
+
+	public  ProjectDepartArrangementEntity arrangeChargePerson(ProjectDepartArrangementEntity pdaentity, String chargeperson ){
+		
+			pdaentity.setChargeperson(chargeperson);
+		        return pdaentity;
 		
 	}
 	
-	/**
-	 * 项目实施（项目负责人定期更新项目进度状态；提交完成的设计项目到总工办审核）
-	 * （项目进度方案。初设。施工图）
-	 * 
-	 * @param project
-	 * @return
-	 */
 	
-	//状态更改
 	public ProjectStatusEntity changeStatus(ProjectStatusEntity projectstatus){
 		try {
 			if ("0".equals(projectstatus.getStatus())) {//"方案"

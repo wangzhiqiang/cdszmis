@@ -1,6 +1,7 @@
 package org.cdszmis.service.impl;
 
 import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.cdszmis.dao.ProjectDao;
@@ -12,15 +13,14 @@ import org.cdszmis.service.ProjectService;
 import org.springframework.stereotype.Service;
 @Service
 public class ProjectServiceImpl implements ProjectService {
-	@Resource ProjectDao projectdao;
-
-	public String ArrangeChargePerson(ProjectDepartArrangementEntity pdaentity,
-			String chargeperson) {
-		return  projectdao.ArrangeChargePerson(pdaentity, chargeperson);
+	@Resource   ProjectDao  projectdao;
+	public ProjectDepartArrangementEntity arrangeChargePerson(
+			ProjectDepartArrangementEntity pdaentity, String chargeperson) {
+		return projectdao.arrangeChargePerson(pdaentity, chargeperson);
 	}
 
-	public String arrangeDepart(ProjectArrangementEntity paentity,
-			String departids) {
+	public ProjectArrangementEntity arrangeDepart(
+			ProjectArrangementEntity paentity, String departids) {
 		return projectdao.arrangeDepart(paentity, departids);
 	}
 
@@ -40,8 +40,12 @@ public class ProjectServiceImpl implements ProjectService {
 		return projectdao.findProject(id);
 	}
 
-	public List<ProjectArrangementEntity> noarrangedProject() {
-		return projectdao.noarrangedProject();
+	public List<ProjectArrangementEntity> noarrangedDepart() {
+		return projectdao.noarrangedDepart();
+	}
+
+	public List<ProjectArrangementEntity> noarrangedPerson() {
+		return projectdao.noarrangedDepart();
 	}
 
 	public List<ProjectEntity> projectList() {
