@@ -45,33 +45,34 @@ public interface ProjectDao {
 	public List<ProjectEntity> projectList();
 	/**
 	 * 所级安排及分派项目的查询（查询所有未安排的项目）
-	 * @param project
 	 * @return
 	 */
-	public List<ProjectArrangementEntity> noarrangedProject();
+	public List<ProjectArrangementEntity> noarrangedDepart();
+	
+	public List<ProjectArrangementEntity> noarrangedPerson();
 	/**
 	 * 分派项目（确定项目承担的设计所，以及各个阶段相应的进度信息）
-	 * @param project
+	 * @param paentity
 	 * @return
 	 */
-	public String arrangeDepart(ProjectArrangementEntity paentity,String departids) ;
+	public ProjectArrangementEntity arrangeDepart(ProjectArrangementEntity paentity,String departids) ;
 	/**
 	 * 所级安排（设计所所长通过系统安排项目的负责人）
 	 * @param project
 	 * @return
 	 */
-	public  String ArrangeChargePerson(ProjectDepartArrangementEntity pdaentity, String chargeperson);
+	public  ProjectDepartArrangementEntity arrangeChargePerson(ProjectDepartArrangementEntity pdaentity, String chargeperson);
 	
 	/**
 	 * 项目实施（项目负责人定期更新项目进度状态；提交完成的设计项目到总工办审核）
 	 * 
-	 * （项目进度方案0。初设1。施工图2）
+	 * （项目进度:方案0。初设1。施工图2）
 	 * @param project
 	 * @return
 	 */
 
 	/**
-	 * 总共审查（通过审查，将项目状态改为“院长签发3”，并 传送项目到院长签字环节。
+	 * 总工审查（通过审查，将项目状态改为“院长签发3”，并 传送项目到院长签字环节。
 	 * 未通过审查，则系统将项目状态变为“施工图4”，并 将项目退回到设计所，同时记录提交/退回历史信息）
 	 * 
 	 * 
@@ -90,8 +91,15 @@ public interface ProjectDao {
 	 * @param project
 	 * @return
 	 */
+	
 	/**
-	 *发行收费（将项目状态改为“项目结束7”）
+	 *发行收费（项目状态改为“项目结束“）
+	 * 
+	 * @param project
+	 * @return
+	 */
+	/**
+	 *项目归档（将项目状态改为“项目归档8”）
 	 * 
 	 * @param project
 	 * @return(更改项目状态)

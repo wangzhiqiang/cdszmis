@@ -22,11 +22,13 @@ public interface ProjectService {
 		
 		public List<ProjectEntity> projectList();
 		
-		public List<ProjectArrangementEntity> noarrangedProject();
+		public List<ProjectArrangementEntity> noarrangedDepart();
 		
-		public String arrangeDepart(ProjectArrangementEntity paentity,String departids);
+		public List<ProjectArrangementEntity> noarrangedPerson();
 		
-		public  String ArrangeChargePerson(ProjectDepartArrangementEntity pdaentity, String chargeperson );
+		public ProjectArrangementEntity arrangeDepart(ProjectArrangementEntity paentity,String departids) ;
+		
+		public  ProjectDepartArrangementEntity arrangeChargePerson(ProjectDepartArrangementEntity pdaentity, String chargeperson);
 		
 		public ProjectStatusEntity changeStatus(ProjectStatusEntity projectstatus);
 }

@@ -1,13 +1,19 @@
 package org.cdszmis.action;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import javax.annotation.Resource;
 
+import org.cdszmis.entity.DepartmentEntity;
 import org.cdszmis.entity.ProjectArrangementEntity;
 import org.cdszmis.entity.ProjectDepartArrangementEntity;
 import org.cdszmis.entity.ProjectEntity;
 import org.cdszmis.entity.ProjectStatusEntity;
+import org.cdszmis.entity.UserGroupEntity;
 import org.cdszmis.service.ProjectService;
+import org.cdszmis.utils.Encipherment;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -19,10 +25,9 @@ public class ProjectAction extends ActionSupport {
 	private ProjectStatusEntity projectstatus;
 	ProjectArrangementEntity paentity;
 	ProjectDepartArrangementEntity pdaentity;
-	String chargeperson;
-	String departids;
+	private String chargeperson;
+	private String departids;
 	private String isdel=null;
-	private String isfill=null;
 	public String projectmanage(){
 		if(project!=null){
 			if (isdel==null) {
@@ -38,99 +43,162 @@ public class ProjectAction extends ActionSupport {
 		ActionContext.getContext().put("allproject", plist);
 		return "add";
 	}
+			
+
 	public String findallProject(){
 		List<ProjectEntity> plist = projectservice.projectList();
-		ActionContext.getContext().put("alldepart", plist);
+		ActionContext.getContext().put("allproject", plist);
 		return "listproject";
 	}
-	public String  findnoArranged(){
-		List<ProjectArrangementEntity> plist = projectservice.noarrangedProject();
-		ActionContext.getContext().put("allnoarranged", plist);
-		return "listnoarranged";
-	}
-	public String arrangeDepart(){
-		try {
-			projectservice.arrangeDepart(paentity, departids);
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
+	public String  arrangeDepartids(){
+		if(paentity!=null&&paentity.getDepartids().equals(null)){
+			
+				projectservice.arrangeDepart(paentity, departids);
 		}
-		
+		List<ProjectArrangementEntity> plist = projectservice.noarrangedDepart();
+		ActionContext.getContext().put("allnoarrangdepart", plist);
 		return "arrangedepart";
 		
 	}
-	public String arrangeChargeperson(){
-		try {
-			projectservice.ArrangeChargePerson(pdaentity, chargeperson);
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
-		
-		return "arrangechargeperson";
+	public String arrangePerson(){
+		if(paentity!=null){
+		     if(paentity!=null&&paentity.getDepartids()!=null){
+		    	 projectservice.arrangeChargePerson(pdaentity, chargeperson);
+		                                                }
+		                   }
+		List<ProjectArrangementEntity> plist = projectservice.noarrangedPerson();
+		ActionContext.getContext().put("allnoarrangperson", plist);
+		return "arrangeperson";
 	}
 	
-	
-	
-	public String chageStatus(){
+	public String projectImpl(){
 		try {
 			projectservice.changeStatus(projectstatus);
 		} catch (Exception e) {
-			// TODO: handle exception
+			
 			e.printStackTrace();
 		}
-		return "changestatus";
-		
+		return "projectimpl";
+	}
+	public String projectCheck(){
+		try {
+			projectservice.changeStatus(projectstatus);
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		return "projectcheck";
+	}
+	public String projectSign(){
+		try {
+			projectservice.changeStatus(projectstatus);
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		return "projectsign";
 	}
 	
-	public ProjectArrangementEntity getPaentity() {
-		return paentity;
+	public String projectPublic(){
+		try {
+			projectservice.changeStatus(projectstatus);
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		return "projectpublic";
 	}
-	public void setPaentity(ProjectArrangementEntity paentity) {
-		this.paentity = paentity;
+	public String projectSale(){
+		try {
+			projectservice.changeStatus(projectstatus);
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		return "projectsale";
 	}
-	public ProjectDepartArrangementEntity getPdaentity() {
-		return pdaentity;
+	public String projectFilling(){
+		try {
+			projectservice.changeStatus(projectstatus);
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		return "projectfilling";
 	}
-	public void setPdaentity(ProjectDepartArrangementEntity pdaentity) {
-		this.pdaentity = pdaentity;
-	}
-	public String getChargeperson() {
-		return chargeperson;
-	}
-	public void setChargeperson(String chargeperson) {
-		this.chargeperson = chargeperson;
-	}
-	public String getDepartids() {
-		return departids;
-	}
-	public void setDepartids(String departids) {
-		this.departids = departids;
-	}
-	public ProjectStatusEntity getProjectstatus() {
-		return projectstatus;
-	}
-	public void setProjectstatus(ProjectStatusEntity projectstatus) {
-		this.projectstatus = projectstatus;
-	}
-	public String getIsfill() {
-		return isfill;
-	}
-	public void setIsfill(String isfill) {
-		this.isfill = isfill;
-	}
+
+
 	public ProjectEntity getProject() {
 		return project;
 	}
+
+
 	public void setProject(ProjectEntity project) {
 		this.project = project;
 	}
+
+
+	public ProjectStatusEntity getProjectstatus() {
+		return projectstatus;
+	}
+
+
+	public void setProjectstatus(ProjectStatusEntity projectstatus) {
+		this.projectstatus = projectstatus;
+	}
+
+
+	public ProjectArrangementEntity getPaentity() {
+		return paentity;
+	}
+
+
+	public void setPaentity(ProjectArrangementEntity paentity) {
+		this.paentity = paentity;
+	}
+
+
+	public ProjectDepartArrangementEntity getPdaentity() {
+		return pdaentity;
+	}
+
+
+	public void setPdaentity(ProjectDepartArrangementEntity pdaentity) {
+		this.pdaentity = pdaentity;
+	}
+
+
+	public String getChargeperson() {
+		return chargeperson;
+	}
+
+
+	public void setChargeperson(String chargeperson) {
+		this.chargeperson = chargeperson;
+	}
+
+
+	public String getDepartids() {
+		return departids;
+	}
+
+
+	public void setDepartids(String departids) {
+		this.departids = departids;
+	}
+
+
 	public String getIsdel() {
 		return isdel;
 	}
+
+
 	public void setIsdel(String isdel) {
 		this.isdel = isdel;
 	}
+
+
+	
 	
 	
 }
