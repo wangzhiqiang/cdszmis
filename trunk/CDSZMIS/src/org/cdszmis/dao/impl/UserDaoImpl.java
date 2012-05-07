@@ -69,7 +69,7 @@ public class UserDaoImpl implements UserDao {
 
 
 	public List userLogout(int id) {
-		String HSQL="from UserEntity obj where obj .id=id";
+		String HSQL="from UserEntity obj where obj.id="+id;
 		return hibernateUtils.findlistByHsql(HSQL);
 		
 	}
