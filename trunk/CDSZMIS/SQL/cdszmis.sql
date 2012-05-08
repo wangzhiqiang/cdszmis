@@ -221,7 +221,7 @@ INSERT INTO `tb_sys_menu` VALUES (20,NULL,'用户分配',6,'/');
 INSERT INTO `tb_sys_menu` VALUES (21,NULL,'权限分配',6,'/usergroup/group_groupMenu');
 INSERT INTO `tb_sys_menu` VALUES (22,NULL,'用户组信息维护',6,'/usergroup/group_groupManager');
 INSERT INTO `tb_sys_menu` VALUES (23,NULL,'职务管理',7,'/systemdic/systemdic_dicmanager');
-INSERT INTO `tb_sys_menu` VALUES (24,NULL,'职称管理',7,'/');
+INSERT INTO `tb_sys_menu` VALUES (24,NULL,'职称管理',7,'/systemdic/systemdic_dicmanager01'');
 INSERT INTO `tb_sys_menu` VALUES (25,NULL,'办理人员列表',8,'/');
 INSERT INTO `tb_sys_menu` VALUES (26,NULL,'审批人员列表',8,'/');
 INSERT INTO `tb_sys_menu` VALUES (27,NULL,'抄送人员列表',8,'/');
