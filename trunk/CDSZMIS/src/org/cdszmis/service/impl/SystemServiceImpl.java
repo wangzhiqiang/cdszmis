@@ -32,12 +32,20 @@ public class SystemServiceImpl implements SystemService{
 		return  systemDao.findic(id);
 	}
 
-	public SysDictionaryEntity findic(String properties) {
-		return  systemDao.findic(properties);
-	}
     public boolean delDic(SysDictionaryEntity dic) {
 		
 		return systemDao.delDic(dic);
+	}
+
+	@SuppressWarnings("unchecked")
+	public List findic() {
+
+		return systemDao.findic();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List findic01() {
+		return systemDao.findic01();
 	}
 
 }
