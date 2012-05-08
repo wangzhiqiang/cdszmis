@@ -17,7 +17,7 @@ public interface SystemService {
 	/**
 	 * 系统字典管理
 	 * 查询所有职称信息
-	 * @param dic
+	 * @param 
 	 * @return
 	 */
 	public List<SysDictionaryEntity> dicList();
@@ -31,17 +31,21 @@ public interface SystemService {
 	 * 查询激活状态职称信息
 	 * @return
 	 */
-	public List<SysDictionaryEntity> dicListByActive();
+    public List<SysDictionaryEntity> dicListByActive();
 	/**
-	 * 根据属性查询
+	 * 根据字典标识查询
 	 * @return
 	 */
-	public SysDictionaryEntity findic(String properties);
+	@SuppressWarnings("unchecked")
+	public List findic();
+	@SuppressWarnings("unchecked")
+	public List findic01();
 	/**
 	 * 删除职称信息
-	 * @param depart
+	 * @param dic
 	 * @return
 	 */
 	public boolean delDic(SysDictionaryEntity dic);
+	
 }
 
