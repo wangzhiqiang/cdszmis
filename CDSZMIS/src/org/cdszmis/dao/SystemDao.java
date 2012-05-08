@@ -16,7 +16,7 @@ public interface SystemDao {
 	/**
 	 * 系统字典管理
 	 * 查询所有职称信息
-	 * @param dic
+	 * @param 
 	 * @return
 	 */
 	public List<SysDictionaryEntity> dicList();
@@ -31,18 +31,22 @@ public interface SystemDao {
 	 * @return
 	 */
 	public List<SysDictionaryEntity> dicListByActive();
-	/**
-	 * 根据属性查询
-	 * @return
-	 */
-	public SysDictionaryEntity findic(String properties);
+
 	/**
 	 * 删除职称信息
-	 * @param depart
+	 * @param 
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
 	public boolean delDic(Class clazz ,int id);
 	public boolean delDic(SysDictionaryEntity dic);
+	/**
+	 * 根据字典标识查询
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public List findic();
+	@SuppressWarnings("unchecked")
+	public List findic01();
 
 }
