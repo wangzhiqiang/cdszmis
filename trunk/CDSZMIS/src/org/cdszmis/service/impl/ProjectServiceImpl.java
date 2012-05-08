@@ -44,8 +44,8 @@ public class ProjectServiceImpl implements ProjectService {
 		return projectdao.noarrangedDepart();
 	}
 
-	public List<ProjectArrangementEntity> noarrangedPerson() {
-		return projectdao.noarrangedDepart();
+	public List<ProjectDepartArrangementEntity> noarrangedPerson() {
+		return projectdao.noarrangedPerson();
 	}
 
 	public List<ProjectEntity> projectList() {

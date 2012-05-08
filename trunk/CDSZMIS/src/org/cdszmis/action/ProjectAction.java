@@ -51,7 +51,7 @@ public class ProjectAction extends ActionSupport {
 		return "listproject";
 	}
 	public String  arrangeDepartids(){
-		if(paentity!=null&&paentity.getDepartids().equals(null)){
+		if(null!=paentity&&paentity.getDepartids().equals(" ")){
 			
 				projectservice.arrangeDepart(paentity, departids);
 		}
@@ -61,12 +61,12 @@ public class ProjectAction extends ActionSupport {
 		
 	}
 	public String arrangePerson(){
-		if(paentity!=null){
-		     if(paentity!=null&&paentity.getDepartids()!=null){
+		if(null!=pdaentity&&pdaentity.equals("")){
+			
 		    	 projectservice.arrangeChargePerson(pdaentity, chargeperson);
-		                                                }
+		                                                
 		                   }
-		List<ProjectArrangementEntity> plist = projectservice.noarrangedPerson();
+		List<ProjectDepartArrangementEntity> plist = projectservice.noarrangedPerson();
 		ActionContext.getContext().put("allnoarrangperson", plist);
 		return "arrangeperson";
 	}

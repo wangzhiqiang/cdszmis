@@ -24,7 +24,7 @@ public interface ProjectService {
 		
 		public List<ProjectArrangementEntity> noarrangedDepart();
 		
-		public List<ProjectArrangementEntity> noarrangedPerson();
+		public List<ProjectDepartArrangementEntity> noarrangedPerson();
 		
 		public ProjectArrangementEntity arrangeDepart(ProjectArrangementEntity paentity,String departids) ;
 		

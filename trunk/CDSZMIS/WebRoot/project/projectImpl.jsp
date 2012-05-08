@@ -34,7 +34,7 @@
 		</tr>
 		<tr>
 			<td> 项目状态</td><td><label name="projectstatus.status">
-			<input name="projectstatus.status" type="radio" value="1" checked="checked"/>方案
+			<input name="projectstatus.status" type="radio" value="1" />方案
 			<input  name="projectstatus.status" type="radio" value="2" />初设
 			<input  name="projectstatus.status" type="radio" value="3" />施工图
 			</label></td>
