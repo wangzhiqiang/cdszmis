@@ -18,6 +18,7 @@ public class SystemAction extends ActionSupport {
 
 	private SysDictionaryEntity dic;
 	private String isdel=null;
+	@SuppressWarnings("unchecked")
 	public String dicmanager(){
 		if(dic!=null){
 			if(isdel==null){
@@ -26,9 +27,23 @@ public class SystemAction extends ActionSupport {
 				systemService.delDic(dic);
 			}
 		}
-		List<SysDictionaryEntity> dlist=systemService.dicList();
+		List dlist=systemService.findic();
 		ActionContext.getContext().put("alldic", dlist);
-		return "add";
+		return "function";
+	}
+	
+	@SuppressWarnings("unchecked")
+	public String dicmanager01(){
+		if(dic!=null){
+			if(isdel==null){
+				systemService.dicManager(dic);
+			}else{
+				systemService.delDic(dic);
+			}
+		}
+		List dlist=systemService.findic01();
+		ActionContext.getContext().put("alldic", dlist);
+		return "office";
 	}
   public String findallDic(){
 		
