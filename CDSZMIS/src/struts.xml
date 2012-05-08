@@ -88,7 +88,8 @@
 			method="{1}">
 			<interceptor-ref name="permissstack"></interceptor-ref>
 			<result name="success">/index.jsp</result>
-			<result name="add">/dic/function.jsp</result>
+			<result name="function">/dic/function.jsp</result>
+			<result name="office">/dic/office.jsp</result>
 		</action>
 	</package>
 </struts>
