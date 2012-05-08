@@ -49,7 +49,7 @@ public interface ProjectDao {
 	 */
 	public List<ProjectArrangementEntity> noarrangedDepart();
 	
-	public List<ProjectArrangementEntity> noarrangedPerson();
+	public List<ProjectDepartArrangementEntity> noarrangedPerson();
 	/**
 	 * 分派项目（确定项目承担的设计所，以及各个阶段相应的进度信息）
 	 * @param paentity

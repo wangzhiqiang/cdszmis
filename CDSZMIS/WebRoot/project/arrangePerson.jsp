@@ -9,7 +9,7 @@
 	$(document).ready(function(){
 		 $(".pjpid").click(function(){
 		 
-		$("#projectdepartid").val($.trim($(this).parent().parent().children().eq(1).html()));		       
+		$("#id").val($.trim($(this).parent().parent().children().eq(1).html()));		       
 		$("#projectid").val($.trim($(this).parent().parent().children().eq(2).html()));	
         $("#chargeperson").val($.trim($(this).parent().parent().children().eq(3).html()));	
         $("#suggestion").val($.trim($(this).parent().parent().children().eq(4).html()));	
@@ -35,7 +35,7 @@
 	<table>
 		
 		<tr>
-			<td>项目ID</td><td><input id="projectid" name="pdaentity.projectid" type="text" /></td>
+			<td>项目ID</td><td><input  id="projectid" name="pdaentity.projectid" type="text" /></td>
 		</tr>
 		<tr>
 			<td>项目负责人</td><td><input id="chargeperson" name="pdaentity.chargeperson" type="text" /></td>
@@ -44,14 +44,14 @@
 			<td>指导意见</td><td><input  id="suggestion" name="pdaentity.suggestion" type="text" /></td>
 		</tr>
 		<tr>
-			<td>填报时间</td><td><input    id="reportdate" name="pdaentity.reportdate" type="text" /></td>
+			<td>填报时间</td><td><input   id="reportdate" name="pdaentity.reportdate" type="text" /></td>
 		</tr>
 		<tr>
-			<td>填报人</td><td><input id="reportperson" name="pdaentity.reportperson" type="text" /></td>
+			<td>填报人</td><td><input  id="reportperson" name="pdaentity.reportperson" type="text" /></td>
 		</tr>
 		
 	</table>
-	<input id="projectdepartid" name="pdaentity.id" type="hidden" value=""></input>
+	<input id="id" name="pdaentity.id" type="hidden" value=""></input>
 	 <input  type="submit" value="安排负责人"/> <br>
 </form>
 	
@@ -66,15 +66,14 @@
 		<td>填报人</td>
 	</tr>
 	   <c:forEach items="${allnoarrangperson }" var="ls">
-		   <tr  >
-			   
+		   <tr>   
 			<td width="30px;"><input class="pjpid" type="radio" name="pjpid"/></td> 
-			<td  width="40px;"> ${ls.id }</td>
+			<td width="40px;"> ${ls.id }</td>
 			<td>${ls.projectid }</td>
-			<td>${ls.chargeperson } </td>
+			<td>${ls.chargeperson}</td>
 			<td>${ls.suggestion }</td>
 			<td>${ls.reportdate }</td>
-			<td>${ls.reportperson } </td>
+			<td>${ls.reportperson }</td>
 		   </tr>
 	   </c:forEach>
    </table>

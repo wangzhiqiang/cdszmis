@@ -36,7 +36,7 @@
 			<td> 项目状态</td>
 			<td>
 			<label name="projectstatus.status">
-			<input name="projectstatus.status" type="radio" value="0" checked="checked"/>归档
+			<input name="projectstatus.status" type="radio" value="0"/>归档
 			</label>
 			</td>
 		</tr>

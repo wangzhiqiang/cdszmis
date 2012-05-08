@@ -33,8 +33,8 @@
 			<td>项目ID</td><td> <input id="projectid" type="text" name="projectstatus.projectid" value=""/></td>
 		</tr>
 		<tr>
-			<td> 项目状态</td><td>i<label name="projectstatus.status">
-			<input name="projectstatus.status" type="radio" value="1" checked="checked"/>出版
+			<td> 项目状态</td><td><label name="projectstatus.status">
+			<input name="projectstatus.status" type="radio" value="1" />出版
 			</label></td>
 		</tr>
 		<tr>
