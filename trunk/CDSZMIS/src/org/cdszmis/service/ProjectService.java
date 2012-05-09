@@ -22,6 +22,8 @@ public interface ProjectService {
 		
 		public List<ProjectEntity> projectList();
 		
+		public List<ProjectStatusEntity> statusList();
+		
 		public List<ProjectArrangementEntity> noarrangedDepart();
 		
 		public List<ProjectDepartArrangementEntity> noarrangedPerson();

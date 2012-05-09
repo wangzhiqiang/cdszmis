@@ -35,7 +35,7 @@
 
 <body>
 	ArrangeDepart
-	<form action="/project/pro_arrangeDepart" method="get">
+	<form action="${rooturl }/project/pro_arrangeDepart" method="get">
 	<table>
 		
 		<tr>

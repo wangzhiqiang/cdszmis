@@ -51,6 +51,10 @@ public class ProjectServiceImpl implements ProjectService {
 	public List<ProjectEntity> projectList() {
 		return projectdao.projectList();
 	}
+	
+	public List<ProjectStatusEntity> statusList(){
+		return projectdao.statusList();
+	}
 
 	public ProjectEntity projectManage(ProjectEntity project) {
 		return projectdao.projectManage(project);

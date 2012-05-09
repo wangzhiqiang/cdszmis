@@ -26,7 +26,7 @@
   
   <body>
    ProjectSign<br>
-   <form action="${roturl }/depart/depart_departmanager" method="get">
+   <form action="${rooturl }/depart/depart_departmanager" method="get">
 
 	<table id="detil">
 		<tr style="border-bottom-color: #FFF;border-bottom-style: solid;border-bottom: 1px;">
@@ -34,7 +34,7 @@
 		</tr>
 		<tr>
 			<td> 项目状态</td><td><label name="projectstatus.status">
-			<input name="projectstatus.status" type="radio" value="1" />出版
+			<input name="projectstatus.status" type="radio" value="4" />出版
 			</label></td>
 		</tr>
 		<tr>
@@ -73,10 +73,10 @@
 			<td width="30px;"><input class="pjsid" type="radio" name="pjsid"/></td> 
 			<td  width="40px;"> ${ls.id }</td>
 			<td>${ls.projectid }</td>
-			<td> <c:if test="${ls.status ==1}">方案</c:if> <c:if test="${ls.status ==2}">初设</c:if>
-			<c:if test="${ls.status ==3}">施工图</c:if> <c:if test="${ls.status ==4}">院长签发</c:if>
-			<c:if test="${ls.status ==5}">出版</c:if> <c:if test="${ls.status ==6}">发行</c:if>
-			<c:if test="${ls.status ==7}">结束</c:if> <c:if test="${ls.status ==8}">归档</c:if>
+			<td> <c:if test="${ls.status ==0}">方案</c:if> <c:if test="${ls.status ==1}">初设</c:if>
+			<c:if test="${ls.status ==2}">施工图</c:if> <c:if test="${ls.status ==3}">院长签发</c:if>
+			<c:if test="${ls.status ==4}">出版</c:if> <c:if test="${ls.status ==5}">发行</c:if>
+			<c:if test="${ls.status ==6}">结束</c:if> <c:if test="${ls.status ==7}">归档</c:if>
 			</td> 
 			<td> ${ls.history }</td>
 			<td>${ls.createdate }</td>

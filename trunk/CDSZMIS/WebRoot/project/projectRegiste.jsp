@@ -41,7 +41,7 @@ function delproject() {
 
 <body>
 	ProjectRegiste
-	<form action="/project/pro_projectmanage" method="get">
+	<form action="${rooturl }/project/pro_projectmanage" method="get">
 	<table>
 		
 		<tr>

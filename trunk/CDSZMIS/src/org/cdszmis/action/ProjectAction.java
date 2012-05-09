@@ -78,6 +78,8 @@ public class ProjectAction extends ActionSupport {
 			
 			e.printStackTrace();
 		}
+		List<ProjectStatusEntity> plist = projectservice.statusList();
+		ActionContext.getContext().put("allproject", plist);
 		return "projectimpl";
 	}
 	public String projectCheck(){
@@ -87,6 +89,8 @@ public class ProjectAction extends ActionSupport {
 			
 			e.printStackTrace();
 		}
+		List<ProjectStatusEntity> plist = projectservice.statusList();
+		ActionContext.getContext().put("allproject", plist);
 		return "projectcheck";
 	}
 	public String projectSign(){
@@ -96,6 +100,8 @@ public class ProjectAction extends ActionSupport {
 			
 			e.printStackTrace();
 		}
+		List<ProjectStatusEntity> plist = projectservice.statusList();
+		ActionContext.getContext().put("allproject", plist);
 		return "projectsign";
 	}
 	
@@ -106,6 +112,8 @@ public class ProjectAction extends ActionSupport {
 			
 			e.printStackTrace();
 		}
+		List<ProjectStatusEntity> plist = projectservice.statusList();
+		ActionContext.getContext().put("allproject", plist);
 		return "projectpublic";
 	}
 	public String projectSale(){
@@ -115,6 +123,8 @@ public class ProjectAction extends ActionSupport {
 			
 			e.printStackTrace();
 		}
+		List<ProjectStatusEntity> plist = projectservice.statusList();
+		ActionContext.getContext().put("allproject", plist);
 		return "projectsale";
 	}
 	public String projectFilling(){
@@ -124,6 +134,8 @@ public class ProjectAction extends ActionSupport {
 			
 			e.printStackTrace();
 		}
+		List<ProjectStatusEntity> plist = projectservice.statusList();
+		ActionContext.getContext().put("allproject", plist);
 		return "projectfilling";
 	}
 
