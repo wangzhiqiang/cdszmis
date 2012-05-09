@@ -44,6 +44,11 @@ public interface ProjectDao {
 	 */
 	public List<ProjectEntity> projectList();
 	/**
+	 * 查询所有projectstatusentity
+	 * @return
+	 */
+	public List<ProjectStatusEntity> statusList();
+	/**
 	 * 所级安排及分派项目的查询（查询所有未安排的项目）
 	 * @return
 	 */

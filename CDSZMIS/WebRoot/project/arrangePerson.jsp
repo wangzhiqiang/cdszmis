@@ -31,7 +31,7 @@
 
 <body>
 	ArrangePerson
-	<form action="/project/pro_arrangePerson" method="get">
+	<form action="${rooturl }/project/pro_arrangePerson" method="get">
 	<table>
 		
 		<tr>

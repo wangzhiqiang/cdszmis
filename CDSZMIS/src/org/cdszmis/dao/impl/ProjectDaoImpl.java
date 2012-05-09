@@ -52,12 +52,15 @@ public class ProjectDaoImpl implements org.cdszmis.dao.ProjectDao {
 		return hibernateUtils.findall(ProjectEntity.class);
 	}
 	
+	public List <ProjectStatusEntity> statusList(){
+		return hibernateUtils.findall(ProjectStatusEntity.class);
+	}
 	public List<ProjectArrangementEntity> noarrangedDepart(){
-		return (List<ProjectArrangementEntity>) hibernateUtils.findlistByHsql("from ProjectArrangementEntity obj where obj.departids!=null");
+		return (List<ProjectArrangementEntity>) hibernateUtils.findlistByHsql("from ProjectArrangementEntity obj where obj.departids =''");
 	}
 	
 	public List<ProjectDepartArrangementEntity> noarrangedPerson(){
-		return (List<ProjectDepartArrangementEntity>) hibernateUtils.findlistByHsql("from ProjectDepartArrangementEntity obj where obj.chargeperson=null");
+		return (List<ProjectDepartArrangementEntity>) hibernateUtils.findlistByHsql("from ProjectDepartArrangementEntity obj where obj.chargeperson=''");
 	}
 	
 	public ProjectArrangementEntity arrangeDepart(ProjectArrangementEntity paentity,String departids){
