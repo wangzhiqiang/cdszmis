@@ -32,5 +32,6 @@ public interface ProjectService {
 		
 		public  ProjectDepartArrangementEntity arrangeChargePerson(ProjectDepartArrangementEntity pdaentity, String chargeperson);
 		
+		
 		public ProjectStatusEntity changeStatus(ProjectStatusEntity projectstatus);
 }

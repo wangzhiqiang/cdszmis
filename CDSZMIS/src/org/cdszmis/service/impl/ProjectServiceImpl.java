@@ -24,6 +24,7 @@ public class ProjectServiceImpl implements ProjectService {
 		return projectdao.arrangeDepart(paentity, departids);
 	}
 
+
 	public ProjectStatusEntity changeStatus(ProjectStatusEntity projectstatus) {
 		return projectdao.changeStatus(projectstatus);
 	}

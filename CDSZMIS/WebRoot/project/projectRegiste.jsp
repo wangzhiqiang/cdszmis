@@ -4,7 +4,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 
  <link href="${rooturl }/styles/banner.css" rel="stylesheet" type="text/css" />
-<script language="JavaScript" src="${rooturl }/scripts/jquery/jquery-1.5.2.js">
+<script language="JavaScript" src="${rooturl }/scripts/jquery/jquery-1.5.2.js"></script>
+<script type="text/javascript">
 function delproject() {
 		//alert($("#departid").val());
 		window.location.href = "${roturl }/project/pro_projectmanage?project.id="+$("#projectid").val()+"&isdel=true";

@@ -77,9 +77,12 @@ public class ProjectDaoImpl implements org.cdszmis.dao.ProjectDao {
 	}
 	
 	
+	
+	
 	public ProjectStatusEntity changeStatus(ProjectStatusEntity projectstatus){
 		try {
 			if ("0".equals(projectstatus.getStatus())) {//"方案"
+				//return  (ProjectStatusEntity) hibernateUtils.saveorupdate(projectstatus);
 				projectstatus.setStatus(0);
 			} 			
 			if("1".equals(projectstatus.getStatus())){
