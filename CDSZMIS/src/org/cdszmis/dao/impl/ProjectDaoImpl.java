@@ -102,13 +102,13 @@ public class ProjectDaoImpl implements org.cdszmis.dao.ProjectDao {
 		    if("6".equals(projectstatus.getStatus())){
 				projectstatus.setStatus(6);//将状态更改为"项目结束"
 			}
-		    if("7".equals(projectstatus.getStatus())){
+		    if("6".equals(projectstatus.getStatus())){
 				projectstatus.setStatus(7);//将状态更改为"归档"
 			}
 		    
 		} catch (Exception e) {
 			e.printStackTrace();
-			// TODO: handle exception
+			
 		}
 		return projectstatus;
 	}
