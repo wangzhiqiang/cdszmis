@@ -4,7 +4,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 
  <link href="${rooturl }/styles/banner.css" rel="stylesheet" type="text/css" />
-<script language="JavaScript" src="${rooturl }/scripts/jquery/jquery-1.5.2.js">
+<script language="JavaScript" src="${rooturl }/scripts/jquery/jquery-1.5.2.js"></script>
+<script type="text/javascript">
 
 	$(document).ready(function(){
 		 $(".pjdid").click(function(){
@@ -33,8 +34,8 @@
 
 </head>
 
-<body>
-	ArrangeDepart
+<body>&nbsp; 
+	ArrangeDepart 
 	<form action="${rooturl }/project/pro_arrangeDepart" method="get">
 	<table>
 		
@@ -48,14 +49,14 @@
 			<td>项目所级</td>
 			<td>
 			<label name="paentity.departids">
-			<input name="paentity.departids" type="radio" value="1" checked="checked"/>一所
+			<input  name="paentity.departids" type="radio" value="1"  />一所
 			<input  name="paentity.departids" type="radio" value="2" />二所
 			<input  name="paentity.departids" type="radio" value="3" />三所
 			</label>
 			</td>
 		</tr>
 		<tr>
-			<td>下达时间</td><td><input    id="startdate" name="paentity.startdate" type="text" /></td>
+			<td>下达时间</td><td><input  id="startdate" name="paentity.startdate" type="text" /></td>
 		</tr>
 		<tr>
 			<td>结束时间</td><td><input id="designdate" name="paentity.designdate" type="text" /></td>
@@ -64,7 +65,7 @@
 			<td>审查结束时间</td><td><input id="examinationedate"  name="paentity.examinationedate" type="text" /></td>
 		</tr>
 		<tr>
-			<td>签字时间</td><td><input id="money" name="paentity.signdate" type="text" /></td>
+			<td>签字时间</td><td><input id="signdate" name="paentity.signdate" type="text" /></td>
 		</tr>
 		<tr>
 			<td>出版结束时间</td><td><input id="publicationdate" name="paentity.publicationdate" type="text" /></td>

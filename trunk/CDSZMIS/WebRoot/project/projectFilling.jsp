@@ -26,7 +26,7 @@
   
   <body>
    ProjectFilling<br>
-   <form action="${rooturl }/depart/depart_departmanager" method="get">
+   <form action="${rooturl }/project/pro_projectFilling" method="get">
 
 	<table id="detil">
 		<tr style="border-bottom-color: #FFF;border-bottom-style: solid;border-bottom: 1px;">
