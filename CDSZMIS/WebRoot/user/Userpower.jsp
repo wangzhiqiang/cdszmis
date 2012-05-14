@@ -13,7 +13,7 @@
 	
 	$(document).ready(function(){
 		$(".dpid").click(function(){	 
-		$("#usname").val($.trim($(this).parent().parent().children().eq(1).html()));
+		$("#usname").val($.trim($(this).parent().parent().children().eq(1).html()));	
         $("#userid").val( $(this).val()); 
 		});
 	}
@@ -74,36 +74,36 @@
 	</form>		
 
 
-	<table border="1" width="80%">
-	
-		<tr>
-			<td  width="40px;">选择</td>
-			<td>用户名</td>
-			<td>用户组</td>
-			<td>部门</td>
-	
-		</tr>
+<div class='table' style="width:450px;margin-left: 5px;">
+	<div class='hd' style="width: 100%">
+			<div class='td' style="width: 50px;">选择</div>
+			<div class='td' style="width: 50px;">用户名</div>
+			<div class='td' style="width: 100px;">用户组</div>
+			<div class='td' style="width: 100px;">部门</div>
+
+	</div>
+
 	<c:forEach items="${list}" var="l">
 		
-		<tr>
-			<td width="30px;"><input class="dpid" type="radio" name="dpid" value="${l.id }"/></td> 
-			<td>${l.usname}</td>
+		<div class='tr'>
+			<div class='td'style="width: 50px;"><input class="dpid" type="radio" name="dpid" value="${l.id }"/></div>
+			<div class='td' style="width: 50px;">${l.usname}</div>
 			
 			<td>	
 			<c:forEach items="${grouplist}" var="gl">
-				<c:if test="${gl.id == l.usgroups }">${gl.groupname}</c:if> 
+				<div class='td' style="width: 100px;"><c:if test="${gl.id == l.usgroups }">${gl.groupname}</c:if> </div>
 			</c:forEach>
 			</td>
 			
 			<td>
 			<c:forEach items="${departlist}" var="dl">
-				<c:if test="${dl.id == l.usdeparts }">${dl.departname}</c:if> 
+				<div class='td' style="width: 100px;"><c:if test="${dl.id == l.usdeparts }">${dl.departname}</c:if> </div>
 			</c:forEach>
 			</td>
 		
-		</tr>
+		</div>
 	</c:forEach>
-</table>
+</div>
 	
 	
 	
