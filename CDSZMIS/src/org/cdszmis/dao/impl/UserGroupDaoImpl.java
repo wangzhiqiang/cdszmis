@@ -51,4 +51,9 @@ public class UserGroupDaoImpl implements UserGroupDao {
 		
 		return hibernateUtils.findall(SysMenuEntity.class);
 	}
+
+	public UserGroupEntity allocationGroup(UserGroupEntity group) {
+		 
+		return (UserGroupEntity) hibernateUtils.saveorupdate(group);
+	}
 }

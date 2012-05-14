@@ -9,7 +9,7 @@
 .hd{
 	float: left;
 	margin: 5px 0;
-	width: 949px;
+	width: 900px;
 	height: 26px;
 	color: #333;
 	background: #e5e5e5;
@@ -49,3 +49,15 @@
 	color: #333;
 	border-right: 1px solid #ccc;	
 }
+
+/**table css end ***/
+
+.rigthtitle{
+	width: 100%;
+	height: 25px;
+	line-height: 24px;
+	font-size: 16px;
+	color: #080808;
+	margin: 5px 10px 5px 0px;
+}
+

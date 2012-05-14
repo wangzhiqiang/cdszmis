@@ -15,7 +15,7 @@
 </head>
 
 <body>
-<form><br/> 
+<form action='/usergroup/group_groupMenu'><br/> 
 <input type='hidden' value='' id='menuids'name='menuids'>
 <input type='hidden' value='' id='groupid'name='groupid'>
 	<input type='submit' value="修改"/>
@@ -124,7 +124,7 @@
 				else{
 					var ids=$('#menuids').val();
 					var id=$(this).val();
-				
+				 
 					if($(this).attr('checked')){
 						var arrayids= ids.split(",");
 						var L=arrayids.length;
@@ -135,19 +135,19 @@
 								 }
 						 }
 						 ids=ids+','+id;
+						 $('#menuids').val(ids);
 						 
 					}else{
-						  
 						var arrayids= ids.split(",");
 						var L=arrayids.length;
 						 for(var j=0 ;j<L;j++){
 							 if(id==arrayids[j])
 								 {
-								 arrayids[j].del();
+								 arrayids.splice(j,1);
 								 }
 						 }  
-					}	
-					$('#menuids').val(arrayids);
+						 $('#menuids').val(arrayids);
+					}
 				}
 				
 			});

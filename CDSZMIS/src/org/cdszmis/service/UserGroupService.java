@@ -4,7 +4,8 @@ import java.util.List;
 import org.cdszmis.entity.SysMenuEntity;
 import org.cdszmis.entity.UserEntity;
 import org.cdszmis.entity.UserGroupEntity;
-
+import org.springframework.stereotype.Service;
+@Service
 public interface UserGroupService {
 
 	/**
@@ -46,4 +47,16 @@ public interface UserGroupService {
 	public UserGroupEntity findByid(int id);
 
 	public List<UserGroupEntity> groupList();
+	
+	/**
+	 * 权限分配
+	 * @param group
+	 * @return
+	 */
+	public UserGroupEntity allocationGroup(UserGroupEntity group);
+	
+	/**
+	 * 通过id查询sysmenu
+	 */
+	public SysMenuEntity sysmMenu(int id);
 }

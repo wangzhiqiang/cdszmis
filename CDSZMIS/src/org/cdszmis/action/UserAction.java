@@ -62,7 +62,11 @@ public class UserAction extends BaseAction {
 			if (u == null || u.equals("")) {
 				ActionContext.getContext().put("message", "用户名或密码错误");
 				return "message";
-			} else {
+			}else if (0==u.getStatus()){
+				ActionContext.getContext().put("message", "该用户尚未激活请联系管理员");
+				return "message";
+			}
+			else {
 				SysMenuEntity m = null;
 				UserGroupEntity group = null;
 				Map<Integer, SysMenuEntity> smap = new HashedMap();

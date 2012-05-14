@@ -22,7 +22,7 @@
 		</form>
 		<div>
 		<div class="table" name="dplist" >
-	 <div class='tr'>
+	 <div class='hd'>
 		<div class='td'  style="width: 40px;">选择</div>
 		<div class='td'  style="width: 40px;">ID</div>
 		<div class='td' style="width: 80px;">	 部门名称  </div>

@@ -34,6 +34,10 @@ public interface UserGroupDao {
 			SysMenuEntity menu);
 
 	/**
+	 * 权限分配
+	 */
+	public UserGroupEntity allocationGroup(UserGroupEntity group);
+	/**
 	 * 用户组menu查询
 	 */
 	public UserGroupEntity groupMenu(UserGroupEntity group);
@@ -60,5 +64,7 @@ public interface UserGroupDao {
 	 * @return
 	 */
 	public UserGroupEntity findByid(int id);
+	
+	
 
 }
