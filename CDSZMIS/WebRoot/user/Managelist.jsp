@@ -23,9 +23,10 @@
         $("#officenum").val($.trim($(this).parent().parent().children().eq(6).html()));	
         $("#idcard").val($.trim($(this).parent().parent().children().eq(7).html()));	
         $("#birthday").val($.trim($(this).parent().parent().children().eq(8).html()));	
+        $("#usgroups").val($.trim($(this).parent().parent().children().eq(9).html()));	      
         $("#conditions").val($.trim($(this).parent().parent().children().eq(10).html()));	
-        $("#userid").val( $(this).val());			 
-			 
+        $("#userid").val( $(this).val());
+        $("#introduction").val( $(this).val());		 
 		});
 
 		
@@ -146,7 +147,7 @@
 							onMouseOver="divonfouce();" onMouseOut="divonblur();">
 							<div style="background-color:#efefef;border-bottom:1px solid #FFFFFF; cursor:hand;" >
 								<c:forEach items="${grouplist }" var="list">
-								  <input id="group" name="user.usgroups" type=checkbox value="${list.id }:${  list.groupname}" onclick="setInputcolumn(this)"> ${list.id }:${  list.groupname}  <br/>
+								  <input id="group" name="user.usgroups" type=checkbox value="${list.id }" onclick="setInputcolumn(this)"> ${list.id }:${  list.groupname}  <br/>
 								 </c:forEach>
 							</div>
 						</div>
@@ -179,6 +180,9 @@
 				</label>
 				</td>
 			</tr>
+			
+			<input  id="introduction" name="user.introduction" type="hidden" value=""/>
+			
 			<tr>
 				<td><input id="submit"   value="提交" type="submit"  /></td>
 				<td><input value="重置" type="reset" /></td>
@@ -214,7 +218,7 @@
 			<td>${l.officenum}</td>
 			<td>${l.idcard}</td>
 			<td>${l.birthday}</td>
-			<td></td>
+			<td>${l.usgroups}</td>
 			<td>${l.conditions}</td>
 			
 
