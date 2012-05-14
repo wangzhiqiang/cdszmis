@@ -1,8 +1,13 @@
 package org.cdszmis.action;
 
+import java.text.ParseException;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -43,6 +48,7 @@ public class UserAction extends BaseAction {
 	private Integer departid;
 	private String keyword;
 	private String idcard;
+	private String birthday;
 	/**
 	 * 用户登录
 	 * 
@@ -150,9 +156,20 @@ public class UserAction extends BaseAction {
 					DepartmentEntity dp = new DepartmentEntity();
 					dp = departService.findByid(departid);
 					user.setDepartmentEntity(dp);
+					user.setUsdeparts(departid);
 				}
 				
-				 
+				 	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+				 	
+				 //	ParsePosition pos = new ParsePosition(0);
+				 	try {
+						Date dt = formatter.parse(birthday);
+						user.setBirthday(dt);
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
 					userService.userRegister(user);
 				 
 				ActionContext.getContext().put("message",user.getLoginname()+"注册成功！");
@@ -174,6 +191,9 @@ public class UserAction extends BaseAction {
 		return "login.jsp";
 	}
 	
+	/**
+	 * 用户信息维护
+	 */
 	public String userUpdate(){
 		ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());
 		ActionContext.getContext().getSession().put("departlist", departService.departList());
@@ -181,6 +201,16 @@ public class UserAction extends BaseAction {
 			String uspass = Encipherment.Enc_MD5_2(user.getUspass());
 			user.setUspass(uspass);
 			user.setUsdeparts(departid);
+		 	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		 	
+			 //	ParsePosition pos = new ParsePosition(0);
+			 	try {
+					Date dt = formatter.parse(birthday);
+					user.setBirthday(dt);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			userService.userManager(user);
 		}
 
@@ -190,6 +220,9 @@ public class UserAction extends BaseAction {
 		return "update";
 	}
 	
+	/**
+	 * 用户列表显示
+	 */
 	public String userManagelist(){	
 	
 		ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());		
@@ -204,6 +237,9 @@ public class UserAction extends BaseAction {
 		
 	}
 	
+	/**
+	 * 用户人事管理
+	 */
 	public String userManager(){
 		ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());
 		ActionContext.getContext().getSession().put("departlist", departService.departList());
@@ -211,6 +247,16 @@ public class UserAction extends BaseAction {
 			String uspass = Encipherment.Enc_MD5_2(user.getUspass());
 			user.setUspass(uspass);
 			user.setUsdeparts(departid);
+		 	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		 	
+			 //	ParsePosition pos = new ParsePosition(0);
+			 	try {
+					Date dt = formatter.parse(birthday);
+					user.setBirthday(dt);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			userService.userManager(user);
 			
 		}
@@ -222,7 +268,10 @@ public class UserAction extends BaseAction {
 		return "updatemanager";
 
 	}
-
+	
+	/**
+	 * 用户模糊查询
+	 */
 	public String userSelect(){
 		
 		String key = null;
@@ -237,6 +286,9 @@ public class UserAction extends BaseAction {
 		
 	}
 	
+	/**
+	 * 用户详细信息查询
+	 */
 	public String userContent(){
 		
 		String card = null;
@@ -249,6 +301,9 @@ public class UserAction extends BaseAction {
 		return "Content";
 	}
 	
+	/**
+	 * 用户注销
+	 */
 	public String userLogout(){
 		ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());
 		ActionContext.getContext().getSession().put("departlist", departService.departList());
@@ -271,6 +326,33 @@ public class UserAction extends BaseAction {
 		ActionContext.getContext().getSession().put("list", l);
 		
 		return "change";
+	}
+	
+	/**
+	 * 用户权限修改
+	 */
+	public String userPower(){
+		ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());
+		ActionContext.getContext().getSession().put("departlist", departService.departList());
+		
+		if(user != null){
+			List<UserEntity> ul =  userService.userLogout(user.getId());
+			UserEntity user1 = null;
+			if(ul != null){
+				Iterator<UserEntity> iter = ul.iterator();
+				while(iter.hasNext()){
+					user1 = iter.next();
+					user1.setUsgroups(user.getUsgroups());
+					user1.setUsdeparts(departid);
+					userService.userManager(user1);
+				}
+			}			
+		}
+		
+		
+		List l = userService.selectList("");
+		ActionContext.getContext().getSession().put("list", l);
+		return "power";
 	}
 	
 	public String userMenu() {
@@ -316,6 +398,14 @@ public class UserAction extends BaseAction {
 
 	public String getIdcard() {
 		return idcard;
+	}
+
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+
+	public String getBirthday() {
+		return birthday;
 	}
 
 

@@ -22,6 +22,8 @@
 		        $("#birthday").val($.trim($(this).parent().parent().children().eq(8).html()));	
 		        $("#conditions").val($.trim($(this).parent().parent().children().eq(10).html()));	
 		        $("#userid").val( $(this).val());
+		        $("#conditions").val( $(this).val());
+		        
 		});
 
 
@@ -44,7 +46,7 @@
 	　　　　　　　　alert("邮箱格式不正确");  
 	　　　　　　　　return false;  
 	　　　　　　}  
-    		//手机严重  
+    		//手机验证   
 			if(phone.search(/^1[3|4|5|8][0-9]\d{8}$/) == -1)
 			{
 				alert("手机号错误 ");
@@ -71,6 +73,7 @@
   <body>
 	<form action="/user/user_userUpdate" method="post">
 	<input id="userid" name="user.id" type="hidden" value=""></input>
+	<input id="conditions" name="user.conditions" type="hidden" value=""></input>
 		<table>
 			<tr>
 				<td>用户名</td>
