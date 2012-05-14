@@ -5,6 +5,7 @@
 
 <html>
   <head>
+  <link href="${rooturl }/styles/common.css" rel="stylesheet" type="text/css" />
 	<link href="${rooturl }/scripts/jquery/jquery.multiSelect.css" rel="stylesheet" type="text/css" />
 	<link href="${rooturl }/styles/banner.css" rel="stylesheet" type="text/css" />
 	<script language="JavaScript" src="${rooturl }/scripts/jquery/jquery-1.5.2.js"></script>

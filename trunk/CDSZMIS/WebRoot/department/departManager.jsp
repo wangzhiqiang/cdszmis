@@ -6,6 +6,7 @@
 
   <head>
  	<link href="${rooturl }/styles/banner.css" rel="stylesheet" type="text/css" />
+ 	<link href="${rooturl }/styles/common.css" rel="stylesheet" type="text/css" />
 	<script language="JavaScript" src="${rooturl }/scripts/jquery/jquery-1.5.2.js"></script>
 <script type="text/javascript">
 
@@ -37,7 +38,7 @@
    部门管理<br>
    <form action="${roturl }/depart/depart_departmanager" method="get">
 
-	<table id="detil">
+	<table id="detil" style="margin-top: 10px;">
 		<tr style="border-bottom-color: #FFF;border-bottom-style: solid;border-bottom: 1px;">
 			<td> 部门名称：</td><td> <input id="departname" type="text" name="depart.departname" value=""/></td>
 		</tr>
@@ -66,33 +67,30 @@
      <input id="departid" name="depart.id" type="hidden" value=""></input>
 	 <input  type="submit" value="添加"/> <input  type="submit" value="修改"/> <input  type="button" onclick="deldepart()" value="删除"/><br>
 	</form>
-	<table name="dplist" width="90%;" align="center">
-	 <tr>
-		<td  width="40px;">选择</td>
-		<td  width="40px;">ID</td>
-		<td>	 部门名称  </td>
-		<td>部门电话</td>
-		<td> 负责人</td>
-		<td> 部门状态 </td>
-		<td>部门简介  </td> 
-		<td>职责描述  </td> 
-	</tr>
+	<div class="table" name="dplist" >
+	 <div class='tr'>
+		<div class='td'  style="width: 40px;">选择</div>
+		<div class='td'  style="width: 40px;">ID</div>
+		<div class='td' style="width: 80px;">	 部门名称  </div>
+		<div class='td' style="width: 70px;">部门电话</div>
+		<div class='td' style="width: 70px;"> 负责人</div>
+		<div class='td' style="width: 70px;"> 部门状态 </div>
+		<div class='td' style="width: 210px;">部门简介  </div> 
+		<div class='td'style="width: 232px;">职责描述  </div>
+	</div>
 	   <c:forEach items="${alldepart }" var="ls">
-		   <tr  >
-			   
-			<td width="30px;"><input class="dpid" type="radio" name="dpid"/></td> 
-			<td  width="40px;"> ${ls.id }</td>
-			<td>	${ls.departname }</td>
-			<td>${ls.departphonenumber } </td>
-			<td> ${ls.departowner }</td>
-			<td> <c:if test="${ls.status ==0}">  激活</c:if> <c:if test="${ls.status !=0}">未激活</c:if></td> 
-			<td>${ls.departnode }  </td>
-			<td>${ls.responsibility }   </td> 
-			
-			   
-		   </tr>
+		   <div class='tr'>
+			<div class='td'  style="width: 40px;"><input class="dpid" type="radio" name="dpid"/></div>
+			<div class='td'  style="width: 40px;"> ${ls.id }</div>
+			<div class='td' style="width: 80px;">${ls.departname }</div>
+			<div class='td' style="width: 70px;">${ls.departphonenumber } </div>
+			<div class='td' style="width: 70px;">${ls.departowner }</div>
+			<div class='td' style="width: 70px;"><c:if test="${ls.status ==0}">  激活</c:if> <c:if test="${ls.status !=0}">未激活</c:if></div>
+			<div class='td' style="width: 210px;">${ls.departnode }  </div>
+			<div class='td'style="width: 232px;">${ls.responsibility }   </div>
+		   </div>
 	   </c:forEach>
-   </table>
+   </div>
    
   </body>
 </html>

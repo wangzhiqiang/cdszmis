@@ -6,6 +6,7 @@
 <html>
   <head> 
     <title>用户详细信息</title>
+    <link href="${rooturl }/styles/common.css" rel="stylesheet" type="text/css" />
 </head>
   
   <body> 

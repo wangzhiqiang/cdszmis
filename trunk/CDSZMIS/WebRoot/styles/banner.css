@@ -22,24 +22,28 @@ body {
 	cursor: pointer;
 	margin-left: 5%;
 	height: 32px;
+	line-height:30px;
 	width: 200px;
-	font-size: 18px; 
+	color:#333;
 	text-align : left;
 	font: "微软雅黑";
 	background: url(../images/menu_bgs.gif) no-repeat;
 	text-align: left;
+	font-size: 16px;
 }
 
 #menu h2 {
+	color:#333;
 	cursor: pointer;
 	margin-left: 5%;
 	height: 25px;
+	line-height:24px;
 	width: 182px;
 	text-align: left;
-	font-size: 18px; 
 	font: "微软雅黑";
 	background: url(../images/menu_bg1.gif) no-repeat;
 	border-bottom: solid 1px #FFF;
+	font-size: 14px;
 }
 
 #menu ul {
@@ -58,8 +62,10 @@ body {
 	width: 182px;
 	text-align: center;
 	text-decoration: none;
+	line-height:24px;
 	border-bottom:solid 1px #FFF;
 	font: "微软雅黑";
+	color:#333;
 	background: url(../images/menu_bg1.gif) no-repeat;
 }
 #menu ul li a:hover {

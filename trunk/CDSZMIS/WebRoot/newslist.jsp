@@ -10,6 +10,7 @@
 <script language="JavaScript" src="${rooturl }/scripts/thickbox.js"></script>
 <link href="${rooturl }/styles/thickbox.css" rel="stylesheet"
 	type="text/css" />
+	<link href="${rooturl }/styles/common.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
