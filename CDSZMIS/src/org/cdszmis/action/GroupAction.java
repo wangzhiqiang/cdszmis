@@ -23,6 +23,8 @@ public class GroupAction extends ActionSupport {
 	private String menuids;
 	private String groupid;
 	private UserGroupEntity group;
+	private String userid;
+	private String groupids;
 
 	public String groupManager() {
  
@@ -77,6 +79,7 @@ public class GroupAction extends ActionSupport {
 			userGroupService.groupManager(usergroup);
 			
 		}
+		 
 		ActionContext.getContext().put("allmenu",allmenu);
 		ActionContext.getContext().put("allgroup",allgroup);
 		
@@ -84,12 +87,39 @@ public class GroupAction extends ActionSupport {
 	}
 	
 	public String groupUser(){
-		List <UserEntity> lsu=new ArrayList <UserEntity>();
-
-		lsu=publicDao.queryList(UserEntity.class);
-		
-		
+		List<UserGroupEntity> lsg=publicDao.queryList(UserGroupEntity.class);
+		List <UserEntity> lsu=publicDao.queryList(UserEntity.class);
+		if(null!=userid&&null!=groupids)
+		{
+			String gid[] = groupids.split(",");
+			UserEntity use=null;
+			UserGroupEntity usergroup=null;
+			use=(UserEntity) publicDao.queryObject(UserEntity.class,Integer.valueOf(userid));
+			
+			Set<UserGroupEntity> su=new HashSet<UserGroupEntity>();
+			for (int i=0 ;i<gid.length;i++){
+				usergroup=(UserGroupEntity) publicDao.queryObject(UserGroupEntity.class,Integer.valueOf(gid[i]));
+				su.add(usergroup);
+			}
+		 use.setUserGroupEntity(su);
+		 publicDao.saveOrupdateObject(use);
+		}
+		ActionContext.getContext().put("lsg",lsg);
+		ActionContext.getContext().put("lsu",lsu);
 		return "groupuser";
+	}
+	
+	public String groupmenuview(){
+		
+		List <SysMenuEntity> lsm=new ArrayList <SysMenuEntity>();
+		SysMenuEntity mu=null;
+		String mid[] = menuids.split(",");
+		for (int i=0 ;i<mid.length;i++){
+		mu= (SysMenuEntity) publicDao.queryObject(SysMenuEntity.class,Integer.valueOf(mid[i]));
+			 lsm.add(mu);
+		}
+		ActionContext.getContext().put("lsm",lsm);
+		return "groupmenuview";
 	}
 	
 	public String getMenuids() {
@@ -116,6 +146,26 @@ public class GroupAction extends ActionSupport {
 
 	public void setGroupid(String groupid) {
 		this.groupid = groupid;
+	}
+
+
+	public String getUserid() {
+		return userid;
+	}
+
+
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
+
+
+	public String getGroupids() {
+		return groupids;
+	}
+
+
+	public void setGroupids(String groupids) {
+		this.groupids = groupids;
 	}
 
 }

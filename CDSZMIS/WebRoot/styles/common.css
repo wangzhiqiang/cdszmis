@@ -60,4 +60,7 @@
 	color: #080808;
 	margin: 5px 10px 5px 0px;
 }
-
+.view:HOVER{
+	cursor: pointer;
+	color: red;
+}

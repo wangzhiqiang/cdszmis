@@ -48,6 +48,7 @@
 			<result name="add">/group/group.jsp</result>
 			<result name="groupmenu">/group/groupmenu.jsp</result>
 			<result name="groupuser">/group/groupuser.jsp</result>
+			<result name="groupmenuview">/group/groupmenuview.jsp</result>
 		</action>
 	</package>
 	<package name="files" extends="Interceptor" namespace="/files">
