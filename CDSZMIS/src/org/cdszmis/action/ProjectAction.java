@@ -1,17 +1,12 @@
 package org.cdszmis.action;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import javax.annotation.Resource;
-import org.cdszmis.entity.DepartmentEntity;
 import org.cdszmis.entity.ProjectArrangementEntity;
 import org.cdszmis.entity.ProjectDepartArrangementEntity;
 import org.cdszmis.entity.ProjectEntity;
 import org.cdszmis.entity.ProjectStatusEntity;
-import org.cdszmis.entity.UserGroupEntity;
 import org.cdszmis.service.ProjectService;
-import org.cdszmis.utils.Encipherment;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -164,7 +159,7 @@ public class ProjectAction extends ActionSupport {
 	 * @return
 	 */
 	public String conutBydepart() {
-
+			
 		return "countbydepart";
 	}
 
