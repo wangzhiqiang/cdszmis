@@ -146,7 +146,30 @@ public class ProjectAction extends ActionSupport {
 		
 		return "countbydepart";
 	}
-	
+	/**
+	 * 项目状态查询
+	 * @return
+	 */
+	public String projectStatus(){
+		 //ProjectStatusEntity
+		 return "projectstatus";
+	 }
+	/**
+	 * 项目详细信息查询
+	 * @return
+	 */
+	public String projectDetail(){
+		
+		
+		return "projectdetail";
+	}
+	/**
+	 * 项目进度查询
+	 * @return
+	 */
+	public String projectProgress(){
+		return "projectprogess";
+	}
 
 	public ProjectEntity getProject() {
 		return project;

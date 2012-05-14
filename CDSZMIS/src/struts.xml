@@ -53,10 +53,18 @@
 		</action>
 	</package>
 	<package name="files" extends="Interceptor" namespace="/files">
-		<action name="files_*" class="org.cdszmis.action.FilesAction"
-			method="{1}">
+		<action name="files_*" class="org.cdszmis.action.FilesAction" method="{1}">
 			<interceptor-ref name="permissstack"></interceptor-ref>
 			<result name="add">/index.jsp</result>
+			<result name="fileupload">/files/fileupload.jsp</result>
+			<result name="copyuser">/files/listOfCopy.jsp</result>
+			<result name="examinuser">/files/listOfExamine.jsp</result>
+			<result name="transactuser">/files/listOfTransact.jsp</result>
+			<result name="mouldcancel">/files/mouldCancel.jsp</result>
+			<result name="mouldexamine">/files/mouldExamine.jsp</result>
+			<result name="mouldtransact">/files/mouldTransact.jsp</result>
+			<result name="mouldTransactSuccess">/files/mouldTransactSuccess.jsp</result>
+			<result name="mouodlCopy">/files/mouodlCopy.jsp</result>
 		</action>
 	</package>
 	
@@ -75,6 +83,9 @@
 			<result name="arrangedepart">/project/arrangeDepart.jsp</result>
 			<result name="arrangeperson">/project/arrangePerson.jsp</result>
 			<result name="countbydepart">/project/countBydepart.jsp</result>
+			<result name="projectstatus">/project/projectstatus.jsp</result>
+			<result name="projectdetail">/project/projectdetail.jsp</result>
+			<result name="projectprogess">/project/projectprogess.jsp</result>
 		</action>
 	</package>
 	
