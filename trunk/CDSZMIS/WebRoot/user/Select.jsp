@@ -22,20 +22,21 @@
 </form>
 
 
-<table border="1" width="80%">
-	<tr>
-		<td>姓名</td>
-		<td>性别</td>
-		<td>身份证</td>
-
-	</tr>
+<div class='table' style="width: 490px;margin-left: 5px;">
+	<div class='hd' style="width: 100%">
+	<div class='td' style="width: 50px;">姓名</div>
+	<div class='td' style="width: 50px;">性别</div>
+	<div class='td' style="width: 110px;">身份证</div>
+	</div>
+	
 	<c:forEach items="${list}" var="l">
-	<tr>
-		<td><a href="/user/user_userContent?idcard=${l.idcard}" >${l.usname}</td>
-		<td>${l.gender }</td>
-		<td>${l.idcard }</td>
-	</tr>
+	<div class='tr'>
+		<div class='td' style="width: 50px;"><a href="/user/user_userContent?idcard=${l.idcard}" >${l.usname}</div>
+		<td></td><div class='td' style="width: 50px;">${l.gender }</div>
+		<td></td><div class='td' style="width: 110px;">${l.idcard }</div>
+		
+	 </div>
 	</c:forEach>
-</table>
+</div>
   </body>
 </html>

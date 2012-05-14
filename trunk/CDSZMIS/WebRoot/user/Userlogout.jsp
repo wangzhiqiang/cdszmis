@@ -12,29 +12,29 @@
   </head>
   
   <body>
-	<table border="1" width="80%">
+<div class='table' style="width:1200px;margin-left: 5px;">
 
-	<tr>
-		<td>用户名</td>
-		<td>性别</td>
-		<td>邮箱</td>
-		<td>手机</td>
-		<td>办公室电话</td>
-		<td>身份证</td>
-		<td>用户组</td>
-		<td>用户状态</td>
-		<td>状态更改</td>
+	<div class='hd' style="width: 100%">
+			<div class='td' style="width: 50px;">用户名</div>
+			<div class='td' style="width: 50px;">性别</div>
+			<div class='td' style="width: 150px;">邮箱</div>
+			<div class='td' style="width: 100px;">手机</div>
+			<div class='td' style="width: 100px;">办公室电话</div>
+			<div class='td' style="width: 110px;">身份证</div>
+			<div class='td' style="width: 150px;">用户组</div>
+			<div class='td' style="width: 150px;">用户状态</div>
+			<div class='td' style="width: 150px;">状态更改</div>
 	</tr>
 	<c:forEach items="${list}" var="l">
-		<tr>
-			<td>${l.usname}</td>
-			<td>${l.gender}</td>
-			<td>${l.email}</td>
-			<td>${l.phone}</td>
-			<td>${l.officenum}</td>
-			<td>${l.idcard}</td>
-			<td>${l.usgroups }</td>
-			<td><c:if test="${l.status ==0}">激活</c:if> <c:if test="${l.status ==1}">未激活</c:if></td>
+		<div class='tr'>
+		<div class='td' style="width: 50px;">${l.usname}</div>
+		<div class='td' style="width: 50px;">${l.gender}</div>
+		<div class='td' style="width: 150px;">${l.email}</div>
+		<div class='td' style="width: 100px;">${l.phone}</div>
+		<div class='td' style="width: 100px;">${l.officenum}</div>
+		<div class='td' style="width: 110px;">${l.idcard}</div>
+		<div class='td' style="width: 150px;">${l.usgroups }</div>	
+		<div class='td' style="width: 150px;"><c:if test="${l.status ==0}">激活</c:if> <c:if test="${l.status ==1}">未激活</c:if></div>
 			
 			
 	<form  action="/user/user_userLogout" method="get">
@@ -50,11 +50,11 @@
 
 		
 	</form>	
-		</tr>
+	</div>
 	</c:forEach>		
 	
 		
-</table>
+</div>
 	
   </body>
 </html>

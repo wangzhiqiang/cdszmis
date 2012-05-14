@@ -191,42 +191,41 @@
 	</form>		
 	
 	
-<table border="1" width="80%">
+<div class='table' style="width:1200px;margin-left: 5px;">
+	<div class='hd' style="width: 100%">
+				<div class='td' style="width: 50px;">选择</div>
+				<div class='td' style="width: 50px;">用户名</div>
+				<div class='td' style="width: 50px;">登录名</div>
+				<div class='td' style="width: 50px;">性别</div>
+				<div class='td' style="width: 150px;">邮箱</div>
+				<div class='td' style="width: 100px;">手机</div>
+				<div class='td' style="width: 100px;">办公室电话</div>
+				<div class='td' style="width: 110px;">身份证</div>
+				<div class='td' style="width: 150px;">出生日期</div>
+				<div class='td' style="width: 100px;">用户组</div>
+				<div class='td' style="width: 100px;">调动情况</div>
 
-	<tr>
-		<td  width="40px;">选择</td>
-		<td>用户名</td>
-		<td>登录名</td>
-		<td>性别</td>
-		<td>邮箱</td>
-		<td>手机</td>
-		<td>办公室电话</td>
-		<td>身份证</td>
-		<td>出生日期</td>
-		<td>用户组</td>
-		<td>调动情况</td>
-
-	</tr>
+	</div>
 	<c:forEach items="${list}" var="l">
-		<tr>
-			<td width="30px;"><input class="dpid" type="radio" name="dpid" value="${l.id }"/></td> 
-			<td>${l.usname}</td>
-			<td>${l.loginname}</td>
-			<td>${l.gender}</td>
-			<td>${l.email}</td>
-			<td>${l.phone}</td>
-			<td>${l.officenum}</td>
-			<td>${l.idcard}</td>
-			<td>${l.birthday}</td>
-			<td>${l.usgroups}</td>
-			<td>${l.conditions}</td>
+		<div class='tr'>
+			<div class='td'style="width: 50px;"><input class="dpid" type="radio" name="dpid" value="${l.id }"/></div>
+			<div class='td' style="width: 50px;">${l.usname}</div>
+			<div class='td' style="width: 50px;">${l.loginname}</div>
+			<div class='td' style="width: 50px;">${l.gender}</div>
+			<div class='td' style="width: 150px;">${l.email}</div>
+			<div class='td' style="width: 100px;">${l.phone}</div>
+			<div class='td' style="width: 100px;">${l.officenum}</div>
+			<div class='td' style="width: 110px;">${l.idcard}</div>
+			<div class='td' style="width: 150px;">${l.birthday}</div>
+			<div class='td' style="width: 100px;">${l.usgroups}</div>
+			<div class='td' style="width: 100px;">${l.conditions}</div>
 			
 
-		</tr>
+		</div>
 	</c:forEach>
 		
 		
-</table>
+</div>
 
 
 	
