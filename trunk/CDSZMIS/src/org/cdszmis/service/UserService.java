@@ -5,7 +5,8 @@ import java.util.Set;
 
 import org.cdszmis.entity.UserEntity;
 import org.cdszmis.entity.UserGroupEntity;
-
+import org.springframework.stereotype.Service;
+@Service
 public abstract interface UserService {
 
  

@@ -51,7 +51,7 @@ function showsubmenu(sid) {
 						<tr>
 							<td width="74%" height="38" class="admin_txt">
 								 
-								<b>${user.usname }</b> 您好,感谢登陆使用！<b onclick="gotoindex()" style="color: #FFF000">   首页</b>
+								<b>${user.usname }</b> 您好,感谢登陆使用！  
 							</td>
 							 
 							<td width="22%" class="">

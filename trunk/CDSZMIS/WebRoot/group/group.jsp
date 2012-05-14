@@ -91,7 +91,7 @@
   </head>
   
   <body>
-group
+<div class='rigthtitle'> 用户组信息维护</div>
 <br/>
 <form action="/usergroup/group_groupManager" method="post">
 
@@ -156,9 +156,9 @@ group
 </form>
 
 <br/>
-<table>
+<table width="90%" align="left" border="1">
 	<tr>
-	  <td>选择</td><td>ID</td><td>用户组名称</td><td>用户组权限空间</td><td>用户主控制菜单</td>
+	  <td width="50">选择</td><td width="30">ID</td><td width=80>用户组名称</td><td>用户组权限空间</td><td>用户主控制菜单</td>
 	</tr>
 	<c:forEach items="${ugl }" var="group">
 	<tr>

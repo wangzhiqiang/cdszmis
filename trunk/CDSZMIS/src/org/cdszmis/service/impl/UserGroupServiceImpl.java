@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.cdszmis.dao.PublicDao;
 import org.cdszmis.dao.UserGroupDao;
 import org.cdszmis.entity.SysMenuEntity;
 import org.cdszmis.entity.UserEntity;
@@ -14,7 +15,7 @@ import org.springframework.stereotype.Service;
 public class UserGroupServiceImpl implements UserGroupService {
 	@Resource
 	private UserGroupDao userGroupDao;
-
+@Resource private PublicDao publicDao;
 	@SuppressWarnings("unchecked")
 	public List<UserGroupEntity> groupList() {
 		List<UserGroupEntity> list = userGroupDao.findAllgroup();
@@ -54,6 +55,14 @@ public class UserGroupServiceImpl implements UserGroupService {
 	@SuppressWarnings("rawtypes")
 	public List findAllgroup() {
 		return null;
+	}
+
+	public UserGroupEntity allocationGroup(UserGroupEntity group) {
+		return userGroupDao.allocationGroup(group);
+	}
+
+	public SysMenuEntity sysmMenu(int id) {
+		return (SysMenuEntity) publicDao.queryObject(SysMenuEntity.class,id);
 	}
 
 }

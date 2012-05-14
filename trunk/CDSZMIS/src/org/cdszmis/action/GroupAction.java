@@ -9,6 +9,7 @@ import javax.annotation.Resource;
 
 import org.cdszmis.dao.PublicDao;
 import org.cdszmis.entity.SysMenuEntity;
+import org.cdszmis.entity.UserEntity;
 import org.cdszmis.entity.UserGroupEntity;
 import org.cdszmis.service.UserGroupService;
 
@@ -20,6 +21,7 @@ public class GroupAction extends ActionSupport {
 	@Resource private UserGroupService userGroupService;
 	@Resource private PublicDao publicDao;
 	private String menuids;
+	private String groupid;
 	private UserGroupEntity group;
 
 	public String groupManager() {
@@ -59,10 +61,35 @@ public class GroupAction extends ActionSupport {
 		List allmenu=publicDao.queryList(SysMenuEntity.class);
 		List allgroup=publicDao.queryList(UserGroupEntity.class);
 		
+		
+		if (null!=groupid&&null!=menuids){
+			String menuid[] = menuids.split(",");
+			SysMenuEntity sysmenu=null;
+			UserGroupEntity usergroup=null;
+			usergroup=userGroupService.findByid(Integer.valueOf(groupid));
+			
+			Set<SysMenuEntity> sm=new HashSet<SysMenuEntity>();
+			for (int i=0 ;i<menuid.length;i++){
+				sysmenu=userGroupService.sysmMenu(Integer.valueOf(menuid[i]));
+				sm.add(sysmenu);
+			}
+			usergroup.setMenSysMenuEntities(sm);
+			userGroupService.groupManager(usergroup);
+			
+		}
 		ActionContext.getContext().put("allmenu",allmenu);
 		ActionContext.getContext().put("allgroup",allgroup);
 		
 		return "groupmenu";
+	}
+	
+	public String groupUser(){
+		List <UserEntity> lsu=new ArrayList <UserEntity>();
+
+		lsu=publicDao.queryList(UserEntity.class);
+		
+		
+		return "groupuser";
 	}
 	
 	public String getMenuids() {
@@ -79,6 +106,16 @@ public class GroupAction extends ActionSupport {
 
 	public void setGroup(UserGroupEntity group) {
 		this.group = group;
+	}
+
+
+	public String getGroupid() {
+		return groupid;
+	}
+
+
+	public void setGroupid(String groupid) {
+		this.groupid = groupid;
 	}
 
 }
