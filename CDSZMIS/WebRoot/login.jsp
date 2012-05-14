@@ -1,75 +1,43 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<title>login</title>
-<link href="${rooturl }/styles/login.css" rel="stylesheet" type="text/css">
-<link href="${rooturl }/styles/common.css" rel="stylesheet" type="text/css" />
+<title>用户登录</title>
+<link href="/images/login.css" rel="stylesheet" type="text/css" />
+</head>
 <body>
 
-	<div class='header'>
+    <div id="login">
+	
+	     <div id="top">
+		      <div id="top_left"><img src="/images/login_03.gif" /></div>
+			  <div id="top_center"></div>
+		 </div>
+		 
+		 <div id="center">
+		      <div id="center_left"></div>
+			  <div id="center_middle">
+				  <form action="/login" method="post">
+				       <div id="user">用 户
+				         <input type="text" name="user.loginname" />
+				       </div>
+					   <div id="password">密   码
+					     <input type="password" name="user.uspass" />
+					   </div>
+					   <div id="btn"><input type='submit' style="height: 25px;line-height: 24px;font-size: 12px;"value="登录"/><input type='reset' style="height: 25px;line-height: 24px;font-size: 12px;"value="清空"/></div>
+				  </form>
+			  </div>
+			  <div id="center_right"></div>		 
+		 </div>
+		 <div id="down">
+		      <div id="down_left">
+			      <div id="inf">
+                       <span class="inf_text">版本信息</span>
+					   <span class="copyright">信息管理系统 2012 v1.0</span>
+			      </div>
+			  </div>
+			  <div id="down_center"></div>		 
+		 </div>
 
-		<br>
 	</div>
-	<div class='content'>
-
-		<div class='c_left'>
-			<img src="${rooturl}/images/logo_1.png" class="logoimg">
-		</div>
-		<div class='c_right'>
-		<form action="/login" method="post">
-			<table class="tab_center">
-				<tr>
-					<td colspan="3">
-						用户登录
-					</td>
-				</tr>
-				<tr>
-					<td colspan="3"> <br />
-					</td>
-				</tr>
-				<tr>
-					<td>
-						帐号:
-					</td>
-					<td>
-						<input type="text" name='user.loginname' style="width: 150px;" />
-					</td>
-					<td>
-						&nbsp;
-					</td>
-				</tr>
-				<tr>
-					<td>
-						密码:
-					</td>
-					<td>
-						<input type="password" name='user.uspass' style="width: 150px;" />
-					</td>
-					<td>
-						  <img src="${rooturl}/images/luck.gif" width="19" height="18">  
-					</td>
-				</tr>
-				<tr>
-					<td colspan="3">
-						<br />
-					</td>
-				</tr>
-				<tr>
-					<td>
-						&nbsp;
-					</td>
-					<td>
-						<input type="submit" name='submit' value="登录"
-							style="position: relative; margin-left: 5px;" />
-
-						<input type="reset" name='reset' value="重置"
-							style="position: relative; margin-left: 35px;" />
-					</td>
-				</tr>
-			</table>
-			</form>
-			 
-		</div>
-	</div>
-
+</body>
  
 </body>
