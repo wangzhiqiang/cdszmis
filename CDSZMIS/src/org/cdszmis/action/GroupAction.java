@@ -87,8 +87,7 @@ public class GroupAction extends ActionSupport {
 	}
 	
 	public String groupUser(){
-		List<UserGroupEntity> lsg=publicDao.queryList(UserGroupEntity.class);
-		List <UserEntity> lsu=publicDao.queryList(UserEntity.class);
+		
 		if(null!=userid&&null!=groupids)
 		{
 			String gid[] = groupids.split(",");
@@ -104,6 +103,8 @@ public class GroupAction extends ActionSupport {
 		 use.setUserGroupEntity(su);
 		 publicDao.saveOrupdateObject(use);
 		}
+		List<UserGroupEntity> lsg=publicDao.queryList(UserGroupEntity.class);
+		List <UserEntity> lsu=publicDao.queryList(UserEntity.class);
 		ActionContext.getContext().put("lsg",lsg);
 		ActionContext.getContext().put("lsu",lsu);
 		return "groupuser";

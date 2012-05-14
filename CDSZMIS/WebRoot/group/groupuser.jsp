@@ -19,9 +19,9 @@
 	<body>
 	<div class='rigthtitle'>用户分配</div>
 	<div style="width: 100%; margin: 5px 0px 5px 20px;">
-		<form action="" method="post">
-		<input id="userid" type='hidden' value=""/>
-		<input id="groupids" type='hidden' value=""/>
+		<form action="/usergroup/group_groupUser" method="post">
+		<input name="userid" id="userid" type='hidden' value=""/>
+		<input name="groupids" id="groupids" type='hidden' value=""/>
 		<input id="submit" type='submit' value="保存"/>
 		</form>
 	</div>
@@ -62,7 +62,7 @@
 			</div>
 			<c:forEach items="${lsg }" var="group" >
 		 		<div class='tr'>
-				  <div class='td'style="width: 50px;"><input class='gid'id='gid${group.id }' type="checkbox"  name="checkbox"/></div>
+				  <div class='td'style="width: 50px;"><input class='gid'id='gid${group.id }' type="checkbox"  name="checkbox" value="${group.id }"/></div>
 				    <div class='td' style="width: 30px;">${group.id }</div>
 				    <div class='td'style="width: 80px;">${group.groupname }</div>
 				    <div class='td'style="width: 143px;overflow: hidden;">${group.namespace}</div>
@@ -97,9 +97,45 @@
 			   $(temp).attr("checked",true);
 			}
  		});
+ 		$(".gid").click(function(){
+ 			var id=$(this).val();
+ 			var gids=$("#groupids").val();
+ 
+			if($(this).attr('checked')){
+				var arrayids= gids.split(",");
+				var L=arrayids.length;
+				 for(var i=0 ;i<L;i++){
+					 if(id==arrayids[i])
+						 {
+						 arrayids= arrayids.splice(i,1);
+						 }
+				 }
+				 if(0==gids.length){
+					 gids=id;
+				 }else{
+				 gids=gids+','+id;
+				 }
+				 $("#groupids").val(gids);
+				 
+			}else{
+				var arrayids= gids.split(",");
+				var L=arrayids.length;
+				 for(var j=0 ;j<L;j++){
+					 if(id==arrayids[j])
+						 {
+						 arrayids.splice(j,1);
+						 }
+				 }  
+				 $("#groupids").val(arrayids);
+			}
+ 		});
  		$("#submit").click(function(){
- 			alert("sd");
- 			return false;
+ 			var userid=$("#userid").val();
+ 			 if(0==userid.length){
+ 				 alert("请先选择用户");
+ 				return false;
+ 			 }
+ 			 $(this).submit();
  		});
 	});
 	</script>
