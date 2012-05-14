@@ -138,8 +138,12 @@ public class ProjectAction extends ActionSupport {
 		ActionContext.getContext().put("allproject", plist);
 		return "projectfilling";
 	}
-
+/**
+ * 按部门统计
+ * @return
+ */
 	public String conutBydepart(){
+		
 		return "countbydepart";
 	}
 	
