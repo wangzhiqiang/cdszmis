@@ -22,29 +22,25 @@
 	<br/> 
 	</form>
 	<div class="leftdiv">
-		<table>
-			<tr>
-				<td width="20"><input type="checkbox" id='groupselect'
-					title='全选' /></td>
-				<td width="25">ID</td>
-				<td width="60">用户组</td>
-				<td>用户组权限空间</td>
-				<td style="display:none;">用户组控制菜单</td>
-			</tr>
+		<div class='table' style="width: 470px;margin-left: 5px;" >
+			<div class='hd' style="width: 470px;" >
+				<div class='td' style="width: 40px;">选择</div>
+				<div class='td' style="width: 25px;">ID</div>
+				<div class='td' style="width: 60px;">用户组</div>
+				<div class='td'style="width: 301px;"> 用户组权限空间</div>
+				<div class='td' style="display:none;">用户组控制菜单</div>
+			</div>
+			 
 			<c:forEach items="${allgroup }" var="group">
-				<tr>
-					<td><input type="checkbox" class='groupitem' value='${group.id }' /></td>
-					<td>${group.id }</td>
-					<td>${group.groupname }</td>
-					<td>${group.namespace }</td>
-					<td style="display:none;"><c:forEach
-							items="${group.menSysMenuEntities }" var="g" varStatus="stat">
-	     ${g.id }<c:if test="${!stat.last}">,</c:if>
-						</c:forEach>
-					</td>
-				</tr>
+				<div class='tr'  >
+					<div class='td' style="width: 40px;"><input type="radio" class='groupitem' value='${group.id }' /></div>
+					<div class='td' style="width: 25px;">${group.id }</div>
+					<div class='td' style="width: 60px;">${group.groupname }</div>
+					<div class='td'style="width: 301px;overflow: hidden;">${group.namespace }</div>
+					<div style="display:none;"><c:forEach items="${group.menSysMenuEntities }" var="g" varStatus="stat">${g.id }<c:if test="${!stat.last}">,</c:if></c:forEach></div>
+				</div>
 			</c:forEach>
-		</table>
+		</div>
 	</div>
 	<div class="centerdiv"></div>
 

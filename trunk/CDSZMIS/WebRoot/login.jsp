@@ -45,7 +45,7 @@
 						<input type="password" name='user.uspass' style="width: 150px;" />
 					</td>
 					<td>
-						<img src="${rooturl}/images/luck.gif" width="19" height="18">
+						  <img src="${rooturl}/images/luck.gif" width="19" height="18">  
 					</td>
 				</tr>
 				<tr>
@@ -67,11 +67,9 @@
 				</tr>
 			</table>
 			</form>
-			<div class='wel'></div>
+			 
 		</div>
-	</div>4
-
-	<div class='footer'>
-		footer
 	</div>
+
+ 
 </body>

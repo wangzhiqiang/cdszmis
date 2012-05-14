@@ -3,7 +3,7 @@ body {
 	margin-top: 0px;
 	margin-right: 0px;
 	margin-bottom: 0px;
-	background-color: #1b3142;
+	background-color:#FFF";
 	float: left;
 	width: 100%;
 	height: 650px;
@@ -20,19 +20,19 @@ body {
 .content {
 	float: left;
 	width: 100%;
-	height: 530px;
-	background: url(../images/login_bg.jpg) repeat-x;
+ 
+	/*background: url(../images/login_bg.jpg) repeat-x;*/
 }
 
 .c_left {
 	float: left;
-	height: 500px;
+	height: 800px;
 	width: 58%;
 }
 
 .c_right {
 	float: left;
-	height: 500px;
+	height: 800px;
 	width: 40%;
 	border-left-color: rgb(212, 212, 228);
 	border-left-style: solid;
