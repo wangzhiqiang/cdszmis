@@ -16,7 +16,7 @@
 		$("#usname").val($.trim($(this).parent().parent().children().eq(1).html()));	
         $("#userid").val( $(this).val()); 
 		});
-	}
+	});
 	</script>
   </head>
   
