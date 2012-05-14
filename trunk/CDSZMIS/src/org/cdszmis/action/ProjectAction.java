@@ -139,6 +139,10 @@ public class ProjectAction extends ActionSupport {
 		return "projectfilling";
 	}
 
+	public String conutBydepart(){
+		return "countbydepart";
+	}
+	
 
 	public ProjectEntity getProject() {
 		return project;
