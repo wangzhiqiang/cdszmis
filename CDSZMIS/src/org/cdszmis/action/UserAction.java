@@ -180,7 +180,10 @@ public class UserAction extends BaseAction {
 		}
 		return "register";
 	}
-
+/**
+ * 退出登录
+ * @return
+ */
 	public String userlogoff() {
 		try {
 			ActionContext.getContext().getSession().remove("user");
