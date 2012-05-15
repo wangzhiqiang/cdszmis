@@ -15,9 +15,8 @@ import com.opensymphony.xwork2.ActionSupport;
 @SuppressWarnings ("serial")
 public class FilesAction extends ActionSupport {
 	private File file;
-	private String fileName;
-	private String contentType;
-	private ServletContext context;
+	private String fileFileName;
+	private String fileContentType;
 
 	public String addFiles() {
 		return "add";
@@ -29,24 +28,12 @@ public class FilesAction extends ActionSupport {
 	 * @return String
 	 */
 	public String fileUpload() {
-		/*
-		 * String targetDirectory = context.getRealPath("/upload"); String
-		 * targetFileName = generateFileName(fileName); File target = new
-		 * File(targetDirectory, targetFileName); AttachmentEntity
-		 * attachment=new AttachmentEntity(); attachment.setFilename(fileName);
-		 * attachment.setFileurl(targetDirectory+"/"+targetFileName);
-		 * attachment.setFilesize(
-		 * String.valueOf(FileUtils.sizeOfDirectory(file)));
-		 * attachment.setFiletype(fileName.substring(fileName.lastIndexOf("."))
-		 * ); try { FileUtils.copyFile(file, target); } catch(IOException e) {
-		 * e.printStackTrace(); }
-		 */
 		String method =org.apache.struts2.ServletActionContext.getRequest().getMethod();
 		boolean isPostMethod = "POST".equalsIgnoreCase(method); 
 		if(isPostMethod){
 			String realpath = ServletActionContext.getServletContext().getRealPath("/uploadFile");
 			if(file != null){
-				File savefile = new File(new File(realpath), fileName);
+				File savefile = new File(new File(realpath), generateFileName(fileFileName));
 				try {
 					FileUtils.copyFile(file, savefile);
 				} catch (IOException e) {
@@ -143,28 +130,26 @@ public class FilesAction extends ActionSupport {
 		this.file = file;
 	}
 
-	public String getFileName() {
-		return fileName;
+	
+	public String getFileFileName() {
+		return fileFileName;
 	}
 
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
+	public void setFileFileName(String fileFileName) {
+		this.fileFileName = fileFileName;
 	}
 
-	public String getContentType() {
-		return contentType;
+	public String getFileContentType() {
+		return fileContentType;
 	}
 
-	public void setContentType(String contentType) {
-		this.contentType = contentType;
+	public void setFileContentType(String fileContentType) {
+		this.fileContentType = fileContentType;
 	}
 
-	public ServletContext getContext() {
-		return context;
-	}
-
-	public void setContext(ServletContext context) {
-		this.context = context;
+	public void setServletContext(ServletContext arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
