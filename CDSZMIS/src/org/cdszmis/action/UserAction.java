@@ -351,7 +351,17 @@ public class UserAction extends BaseAction {
 				}
 			}			
 		}
-		
+/*		List<UserGroupEntity> groups = userGroupService.groupList();
+		String[] group = null;
+		int i = 0;
+		if(groups != null){
+			Iterator iter = groups.iterator();
+			while(iter.hasNext()){
+				group[i] = (String) iter.next();
+				i++;
+			}
+			
+		}*/
 		
 		List l = userService.selectList("");
 		ActionContext.getContext().getSession().put("list", l);
