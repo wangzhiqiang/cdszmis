@@ -16,11 +16,19 @@
 		 $(".did").click(function(){			 
 		           $("#dicid").val($.trim($(this).parent().parent().children().eq(1).html()));	
                    $("#name").val($.trim($(this).parent().parent().children().eq(2).html()));	
-                   $("#seq").val($.trim($(this).parent().parent().children().eq(3).html()));	
-                   $("#status").val($.trim($(this).parent().parent().children().eq(4).html()));	
-                   $("#properties").val($.trim($(this).parent().parent().children().eq(4).html()));				 
-		                              });
-	                               });
+                   $("#seq").val($.trim($(this).parent().parent().children().eq(3).html()));		
+                   $("#properties").val($.trim($(this).parent().parent().children().eq(4).html()));
+                   $("#status").val($.trim($(this).parent().parent().children().eq(5).html()));				 
+		 if( $("#status").val()=="未激活"){
+		 $("#a").attr('checked',false);
+		 $("#b").attr('checked',true);
+		 		 }
+		 else if( $("#status").val()=="激活"){
+		 $("#a").attr('checked',true);
+		 $("#b").attr('checked',false);		 
+		 }
+		 });
+	  });
 	 </script>
   </head>
   
@@ -39,8 +47,8 @@
 			<td> 职务状态：</td>
 			<td> 
 			<label id="status" name="dic.status">
-			<input type="radio" name="dic.status" value="0"/ checked="checked">激活
-			<input type="radio" name="dic.status" value="1"/>注销
+			<input type="radio" id="a" name="dic.status" value="0"/ checked="checked">激活
+			<input type="radio" id="b" name="dic.status" value="1"/>注销
 			 </label>
 			</td>  
 		</tr>
