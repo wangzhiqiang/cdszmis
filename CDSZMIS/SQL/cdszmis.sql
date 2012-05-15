@@ -217,7 +217,7 @@ INSERT INTO `tb_sys_menu` VALUES (16,NULL,'用户信息查询',5,'/');
 INSERT INTO `tb_sys_menu` VALUES (17,NULL,'用户人事管理',5,'/user/user_userManagelist');
 INSERT INTO `tb_sys_menu` VALUES (18,NULL,'用户权限分配',5,'/');
 INSERT INTO `tb_sys_menu` VALUES (19,NULL,'用户信息维护',5,'/user/user_userUpdate');
-INSERT INTO `tb_sys_menu` VALUES (20,NULL,'用户分配',6,'/');
+INSERT INTO `tb_sys_menu` VALUES (20,NULL,'用户分配',6,'/usergroup/group_groupmenuview');
 INSERT INTO `tb_sys_menu` VALUES (21,NULL,'权限分配',6,'/usergroup/group_groupMenu');
 INSERT INTO `tb_sys_menu` VALUES (22,NULL,'用户组信息维护',6,'/usergroup/group_groupManager');
 INSERT INTO `tb_sys_menu` VALUES (23,NULL,'职务管理',7,'/systemdic/systemdic_dicmanager');
