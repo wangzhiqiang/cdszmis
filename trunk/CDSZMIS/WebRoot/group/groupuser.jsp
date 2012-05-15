@@ -30,15 +30,17 @@
 				<div class='hd'style="width:100%">
 					<div class='td' style="width: 50px">选择</div>
 					<div class='td' style="width: 30px">ID</div>
-					<div class='td' style="width: 60px">用户名</div>
-					<div class='td' style="width: 300px">用户组</div>
+					<div class='td' style="width: 50px">用户名</div>
+					<div class='td' style="width: 50px">登录名</div>
+					<div class='td' style="width: 249px;overflow: hidden;">用户组</div>
 				</div>
 			<c:forEach items="${lsu }" var="user" >
 	 			<div class='tr'style="width:100%">
 					<div class='td' style="width: 50px"><input class='radio'type="radio" name='radio' value="${user.id }"></div>
 					<div class='td' style="width: 30px">${user.id }</div>
-					<div class='td' style="width: 60px">${user.usname }</div>
-					<div class='td' style="width: 300px">
+					<div class='td' style="width: 50px">${user.usname }</div>
+					<div class='td' style="width: 50px">${user.loginname }</div>
+					<div class='td' style="width: 249px;overflow: hidden;">
 						<c:forEach items="${user.userGroupEntity }" var="ug">
 						${ug.groupname}
 						</c:forEach>
