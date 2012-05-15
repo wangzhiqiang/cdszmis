@@ -40,11 +40,7 @@
 					<div class='td' style="width: 30px">${user.id }</div>
 					<div class='td' style="width: 50px">${user.usname }</div>
 					<div class='td' style="width: 50px">${user.loginname }</div>
-					<div class='td' style="width: 249px;overflow: hidden;">
-						<c:forEach items="${user.userGroupEntity }" var="ug">
-						${ug.groupname}
-						</c:forEach>
-					</div>
+					<div class='td' style="width: 249px;overflow: hidden;"><c:forEach items="${user.userGroupEntity }" var="ug">${ug.groupname}</c:forEach></div>
 					<div class='groupids' style="display: none;"><c:forEach items="${user.userGroupEntity }" var="ug" varStatus="stat">${ug.id}<c:if test="${!stat.last}">,</c:if></c:forEach></div>
 				</div>
 			</c:forEach>
@@ -87,7 +83,7 @@
  			$("#view").click();
  		});
  		$(".radio").click(function(){
-			var groupids=$(this).parent().parent().children().eq(4).html();
+			var groupids=$(this).parent().parent().children().eq(5).html();
 			var userid=$(this).parent().parent().children().eq(1).html();
 			$("#groupids").val(groupids);
 			$("#userid").val(userid);
