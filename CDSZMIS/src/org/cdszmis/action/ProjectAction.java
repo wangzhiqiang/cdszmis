@@ -2,6 +2,7 @@ package org.cdszmis.action;
 
 import java.util.List;
 import javax.annotation.Resource;
+import org.cdszmis.dao.PublicDao;
 import org.cdszmis.entity.ProjectArrangementEntity;
 import org.cdszmis.entity.ProjectDepartArrangementEntity;
 import org.cdszmis.entity.ProjectEntity;
@@ -9,10 +10,15 @@ import org.cdszmis.entity.ProjectStatusEntity;
 import org.cdszmis.service.ProjectService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.servlet.ServletUtilities;
+import org.jfree.data.category.DefaultCategoryDataset;
 @SuppressWarnings ("serial")
 public class ProjectAction extends ActionSupport {
 	@Resource private ProjectService projectservice;
+	@Resource private PublicDao publicDao;
 	private ProjectEntity project;
 	private ProjectStatusEntity projectstatus;
 	ProjectArrangementEntity paentity;
@@ -159,9 +165,19 @@ public class ProjectAction extends ActionSupport {
 	 * @return
 	 */
 	public String conutBydepart() {
-			
+		String HSQL="from ProjectArrangementEntity obj where obj.departids like '%"+1+"%'";
+		List lsp=publicDao.findObjectListByHsql(HSQL);
+		ActionContext.getContext().put("lsp",lsp);
 		return "countbydepart";
 	}
+	private String barPic(){
+		
+		
+		
+		
+		return "barcountbydepart";
+	}
+	
 
 	/**
 	 * 项目状态查询

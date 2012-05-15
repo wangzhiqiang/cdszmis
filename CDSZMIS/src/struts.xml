@@ -72,6 +72,7 @@
 		<action name="pro_*" class="org.cdszmis.action.ProjectAction"
 			method="{1}">
 			<interceptor-ref name="permissstack"></interceptor-ref>
+
 			<result name="success">/index.jsp</result>
 			<result name="add">/project/projectRegiste.jsp </result>
 			<result name="projectimpl">/project/projectImpl.jsp</result>
@@ -83,6 +84,12 @@
 			<result name="arrangedepart">/project/arrangeDepart.jsp</result>
 			<result name="arrangeperson">/project/arrangePerson.jsp</result>
 			<result name="countbydepart">/project/countBydepart.jsp</result>
+			<result name="barcountbydepart" type="chart">
+			    <param name="chart">chart</param>  
+				<param name="height">150</param>
+    			<param name="width">200</param>
+			</result>
+			
 			<result name="projectstatus">/project/projectstatus.jsp</result>
 			<result name="projectdetail">/project/projectdetail.jsp</result>
 			<result name="projectprogess">/project/projectprogess.jsp</result>
