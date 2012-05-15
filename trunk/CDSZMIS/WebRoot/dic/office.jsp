@@ -5,7 +5,8 @@
 <html>
 
   <head>
-  <link href="${rooturl }/styles/common.css" rel="stylesheet" type="text/css" />
+    <link href="${rooturl }/styles/groupmenu.css" rel="stylesheet" type="text/css" />
+    <link href="${rooturl }/styles/common.css" rel="stylesheet" type="text/css" />
  	<link href="${rooturl }/styles/banner.css" rel="stylesheet" type="text/css" />
 	<script language="JavaScript" src="${rooturl }/scripts/jquery/jquery-1.5.2.js"></script>
 <script type="text/javascript">
@@ -29,8 +30,7 @@
 </script>
   </head>
   
-  <body>  
-   职称管理<br>
+  <body>  职称管理<br>
    <form action="${roturl }/systemdic/systemdic_dicmanager01" method="get">
 
 	<table id="detil">
@@ -56,27 +56,28 @@
      <input id="dicid" name="dic.id" type="hidden" value=""></input>
 	 <input  type="submit" value="添加"/> <input  type="submit" value="修改"/> <input  type="button" onclick="deldic()" value="删除"/><br>
 	</form>
-	<table name="diclist" width="90%;" align="center">
-	 <tr>
-		<td  width="40px;">选择</td>
-		<td  width="40px;">ID</td>
-		<td>	职称名称  </td>
-		<td>字典标识</td>	
-		<td>属性</td> 
-		<td> 职称状态 </td>
-	</tr>
+	<div class="leftdiv">
+		<div class='table' style="width: 470px;margin-left: 5px;" >
+			<div class='hd' style="width: 470px;" >
+				<div class='td' style="width: 50px;">选择</div>
+				<div class='td' style="width: 35px;">ID</div>
+				<div class='td' style="width: 70px;">职称名称</div>
+				<div class='td' style="width: 90px;"> 字典标识</div>
+				<div class='td' style="width: 70px;">属性</div>
+				<div class='td' style="width: 70px;">职务状态 </div>
+				
+			</div>
 	   <c:forEach items="${alldic}" var="ls">
-		   <tr  >
-			   
-			<td width="30px;"><input class="did" type="radio" name="did"/></td> 
-			<td  width="40px;"> ${ls.id }</td>
-			<td>	${ls.name }</td>
-			<td>${ls.seq } </td>
-			<td> ${ls.properties }</td>
-			<td> <c:if test="${ls.status ==0}">  激活</c:if> <c:if test="${ls.status !=0}">未激活</c:if></td> 		   
-		   </tr>
+		   <div class='tr'  >		   
+			<div class='td' style="width: 50px;"><input class="did" type="radio" name="did"/></div>
+			<div class='td' style="width: 35px;"> ${ls.id }</div>
+			<div class='td' style="width: 70px;"> ${ls.name }</div>
+			<div class='td' style="width: 90px;">${ls.seq } </div>
+			<div class='td' style="width: 70px;"> ${ls.properties }</div>
+			<div class='td' style="width: 70px;"> <c:if test="${ls.status ==0}">  激活</c:if> <c:if test="${ls.status !=0}">未激活</c:if></div>		   
+		   </div>
 	   </c:forEach>
-   </table>
+   </div>
    
   </body>
 </html>
