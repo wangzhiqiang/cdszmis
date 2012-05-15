@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.Random;
 import javax.servlet.ServletContext;
 import org.apache.commons.io.FileUtils;
+import org.apache.struts2.ServletActionContext;
 import org.cdszmis.entity.AttachmentEntity;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -22,7 +23,11 @@ public class FilesAction extends ActionSupport {
 		return "add";
 	}
 
-	// 文件上传
+	/**
+	 * @author Impl 
+	 * @exception isPost upload file , isGet reach this page
+	 * @return String
+	 */
 	public String fileUpload() {
 		/*
 		 * String targetDirectory = context.getRealPath("/upload"); String
@@ -36,7 +41,21 @@ public class FilesAction extends ActionSupport {
 		 * ); try { FileUtils.copyFile(file, target); } catch(IOException e) {
 		 * e.printStackTrace(); }
 		 */
-		return "fileupload";
+		String method =org.apache.struts2.ServletActionContext.getRequest().getMethod();
+		boolean isPostMethod = "POST".equalsIgnoreCase(method); 
+		if(isPostMethod){
+			String realpath = ServletActionContext.getServletContext().getRealPath("/uploadFile");
+			if(file != null){
+				File savefile = new File(new File(realpath), fileName);
+				try {
+					FileUtils.copyFile(file, savefile);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		return "fileupload" ;
 	}
 
 	/**
