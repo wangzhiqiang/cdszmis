@@ -23,9 +23,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    <from method="POST" action="" >
-    	<input type="file" />
+    <form method="POST" action="/files/files_fileUpload" >
+    	<input type="file" name = "file" />
     	<input type="submit" />
-    </from>
+    </form>
   </body>
 </html>
