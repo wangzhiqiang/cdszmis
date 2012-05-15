@@ -74,7 +74,7 @@
 	</form>		
 
 
-<div class='table' style="width:450px;margin-left: 5px;">
+<div class='table' style="width: 450px;margin-left: 5px;">
 	<div class='hd' style="width: 100%">
 			<div class='td' style="width: 50px;">选择</div>
 			<div class='td' style="width: 50px;">用户名</div>
@@ -88,8 +88,20 @@
 		<div class='tr'>
 			<div class='td'style="width: 50px;"><input class="dpid" type="radio" name="dpid" value="${l.id }"/></div>
 			<div class='td' style="width: 50px;">${l.usname}</div>
-			<div class='td' style="width: 100px;"><c:forEach items="${grouplist}" var="gl"><c:if test="${gl.id == l.usgroups }">${gl.groupname}</c:if></c:forEach></div>
-			<div class='td' style="width: 100px;"><c:forEach items="${departlist}" var="dl"> <c:if test="${dl.id == l.usdeparts }">${dl.departname}</c:if> </c:forEach></div>
+
+			
+			<div class='td' style="width: 100px;">
+			<c:forEach items="${grouplist}" var="gl">
+				<c:if test="${gl.id == l.usgroups }">${gl.groupname}</c:if>
+			</c:forEach>
+			</div>
+			
+			<div class='td' style="width: 100px;">
+			<c:forEach items="${departlist}" var="dl">
+					<c:if test="${l.usdeparts == dl.id }">${dl.departname}</c:if> 
+			</c:forEach>
+			</div>
+
 		</div>
 	</c:forEach>
 </div>
