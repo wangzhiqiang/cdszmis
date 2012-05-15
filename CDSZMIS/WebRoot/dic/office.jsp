@@ -22,9 +22,18 @@
 			 
 		$("#dicid").val($.trim($(this).parent().parent().children().eq(1).html()));	
         $("#name").val($.trim($(this).parent().parent().children().eq(2).html()));	
-        $("#seq").val($.trim($(this).parent().parent().children().eq(3).html()));	
-        $("#status").val($.trim($(this).parent().parent().children().eq(4).html()));	
-        $("#properties").val($.trim($(this).parent().parent().children().eq(4).html()));				 
+        $("#seq").val($.trim($(this).parent().parent().children().eq(3).html()));		
+        $("#properties").val($.trim($(this).parent().parent().children().eq(4).html()));
+        $("#status").val($.trim($(this).parent().parent().children().eq(5).html()));
+        var s=$.trim($(this).parent().parent().children().eq(5).html());
+        if(s=="未激活"){
+		 $("#a").attr('checked',false);
+		 $("#b").attr('checked',true);
+		 		 }
+		 else if( s=="激活"){
+		 $("#a").attr('checked',true);
+		 $("#b").attr('checked',false);		 
+		 }				 
 		});
 	});
 </script>
@@ -43,8 +52,8 @@
 		<tr>
 			<td> 职称状态：</td><td> 
 			<label name="dic.status">
-			<input type="radio" name="dic.status" value="0"/ checked="checked">激活
-			<input type="radio" name="dic.status" value="1"/>注销
+			<input type="radio" id="a" name="dic.status" value="0"/ checked="checked">激活
+			<input type="radio" id="b" name="dic.status" value="1"/>注销
 			 </label>
 			</td>  
 		</tr>
