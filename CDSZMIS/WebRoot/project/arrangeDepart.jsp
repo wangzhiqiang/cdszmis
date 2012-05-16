@@ -102,7 +102,7 @@
 		<td>填报时间 </td>
 		<td>填报人 </td> 
 	</tr>
-	   <c:forEach items="${allnoarrangdepart }" var="ls">
+	   <c:forEach items="${lsp }" var="ls">
 		   <tr  >
 			   
 			<td width="30px;"><input class="pjdid" type="radio" name="pjdid"/></td> 

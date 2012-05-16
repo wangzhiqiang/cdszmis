@@ -1,28 +1,26 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
+ 
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <base href="<%=basePath%>">
+ 
     
-    <title>My JSP 'projectdetail.jsp' starting page</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
+    <title>项目详细信息查询</title>
+     <link href="${rooturl }/styles/banner.css" rel="stylesheet" type="text/css" />
+ 	<link href="${rooturl }/styles/common.css" rel="stylesheet" type="text/css" />
+	<script language="JavaScript" src="${rooturl }/scripts/jquery/jquery-1.5.2.js"></script>
+ 
 
   </head>
   
   <body>
-    This is my JSP page. <br>
+   <div class="rigthtitle">项目详细信息查询</div>
+    <div class="tr" style="width: 90%">
+ 	<div class='td'style="width: 30px;">部门</div>
+ 	<div class='td'style="width: 155px;height:25px;line-height: 24px;"><input type='text' name='depart' style="padding: 1px;" /></div>
+ 	<div class='td'style="width: 60px;">项目名称</div>
+ 	<div class='td'style="width: 155px;height:25px;line-height: 24px;"><input type='text' name='depart' style="padding: 1px;" /></div>
+  </div>
   </body>
 </html>
