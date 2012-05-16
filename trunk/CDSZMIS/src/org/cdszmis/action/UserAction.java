@@ -42,6 +42,8 @@ public class UserAction extends BaseAction {
 	private UserGroupService userGroupService;
 	@Resource
 	private DepartService departService;
+	
+	@Resource private PublicDao publicDao;
 //	@Resource private PublicDao publicDao;
 	private UserEntity user;
 	private String groupids;
@@ -248,6 +250,19 @@ public class UserAction extends BaseAction {
 		ActionContext.getContext().getSession().put("departlist", departService.departList());
 		if(user != null){
 			String uspass = Encipherment.Enc_MD5_2(user.getUspass());
+			
+String ids="1,2,6,4"; 
+  String s[]=ids.split(",");
+  UserGroupEntity ug=null;
+  Set<UserGroupEntity> us=new HashSet<UserGroupEntity>();
+  for(int i=0 ;i<s.length;i++){
+	 ug=new UserGroupEntity();
+	 ug=(UserGroupEntity) publicDao.queryObject(UserGroupEntity.class, Integer.valueOf(s[i]));
+	 us.add(ug);
+  }
+  user.setUserGroupEntity(us);
+//  saveuser;
+  
 			user.setUspass(uspass);
 			user.setUsdeparts(departid);
 		 	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
