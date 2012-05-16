@@ -13,6 +13,7 @@
   </head>
   
   <body>
+
   <div class="rigthtitle">项目状态查询</div>
   <form action="/project/pro_projectStatus" method="post">
 	    <div class="tr" style="width: 90%">
@@ -24,6 +25,11 @@
 			<option value='0'>方案</option>
 			<option value='1'>初设</option>
 			<option value='2'>施工图</option>
+			<option value='3'>院长签发</option>
+			<option value='4'>出版</option>
+			<option value='5'>发行</option>
+			<option value='6'>项目结束</option>
+			<option value='7'>归档</option>
 			</select>
 			</div>
 			<div class='td'style="width: 60px;"><input type='submit' value="查询"/></div>
@@ -44,7 +50,12 @@
 	  	  <div class="td" style="width: 100px;">
 	  		  <c:if test="${prs.status==0 }">方案</c:if> 
 	  		  <c:if test="${prs.status==1 }">初设</c:if> 
-	  		  <c:if test="${prs.status==2 }">施工图</c:if> 
+	  		  <c:if test="${prs.status==2 }">施工图</c:if>
+	  		  <c:if test="${prs.status==3 }">院长签发</c:if> 
+	  		  <c:if test="${prs.status==4 }">出版</c:if>
+	  		  <c:if test="${prs.status==5 }">发行</c:if> 
+	  		  <c:if test="${prs.status==6 }">项目结束</c:if>  
+	  		  <c:if test="${prs.status==7 }">归档</c:if> 
 	  	  </div>
 	  	   <div class="td" style="width: 180px;">${prs.projectEntity.commissionedname} </div>
 	  	  <div class="td" style="width: 100px;">${prs.projectEntity.important}</div>
@@ -52,5 +63,6 @@
 	</c:forEach>
 	
 </div>
+
   </body>
 </html>
