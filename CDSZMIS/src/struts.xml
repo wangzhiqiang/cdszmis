@@ -81,6 +81,7 @@
 			<result name="projectpublic">/project/projectPublic.jsp</result>
 			<result name="projectsale">/project/projectSale.jsp</result>
 			<result name="projectfilling">/project/projectFilling.jsp</result>
+			<result name="projectprogess">/project/projectFilling.jsp</result>
 			<result name="arrangedepart">/project/arrangeDepart.jsp</result>
 			<result name="arrangeperson">/project/arrangePerson.jsp</result>
 			<result name="countbydepart">/project/countBydepart.jsp</result>
