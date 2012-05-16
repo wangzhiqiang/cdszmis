@@ -2,10 +2,8 @@ package org.cdszmis.action;
 
 import java.awt.Font;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import javax.annotation.Resource;
 import org.apache.commons.collections.map.HashedMap;
 import org.cdszmis.dao.PublicDao;
@@ -30,7 +28,8 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class ProjectAction extends ActionSupport {
 	@Resource private ProjectService projectservice;
 	@Resource private PublicDao publicDao;
-	private ProjectEntity project;    
+	private ProjectEntity project; 
+	private ProjectEntity projectname; 
 	private ProjectStatusEntity projectstatus;
 	ProjectArrangementEntity paentity;
 	ProjectDepartArrangementEntity pdaentity;
@@ -70,7 +69,7 @@ public class ProjectAction extends ActionSupport {
 	}
 
 	public String arrangeDepartids() {
-		if(null != paentity && paentity.getDepartids().equals(""))
+		if(null != paentity && paentity.getDepartids().equals(" "))
 		{
 			ProjectEntity pro=new ProjectEntity();
 			//查出项目信息
@@ -236,40 +235,14 @@ public class ProjectAction extends ActionSupport {
 		 DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 		 for(int j=0;j<lsd.size();j++){
 			 if(cmap.size()>0){
-				 String s[]=new String[3];
-				 s=cmap.get(lsd.get(j).getId());
-	//			 System.out.println(s[0]+"--"+s[1]+"--"+s[2]);
-				 if(null==s){
-					 s =new String[3];
-					 s[0]=String.valueOf(lsd.get(j).getId());
-					 s[1]=lsd.get(j).getDepartname();
-					 s[2]="1";
-					 cmap.put(lsd.get(j).getId(),s);
-				 }else{
-					 s[2]=String.valueOf((Integer.valueOf(s[2])+1));
-					 cmap.put(lsd.get(j).getId(),s);
-				 }
-			 }else{
-				 str[0]=String.valueOf(lsd.get(j).getId());
-				 str[1]=lsd.get(j).getDepartname();
-				 str[2]="1";
-				 cmap.put(lsd.get(j).getId(),str);
+			 String id=cmap.get(j)[0];
+			 String name=cmap.get(j)[1];
+			 String count=cmap.get(j)[3];
 			 }
-			 
 //			 dataset.addValue(o, "", temp);
 		 }
-		 
-		 Set<Integer> st=cmap.keySet();
-		 
-		 Iterator <Integer> it=st.iterator();
-		 while(it.hasNext()){
-			
-			 Integer in= it.next() ;
-//			 System.out.println(cmap.get(in)[1]);
-//			 System.out.println("in"+in+"sn"+sn);
-			 dataset.addValue(Integer.valueOf(cmap.get(in)[2]),"",cmap.get(in)[1]);
-		 }
-		 
+		
+		
 		// dataset.addValue(l, "部门1", map.get(j));
 		chart = ChartFactory.createBarChart3D(
 				"部门项目分配情况", // 图表标题
@@ -337,6 +310,15 @@ public class ProjectAction extends ActionSupport {
 	 * @return
 	 */
 	public String projectProgress() {
+		String Hsql="from ProjectStatusEntity obj where 1=1 ";
+		if(null!=project){
+			if (!"".equals(project.getSerialnumbers()))
+			Hsql=Hsql+" and obj.projectEntity.serialnumbers like '"+project.getSerialnumbers()+"%'";
+		}
+		if(null!=projectname){
+			if (!"".equals(projectname.getPrijectname()))
+			Hsql=Hsql+" and obj.projectEntity.prijectname like '"+projectname.getPrijectname()+"%'";
+		}
 		return "projectprogess";
 	}
 
