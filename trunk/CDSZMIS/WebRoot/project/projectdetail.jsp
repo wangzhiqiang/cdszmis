@@ -4,13 +4,14 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
- 
-    
+
+
     <title>项目详细信息查询</title>
      <link href="${rooturl }/styles/banner.css" rel="stylesheet" type="text/css" />
  	<link href="${rooturl }/styles/common.css" rel="stylesheet" type="text/css" />
 	<script language="JavaScript" src="${rooturl }/scripts/jquery/jquery-1.5.2.js"></script>
  
+
 
   </head>
   
