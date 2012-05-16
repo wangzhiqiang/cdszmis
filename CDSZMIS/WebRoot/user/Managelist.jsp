@@ -214,7 +214,10 @@
 								  <input id="group" name="user.usgroups" type=checkbox value="${list.id }" onclick="setInputcolumn(this)"> ${list.id }:${  list.groupname}  <br/>
 								 </c:forEach>
 							</div>
+						
+						
 						</div>
+						
 					</div> 
 				</td>
 			</tr>
@@ -281,7 +284,14 @@
 			<div class='td' style="width: 100px;">${l.officenum}</div>
 			<div class='td' style="width: 110px;">${l.idcard}</div>
 			<div class='td' style="width: 150px;">${l.birthday}</div>
-			<div class='td' style="width: 100px;">${l.usgroups}</div>
+			<%--<div class='td' style="width: 100px;">${l.usgroups}</div>
+			--%>
+			<div class='td' style="width: 249px;overflow: hidden;">
+						<c:forEach items="${l.userGroupEntity }" var="u">
+						${u.groupname}
+						</c:forEach>
+						</div>
+						<div class='groupids' style="display: none;"><c:forEach items="${l.userGroupEntity }" var="ug" varStatus="stat">${ug.id}<c:if test="${!stat.last}">,</c:if></c:forEach></div>
 			<div class='td' style="width: 100px;">${l.conditions}</div>
 			
 
