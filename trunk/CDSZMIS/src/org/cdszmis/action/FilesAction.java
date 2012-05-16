@@ -23,7 +23,6 @@ public class FilesAction extends ActionSupport {
 	}
 
 	/**
-	 * @author Impl 
 	 * @exception isPost upload file , isGet reach this page
 	 * @return String
 	 */

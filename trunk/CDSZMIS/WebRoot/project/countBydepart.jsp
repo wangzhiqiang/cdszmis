@@ -4,16 +4,26 @@
 <html>
   <head>
     <title>按部门统计</title>
+     	<link href="${rooturl }/styles/banner.css" rel="stylesheet" type="text/css" />
+ 	<link href="${rooturl }/styles/common.css" rel="stylesheet" type="text/css" />
+	<script language="JavaScript" src="${rooturl }/scripts/jquery/jquery-1.5.2.js"></script>
   </head>
   <body>
-   部门统计
-   <c:forEach items="${lsp}" var="pro">
-   ${pro.id }:${pro.departids }
+  <div class="rigthtitle">部门统计</div>
+ <!--  
+ <div class="tr" style="width: 90%">
+ 	<div class='td'style="width: 30px;">部门</div>
+ 	<div class='td'style="width: 155px;height:25px;line-height: 24px;"><input type='text' name='depart' style="padding: 1px;" /></div>
+ 	<div class='td'style="width: 30px;">项目状态</div>
+ 	<div class='td'style="width: 155px;height:25px;line-height: 24px;"><input type='text' name='depart' style="padding: 1px;" /></div>
+ 	<div class='td'style="width: 40px;">负责人</div>
+ 	<div class='td'style="width: 155px;height:25px;line-height: 24px;"><input type='text' name='depart' style="padding: 1px;" /></div>
+ </div>
+-->
+ 
    
-   </c:forEach>
    
-   
-   <img src="/project/pro_barPic"/>
+   <img src="/project/pro_barPic.action"/>
    
   </body>
 </html>

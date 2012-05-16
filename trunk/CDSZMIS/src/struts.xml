@@ -86,8 +86,8 @@
 			<result name="countbydepart">/project/countBydepart.jsp</result>
 			<result name="barcountbydepart" type="chart">
 			    <param name="chart">chart</param>  
-				<param name="height">150</param>
-    			<param name="width">200</param>
+				<param name="height">400</param>
+    			<param name="width">600</param>
 			</result>
 			
 			<result name="projectstatus">/project/projectstatus.jsp</result>

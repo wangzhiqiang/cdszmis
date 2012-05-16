@@ -7,10 +7,7 @@
  <link href="${rooturl }/styles/common.css" rel="stylesheet" type="text/css" />
 <script language="JavaScript" src="${rooturl }/scripts/jquery/jquery-1.5.2.js"></script>
 <script type="text/javascript">
-function delproject() {
-		//alert($("#departid").val());
-		window.location.href = "${roturl }/project/pro_projectmanage?project.id="+$("#projectid").val()+"&isdel=true";
-	}
+ 
 	$(document).ready(function(){
 		 $(".pjid").click(function(){
 			       
@@ -29,6 +26,10 @@ function delproject() {
 		$("#createdate").val($.trim($(this).parent().parent().children().eq(14).html()));
 		$("#subperson").val($.trim($(this).parent().parent().children().eq(15).html()));
 		});
+		 
+		 $("#delpro").click(function(){
+			 window.location.href = "${roturl }/project/pro_projectmanage?project.id="+$("#projectid").val()+"&isdel=true";
+		 });
 	});
 </script>
 <html>
@@ -98,7 +99,7 @@ function delproject() {
 
 	</table>
 	<input id="projectid" name="project.id" type="hidden" value=""></input>
-	 <input  type="submit" value="添加"/> <input  type="submit" value="修改"/> <input  type="button" onclick="deldepart()" value="删除"/><br>
+	 <input  type="submit" value="添加"/> <input  type="submit" value="修改"/> <input id='delpro'  type="button"   value="删除"/><br>
 </form>
 	
 	<table name="pjlist" width="90%;" align="center">
