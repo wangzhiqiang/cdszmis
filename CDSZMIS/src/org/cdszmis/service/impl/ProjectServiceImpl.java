@@ -9,19 +9,19 @@ import org.cdszmis.entity.ProjectArrangementEntity;
 import org.cdszmis.entity.ProjectDepartArrangementEntity;
 import org.cdszmis.entity.ProjectEntity;
 import org.cdszmis.entity.ProjectStatusEntity;
+import org.cdszmis.entity.ProjectSubmitEntity;
 import org.cdszmis.service.ProjectService;
 import org.springframework.stereotype.Service;
 @Service
 public class ProjectServiceImpl implements ProjectService {
 	@Resource   ProjectDao  projectdao;
 	public ProjectDepartArrangementEntity arrangeChargePerson(
-			ProjectDepartArrangementEntity pdaentity, String chargeperson) {
-		return projectdao.arrangeChargePerson(pdaentity, chargeperson);
+			ProjectDepartArrangementEntity pdaentity) {
+		return projectdao.arrangeChargePerson(pdaentity);
 	}
 
-	public ProjectArrangementEntity arrangeDepart(
-			ProjectArrangementEntity paentity, String departids) {
-		return projectdao.arrangeDepart(paentity, departids);
+	public ProjectArrangementEntity arrangeDepart(ProjectArrangementEntity paentity) {
+		return projectdao.arrangeDepart(paentity);
 	}
 
 
@@ -40,25 +40,38 @@ public class ProjectServiceImpl implements ProjectService {
 	public ProjectEntity findProject(int id) {
 		return projectdao.findProject(id);
 	}
-
-	public List<ProjectArrangementEntity> noarrangedDepart() {
-		return projectdao.noarrangedDepart();
-	}
-
-	public List<ProjectDepartArrangementEntity> noarrangedPerson() {
-		return projectdao.noarrangedPerson();
-	}
-
+	
 	public List<ProjectEntity> projectList() {
 		return projectdao.projectList();
 	}
-	
-	public List<ProjectStatusEntity> statusList(){
-		return projectdao.statusList();
+	public List<ProjectEntity> implStatusList(){
+		return projectdao.implStatusList();
 	}
+	
+	public List<ProjectEntity> checkStatusList(){
+		return projectdao.checkStatusList();
+	}
+	
+	public List<ProjectEntity> signStatusList(){
+		return projectdao.signStatusList();
+	}
+
+	public List<ProjectEntity>  publicStatusList(){
+		return projectdao.publicStatusList();
+	}
+
+	public List<ProjectEntity>  saleStatusList(){
+		return projectdao.saleStatusList();
+	}
+
+	public List<ProjectEntity> fillStatusList(){
+		return projectdao.fillStatusList();
+	}
+	
 
 	public ProjectEntity projectManage(ProjectEntity project) {
 		return projectdao.projectManage(project);
 	}
+	
 
 }

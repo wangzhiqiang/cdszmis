@@ -6,6 +6,7 @@ import org.cdszmis.entity.ProjectArrangementEntity;
 import org.cdszmis.entity.ProjectDepartArrangementEntity;
 import org.cdszmis.entity.ProjectEntity;
 import org.cdszmis.entity.ProjectStatusEntity;
+import org.cdszmis.entity.ProjectSubmitEntity;
 
 
 
@@ -22,16 +23,24 @@ public interface ProjectService {
 		
 		public List<ProjectEntity> projectList();
 		
-		public List<ProjectStatusEntity> statusList();
+		public List<ProjectEntity> implStatusList();
 		
-		public List<ProjectArrangementEntity> noarrangedDepart();
+		public List<ProjectEntity> checkStatusList();
 		
-		public List<ProjectDepartArrangementEntity> noarrangedPerson();
+		public List<ProjectEntity> signStatusList();
+	
+		public List<ProjectEntity>  publicStatusList();
+
+		public List<ProjectEntity>  saleStatusList();
+
+		public List<ProjectEntity> fillStatusList();
 		
-		public ProjectArrangementEntity arrangeDepart(ProjectArrangementEntity paentity,String departids) ;
+		public ProjectArrangementEntity arrangeDepart(ProjectArrangementEntity paentity) ;
 		
-		public  ProjectDepartArrangementEntity arrangeChargePerson(ProjectDepartArrangementEntity pdaentity, String chargeperson);
-		
+		public  ProjectDepartArrangementEntity arrangeChargePerson(ProjectDepartArrangementEntity pdaentity);
 		
 		public ProjectStatusEntity changeStatus(ProjectStatusEntity projectstatus);
+		
+		
+	
 }

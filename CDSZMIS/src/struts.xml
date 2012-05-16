@@ -84,13 +84,13 @@
 			<result name="projectprogess">/project/projectFilling.jsp</result>
 			<result name="arrangedepart">/project/arrangeDepart.jsp</result>
 			<result name="arrangeperson">/project/arrangePerson.jsp</result>
+			<result name="projectsubmit">/project/projectSubmit.jsp</result>
 			<result name="countbydepart">/project/countBydepart.jsp</result>
 			<result name="barcountbydepart" type="chart">
 			    <param name="chart">chart</param>  
 				<param name="height">400</param>
     			<param name="width">600</param>
 			</result>
-			
 			<result name="projectstatus">/project/projectstatus.jsp</result>
 			<result name="projectdetail">/project/projectdetail.jsp</result>
 			<result name="projectprogess">/project/projectprogess.jsp</result>

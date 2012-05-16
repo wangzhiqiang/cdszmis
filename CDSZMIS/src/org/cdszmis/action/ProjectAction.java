@@ -1,5 +1,5 @@
 package org.cdszmis.action;
-
+ 
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -14,7 +14,9 @@ import org.cdszmis.entity.ProjectArrangementEntity;
 import org.cdszmis.entity.ProjectDepartArrangementEntity;
 import org.cdszmis.entity.ProjectEntity;
 import org.cdszmis.entity.ProjectStatusEntity;
+import org.cdszmis.service.DepartService;
 import org.cdszmis.service.ProjectService;
+import org.cdszmis.service.UserService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.hibernate.mapping.Array;
@@ -28,165 +30,143 @@ import org.jfree.chart.title.TextTitle;
 import org.jfree.data.category.DefaultCategoryDataset;
 @SuppressWarnings ("serial")
 public class ProjectAction extends ActionSupport {
+
 	@Resource private ProjectService projectservice;
-	@Resource private PublicDao publicDao;
-	private ProjectEntity project; 
+	@Resource private  DepartService  departService;
+	@Resource private UserService userService;
+	private ProjectEntity project;
+	@Resource private PublicDao  publicDao;
 	private ProjectStatusEntity projectstatus;
 	ProjectArrangementEntity paentity;
 	ProjectDepartArrangementEntity pdaentity;
 	private String chargeperson;
 	private String departids;
-	private String isdel = null;
+	private String isdel=null;
+	private Integer id;
 	private JFreeChart chart;
-
-	public String projectmanage() {
-		if(project != null)
-		{
-			if(isdel == null)
-			{
+	public String projectmanage(){
+		if(project!=null){
+			if (isdel==null) {
 				projectservice.projectManage(project);
-				projectstatus.setProjectEntity(project);
-				projectstatus.setStatus(0);
+				
+				List ls=publicDao.findObjectListByHsql("from ProjectStatusEntity obj where obj.projectEntity.id="+project.getId());
+				if(0!=ls.size()){
+					projectstatus=(ProjectStatusEntity) ls.get(0);
+					projectstatus.setProjectEntity(project);
+				}else{ 
+					projectstatus.setProjectEntity(project);
+					projectstatus.setStatus(0);
+				}
 				publicDao.saveOrupdateObject(projectstatus);
-
-			} else
-			{
-				System.out.print("**************" + project.getId());
+			} else {
+				System.out.print("**************"+project.getId());
 				projectservice.delProject(project);
-				
-				
 
 			}
 		}
-		List <ProjectEntity> plist = projectservice.projectList();
-		ActionContext.getContext().put("allproject",plist);
+		List <ProjectEntity>  plist = projectservice.projectList();
+		ActionContext.getContext().put("allproject", plist);
 		return "add";
 	}
+			
 
-	public String findallProject() {
-		List <ProjectEntity> plist = projectservice.projectList();
-		ActionContext.getContext().put("allproject",plist);
+	public String findallProject(){
+		List<ProjectEntity> plist = projectservice.projectList();
+		ActionContext.getContext().put("allproject", plist);
 		return "listproject";
 	}
-
-	public String arrangeDepartids() {
-		if(null != paentity && paentity.getDepartids().equals(" "))
-		{
-			ProjectEntity pro=new ProjectEntity();
-			//查出项目信息
-//			pro=(ProjectEntity) publicDao.queryObject(ProjectEntity.class,传的ID);
-			
-			
-			//将项目信息保存到 所级安排
+	@SuppressWarnings("unchecked")
+	public String  arrangeDepartids(){
+		ActionContext.getContext().getSession().put("departlist", departService.departList());
+        if(paentity!=null){
+			ProjectEntity  pro = new ProjectEntity();
+			pro = (ProjectEntity)publicDao.queryObject(ProjectEntity.class,id);
 			paentity.setProjectEntity(pro);
-			//保存所级安排信息
-			projectservice.arrangeDepart(paentity,departids);
+			projectservice.arrangeDepart(paentity);
 		}
-		//List <ProjectArrangementEntity> plist = projectservice.noarrangedDepart();
-		//ActionContext.getContext().put("allnoarrangdepart",plist);
-		
-		List <ProjectEntity> lsp=publicDao.findObjectListByHsql("select DISTINCT obj from ProjectEntity obj ,ProjectArrangementEntity obj1  where obj.id not in obj1.projectEntity.id ");
-		
-//		publicDao.queryList(ProjectEntity.class);
-		ActionContext.getContext().put("lsp",lsp);
+		List <ProjectEntity> plist= publicDao.findObjectListByHsql("select DISTINCT obj from ProjectEntity obj,ProjectArrangementEntity obj1 where obj.id not in obj1.ProjectEntity.id");
+		ActionContext.getContext().put("allnoarrangdepart", plist);
 		return "arrangedepart";
-
-	}
-
-	public String arrangePerson() {
-		if(null != pdaentity && pdaentity.equals(""))
-		{
-			projectservice.arrangeChargePerson(pdaentity,chargeperson);
+			
 		}
-		List <ProjectDepartArrangementEntity> plist = projectservice
-				.noarrangedPerson();
-		ActionContext.getContext().put("allnoarrangperson",plist);
+		
+	@SuppressWarnings("unchecked")
+	public String arrangePerson(){
+		ActionContext.getContext().getSession().put("userlist", userService.selectList(null));
+		if(pdaentity!=null){
+			
+			ProjectEntity  pro = new ProjectEntity();
+			pro = (ProjectEntity)publicDao.queryObject(ProjectEntity.class, project.getId());
+			pdaentity.setProjectEntity(pro);
+			projectservice.arrangeChargePerson(pdaentity);
+		}
+		List <ProjectEntity> plist = publicDao.findObjectListByHsql("select DISTINCT obj from ProjectEntity obj,ProjectArrangementEntity obj1 where obj.id not in obj1.ProjectEntity.id");
+	    ActionContext.getContext().put("allnoarrangperson", plist);
 		return "arrangeperson";
 	}
+	
 
-	public String projectImpl() {
-		try
-		{
+
+	public String projectImpl(){
+		if(projectstatus!=null){
+		
 			projectservice.changeStatus(projectstatus);
-		} catch(Exception e)
-		{
-
-			e.printStackTrace();
+		
 		}
-		List <ProjectStatusEntity> plist = projectservice.statusList();
-		ActionContext.getContext().put("allproject",plist);
+		List<ProjectEntity> plist = projectservice.implStatusList();
+		ActionContext.getContext().put("allnoimplpro", plist);
 		return "projectimpl";
 	}
-
-	public String projectCheck() {
-		try
-		{
-			projectservice.changeStatus(projectstatus);
-		} catch(Exception e)
-		{
-
-			e.printStackTrace();
+	public String projectCheck()  {
+		if(projectstatus!=null){	
+				projectservice.changeStatus(projectstatus);
+			
 		}
-		List <ProjectStatusEntity> plist = projectservice.statusList();
-		ActionContext.getContext().put("allproject",plist);
+		List<ProjectEntity> plist = projectservice.checkStatusList();
+		ActionContext.getContext().put("allnocheckpro", plist);
 		return "projectcheck";
 	}
 
-	public String projectSign() {
-		try
-		{
+	public String projectSign(){
+		if(projectstatus!=null){
+		
 			projectservice.changeStatus(projectstatus);
-		} catch(Exception e)
-		{
-
-			e.printStackTrace();
+		
 		}
-		List <ProjectStatusEntity> plist = projectservice.statusList();
-		ActionContext.getContext().put("allproject",plist);
+		List<ProjectEntity> plist = projectservice.signStatusList();
+		ActionContext.getContext().put("allnosignpro", plist);
 		return "projectsign";
 	}
-
-	public String projectPublic() {
-		try
-		{
+	
+	public String projectPublic(){
+		if(projectstatus!=null){
+		
 			projectservice.changeStatus(projectstatus);
-		} catch(Exception e)
-		{
-
-			e.printStackTrace();
+		
 		}
-		List <ProjectStatusEntity> plist = projectservice.statusList();
-		ActionContext.getContext().put("allproject",plist);
+		List<ProjectEntity> plist = projectservice.publicStatusList();
+		ActionContext.getContext().put("allnopublicpro", plist);
 		return "projectpublic";
 	}
-
-	public String projectSale() {
-		try
-		{
+	public String projectSale(){
+		if(projectstatus!=null){
 			projectservice.changeStatus(projectstatus);
-		} catch(Exception e)
-		{
-
-			e.printStackTrace();
 		}
-		List <ProjectStatusEntity> plist = projectservice.statusList();
-		ActionContext.getContext().put("allproject",plist);
+		List<ProjectEntity> plist = projectservice.saleStatusList();
+		ActionContext.getContext().put("allnosalepro", plist);
 		return "projectsale";
 	}
-
-	public String projectFilling() {
-		try
-		{
+	public String projectFilling(){
+		if(projectstatus!=null){
+		
 			projectservice.changeStatus(projectstatus);
-		} catch(Exception e)
-		{
-
-			e.printStackTrace();
+		
 		}
-		List <ProjectStatusEntity> plist = projectservice.statusList();
-		ActionContext.getContext().put("allproject",plist);
+		List<ProjectEntity> plist = projectservice.fillStatusList();
+		ActionContext.getContext().put("allnofillpro", plist);
 		return "projectfilling";
 	}
+
 
 	/**
 	 * 按部门统计
@@ -227,12 +207,7 @@ public class ProjectAction extends ActionSupport {
 		}
 		Map<Integer,String[]> cmap=new HashedMap();
 		String str[] = new String[3];
-//		str[0]="id";
-//		str[1]="name";
-//		str[2]="count";
-		 
-		
-		// cmap.get(1)[1] ;
+ 
 		 DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 		 for(int j=0;j<lsd.size();j++){
 			 if(cmap.size()>0){
@@ -256,7 +231,6 @@ public class ProjectAction extends ActionSupport {
 				 cmap.put(lsd.get(j).getId(),str);
 			 }
 			 
-//			 dataset.addValue(o, "", temp);
 		 }
 		 
 		 Set<Integer> st=cmap.keySet();
@@ -265,12 +239,9 @@ public class ProjectAction extends ActionSupport {
 		 while(it.hasNext()){
 			
 			 Integer in= it.next() ;
-//			 System.out.println(cmap.get(in)[1]);
-//			 System.out.println("in"+in+"sn"+sn);
 			 dataset.addValue(Integer.valueOf(cmap.get(in)[2]),"",cmap.get(in)[1]);
 		 }
 		 
-		// dataset.addValue(l, "部门1", map.get(j));
 		chart = ChartFactory.createBarChart3D(
 				"部门项目分配情况", // 图表标题
 				"部门", // 目录轴的显示标签
@@ -427,12 +398,22 @@ public class ProjectAction extends ActionSupport {
 		this.isdel = isdel;
 	}
 
+ 
+	public int getId() {
+		return id;
+	}
+ 
 	public JFreeChart getChart() {
 		return chart;
 	}
+ 
 
+	public void setId(int id) {
+		this.id = id;
+	}
+ 
 	public void setChart(JFreeChart chart) {
 		this.chart = chart;
 	}
-
+ 
 }

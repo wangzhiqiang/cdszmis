@@ -26,7 +26,7 @@ public class ProjectEntity implements Serializable{
 	 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Integer id;
 	private String serialnumbers;// 项目（合同）编号，手工填写
 	private String prijectname;// 项目(合同)名称
 	private String commissionedname;// 委托单位
@@ -52,10 +52,10 @@ public class ProjectEntity implements Serializable{
 //	@OneToOne // (targetEntity = ProjectDepartArrangementEntity.class)
 //	private ProjectDepartArrangementEntity projectDepartArrangementEntity;//所级安排
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getSerialnumbers() {

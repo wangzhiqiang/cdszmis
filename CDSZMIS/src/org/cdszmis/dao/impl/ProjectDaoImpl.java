@@ -8,6 +8,7 @@ import org.cdszmis.entity.ProjectArrangementEntity;
 import org.cdszmis.entity.ProjectDepartArrangementEntity;
 import org.cdszmis.entity.ProjectEntity;
 import org.cdszmis.entity.ProjectStatusEntity;
+import org.cdszmis.entity.ProjectSubmitEntity;
 import org.cdszmis.utils.HibernateUtils;
 import org.springframework.stereotype.Component;
 
@@ -52,32 +53,79 @@ public class ProjectDaoImpl implements org.cdszmis.dao.ProjectDao {
 		return hibernateUtils.findall(ProjectEntity.class);
 	}
 	
-
-	public List<ProjectArrangementEntity> noarrangedProject(){
-		return  hibernateUtils.findlistByHsql("from ProjectArrangementEntity obj where obj.departids=''");
+	/**
+	 * 项目实施（项目负责人定期更新项目进度状态）
+	 * 查询状态处于方案0或初设1的
+	 * （项目进度:方案0。初设1。施工图2）
+	 * @param project
+	 * @return
+	 */
+	public List<ProjectEntity> implStatusList(){
+		return  hibernateUtils.findlistByHsql("from ProjectEntity obj, ProjectStatusEntity obj1 where obj.id=obj1.ProjectEntity.id and obj1.status=0 or obj1.status=1");
 	}
-		public List <ProjectStatusEntity> statusList(){
-		return hibernateUtils.findall(ProjectStatusEntity.class);
-
+	/**
+	 * 总工审查（通过审查，将项目状态改为“院长签发3”，并 传送项目到院长签字环节。
+	 * 未通过审查，则系统将项目状态变为“施工图2”）
+	 * 查询状态为初设1或施工图2
+	 * 
+	 * @param project
+	 * @return
+	 */
+	public List<ProjectEntity> checkStatusList(){
+		return  hibernateUtils.findlistByHsql("from ProjectEntity obj, ProjectStatusEntity obj1 where obj.id=obj1.ProjectEntity.id and obj1.status=1  or obj1.status=2");
 	}
-	public List<ProjectArrangementEntity> noarrangedDepart(){
-		return  hibernateUtils.findlistByHsql("from ProjectArrangementEntity obj where obj.departids =''");
+	/**
+	 * 签字出图（系统更改项目状态为“出版4”）
+	 * 查询状态为院长签发3
+	 * @param project
+	 * @return
+	 */
+	public List<ProjectEntity> signStatusList(){
+		return  hibernateUtils.findlistByHsql("from ProjectEntity obj, ProjectStatusEntity obj1 where obj.id=obj1.ProjectEntity.id and obj1.status=3");
+	}
+
+	/**
+	 *出版发行（项目状态改为“发行5，系统自动传送出图信息到档案室和经营室）
+	 * 查询状态处于出版4
+	 * @param project
+	 * @return
+	 */
+	public List<ProjectEntity>  publicStatusList(){
+		return  hibernateUtils.findlistByHsql("from ProjectEntity obj, ProjectStatusEntity obj1 where obj.id=obj1.ProjectEntity.id and obj.status=4");
+	}
+
+	/**
+	 *发行收费（项目状态改为“项目结束6“）
+	 * 查询状态处于发行5
+	 * @param project
+	 * @return
+	 */
+	public List<ProjectEntity>  saleStatusList(){
+		return  hibernateUtils.findlistByHsql("from ProjectEntity obj, ProjectStatusEntity obj1 where obj.id=obj1.ProjectEntity.id and obj1.status=5");
+	}
+
+	/**
+	 *项目归档（将项目状态改为“项目归档7”）
+	 * 查询状态处于结束6
+	 * @param project
+	 * @return(更改项目状态)
+	 * 
+	 */
+	public List<ProjectEntity> fillStatusList(){
+		return  hibernateUtils.findlistByHsql("from ProjectEntity obj, ProjectStatusEntity obj1 where obj.id=obj1.ProjectEntity.id and obj1.status=6");
 	}
 	
-	public List<ProjectDepartArrangementEntity> noarrangedPerson(){
-		return  hibernateUtils.findlistByHsql("from ProjectDepartArrangementEntity obj where obj.chargeperson=''");
-	}
 	
-	public ProjectArrangementEntity arrangeDepart(ProjectArrangementEntity paentity,String departids){
+	public ProjectArrangementEntity arrangeDepart(ProjectArrangementEntity paentity){
 		
-	  	paentity.setDepartids(departids);
-          return paentity	;
+		return  (ProjectArrangementEntity) hibernateUtils.saveorupdate(paentity);
+          
 	} 
 
-	public  ProjectDepartArrangementEntity arrangeChargePerson(ProjectDepartArrangementEntity pdaentity, String chargeperson ){
+	public  ProjectDepartArrangementEntity arrangeChargePerson(ProjectDepartArrangementEntity pdaentity){
 		
-			pdaentity.setChargeperson(chargeperson);
-		        return pdaentity;
+		return  (ProjectDepartArrangementEntity) hibernateUtils.saveorupdate(pdaentity);
+		      
 		
 	}
 	
@@ -85,40 +133,9 @@ public class ProjectDaoImpl implements org.cdszmis.dao.ProjectDao {
 	
 	
 	public ProjectStatusEntity changeStatus(ProjectStatusEntity projectstatus){
-		try {
-			if ("0".equals(projectstatus.getStatus())) {//"方案"
-				
-				projectstatus.setStatus(0);
-			} 			
-			if("1".equals(projectstatus.getStatus())){
-				projectstatus.setStatus(1);//将状态更改为"初设"
-			}
-			
-			if("2".equals(projectstatus.getStatus())){
-				projectstatus.setStatus(2);//将状态更改为"施工图"
-			}
-			if("3".equals(projectstatus.getStatus())){
-				projectstatus.setStatus(3);//将状态更改为“院长签发”	
-			}
-			
-		    if("4".equals(projectstatus.getStatus())){
-				projectstatus.setStatus(4);//将状态更改为"出版"
-			}
-		    if("5".equals(projectstatus.getStatus())){
-				projectstatus.setStatus(5);//将状态更改为"发行"
-			}
-		    if("6".equals(projectstatus.getStatus())){
-				projectstatus.setStatus(6);//将状态更改为"项目结束"
-			}
-		    if("6".equals(projectstatus.getStatus())){
-				projectstatus.setStatus(7);//将状态更改为"归档"
-			}
-		    
-		} catch (Exception e) {
-			e.printStackTrace();
-			
-		}
-		return projectstatus;
+		
+		return  (ProjectStatusEntity) hibernateUtils.saveorupdate(projectstatus);
 	}
+	
 	
 }

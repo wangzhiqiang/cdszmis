@@ -4,14 +4,16 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 
  <link href="${rooturl }/styles/banner.css" rel="stylesheet" type="text/css" />
+ 
  <link href="${rooturl }/styles/common.css" rel="stylesheet" type="text/css" />
+ 
 <script language="JavaScript" src="${rooturl }/scripts/jquery/jquery-1.5.2.js"></script>
 <script type="text/javascript">
  
 	$(document).ready(function(){
 		 $(".pjid").click(function(){
 			       
-		$("#projectid").val($.trim($(this).parent().parent().children().eq(1).html()));	
+		$("#pid").val($.trim($(this).parent().parent().children().eq(1).html()));	
         $("#serialnumbers").val($.trim($(this).parent().parent().children().eq(2).html()));	
         $("#prijectname").val($.trim($(this).parent().parent().children().eq(3).html()));	
         $("#commissionedname").val($.trim($(this).parent().parent().children().eq(4).html()));	
@@ -25,12 +27,63 @@
 		$("#detail").val($.trim($(this).parent().parent().children().eq(13).html()));
 		$("#createdate").val($.trim($(this).parent().parent().children().eq(14).html()));
 		$("#subperson").val($.trim($(this).parent().parent().children().eq(15).html()));
+		
+		
 		});
-		 
-		 $("#delpro").click(function(){
-			 window.location.href = "${roturl }/project/pro_projectmanage?project.id="+$("#projectid").val()+"&isdel=true";
-		 });
-	});
+		$("#delpro").click(function(){
+			window.location.href = "${roturl }/project/pro_projectmanage?project.id="+$("#pid").val()+"&isdel=true";
+		});
+		 $('#submit').click(function(){
+		 	 var serialnumbers = $("#serialnumbers").val();
+			 var contactphone =  $("#contactphone").val();
+			 var rate =  $("#rate").val();
+			 var money = $("#money").val();
+			 var startdate = $("#startdate").val();
+			 var contactdate = $("#contractdate").val();
+			 var edndate = $("#enddate").val();
+	　　　　　//项目编号验证
+	     	if (serialnumbers.search(/^[0-9]{1,20}$/)== -1)
+		    	{
+                   alert("项目编号只能是数字");  
+	　　　　　　　　return false;  
+	     		}
+			//电话验证　　
+	　　　　 if(contactphone.search(/^1[3|4|5|8][0-9]\d{8}$/) == -1)  
+	　　　　　　{  
+	　　　　　　　　alert("电话格式不正确");  
+	　　　　　　　　return false;  
+	　　　　　　}  
+    	   //费率　
+			if(rate.search(/^[0-9]{1,20}$/)== -1)
+		    	{
+                   alert("费率只能是数字");  
+	　　　　　　　　return false;  
+	     		} 
+			//合同金额验证　 
+		　　　if(money.search(/^[0-9]{1,20}$/)== -1)
+		    	{
+                   alert("合同金额只能是数字");  
+	　　　　　　　　return false;  
+	     		}
+	     	/**if(!startdate.search(/^\d{4}-\d{2}-\d{2}$/) == -1)
+			{
+				alert("启动时间格式错误 yyyy-mm-dd");
+				return false;
+			}
+           if(!contactdate.search(/^\d{4}-\d{2}-\d{2}$/) == -1)
+			{
+				alert("签订时间格式错误 yyyy-mm-dd");
+				return false;
+			}
+			if(!enddate.search(/^\d{4}-\d{2}-\d{2}$/) == -1)
+			{
+				alert("结束时间格式错误 yyyy-mm-dd");
+				return false;
+			}*/
+		
+		});
+	   });
+ 
 </script>
 <html>
 <head>
@@ -43,8 +96,8 @@
 </head>
 
 <body>
-	ProjectRegiste
-	<form action="${rooturl }/project/pro_projectmanage" method="get">
+	<div class="righttitle">ProjectRegiste</div>
+	<form action="${rooturl }/project/pro_projectmanage" method="get" >
 	<table>
 		
 		<tr>
@@ -79,7 +132,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td>签订时间</td><td><input id="contractdate" name="project.contractdate" type="text" /></td>
+			<td>签订时间</td><td><input id="contractdate" name="project.contractdate" type="text"  /></td>
 		</tr>
 		<tr>
 			<td>启动时间</td><td><input id="startdate" name="project.startdate" type="text" /></td>
@@ -91,57 +144,59 @@
 			<td>项目情况</td><td><input id="detail" name="project.detail" type="text" /></td>
 		</tr>
 		<tr>
-			<td>填报时间</td><td><input id="createdate" name="project.createdate" type="text" /></td>
+			<td>填报时间</td><td><input id="createdate" name="project.createdate"  type="text"  /></td>
 		</tr>
 		<tr>
-			<td>填报人</td><td><input id="subperson" name="project.subperson" type="text" /></td>
+			<td>填报人</td><td><input id="subperson" name="project.subperson" type="text" value="${sessionScope.loginname}"/></td>
 		</tr>
 
 	</table>
-	<input id="projectid" name="project.id" type="hidden" value=""></input>
-	 <input  type="submit" value="添加"/> <input  type="submit" value="修改"/> <input id='delpro'  type="button"   value="删除"/><br>
+ 
+	<input id="pid" name="project.id" type="hidden" value=""></input>
+	 <input   id="submit" type="submit" value="添加" /> <input  type="submit" value="修改"/> <input  id ="delpro"type="button" onclick="delproject()" value="删除"/><br>
+ 
 </form>
 	
-	<table name="pjlist" width="90%;" align="center">
-	 <tr>
-		<td  width="40px;">选择</td>
-		<td  width="40px;">ID</td>
-		<td>项目编号  </td>
-		<td>项目名称</td>
-		<td>委托单位</td>
-		<td>联系人 </td>
-		<td>联系电话  </td> 
-		<td>费率</td> 
-		<td>金额  </td>
-		<td>重要性</td>
-		<td>签订时间</td>
-		<td>启动时间 </td>
-		<td>结束时间  </td> 
-		<td>项目情况</td> 
-		<td>填报时间 </td>
-		<td>填报人</td>
-	</tr>
+	<div class="table" style="width: 90%" >
+	 <div class="hd">
+		<div class="td"  style="width: 40px">选择</div>
+		<div class="td"   style="width: 40px">ID</div>
+		<div class="td">项目编号  </div>
+		<div class="td">项目名称</div>
+		<div class="td">委托单位</div>
+		<div class="td">联系人 </div>
+		<div class="td">联系电话  </div>
+		<div class="td">费率</div>
+		<div class="td">金额  </div>
+		<div class="td">重要性</div>
+		<div class="td">签订时间</div>
+		<div class="td">启动时间 </div>
+		<div class="td">结束时间  </div> 
+		<div class="td">项目情况</div>
+		<div class="td">填报时间 </div>
+		<div class="td">填报人</div>
+	</div>
 	   <c:forEach items="${allproject }" var="ls">
-		   <tr  >
+		   <div class="tr"  >
 			   
-			<td width="30px;"><input class="pjid" type="radio" name="pjid"/></td> 
-			<td  width="40px;"> ${ls.id }</td>
-			<td>${ls.serialnumbers }</td>
-			<td>${ls.prijectname } </td>
-			<td>${ls.commissionedname }</td>
-			<td>${ls.contactperson }</td>
-			<td>${ls.contactphone } </td>
-			<td>${ls.rate }</td>
-			<td>${ls.money }</td>
-			<td> <c:if test="${ls.important ==0}">一般</c:if> <c:if test="${ls.important ==1}">重要</c:if><c:if test="${ls.important ==2}">紧急</c:if></td> 
-			<td>${ls.contractdate }</td>
-			<td>${ls.startdate } </td>
-			<td>${ls.enddate }</td>
-			<td>${ls.detail }</td>
-			<td>${ls.createdate } </td>
-			<td>${ls.subperson }</td>   
-		   </tr>
+			<div class="td" style="width:30px"><input class="pjid" type="radio" name="pjid"/></div> 
+			<div class="td" style="width:40px"> ${ls.id }</div>
+			<div class="td">${ls.serialnumbers }</div>
+			<div class="td">${ls.prijectname } </div>
+			<div class="td">${ls.commissionedname }</div>
+			<div class="td">${ls.contactperson }</div>
+			<div class="td">${ls.contactphone } </div>
+			<div class="td">${ls.rate }</div>
+			<div class="td">${ls.money }</div>
+			<div class="td"> <c:if test="${ls.important ==0}">一般</c:if> <c:if test="${ls.important ==1}">重要</c:if><c:if test="${ls.important ==2}">紧急</c:if></div> 
+			<div class="td">${ls.contractdate }</div>
+			<div class="td">${ls.startdate } </div>
+			<div class="td">${ls.enddate }</div>
+			<div class="td" style="overflow: hidden;">${ls.detail }</div>
+			<div class="td">${ls.createdate } </div>
+			<div class="td">${ls.subperson }</div>   
+		   </div>
 	   </c:forEach>
-   </table>
+   </div>
 </body>
 </html>
