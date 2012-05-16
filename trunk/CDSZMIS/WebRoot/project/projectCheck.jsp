@@ -13,12 +13,8 @@
 	$(document).ready(function(){
 		 $(".pjsid").click(function(){
 			 
-		$("#pstatusid").val($.trim($(this).parent().parent().children().eq(1).html()));	
-        $("#projectid").val($.trim($(this).parent().parent().children().eq(2).html()));	   
-        $("#history").val($.trim($(this).parent().parent().children().eq(4).html()));	
-        $("#createdate").val($.trim($(this).parent().parent().children().eq(5).html()));	
-        $("#reportdate").val($.trim($(this).parent().parent().children().eq(6).html()));	
-        $("#reportperson").val($.trim($(this).parent().parent().children().eq(7).html()));			 
+		//$("#id").val($.trim($(this).parent().parent().children().eq(1).html()));	
+        $("#projectid").val($.trim($(this).parent().parent().children().eq(1).html()));	   			 
 			 
 		});
 	});
@@ -31,7 +27,7 @@
 
 	<table id="detil">
 		<tr style="border-bottom-color: #FFF;border-bottom-style: solid;border-bottom: 1px;">
-			<td>项目ID</td><td> <input id="projectid" type="text" name="projectstatus.projectid" value=""/></td>
+			<td>项目ID</td><td> <input id="projectid" type="text" name="projectstatus.projectid" onclick="alert(this.value);"  readonly/></td>
 		</tr>
 		<tr>
 			<td> 项目状态</td><td><label name="projectstatus.status">
@@ -40,52 +36,62 @@
 			</label></td>
 		</tr>
 		<tr>
-			<td>状态更新 </td><td> <input id="history" type="text" name="projectstatus.history"/></td>
+			<td>状态更新 </td><td> <input id="history" type="text" name="projectstatus.history" onclick="alert(this.value);"  readonly/></td>
 		</tr>
 		<tr>
-			<td>创建时间</td><td> <input id="createdate" type="text" name="projectstatus.createdate"/> 
+			<td>创建时间</td><td> <input id="createdate" type="text" name="projectstatus.createdate" onclick="alert(this.value);"  readonly/> 
 			
 			</td>  
 		</tr>
 		<tr>
-			<td>填报时间</td><td> <input id="reportdate" type="text" name="projectstatus.reportdate" /></td>
+			<td>填报时间</td><td> <input id="reportdate" type="text" name="projectstatus.reportdate" onclick="alert(this.value);"  readonly/></td>
 		</tr>
 		<tr>
-			<td> 填报人</td><td> <input id="reportperson" type="text" name="projectstatus.responsibility" ></td> 
+			<td> 填报人</td><td> <input id="reportperson" type="text" name="projectstatus.reportperson" onclick="alert(this.value);"  readonly/></td> 
 		</tr>
 	</table>
 	  
-     <input id="pstatusid" name="projectstatus.id" type="hidden" value=""></input>
+     <input id="id" name="projectstatus.id" type="hidden" value=""></input>
 	 <input  type="submit" value="提交"/><br>
 	</form>
 	<table name="pjlist" width="90%;" align="center">
-	 <tr>
+	<tr>
 		<td  width="40px;">选择</td>
 		<td  width="40px;">ID</td>
-		<td>项目ID</td>
-		<td>项目状态</td>
-		<td>状态更新</td>
-		<td>创建时间</td>
-		<td>填报时间 </td> 
-		<td>填报人</td> 
+		<td>项目编号  </td>
+		<td>项目名称</td>
+		<td>委托单位</td>
+		<td>联系人 </td>
+		<td>联系电话  </td> 
+		<td>费率</td> 
+		<td>金额  </td>
+		<td>重要性</td>
+		<td>签订时间</td>
+		<td>启动时间 </td>
+		<td>结束时间  </td> 
+		<td>项目情况</td> 
+		<td>填报时间 </td>
+		<td>填报人</td>
 	</tr>
-	   <c:forEach items="${allproject }" var="ls">
+	   <c:forEach items="${allnoimplpro }" var="ls">
 		   <tr  >
 			   
-			<td width="30px;"><input class="pjsid" type="radio" name="pjsid"/></td> 
+			<td width="30px;"><input class="pjid" type="radio" name="pjid"/></td> 
 			<td  width="40px;"> ${ls.id }</td>
-			<td>${ls.projectid }</td>
-			<td> <c:if test="${ls.status ==0}">方案</c:if> <c:if test="${ls.status ==1}">初设</c:if>
-			<c:if test="${ls.status ==2}">施工图</c:if> <c:if test="${ls.status ==3}">院长签发</c:if>
-			<c:if test="${ls.status ==4}">出版</c:if> <c:if test="${ls.status ==5}">发行</c:if>
-			<c:if test="${ls.status ==6}">结束</c:if> <c:if test="${ls.status ==7}">归档</c:if>
-			</td> 
-			<td> ${ls.history }</td>
-			<td>${ls.createdate }</td>
-			<td>${ls.reportdate }</td> 
-			<td>${ls.reportperson }</td> 
-			
-			   
+			<td>${ls.serialnumbers }</td>
+			<td>${ls.prijectname } </td>
+			<td>${ls.commissionedname }</td>
+			<td>${ls.contactperson }</td>
+			<td>${ls.contactphone } </td>
+			<td>${ls.rate }</td>
+			<td>${ls.money }</td>
+			<td> <c:if test="${ls.important ==0}">一般</c:if> <c:if test="${ls.important ==1}">重要</c:if><c:if test="${ls.important ==2}">紧急</c:if></td> 
+			<td>${ls.contractdate }</td>
+			<td>${ls.startdate } </td>
+			<td>${ls.enddate }</td>
+			<td>${ls.detail }</td>
+			<td>${ls.createdate } </td>
+			<td>${ls.subperson }</td>   
 		   </tr>
 	   </c:forEach>
    </table>
