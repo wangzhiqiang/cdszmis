@@ -31,7 +31,6 @@ public class ProjectAction extends ActionSupport {
 	@Resource private ProjectService projectservice;
 	@Resource private PublicDao publicDao;
 	private ProjectEntity project; 
-	private ProjectEntity projectname; 
 	private ProjectStatusEntity projectstatus;
 	ProjectArrangementEntity paentity;
 	ProjectDepartArrangementEntity pdaentity;
@@ -328,6 +327,22 @@ public class ProjectAction extends ActionSupport {
 	 * @return
 	 */
 	public String projectDetail() {
+		String Hsql="from ProjectStatusEntity obj where 1=1 ";
+		//System.out.println(Hsql);
+		if(null!=projectstatus){
+			Hsql=Hsql+" and  obj.status ="+projectstatus.getStatus();
+		}
+		if(null!=project){
+			if (!"".equals(project.getSerialnumbers()))
+			Hsql=Hsql+" and obj.projectEntity.serialnumbers like '"+project.getSerialnumbers()+"%'";
+			if (!"".equals(project.getPrijectname()))
+				Hsql=Hsql+" and obj.projectEntity.prijectname like '"+project.getPrijectname()+"%'";
+		}
+		
+		
+		
+		List lsp=publicDao.findObjectListByHsql(Hsql);
+		ActionContext.getContext().put("lsp",lsp);
 
 		return "projectdetail";
 	}
@@ -339,14 +354,20 @@ public class ProjectAction extends ActionSupport {
 	 */
 	public String projectProgress() {
 		String Hsql="from ProjectStatusEntity obj where 1=1 ";
+		//System.out.println(Hsql);
+		if(null!=projectstatus){
+			Hsql=Hsql+" and  obj.status ="+projectstatus.getStatus();
+		}
 		if(null!=project){
 			if (!"".equals(project.getSerialnumbers()))
 			Hsql=Hsql+" and obj.projectEntity.serialnumbers like '"+project.getSerialnumbers()+"%'";
+	
+			if (!"".equals(project.getPrijectname()))
+			Hsql=Hsql+" and obj.projectEntity.prijectname like '"+project.getPrijectname()+"%'";
 		}
-		if(null!=projectname){
-			if (!"".equals(projectname.getPrijectname()))
-			Hsql=Hsql+" and obj.projectEntity.prijectname like '"+projectname.getPrijectname()+"%'";
-		}
+		System.out.println(Hsql);
+		List lsp=publicDao.findObjectListByHsql(Hsql);
+		ActionContext.getContext().put("lsp",lsp);
 		return "projectprogess";
 	}
 
