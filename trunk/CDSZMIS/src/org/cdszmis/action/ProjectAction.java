@@ -73,7 +73,7 @@ public class ProjectAction extends ActionSupport {
 			projectstatus.setStatus(0);
 		}
 		//查询所有在安排表中没有的项目
-		List <ProjectEntity> plist = publicDao.findObjectListByHsql("select  obj from ProjectEntity obj,ProjectDepartArrangementEntity obj1 where obj.id not in obj1.projectEntity.id");
+		List <ProjectEntity> plist = publicDao.findObjectListByHsql("select distinct obj from ProjectEntity obj,ProjectDepartArrangementEntity obj1 where obj.id not in obj1.projectEntity.id");
 		//List<ProjectEntity> plist = projectservice.projectList();
 		ActionContext.getContext().put("allnoarrangperson", plist);
 		return "arrangeperson";
