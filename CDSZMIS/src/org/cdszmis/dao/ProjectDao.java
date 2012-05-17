@@ -45,55 +45,14 @@ public interface ProjectDao {
 	 */
 	public List<ProjectEntity> projectList();
 	
+	
 	/**
-	 * 项目实施（项目负责人定期更新项目进度状态）
-	 * 查询状态处于方案0或初设1的
-	 * （项目进度:方案0。初设1。施工图2）
+	 * 所级安排（设计所所长通过系统安排项目的负责人）
+	 * 此时项目状态为“任务下达0”
 	 * @param project
 	 * @return
 	 */
-	public List<ProjectEntity> implStatusList();
-	/**
-	 * 总工审查（通过审查，将项目状态改为“院长签发3”，并 传送项目到院长签字环节。
-	 * 未通过审查，则系统将项目状态变为“施工图2”）
-	 * 查询状态为初设1或施工图2
-	 * 
-	 * @param project
-	 * @return
-	 */
-	public List<ProjectEntity> checkStatusList();
-	/**
-	 * 签字出图（系统更改项目状态为“出版4”）
-	 * 查询状态为院长签发3
-	 * @param project
-	 * @return
-	 */
-	public List<ProjectEntity> signStatusList();
-
-	/**
-	 *出版发行（项目状态改为“发行5，系统自动传送出图信息到档案室和经营室）
-	 * 查询状态处于出版4
-	 * @param project
-	 * @return
-	 */
-	public List<ProjectEntity>  publicStatusList();
-
-	/**
-	 *发行收费（项目状态改为“项目结束6“）
-	 * 查询状态处于发行5
-	 * @param project
-	 * @return
-	 */
-	public List<ProjectEntity>  saleStatusList();
-
-	/**
-	 *项目归档（将项目状态改为“项目归档7”）
-	 * 查询状态处于结束6
-	 * @param project
-	 * @return(更改项目状态)
-	 * 
-	 */
-	public List<ProjectEntity> fillStatusList();
+	public  ProjectDepartArrangementEntity arrangeChargePerson(ProjectDepartArrangementEntity pdaentity);
 	
 
 	/**
@@ -102,15 +61,58 @@ public interface ProjectDao {
 	 * @return
 	 */
 	public ProjectArrangementEntity arrangeDepart(ProjectArrangementEntity paentity) ;
-	/**
-	 * 所级安排（设计所所长通过系统安排项目的负责人）
-	 * @param project
-	 * @return
-	 */
-	public  ProjectDepartArrangementEntity arrangeChargePerson(ProjectDepartArrangementEntity pdaentity);
 	
 	
 
+	/**
+	 * 项目实施（项目负责人定期更新项目进度状态）
+	 * 查询状态处于方案1或初设2的
+	 * （项目进度:方案1。初设2。施工图3）
+	 * @param project
+	 * @return
+	 */
+	public List<ProjectEntity> implStatusList();
+	/**
+	 * 总工审查（通过审查，将项目状态改为“院长签发4”，并 传送项目到院长签字环节。
+	 * 未通过审查，则系统将项目状态变为“施工图3”）
+	 * 查询状态为初设2或施工图3
+	 * 
+	 * @param project
+	 * @return
+	 */
+	public List<ProjectEntity> checkStatusList();
+	/**
+	 * 签字出图（系统更改项目状态为“出版5”）
+	 * 查询状态为院长签发4
+	 * @param project
+	 * @return
+	 */
+	public List<ProjectEntity> signStatusList();
+
+	/**
+	 *出版发行（项目状态改为“发行6，系统自动传送出图信息到档案室和经营室）
+	 * 查询状态处于出版5
+	 * @param project
+	 * @return
+	 */
+	public List<ProjectEntity>  publicStatusList();
+
+	/**
+	 *发行收费（项目状态改为“项目结束7“）
+	 * 查询状态处于发行6
+	 * @param project
+	 * @return
+	 */
+	public List<ProjectEntity>  saleStatusList();
+
+	/**
+	 *项目归档（将项目状态改为“项目归档8”）
+	 * 查询状态处于结束7
+	 * @param project
+	 * @return(更改项目状态)
+	 * 
+	 */
+	public List<ProjectEntity> fillStatusList();
 	
 	
 	

@@ -6,7 +6,7 @@
 
   <head>
  	<link href="${rooturl }/styles/banner.css" rel="stylesheet" type="text/css" />
- 	<link href="${rooturl }/styles/common.css" rel="stylesheet" type="text/css" />
+ 	<link href="${rooturl }/styles/mine.css" rel="stylesheet" type="text/css" />
 	<script language="JavaScript" src="${rooturl }/scripts/jquery/jquery-1.5.2.js"></script>
 <script type="text/javascript">
 
@@ -23,7 +23,7 @@
   </head>
   
   <body>
-   ProjectSign<br>
+    <div class="righttitle">ProjectSign</div>
    <form action="${rooturl }/project/pro_projectSign" method="get">
 
 	<table id="detil">
@@ -54,47 +54,47 @@
      <input id="id" name="projectstatus.id" type="hidden" value=""></input>
 	 <input  type="submit" value="提交"/><br>
 	</form>
-	<table name="pjlist" width="90%;" align="center">
-	<tr>
-		<td  width="40px;">选择</td>
-		<td  width="40px;">ID</td>
-		<td>项目编号  </td>
-		<td>项目名称</td>
-		<td>委托单位</td>
-		<td>联系人 </td>
-		<td>联系电话  </td> 
-		<td>费率</td> 
-		<td>金额  </td>
-		<td>重要性</td>
-		<td>签订时间</td>
-		<td>启动时间 </td>
-		<td>结束时间  </td> 
-		<td>项目情况</td> 
-		<td>填报时间 </td>
-		<td>填报人</td>
-	</tr>
+	<div class="table" style="width:1000px" >
+	 <div class="hd">
+		<div class="td"  style="width: 35px">选择</div>
+		<div class="td"   style="width: 35px">ID</div>
+		<div class="td"   style="width: 56px">项目编号  </div>
+		<div class="td"   style="width: 56px">项目名称</div>
+		<div class="td"   style="width: 56px">委托单位</div>
+		<div class="td"   style="width: 45px">联系人 </div>
+		<div class="td"   style="width: 65px">联系电话  </div>
+		<div class="td"   style="width: 35px">费率</div>
+		<div class="td"   style="width: 35px">金额  </div>
+		<div class="td"   style="width: 45px">重要性</div>
+		<div class="td"   style="width: 65px">签订时间</div>
+		<div class="td"   style="width: 65px">启动时间 </div>
+		<div class="td"   style="width: 65px">结束时间  </div> 
+		<div class="td"   style="width: 56px">项目情况</div>
+		<div class="td"   style="width: 65px">填报时间 </div>
+		<div class="td"   style="width: 45px">填报人</div>
+	</div>
 	   <c:forEach items="${allnosignpro }" var="ls">
-		   <tr  >
+		   <div class="tr"  >
 			   
-			<td width="30px;"><input class="pjid" type="radio" name="pjid"/></td> 
-			<td  width="40px;"> ${ls.id }</td>
-			<td>${ls.serialnumbers }</td>
-			<td>${ls.prijectname } </td>
-			<td>${ls.commissionedname }</td>
-			<td>${ls.contactperson }</td>
-			<td>${ls.contactphone } </td>
-			<td>${ls.rate }</td>
-			<td>${ls.money }</td>
-			<td> <c:if test="${ls.important ==0}">一般</c:if> <c:if test="${ls.important ==1}">重要</c:if><c:if test="${ls.important ==2}">紧急</c:if></td> 
-			<td>${ls.contractdate }</td>
-			<td>${ls.startdate } </td>
-			<td>${ls.enddate }</td>
-			<td>${ls.detail }</td>
-			<td>${ls.createdate } </td>
-			<td>${ls.subperson }</td>   
-		   </tr>
+			<div class="td" style="width:35px"><input class="pjid" type="radio" name="pjid"/></div> 
+			<div class="td" style="width:35px"> ${ls.id }</div>
+			<div class="td" style="width: 56px;overflow: hidden;">${ls.serialnumbers }</div>
+			<div class="td" style="width: 56px;overflow: hidden;">${ls.prijectname } </div>
+			<div class="td" style="width: 56px;overflow: hidden;">${ls.commissionedname }</div>
+			<div class="td" style="width: 45px;overflow: hidden;">${ls.contactperson }</div>
+			<div class="td" style="width: 65px;overflow: hidden;">${ls.contactphone } </div>
+			<div class="td" style="width: 35px;overflow: hidden;">${ls.rate }</div>
+			<div class="td" style="width: 35px;overflow: hidden;">${ls.money }</div>
+			<div class="td" style="width: 45px;overflow: hidden;"> <c:if test="${ls.important ==0}">一般</c:if> <c:if test="${ls.important ==1}">重要</c:if><c:if test="${ls.important ==2}">紧急</c:if></div> 
+			<div class="td" style="width: 65px;overflow: hidden;">${ls.contractdate }</div>
+			<div class="td" style="width: 65px;overflow: hidden;">${ls.startdate } </div>
+			<div class="td" style="width: 65px;overflow: hidden;">${ls.enddate }</div>
+			<div class="td" style="width: 56px;overflow: hidden;">${ls.detail }</div>
+			<div class="td" style="width: 65px;overflow: hidden;">${ls.createdate } </div>
+			<div class="td" style="width: 45px;overflow: hidden;">${ls.subperson }</div>   
+		   </div>
 	   </c:forEach>
-   </table>
+   </div>
    
   </body>
 </html>

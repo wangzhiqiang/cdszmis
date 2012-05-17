@@ -5,7 +5,7 @@
 
  <link href="${rooturl }/styles/banner.css" rel="stylesheet" type="text/css" />
  
- <link href="${rooturl }/styles/common.css" rel="stylesheet" type="text/css" />
+ <link href="${rooturl }/styles/mine.css" rel="stylesheet" type="text/css" />
  
 <script language="JavaScript" src="${rooturl }/scripts/jquery/jquery-1.5.2.js"></script>
 <script type="text/javascript">
@@ -30,9 +30,9 @@
 		
 		
 		});
-		$("#delpro").click(function(){
+		/**$("#delpro").click(function(){
 			window.location.href = "${roturl }/project/pro_projectmanage?project.id="+$("#pid").val()+"&isdel=true";
-		});
+		});*/
 		 $('#submit').click(function(){
 		 	 var serialnumbers = $("#serialnumbers").val();
 			 var contactphone =  $("#contactphone").val();
@@ -153,48 +153,48 @@
 	</table>
  
 	<input id="pid" name="project.id" type="hidden" value=""></input>
-	 <input   id="submit" type="submit" value="添加" /> <input  type="submit" value="修改"/> <input  id ="delpro"type="button" onclick="delproject()" value="删除"/><br>
+	 <input   id="submit" type="submit" value="添加" /> <input  type="submit" value="修改"/><br>
  
 </form>
 	
-	<div class="table" style="width: 90%" >
+	<div class="table" style="width:1000px" >
 	 <div class="hd">
-		<div class="td"  style="width: 40px">选择</div>
-		<div class="td"   style="width: 40px">ID</div>
-		<div class="td">项目编号  </div>
-		<div class="td">项目名称</div>
-		<div class="td">委托单位</div>
-		<div class="td">联系人 </div>
-		<div class="td">联系电话  </div>
-		<div class="td">费率</div>
-		<div class="td">金额  </div>
-		<div class="td">重要性</div>
-		<div class="td">签订时间</div>
-		<div class="td">启动时间 </div>
-		<div class="td">结束时间  </div> 
-		<div class="td">项目情况</div>
-		<div class="td">填报时间 </div>
-		<div class="td">填报人</div>
+		<div class="td"  style="width: 35px">选择</div>
+		<div class="td"   style="width: 35px">ID</div>
+		<div class="td"   style="width: 56px">项目编号  </div>
+		<div class="td"   style="width: 56px">项目名称</div>
+		<div class="td"   style="width: 56px">委托单位</div>
+		<div class="td"   style="width: 45px">联系人 </div>
+		<div class="td"   style="width: 65px">联系电话  </div>
+		<div class="td"   style="width: 35px">费率</div>
+		<div class="td"   style="width: 35px">金额  </div>
+		<div class="td"   style="width: 45px">重要性</div>
+		<div class="td"   style="width: 65px">签订时间</div>
+		<div class="td"   style="width: 65px">启动时间 </div>
+		<div class="td"   style="width: 65px">结束时间  </div> 
+		<div class="td"   style="width: 56px">项目情况</div>
+		<div class="td"   style="width: 65px">填报时间 </div>
+		<div class="td"   style="width: 45px">填报人</div>
 	</div>
 	   <c:forEach items="${allproject }" var="ls">
 		   <div class="tr"  >
 			   
-			<div class="td" style="width:30px"><input class="pjid" type="radio" name="pjid"/></div> 
-			<div class="td" style="width:40px"> ${ls.id }</div>
-			<div class="td">${ls.serialnumbers }</div>
-			<div class="td">${ls.prijectname } </div>
-			<div class="td">${ls.commissionedname }</div>
-			<div class="td">${ls.contactperson }</div>
-			<div class="td">${ls.contactphone } </div>
-			<div class="td">${ls.rate }</div>
-			<div class="td">${ls.money }</div>
-			<div class="td"> <c:if test="${ls.important ==0}">一般</c:if> <c:if test="${ls.important ==1}">重要</c:if><c:if test="${ls.important ==2}">紧急</c:if></div> 
-			<div class="td">${ls.contractdate }</div>
-			<div class="td">${ls.startdate } </div>
-			<div class="td">${ls.enddate }</div>
-			<div class="td" style="overflow: hidden;">${ls.detail }</div>
-			<div class="td">${ls.createdate } </div>
-			<div class="td">${ls.subperson }</div>   
+			<div class="td" style="width:35px"><input class="pjid" type="radio" name="pjid"/></div> 
+			<div class="td" style="width:35px"> ${ls.id }</div>
+			<div class="td" style="width: 56px;overflow: hidden;">${ls.serialnumbers }</div>
+			<div class="td" style="width: 56px;overflow: hidden;">${ls.prijectname } </div>
+			<div class="td" style="width: 56px;overflow: hidden;">${ls.commissionedname }</div>
+			<div class="td" style="width: 45px;overflow: hidden;">${ls.contactperson }</div>
+			<div class="td" style="width: 65px;overflow: hidden;">${ls.contactphone } </div>
+			<div class="td" style="width: 35px;overflow: hidden;">${ls.rate }</div>
+			<div class="td" style="width: 35px;overflow: hidden;">${ls.money }</div>
+			<div class="td" style="width: 45px;overflow: hidden;"> <c:if test="${ls.important ==0}">一般</c:if> <c:if test="${ls.important ==1}">重要</c:if><c:if test="${ls.important ==2}">紧急</c:if></div> 
+			<div class="td" style="width: 65px;overflow: hidden;">${ls.contractdate }</div>
+			<div class="td" style="width: 65px;overflow: hidden;">${ls.startdate } </div>
+			<div class="td" style="width: 65px;overflow: hidden;">${ls.enddate }</div>
+			<div class="td" style="width: 56px;overflow: hidden;">${ls.detail }</div>
+			<div class="td" style="width: 65px;overflow: hidden;">${ls.createdate } </div>
+			<div class="td" style="width: 45px;overflow: hidden;">${ls.subperson }</div>   
 		   </div>
 	   </c:forEach>
    </div>

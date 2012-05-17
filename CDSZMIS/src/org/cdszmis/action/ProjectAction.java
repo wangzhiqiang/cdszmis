@@ -41,28 +41,12 @@ public class ProjectAction extends ActionSupport {
 	ProjectDepartArrangementEntity pdaentity;
 	private String chargeperson;
 	private String departids;
-	private String isdel=null;
 	private Integer id;
 	private JFreeChart chart;
 	public String projectmanage(){
 		if(project!=null){
-			if (isdel==null) {
+			
 				projectservice.projectManage(project);
-				
-				List ls=publicDao.findObjectListByHsql("from ProjectStatusEntity obj where obj.projectEntity.id="+project.getId());
-				if(0!=ls.size()){
-					projectstatus=(ProjectStatusEntity) ls.get(0);
-					projectstatus.setProjectEntity(project);
-				}else{ 
-					projectstatus.setProjectEntity(project);
-					projectstatus.setStatus(0);
-				}
-				publicDao.saveOrupdateObject(projectstatus);
-			} else {
-				System.out.print("**************"+project.getId());
-				projectservice.delProject(project);
-
-			}
 		}
 		List <ProjectEntity>  plist = projectservice.projectList();
 		ActionContext.getContext().put("allproject", plist);
@@ -75,21 +59,7 @@ public class ProjectAction extends ActionSupport {
 		ActionContext.getContext().put("allproject", plist);
 		return "listproject";
 	}
-	@SuppressWarnings("unchecked")
-	public String  arrangeDepartids(){
-		ActionContext.getContext().getSession().put("departlist", departService.departList());
-        if(paentity!=null){
-			ProjectEntity  pro = new ProjectEntity();
-			pro = (ProjectEntity)publicDao.queryObject(ProjectEntity.class,id);
-			paentity.setProjectEntity(pro);
-			projectservice.arrangeDepart(paentity);
-		}
-		List <ProjectEntity> plist= publicDao.findObjectListByHsql("select DISTINCT obj from ProjectEntity obj,ProjectArrangementEntity obj1 where obj.id not in obj1.ProjectEntity.id");
-		ActionContext.getContext().put("allnoarrangdepart", plist);
-		return "arrangedepart";
-			
-		}
-		
+		//安排负责人后，项目状态为＂任务下达0＂
 	@SuppressWarnings("unchecked")
 	public String arrangePerson(){
 		ActionContext.getContext().getSession().put("userlist", userService.selectList(null));
@@ -99,13 +69,33 @@ public class ProjectAction extends ActionSupport {
 			pro = (ProjectEntity)publicDao.queryObject(ProjectEntity.class, project.getId());
 			pdaentity.setProjectEntity(pro);
 			projectservice.arrangeChargePerson(pdaentity);
+			projectstatus.setProjectEntity(pro);
+			projectstatus.setStatus(0);
 		}
-		List <ProjectEntity> plist = publicDao.findObjectListByHsql("select DISTINCT obj from ProjectEntity obj,ProjectArrangementEntity obj1 where obj.id not in obj1.ProjectEntity.id");
-	    ActionContext.getContext().put("allnoarrangperson", plist);
+		//查询所有在安排表中没有的项目
+		List <ProjectEntity> plist = publicDao.findObjectListByHsql("select  obj from ProjectEntity obj,ProjectDepartArrangementEntity obj1 where obj.id not in obj1.projectEntity.id");
+		//List<ProjectEntity> plist = projectservice.projectList();
+		ActionContext.getContext().put("allnoarrangperson", plist);
 		return "arrangeperson";
 	}
-	
-
+	//安排部门后，项目状态为“方案1”
+	@SuppressWarnings("unchecked")
+	public String  arrangeDepartids(){
+		ActionContext.getContext().getSession().put("departlist", departService.departList());
+        if(paentity!=null){
+			ProjectEntity  pro = new ProjectEntity();
+			pro = (ProjectEntity)publicDao.queryObject(ProjectEntity.class,id);
+			paentity.setProjectEntity(pro);
+			projectservice.arrangeDepart(paentity);
+			projectstatus.setProjectEntity(pro);
+			projectstatus.setStatus(1);
+		}
+        //查询所有状态为“任务下达0”的项目
+		List <ProjectEntity> plist= publicDao.findObjectListByHsql("select obj from ProjectEntity obj,ProjectDepartArrangementEntity obj1 ,ProjectStatusEntity obj2 where obj.id = obj1.projectEntity.id and obj.id = obj2.projectEntity.id and obj2.status=0");
+		ActionContext.getContext().put("allnoarrangdepart", plist);
+		return "arrangedepart";
+			
+		}
 
 	public String projectImpl(){
 		if(projectstatus!=null){
@@ -389,15 +379,6 @@ public class ProjectAction extends ActionSupport {
 	public void setDepartids(String departids) {
 		this.departids = departids;
 	}
-
-	public String getIsdel() {
-		return isdel;
-	}
-
-	public void setIsdel(String isdel) {
-		this.isdel = isdel;
-	}
-
  
 	public int getId() {
 		return id;
