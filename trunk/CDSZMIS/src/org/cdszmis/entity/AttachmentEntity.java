@@ -22,7 +22,7 @@ public class AttachmentEntity implements Serializable{
 	private Integer id;
 	private String filename;
 	private String filetype;
-	private String filesize;
+	private Long filesize;
 	private String fileurl;
 	private String filestatus;
 	@ManyToOne(targetEntity=FilesEntity.class  )
@@ -45,12 +45,8 @@ public class AttachmentEntity implements Serializable{
 	public void setFiletype(String filetype) {
 		this.filetype = filetype;
 	}
-	public String getFilesize() {
-		return filesize;
-	}
-	public void setFilesize(String filesize) {
-		this.filesize = filesize;
-	}
+	 
+	 
 	public String getFileurl() {
 		return fileurl;
 	}
@@ -68,6 +64,12 @@ public class AttachmentEntity implements Serializable{
 	}
 	public void setFilesEntity(FilesEntity filesEntity) {
 		this.filesEntity = filesEntity;
+	}
+	public Long getFilesize() {
+		return filesize;
+	}
+	public void setFilesize(Long filesize) {
+		this.filesize = filesize;
 	}
 	
 	
