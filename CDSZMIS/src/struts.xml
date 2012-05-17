@@ -9,6 +9,8 @@
 	<constant name="struts.devMode" value="true" />
 	<constant name="struts.ui.theme" value="simple" />
 	<constant name="struts.objectFactory" value="spring" />
+	<!-- 文件上传大小限制 20M -->
+	<constant name="struts.multipart.maxSize" value="20000000" />
 <!--<constant name="struts.i18n.encoding" value="utf-8"/>-->
 	<include file="Interceptor.xml"></include>
 

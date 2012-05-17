@@ -6,14 +6,20 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
+import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
+import org.cdszmis.dao.PublicDao;
 import org.cdszmis.entity.AttachmentEntity;
 import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings ("serial")
 public class FilesAction extends ActionSupport {
+	@Resource PublicDao publicDao;
+	private AttachmentEntity attachment;
+	
+	
 	private File file;
 	private String fileFileName;
 	private String fileContentType;
@@ -32,16 +38,30 @@ public class FilesAction extends ActionSupport {
 		if(isPostMethod){
 			String realpath = ServletActionContext.getServletContext().getRealPath("/uploadFile");
 			if(file != null){
+				attachment=new AttachmentEntity();
+				attachment.setFilename(fileFileName);
+				attachment.setFilesize(file.length());
+				attachment.setFiletype(fileContentType);
+				attachment.setFileurl("/uploadFile"+"/"+generateFileName(fileFileName));
+				
 				File savefile = new File(new File(realpath), generateFileName(fileFileName));
 				try {
 					FileUtils.copyFile(file, savefile);
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
 		}
 		return "fileupload" ;
+	}
+	
+	private String generateFileName(String fileName) {
+		DateFormat format = new SimpleDateFormat("yyMMddHHmmss");
+		String formatDate = format.format(new Date());
+		int random = new Random().nextInt(10000);
+		int position = fileName.lastIndexOf(".");
+		String extension = fileName.substring(position);
+		return formatDate + random + extension;
 	}
 
 	/**
@@ -108,19 +128,7 @@ public class FilesAction extends ActionSupport {
 
 		return "mouodlCopy";
 	}
-
-	private String generateFileName(String fileName) {
-		DateFormat format = new SimpleDateFormat("yyMMddHHmmss");
-		String formatDate = format.format(new Date());
-
-		int random = new Random().nextInt(10000);
-
-		int position = fileName.lastIndexOf(".");
-		String extension = fileName.substring(position);
-
-		return formatDate + random + extension;
-	}
-
+	
 	public File getFile() {
 		return file;
 	}
@@ -147,8 +155,15 @@ public class FilesAction extends ActionSupport {
 	}
 
 	public void setServletContext(ServletContext arg0) {
-		// TODO Auto-generated method stub
 		
+	}
+
+	public AttachmentEntity getAttachment() {
+		return attachment;
+	}
+
+	public void setAttachment(AttachmentEntity attachment) {
+		this.attachment = attachment;
 	}
 
 }
