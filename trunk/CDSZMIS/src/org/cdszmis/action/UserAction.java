@@ -202,8 +202,20 @@ public class UserAction extends BaseAction {
 	public String userUpdate(){
 		ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());
 		ActionContext.getContext().getSession().put("departlist", departService.departList());
-		if(user != null){
+		if(user != null && groupids != null){
 			String uspass = Encipherment.Enc_MD5_2(user.getUspass());
+			
+			  String s[]=groupids.split(",");
+			  UserGroupEntity ug=null;
+			  Set<UserGroupEntity> us=new HashSet<UserGroupEntity>();
+			  for(int i=0 ;i<s.length;i++){
+				  System.out.println("---"+s[i]+"----");
+				 ug=new UserGroupEntity();
+				 ug=(UserGroupEntity) publicDao.queryObject(UserGroupEntity.class, Integer.valueOf(s[i]));
+				 us.add(ug);
+			  }
+			user.setUserGroupEntity(us);
+			
 			user.setUspass(uspass);
 			user.setUsdeparts(departid);
 		 	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -248,19 +260,19 @@ public class UserAction extends BaseAction {
 	public String userManager(){
 		ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());
 		ActionContext.getContext().getSession().put("departlist", departService.departList());
-		if(user != null){
-			String uspass = Encipherment.Enc_MD5_2(user.getUspass());
-			
-String ids="1,2,6,4"; 
-  String s[]=ids.split(",");
-  UserGroupEntity ug=null;
-  Set<UserGroupEntity> us=new HashSet<UserGroupEntity>();
-  for(int i=0 ;i<s.length;i++){
-	 ug=new UserGroupEntity();
-	 ug=(UserGroupEntity) publicDao.queryObject(UserGroupEntity.class, Integer.valueOf(s[i]));
-	 us.add(ug);
-  }
-  user.setUserGroupEntity(us);
+		if(user != null && groupids != null){
+				String uspass = Encipherment.Enc_MD5_2(user.getUspass());
+
+			  String s[]=groupids.split(",");
+			  UserGroupEntity ug=null;
+			  Set<UserGroupEntity> us=new HashSet<UserGroupEntity>();
+			  for(int i=0 ;i<s.length;i++){
+				  System.out.println("---"+s[i]+"----");
+				 ug=new UserGroupEntity();
+				 ug=(UserGroupEntity) publicDao.queryObject(UserGroupEntity.class, Integer.valueOf(s[i]));
+				 us.add(ug);
+			  }
+			  user.setUserGroupEntity(us);
 //  saveuser;
   
 			user.setUspass(uspass);
@@ -353,7 +365,19 @@ String ids="1,2,6,4";
 		ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());
 		ActionContext.getContext().getSession().put("departlist", departService.departList());
 		
-		if(user != null){
+		if(user != null && groupids != null){
+			
+			 String s[]=groupids.split(",");
+			  UserGroupEntity ug=null;
+			  Set<UserGroupEntity> us=new HashSet<UserGroupEntity>();
+			  for(int i=0 ;i<s.length;i++){
+				  System.out.println("---"+s[i]+"----");
+				 ug=new UserGroupEntity();
+				 ug=(UserGroupEntity) publicDao.queryObject(UserGroupEntity.class, Integer.valueOf(s[i]));
+				 us.add(ug);
+			  }
+			  user.setUserGroupEntity(us);
+			
 			List<UserEntity> ul =  userService.userLogout(user.getId());
 			UserEntity user1 = null;
 			if(ul != null){
@@ -366,17 +390,7 @@ String ids="1,2,6,4";
 				}
 			}			
 		}
-/*		List<UserGroupEntity> groups = userGroupService.groupList();
-		String[] group = null;
-		int i = 0;
-		if(groups != null){
-			Iterator iter = groups.iterator();
-			while(iter.hasNext()){
-				group[i] = (String) iter.next();
-				i++;
-			}
-			
-		}*/
+
 		
 		List l = userService.selectList("");
 		ActionContext.getContext().getSession().put("list", l);

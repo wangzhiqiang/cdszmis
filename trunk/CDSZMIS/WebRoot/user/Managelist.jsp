@@ -1,6 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@taglib  uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
@@ -22,11 +22,16 @@
         $("#phone").val($.trim($(this).parent().parent().children().eq(5).html()));	
         $("#officenum").val($.trim($(this).parent().parent().children().eq(6).html()));	
         $("#idcard").val($.trim($(this).parent().parent().children().eq(7).html()));	
-        $("#birthday").val($.trim($(this).parent().parent().children().eq(8).html()));	
-        $("#usgroups").val($.trim($(this).parent().parent().children().eq(9).html()));	      
-        $("#conditions").val($.trim($(this).parent().parent().children().eq(10).html()));	
+        $("#birthday").val($.trim($(this).parent().parent().children().eq(8).html()));	      
+        $("#conditions").val($.trim($(this).parent().parent().children().eq(11).html()));	
+        $("#introduction").val($.trim($(this).parent().parent().children().eq(12).html()));	
+    
         $("#userid").val( $(this).val());
-        $("#introduction").val( $(this).val());		 
+      	
+        
+    	var gids=$.trim($(this).parent().parent().children().eq(10).text());
+		$("#inputcolumn").val(gids);
+
 		});
 
 		
@@ -36,6 +41,7 @@
 			 var phone =  $("#phone").val();
 			 var idcard = $("#idcard").val();
 			 var birthday = $("#birthday").val();
+		
 	　　　　　//密码长度
 	     	if (uspass.length<6||uspass.length>20)
 		    	{
@@ -49,93 +55,100 @@
 	　　　　　　　　alert("邮箱格式不正确");  
 	　　　　　　　　return false;  
 	　　　　　　}  
-    		//手机严重  
+    		//手机验证 
 			if(phone.search(/^1[3|4|5|8][0-9]\d{8}$/) == -1)
 			{
 				alert("手机号错误 ");
 				return false;
 				}
  
-			//身份证验证 
 
-		//	if(idcard.length != 15 && idcard.length != 18)
-		//	 {
-		//		alert("输入正确的身份证号 ");
-		//		return false;
-		//	}
-			
-			if(!birthday.search(/^\d{4}-\d{2}-\d{2}$/) == -1)
+			if( birthday.search(/^\d{4}-\d{2}-\d{2}$/) == -1)
 			{
 				alert("生日格式错误 yyyy-mm-dd");
 				return false;
 			}
+
+			//身份证验证
+			if(idcard != null){
+				 
+			    var Errors=new Array(
+			        "验证通过!",
+			        "身份证号码位数不对!",
+			        "身份证号码出生日期超出范围或含有非法字符!",
+			        "身份证号码校验错误!",
+			        "身份证地区非法!" );
+			    var area={11:"北京",12:"天津",13:"河北",14:"山西",15:"内蒙古",21:"辽宁",22:"吉林",23:"黑龙江",31:"上海",32:"江苏",33:"浙江",34:"安徽",35:"福建",36:"江西",37:"山东",41:"河南",42:"湖北",43:"湖南",44:"广东",45:"广西",46:"海南",50:"重庆",51:"四川",52:"贵州",53:"云南",54:"西藏",61:"陕西",62:"甘肃",63:"青海",64:"宁夏",65:"新疆",71:"台湾",81:"香港",82:"澳门",91:"国外"} 
+			    var Y,JYM;
+			    var S,M;
+			    var idcard_array = new Array();
+			    idcard_array = idcard.split("");
+			    //地区检验
+			    if(area[parseInt(idcard.substr(0,2))]==null) 
+					alert( Errors[4]);
+			  
+			    alert(idcard.length);
+
+			    //身份号码位数及格式检验
+			    switch(idcard.length){
+			        case 15:
+			            if ( (parseInt(idcard.substr(6,2))+1900) % 4 == 0 || ((parseInt(idcard.substr(6,2))+1900) % 100 == 0 && (parseInt(idcard.substr(6,2))+1900) % 4 == 0 )){
+			                ereg=/^[1-9][0-9]{5}[0-9]{2}((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|[1-2][0-9]))[0-9]{3}$/;//测试出生日期的合法性
+			            } else {
+			                ereg=/^[1-9][0-9]{5}[0-9]{2}((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|1[0-9]|2[0-8]))[0-9]{3}$/;//测试出生日期的合法性
+			            }
+			            if(!ereg.test(idcard)){
+				             	 alert(Errors[2]);
+			             	 	return false;
+			           		 }
+			           
+			        case 18:
+			            //18位身份号码检测
+			            //出生日期的合法性检查 
+			            //闰年月日:((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|[1-2][0-9]))
+			            //平年月日:((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|1[0-9]|2[0-8]))
+			            if ( parseInt(idcard.substr(6,4)) % 4 == 0 || (parseInt(idcard.substr(6,4)) % 100 == 0 && parseInt(idcard.substr(6,4))%4 == 0 )){
+			                ereg=/^[1-9][0-9]{5}19[0-9]{2}((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|[1-2][0-9]))[0-9]{3}[0-9Xx]$/;//闰年出生日期的合法性正则表达式
+			            } else {
+			                ereg=/^[1-9][0-9]{5}19[0-9]{2}((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|1[0-9]|2[0-8]))[0-9]{3}[0-9Xx]$/;//平年出生日期的合法性正则表达式
+			            }
+			            if(ereg.test(idcard)){//测试出生日期的合法性
+			                //计算校验位
+			                S = (parseInt(idcard_array[0]) + parseInt(idcard_array[10])) * 7
+			                + (parseInt(idcard_array[1]) + parseInt(idcard_array[11])) * 9
+			                + (parseInt(idcard_array[2]) + parseInt(idcard_array[12])) * 10
+			                + (parseInt(idcard_array[3]) + parseInt(idcard_array[13])) * 5
+			                + (parseInt(idcard_array[4]) + parseInt(idcard_array[14])) * 8
+			                + (parseInt(idcard_array[5]) + parseInt(idcard_array[15])) * 4
+			                + (parseInt(idcard_array[6]) + parseInt(idcard_array[16])) * 2
+			                + parseInt(idcard_array[7]) * 1 
+			                + parseInt(idcard_array[8]) * 6
+			                + parseInt(idcard_array[9]) * 3 ;
+			                Y = S % 11;
+			                M = "F";
+			                JYM = "10X98765432";
+			                M = JYM.substr(Y,1);//判断校验位
+			                if(M == idcard_array[17]) 
+				                return true; //检测ID的校验位
+			                else {
+				                alert( Errors[3]);
+				                return false;
+			                }
+			            }
+			            else 
+			            {
+				            alert(Errors[2]);
+			           		 return false;
+			            }
+			        default:
+			          {
+				      	 alert(Errors[1]);
+			         	 return false;
+			          }
+			  
+			    }
+			}
 		});
-
-		
-	
-	//function checkIdcard(idcard){
-	if(idcard != null){
-    var Errors=new Array(
-        "验证通过!",
-        "身份证号码位数不对!",
-        "身份证号码出生日期超出范围或含有非法字符!",
-        "身份证号码校验错误!",
-        "身份证地区非法!" );
-    var area={11:"北京",12:"天津",13:"河北",14:"山西",15:"内蒙古",21:"辽宁",22:"吉林",23:"黑龙江",31:"上海",32:"江苏",33:"浙江",34:"安徽",35:"福建",36:"江西",37:"山东",41:"河南",42:"湖北",43:"湖南",44:"广东",45:"广西",46:"海南",50:"重庆",51:"四川",52:"贵州",53:"云南",54:"西藏",61:"陕西",62:"甘肃",63:"青海",64:"宁夏",65:"新疆",71:"台湾",81:"香港",82:"澳门",91:"国外"} 
-    var Y,JYM;
-    var S,M;
-    var idcard_array = new Array();
-    idcard_array = idcard.split("");
-    //地区检验
-    if(area[parseInt(idcard.substr(0,2))]==null) return Errors[4];
-    //身份号码位数及格式检验
-    switch(idcard.length){
-        case 15:
-            if ( (parseInt(idcard.substr(6,2))+1900) % 4 == 0 || ((parseInt(idcard.substr(6,2))+1900) % 100 == 0 && (parseInt(idcard.substr(6,2))+1900) % 4 == 0 )){
-                ereg=/^[1-9][0-9]{5}[0-9]{2}((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|[1-2][0-9]))[0-9]{3}$/;//测试出生日期的合法性
-            } else {
-                ereg=/^[1-9][0-9]{5}[0-9]{2}((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|1[0-9]|2[0-8]))[0-9]{3}$/;//测试出生日期的合法性
-            }
-            if(ereg.test(idcard)) return Errors[0];
-            else return Errors[2];
-            break;
-        case 18:
-            //18位身份号码检测
-            //出生日期的合法性检查 
-            //闰年月日:((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|[1-2][0-9]))
-            //平年月日:((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|1[0-9]|2[0-8]))
-            if ( parseInt(idcard.substr(6,4)) % 4 == 0 || (parseInt(idcard.substr(6,4)) % 100 == 0 && parseInt(idcard.substr(6,4))%4 == 0 )){
-                ereg=/^[1-9][0-9]{5}19[0-9]{2}((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|[1-2][0-9]))[0-9]{3}[0-9Xx]$/;//闰年出生日期的合法性正则表达式
-            } else {
-                ereg=/^[1-9][0-9]{5}19[0-9]{2}((01|03|05|07|08|10|12)(0[1-9]|[1-2][0-9]|3[0-1])|(04|06|09|11)(0[1-9]|[1-2][0-9]|30)|02(0[1-9]|1[0-9]|2[0-8]))[0-9]{3}[0-9Xx]$/;//平年出生日期的合法性正则表达式
-            }
-            if(ereg.test(idcard)){//测试出生日期的合法性
-                //计算校验位
-                S = (parseInt(idcard_array[0]) + parseInt(idcard_array[10])) * 7
-                + (parseInt(idcard_array[1]) + parseInt(idcard_array[11])) * 9
-                + (parseInt(idcard_array[2]) + parseInt(idcard_array[12])) * 10
-                + (parseInt(idcard_array[3]) + parseInt(idcard_array[13])) * 5
-                + (parseInt(idcard_array[4]) + parseInt(idcard_array[14])) * 8
-                + (parseInt(idcard_array[5]) + parseInt(idcard_array[15])) * 4
-                + (parseInt(idcard_array[6]) + parseInt(idcard_array[16])) * 2
-                + parseInt(idcard_array[7]) * 1 
-                + parseInt(idcard_array[8]) * 6
-                + parseInt(idcard_array[9]) * 3 ;
-                Y = S % 11;
-                M = "F";
-                JYM = "10X98765432";
-                M = JYM.substr(Y,1);//判断校验位
-                if(M == idcard_array[17]) return true; //检测ID的校验位
-                else return Errors[3];
-            }
-            else return Errors[2];
-            break;
-        default:
-        return Errors[1];
-    break;
-    }
-}
-
 
 	});
 </script>
@@ -144,6 +157,7 @@
   <body>
 	<form action="/user/user_userManager" method="get">
 	<input id="userid" name="user.id" type="hidden" value=""></input>
+		<!--  <input id="gids" name="groupids" type="hidden" value=""></input>-->
 		<table>
 			<tr>
 				<td>用户名</td>
@@ -165,8 +179,8 @@
 				<td>性别</td>
 				<td>
 				<label name="user.gender">
-				<input name="gender" type="radio" value="男" checked="checked"/>男
-				<input  name="gender" type="radio" value="女" />女
+				<input name="user.gender" type="radio" value="男" checked="checked"/>男
+				<input  name="user.gender" type="radio" value="女" />女
 				</label>
 				</td>
 			</tr>
@@ -235,7 +249,7 @@
 			</tr>
 			<tr>
 				<td>调动情况</td>
-				<td><textarea name="user.conditions" style="height: 50px;width: 200px;"></textarea></td>
+				<td><textarea id="conditions" name="user.conditions" style="height: 50px;width: 200px;"></textarea></td>
 			</tr>
 			
 			<tr>
@@ -284,16 +298,14 @@
 			<div class='td' style="width: 100px;">${l.officenum}</div>
 			<div class='td' style="width: 110px;">${l.idcard}</div>
 			<div class='td' style="width: 150px;">${l.birthday}</div>
-			<%--<div class='td' style="width: 100px;">${l.usgroups}</div>
-			--%>
-			<div class='td' style="width: 249px;overflow: hidden;">
+			<div class='td' style="width: 100px;overflow: hidden;">
 						<c:forEach items="${l.userGroupEntity }" var="u">
-						${u.groupname}
+							${u.groupname}
 						</c:forEach>
-						</div>
-						<div class='groupids' style="display: none;"><c:forEach items="${l.userGroupEntity }" var="ug" varStatus="stat">${ug.id}<c:if test="${!stat.last}">,</c:if></c:forEach></div>
+			</div>
+			<div class='groupids' style="display: none;"><c:forEach items="${l.userGroupEntity }" var="ug" varStatus="stat">${ug.id}<c:if test="${!stat.last}">,</c:if></c:forEach></div>
 			<div class='td' style="width: 100px;">${l.conditions}</div>
-			
+			<div class='introduction' style="display: none;">${l.introduction}</div>
 
 		</div>
 	</c:forEach>

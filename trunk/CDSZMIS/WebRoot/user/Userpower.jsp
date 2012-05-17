@@ -14,7 +14,10 @@
 	$(document).ready(function(){
 		$(".dpid").click(function(){	 
 		$("#usname").val($.trim($(this).parent().parent().children().eq(1).html()));	
-        $("#userid").val( $(this).val()); 
+        $("#userid").val( $(this).val());
+		
+    	var gids=$.trim($(this).parent().parent().children().eq(3).text());
+		$("#inputcolumn").val(gids); 
 		});
 	});
 	</script>
@@ -88,13 +91,15 @@
 		<div class='tr'>
 			<div class='td'style="width: 50px;"><input class="dpid" type="radio" name="dpid" value="${l.id }"/></div>
 			<div class='td' style="width: 50px;">${l.usname}</div>
-
 			
-			<div class='td' style="width: 100px;">
-			<c:forEach items="${grouplist}" var="gl">
-				<c:if test="${gl.id == l.usgroups }">${gl.groupname}</c:if>
-			</c:forEach>
+
+			<div class='td' style="width: 100px;overflow: hidden;">
+						<c:forEach items="${l.userGroupEntity }" var="u">
+							${u.groupname}
+						</c:forEach>
 			</div>
+			<div class='groupids' style="display: none;"><c:forEach items="${l.userGroupEntity }" var="ug" varStatus="stat">${ug.id}<c:if test="${!stat.last}">,</c:if></c:forEach></div>
+			
 			
 			<div class='td' style="width: 100px;">
 			<c:forEach items="${departlist}" var="dl">
