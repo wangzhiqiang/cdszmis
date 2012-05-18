@@ -6,10 +6,9 @@
 		<title>  管理页面</title>
 		<script language=JavaScript>
 function logout(){
-	 
-	if (confirm("您确定要退出控制面板吗？"))
+	if (confirm("您确定要退出控制面板吗？")){
 	top.location = "${rooturl}/user/user_userlogoff";
-	return false;
+	}
 }
 function gotoindex(){
 

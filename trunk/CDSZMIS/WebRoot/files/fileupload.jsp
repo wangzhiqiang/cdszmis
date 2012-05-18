@@ -12,7 +12,15 @@
   
   <body>
     <form method="POST" action="/files/files_fileUpload"  enctype="multipart/form-data">
-    	<input id='file'type="file" name = "file" />
+    
+    	<table>
+    	文件名称 ，文件介绍，
+    	+-
+    	
+    	</table>
+    
+    
+    	<input id='file'type="file" name = "file" value="选择上传的文件"/>
     	<input id='submit' type="submit" value="上传"/>
     </form>
    <script type="text/javascript">
@@ -21,8 +29,9 @@
     $("#submit").click(function(){
 	   	 var filelocal= $("#file").val() ;
 	   	 if(""==filelocal){
-	   		 alert("请选择上传的文件");
-	   		 return false;
+	   		 
+	   			 
+	   		 return confirm("您确定不上传文件吗？");
 	   	 }else{
 	    	 var point = filelocal.lastIndexOf(".");     
 	         var type = filelocal.substr(point).toLowerCase(); 

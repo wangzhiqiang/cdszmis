@@ -24,6 +24,7 @@ public class FilesEntity implements Serializable{
 	private Integer id;
 	private String depart;// 文件部门
 	private Integer status;// 文件状态
+	
 	private String type;// 文件类型
 	private Date createdate;// 创建时间
 	public Integer getId() {

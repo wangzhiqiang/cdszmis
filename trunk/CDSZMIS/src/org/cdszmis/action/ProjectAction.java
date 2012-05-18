@@ -179,7 +179,10 @@ public class ProjectAction extends ActionSupport {
 //		ActionContext.getContext().put("lsp",lsp);
 		return "countbydepart";
 	}
+	//按部门查询的柱状图action
 	public  String barPic(){
+		
+		//dataset的数据处理start
 		String HSQL="from ProjectArrangementEntity ";//obj where obj.departids like '%"+1+"%'";
 		//项目安排信息
 		List lsp=publicDao.findObjectListByHsql(HSQL);
@@ -194,16 +197,10 @@ public class ProjectAction extends ActionSupport {
 			 pae=new ProjectArrangementEntity();
 			 pae=(ProjectArrangementEntity) lsp.get(i);
 			 depart=new DepartmentEntity();
-			 if(null!=pae.getDepartids()&&!"".equals(pae.getDepartids()))
+			 if(null!=pae.getDepartids()&&!"".equals(pae.getDepartids())){
 			 depart=(DepartmentEntity) publicDao.queryObject(DepartmentEntity.class,Integer.valueOf(pae.getDepartids()));
 			 lsd.add(depart);
-//				try
-//				{
-//					map.put(i,depart.getDepartname());
-//				} catch(Exception e)
-//				{
-//					e.printStackTrace();
-//				}
+			 }
 		}
 		Map<Integer,String[]> cmap=new HashedMap();
 		String str[] = new String[3];
@@ -241,7 +238,7 @@ public class ProjectAction extends ActionSupport {
 			 Integer in= it.next() ;
 			 dataset.addValue(Integer.valueOf(cmap.get(in)[2]),"",cmap.get(in)[1]);
 		 }
-		 
+		 //dataset数据处理end
 		chart = ChartFactory.createBarChart3D(
 				"部门项目分配情况", // 图表标题
 				"部门", // 目录轴的显示标签
