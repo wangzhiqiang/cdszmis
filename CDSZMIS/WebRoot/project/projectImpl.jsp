@@ -12,8 +12,6 @@
 
 	$(document).ready(function(){
 		 $(".pjsid").click(function(){
-			 
-		//$("#id").val($.trim($(this).parent().parent().children().eq(1).html()));	
         $("#projectid").val($.trim($(this).parent().parent().children().eq(1).html()));	   
         
 			 
@@ -78,7 +76,7 @@
 	   <c:forEach items="${allnoimplpro }" var="ls">
 		   <div class="tr"  >
 			   
-			<div class="td" style="width:35px"><input class="pjid" type="radio" name="pjid"/></div> 
+			<div class="td" style="width:35px"><input class="pjid" type="radio" name="pjsid"/></div> 
 			<div class="td" style="width:35px"> ${ls.id }</div>
 			<div class="td" style="width: 56px;overflow: hidden;">${ls.serialnumbers }</div>
 			<div class="td" style="width: 56px;overflow: hidden;">${ls.prijectname } </div>

@@ -6,14 +6,12 @@
 
  <link href="${rooturl }/styles/banner.css" rel="stylesheet" type="text/css" />
  <link href="${rooturl }/styles/mine.css" rel="stylesheet" type="text/css" />
+ <script language="JavaScript" src="${rooturl }/scripts/jquery/jquery-1.5.2.js"></script>
 <script type="text/javascript">
 
 	$(document).ready(function(){
-		 $(".pjpid").click(function(){
-		 
-		//$("#id").val($.trim($(this).parent().parent().children().eq(1).html()));		       
+		 $(".pjpid").click(function(){ 
 		$("#projectid").val($.trim($(this).parent().parent().children().eq(1).html()));	
-       
 	    
 		});
 	});
@@ -85,7 +83,7 @@
 	   <c:forEach items="${allnoarrangperson }" var="ls">
 		   <div class="tr"  >
 			   
-			<div class="td" style="width:35px"><input class="pjid" type="radio" name="pjid"/></div> 
+			<div class="td" style="width:35px"><input class="pjpid" type="radio" name="pjpid"/></div> 
 			<div class="td" style="width:35px"> ${ls.id }</div>
 			<div class="td" style="width: 56px;overflow: hidden;">${ls.serialnumbers }</div>
 			<div class="td" style="width: 56px;overflow: hidden;">${ls.prijectname } </div>

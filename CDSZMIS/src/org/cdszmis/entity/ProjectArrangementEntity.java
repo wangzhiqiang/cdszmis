@@ -21,8 +21,8 @@ import javax.persistence.Table;
 public class ProjectArrangementEntity implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	private int projectid;// 项目（合同）id
+	private Integer id;
+	private Integer projectid;// 项目（合同）id
 	private String name;// 项目名称(别称如果没有可以是合同名称)
 	private String  departids;// 部门ids.可能是多个部门
 	private Date startdate;// 下达项目时间
@@ -45,16 +45,17 @@ public class ProjectArrangementEntity implements Serializable {
 	public void setProjectEntity(ProjectEntity projectEntity) {
 		this.projectEntity = projectEntity;
 	}
-	public int getId() {
+	 
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	public int getProjectid() {
+	public Integer getProjectid() {
 		return projectid;
 	}
-	public void setProjectid(int projectid) {
+	public void setProjectid(Integer projectid) {
 		this.projectid = projectid;
 	}
 	public String getName() {

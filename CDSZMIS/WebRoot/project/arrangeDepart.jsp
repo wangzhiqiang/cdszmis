@@ -10,10 +10,9 @@
 
 	$(document).ready(function(){
 		 $(".pjdid").click(function(){
-			       
-		//$("#id").val($.trim($(this).parent().parent().children().eq(1).html()));	
         $("#projectid").val($.trim($(this).parent().parent().children().eq(1).html()));	
         $("#name").val($.trim($(this).parent().parent().children().eq(3).html()));	
+	});
 	});
 </script>
 <html>
@@ -26,16 +25,16 @@
 
 </head>
 
-<body>&nbsp; 
+<body>
 	<div class="righttitle">ArrangeDepart</div> 
 	<form action="${rooturl }/project/pro_arrangeDepartids" method="get">
 	<table>
 		
 		<tr>
-			<td>项目ID</td><td><input id="projectid" name="paentity.projectid" type="text"  onclick="alert(this.value);" readonly  /></td>
+			<td>项目ID</td><td><input id="projectid" name="paentity.projectid" type="text"    /></td>
 		</tr>
 		<tr>
-			<td>项目名称</td><td><input id="name" name="paentity.name" type="text" onclick="alert(this.value);" readonly /></td>
+			<td>项目名称</td><td><input id="name" name="paentity.name" type="text" /></td>
 		</tr>
 		<tr>
 			<td>项目部门</td>
@@ -76,7 +75,7 @@
 		</tr>
 
 	</table>
-	<input id="id" name="paentity.id" type="hidden"  ></input>
+	<!--  <input id="id" name="paentity.id" type="hidden" value="" ></input>-->
 	 <input  type="submit" value="所级安排"/> <br>
 </form>
 	
@@ -102,7 +101,7 @@
 	   <c:forEach items="${allnoarrangdepart }" var="ls">
 		   <div class="tr"  >
 			   
-			<div class="td" style="width:35px"><input class="pjid" type="radio" name="pjid"/></div> 
+			<div class="td" style="width:35px"><input class="pjdid" type="radio" name="pjdid"/></div> 
 			<div class="td" style="width:35px"> ${ls.id }</div>
 			<div class="td" style="width: 56px;overflow: hidden;">${ls.serialnumbers }</div>
 			<div class="td" style="width: 56px;overflow: hidden;">${ls.prijectname } </div>
