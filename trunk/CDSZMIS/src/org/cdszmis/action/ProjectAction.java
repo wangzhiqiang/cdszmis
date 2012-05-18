@@ -250,8 +250,8 @@ public class ProjectAction extends ActionSupport {
 		}
 		chart = ChartFactory.createBarChart3D(
 				"部门项目分配情况", // 图表标题
-				"部门", // 目录轴的显示标签
-				"项目数", // 数值轴的显示标签
+				"部门信息", // 目录轴的显示标签
+				"部门安排项目数", // 数值轴的显示标签
 				dataset, // 数据集
 				PlotOrientation.VERTICAL, // 图表方向：水平、垂直
 				true, 	// 是否显示图例(对于简单的柱状图必须是false)
