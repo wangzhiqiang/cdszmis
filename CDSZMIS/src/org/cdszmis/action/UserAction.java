@@ -118,15 +118,8 @@ public class UserAction extends BaseAction {
 	 */
 	public String userRegister() {
 		// 查询group depart
-		
-		
 			ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());
-		
 			ActionContext.getContext().getSession().put("departlist", departService.departList());
-		
-//		if(ActionContext.getContext().get("menulist")==null){
-//			ActionContext.getContext().getSession().put("menulist", publicDao.queryList(SysMenuEntity.class));
-//		}
 		if (user != null && !user.equals("")) {
 			if(user.getUspass()!=null)
 			user.setUspass(Encipherment.Enc_MD5_2(user.getUspass()));
@@ -160,20 +153,14 @@ public class UserAction extends BaseAction {
 					user.setDepartmentEntity(dp);
 					user.setUsdeparts(departid);
 				}
-				
 				 	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-				 	
-				 //	ParsePosition pos = new ParsePosition(0);
 				 	try {
 						Date dt = formatter.parse(birthday);
 						user.setBirthday(dt);
 					} catch (Exception e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					
 					userService.userRegister(user);
-				 
 				ActionContext.getContext().put("message",user.getLoginname()+"注册成功！");
 			} else {
 				ActionContext.getContext().put("message", "该登录名已经被注册！");
@@ -204,36 +191,29 @@ public class UserAction extends BaseAction {
 		ActionContext.getContext().getSession().put("departlist", departService.departList());
 		if(user != null && groupids != null){
 			String uspass = Encipherment.Enc_MD5_2(user.getUspass());
-			
 			  String s[]=groupids.split(",");
 			  UserGroupEntity ug=null;
 			  Set<UserGroupEntity> us=new HashSet<UserGroupEntity>();
 			  for(int i=0 ;i<s.length;i++){
-				  System.out.println("---"+s[i]+"----");
+				//  System.out.println("---"+s[i]+"----");
 				 ug=new UserGroupEntity();
 				 ug=(UserGroupEntity) publicDao.queryObject(UserGroupEntity.class, Integer.valueOf(s[i]));
 				 us.add(ug);
 			  }
 			user.setUserGroupEntity(us);
-			
 			user.setUspass(uspass);
 			user.setUsdeparts(departid);
 		 	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		 	
-			 //	ParsePosition pos = new ParsePosition(0);
 			 	try {
 					Date dt = formatter.parse(birthday);
 					user.setBirthday(dt);
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			userService.userManager(user);
 		}
-
 		List l = userService.selectList("");
 		ActionContext.getContext().getSession().put("list", l);
-		
 		return "update";
 	}
 	
@@ -244,12 +224,8 @@ public class UserAction extends BaseAction {
 	
 		ActionContext.getContext().getSession().put("grouplist", userGroupService.groupList());		
 		ActionContext.getContext().getSession().put("departlist", departService.departList());
-	
-		
-		
 		List l = userService.selectList("");
 		ActionContext.getContext().getSession().put("list", l);
-//		userService.selectList("123");
 		return "managerlist";
 		
 	}
@@ -272,29 +248,21 @@ public class UserAction extends BaseAction {
 				 ug=(UserGroupEntity) publicDao.queryObject(UserGroupEntity.class, Integer.valueOf(s[i]));
 				 us.add(ug);
 			  }
-			  user.setUserGroupEntity(us);
-//  saveuser;
-  
+			user.setUserGroupEntity(us);
 			user.setUspass(uspass);
 			user.setUsdeparts(departid);
 		 	SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		 	
-			 //	ParsePosition pos = new ParsePosition(0);
 			 	try {
 					Date dt = formatter.parse(birthday);
 					user.setBirthday(dt);
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			userService.userManager(user);
 			
 		}
-		
-		
 		List l = userService.selectList("");
 		ActionContext.getContext().getSession().put("list", l);
-		
 		return "updatemanager";
 
 	}
@@ -372,7 +340,7 @@ public class UserAction extends BaseAction {
 			  UserGroupEntity ug=null;
 			  Set<UserGroupEntity> us=new HashSet<UserGroupEntity>();
 			  for(int i=0 ;i<s.length;i++){
-				  System.out.println("---"+s[i]+"----");
+//				  System.out.println("---"+s[i]+"----");
 				 ug=new UserGroupEntity();
 				 ug=(UserGroupEntity) publicDao.queryObject(UserGroupEntity.class, Integer.valueOf(s[i]));
 				 us.add(ug);
