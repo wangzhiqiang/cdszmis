@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Random;
 import javax.annotation.Resource;
 import javax.servlet.ServletContext;
@@ -47,11 +48,16 @@ public class FilesAction extends ActionSupport {
 				File savefile = new File(new File(realpath), generateFileName(fileFileName));
 				try {
 					FileUtils.copyFile(file, savefile);
+					publicDao.saveOrupdateObject(attachment);
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
 			}
 		}
+		
+		List lsf=publicDao.findObjectListByHsql("from FilesEntity ");
+		List lsa=publicDao.findObjectListByHsql("from AttachmentEntity");
+		
 		return "fileupload" ;
 	}
 	
