@@ -3,12 +3,10 @@ package org.cdszmis.dao;
 
 import java.util.List;
 
-import org.cdszmis.entity.FilesEntity;
 import org.cdszmis.entity.ProjectArrangementEntity;
 import org.cdszmis.entity.ProjectDepartArrangementEntity;
 import org.cdszmis.entity.ProjectEntity;
 import org.cdszmis.entity.ProjectStatusEntity;
-import org.cdszmis.entity.ProjectSubmitEntity;
 
 public interface ProjectDao {
 	/**

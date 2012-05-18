@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
  
-import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionAttributeListener;
 import javax.servlet.http.HttpSessionBindingEvent;
@@ -14,10 +13,6 @@ import javax.servlet.http.HttpSessionEvent;
 import javax.servlet.http.HttpSessionListener;
 
 import org.cdszmis.entity.UserEntity;
-import org.cdszmis.service.DepartService;
-import org.cdszmis.service.UserGroupService;
-import org.cdszmis.utils.HibernateUtils;
-import com.opensymphony.xwork2.ActionContext;
 
 /**
  * 用户登录和网络访问监听

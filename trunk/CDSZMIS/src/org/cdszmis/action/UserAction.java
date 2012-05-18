@@ -1,13 +1,10 @@
 package org.cdszmis.action;
 
-import java.text.ParseException;
-import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 
@@ -15,7 +12,6 @@ import javax.annotation.Resource;
 
 import org.apache.commons.collections.map.HashedMap;
  
-import org.apache.derby.client.net.Request;
 import org.cdszmis.dao.PublicDao;
  
 import org.cdszmis.entity.DepartmentEntity;
