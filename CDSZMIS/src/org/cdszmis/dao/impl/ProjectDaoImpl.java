@@ -8,7 +8,6 @@ import org.cdszmis.entity.ProjectArrangementEntity;
 import org.cdszmis.entity.ProjectDepartArrangementEntity;
 import org.cdszmis.entity.ProjectEntity;
 import org.cdszmis.entity.ProjectStatusEntity;
-import org.cdszmis.entity.ProjectSubmitEntity;
 import org.cdszmis.utils.HibernateUtils;
 import org.springframework.stereotype.Component;
 

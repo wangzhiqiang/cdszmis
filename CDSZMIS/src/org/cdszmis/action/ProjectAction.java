@@ -19,7 +19,6 @@ import org.cdszmis.service.ProjectService;
 import org.cdszmis.service.UserService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
-import org.hibernate.mapping.Array;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.CategoryAxis;
