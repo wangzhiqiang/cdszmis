@@ -76,7 +76,7 @@
 	   <c:forEach items="${allnofillpro }" var="ls">
 		   <div class="tr"  >
 			   
-			<div class="td" style="width:35px"><input class="pjsid" type="radio" name="pjid"/></div> 
+			<div class="td" style="width:35px"><input class="pjsid" type="radio" name="pjsid"/></div> 
 			<div class="td" style="width:35px"> ${ls.id }</div>
 			<div class="td" style="width: 56px;overflow: hidden;">${ls.serialnumbers }</div>
 			<div class="td" style="width: 56px;overflow: hidden;">${ls.prijectname } </div>

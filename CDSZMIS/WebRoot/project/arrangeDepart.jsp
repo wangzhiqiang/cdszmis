@@ -39,7 +39,7 @@
 		<tr>
 			<td>项目部门</td>
 			<td>
-					<select name="departid">
+					<select id="departids" name="paentity.departids">
 					<c:forEach items="${departlist }" var="dl">
 					  
 					<option  value="${dl.id}">${dl.departname}</option>

@@ -57,10 +57,10 @@ public class ProjectDaoImpl implements org.cdszmis.dao.ProjectDao {
 	 * 查询状态处于方案1或初设2的
 	 * （项目进度:方案1。初设2。施工图3）
 	 * @param project
-	 * @return
+	 * @return select obj.projectEntity from ProjectStatusEntity obj where obj.status=0"
 	 */
 	public List<ProjectEntity> implStatusList(){
-		return  hibernateUtils.findlistByHsql("from ProjectEntity obj, ProjectStatusEntity obj1 where obj.id=obj1.projectEntity.id and obj1.status=1 or obj1.status=2");
+		return  hibernateUtils.findlistByHsql("select obj.projectEntity from ProjectStatusEntity obj where obj.status=1  or obj.status=2");
 	}
 	/**
 	 * 总工审查（通过审查，将项目状态改为“院长签发4”，并 传送项目到院长签字环节。
@@ -71,7 +71,7 @@ public class ProjectDaoImpl implements org.cdszmis.dao.ProjectDao {
 	 * @return
 	 */
 	public List<ProjectEntity> checkStatusList(){
-		return  hibernateUtils.findlistByHsql("from ProjectEntity obj, ProjectStatusEntity obj1 where obj.id=obj1.projectEntity.id and obj1.status=2  or obj1.status=3");
+		return  hibernateUtils.findlistByHsql("select obj.projectEntity from ProjectStatusEntity obj where obj.status=2  or obj.status=3");
 	}
 	/**
 	 * 签字出图（系统更改项目状态为“出版5”）
@@ -80,7 +80,7 @@ public class ProjectDaoImpl implements org.cdszmis.dao.ProjectDao {
 	 * @return
 	 */
 	public List<ProjectEntity> signStatusList(){
-		return  hibernateUtils.findlistByHsql("from ProjectEntity obj, ProjectStatusEntity obj1 where obj.id=obj1.projectEntity.id and obj1.status=4");
+		return  hibernateUtils.findlistByHsql("select obj.projectEntity from ProjectStatusEntity obj where obj.status=4");
 	}
 
 	/**
@@ -90,7 +90,7 @@ public class ProjectDaoImpl implements org.cdszmis.dao.ProjectDao {
 	 * @return
 	 */
 	public List<ProjectEntity>  publicStatusList(){
-		return  hibernateUtils.findlistByHsql("from ProjectEntity obj, ProjectStatusEntity obj1 where obj.id=obj1.projectEntity.id and obj1.status=5");
+		return  hibernateUtils.findlistByHsql("select obj.projectEntity from ProjectStatusEntity obj where  obj.status=5");
 	}
 
 	/**
@@ -100,7 +100,7 @@ public class ProjectDaoImpl implements org.cdszmis.dao.ProjectDao {
 	 * @return
 	 */
 	public List<ProjectEntity>  saleStatusList(){
-		return  hibernateUtils.findlistByHsql("from ProjectEntity obj, ProjectStatusEntity obj1 where obj.id=obj1.projectEntity.id and obj1.status=6");
+		return  hibernateUtils.findlistByHsql("select obj.projectEntity from ProjectStatusEntity obj where  obj.status=6");
 	}
 
 	/**
@@ -111,7 +111,7 @@ public class ProjectDaoImpl implements org.cdszmis.dao.ProjectDao {
 	 * 
 	 */
 	public List<ProjectEntity> fillStatusList(){
-		return  hibernateUtils.findlistByHsql("from ProjectEntity obj, ProjectStatusEntity obj1 where obj.id=obj1.projectEntity.id and obj1.status=7");
+		return  hibernateUtils.findlistByHsql("select obj.projectEntity from ProjectStatusEntity obj where  obj.status=7");
 	}
 	
 	
