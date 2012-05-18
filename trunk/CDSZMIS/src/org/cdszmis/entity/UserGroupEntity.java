@@ -30,7 +30,7 @@ public class UserGroupEntity implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Integer id;
 	private String groupname;
 	private Date createdate;
 	private String namespace;//用户组可用命名空间
@@ -40,9 +40,7 @@ public class UserGroupEntity implements Serializable{
 	@ManyToMany(  targetEntity=SysMenuEntity.class, cascade={CascadeType.PERSIST, CascadeType.MERGE},fetch=FetchType.EAGER )
 	@JoinTable( name="tb_usergroup_tb_sys_menu",joinColumns=@JoinColumn(name="tb_usergroup_id"),inverseJoinColumns=@JoinColumn(name="menSysMenuEntities_id") )
 	private Set<SysMenuEntity> menSysMenuEntities;//用户组控制的菜单项
-	public int getId() {
-		return id;
-	}
+	 
 	
 	
 //	public Set<UserEntity> getUserEntities() {
@@ -54,12 +52,15 @@ public class UserGroupEntity implements Serializable{
 //		this.userEntities = userEntities;
 //	}
 
-
-	public void setId(int id) {
-		this.id = id;
-	}
+ 
 	public String getGroupname() {
 		return groupname;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	public void setGroupname(String groupname) {
 		this.groupname = groupname;

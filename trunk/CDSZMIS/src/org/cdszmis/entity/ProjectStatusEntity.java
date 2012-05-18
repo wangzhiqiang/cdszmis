@@ -28,8 +28,8 @@ public class ProjectStatusEntity implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
-	private int projectid;//项目id
-	private int status;//项目状态
+	private Integer projectid;//项目id
+	private Integer status;//项目状态
 	private String history;//状态更新历史
 	private Date createdate;//创建时间
 	private Date reportdate;
@@ -39,56 +39,69 @@ public class ProjectStatusEntity implements Serializable {
 			   cascade = {CascadeType.ALL, CascadeType.MERGE},
 		    fetch=FetchType.EAGER)
 	private ProjectEntity projectEntity;//项目信息
-	
-	public ProjectEntity getProjectEntity() {
-		return projectEntity;
-	}
-	public void setProjectEntity(ProjectEntity projectEntity) {
-		this.projectEntity = projectEntity;
-	}
-	
-	 
+
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public int getProjectid() {
+
+	public Integer getProjectid() {
 		return projectid;
 	}
-	public void setProjectid(int projectid) {
+
+	public void setProjectid(Integer projectid) {
 		this.projectid = projectid;
 	}
-	public int getStatus() {
+
+	public Integer getStatus() {
 		return status;
 	}
-	public void setStatus(int status) {
+
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
+
 	public String getHistory() {
 		return history;
 	}
+
 	public void setHistory(String history) {
 		this.history = history;
 	}
+
 	public Date getCreatedate() {
 		return createdate;
 	}
+
 	public void setCreatedate(Date createdate) {
 		this.createdate = createdate;
 	}
+
 	public Date getReportdate() {
 		return reportdate;
 	}
+
 	public void setReportdate(Date reportdate) {
 		this.reportdate = reportdate;
 	}
+
 	public String getReportperson() {
 		return reportperson;
 	}
+
 	public void setReportperson(String reportperson) {
 		this.reportperson = reportperson;
+	}
+
+	public ProjectEntity getProjectEntity() {
+		return projectEntity;
+	}
+
+	public void setProjectEntity(ProjectEntity projectEntity) {
+		this.projectEntity = projectEntity;
 	}
 	
 }

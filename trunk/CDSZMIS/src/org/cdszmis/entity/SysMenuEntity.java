@@ -20,25 +20,26 @@ import javax.persistence.Table;
 public class SysMenuEntity implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	private int pid;// 菜单父id
+	private Integer id;
+	private Integer pid;// 菜单父id
 	private String menuname;// 菜单名称
 	private String url;// 菜单路径
 	private String menuimg;// 菜单img
 
-	public int getId() {
+	 
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public int getPid() {
+	public Integer getPid() {
 		return pid;
 	}
 
-	public void setPid(int pid) {
+	public void setPid(Integer pid) {
 		this.pid = pid;
 	}
 

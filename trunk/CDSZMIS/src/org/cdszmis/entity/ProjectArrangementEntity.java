@@ -38,87 +38,137 @@ public class ProjectArrangementEntity implements Serializable {
 	@OneToOne (targetEntity=ProjectEntity.class,cascade={CascadeType.ALL})
 	@PrimaryKeyJoinColumn
 	private ProjectEntity projectEntity;//项目信息
-	
-	public ProjectEntity getProjectEntity() {
-		return projectEntity;
-	}
-	public void setProjectEntity(ProjectEntity projectEntity) {
-		this.projectEntity = projectEntity;
-	}
-	 
+
+
 	public Integer getId() {
 		return id;
 	}
+
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
+
 	public Integer getProjectid() {
 		return projectid;
 	}
+
+
 	public void setProjectid(Integer projectid) {
 		this.projectid = projectid;
 	}
+
+
 	public String getName() {
 		return name;
 	}
+
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
+
 	public String getDepartids() {
 		return departids;
 	}
+
+
 	public void setDepartids(String departids) {
 		this.departids = departids;
 	}
+
+
 	public Date getStartdate() {
 		return startdate;
 	}
+
+
 	public void setStartdate(Date startdate) {
 		this.startdate = startdate;
 	}
+
+
 	public Date getDesigndate() {
 		return designdate;
 	}
+
+
 	public void setDesigndate(Date designdate) {
 		this.designdate = designdate;
 	}
+
+
 	public Date getExaminationedate() {
 		return examinationedate;
 	}
+
+
 	public void setExaminationedate(Date examinationedate) {
 		this.examinationedate = examinationedate;
 	}
+
+
 	public Date getSigndate() {
 		return signdate;
 	}
+
+
 	public void setSigndate(Date signdate) {
 		this.signdate = signdate;
 	}
+
+
 	public Date getPublicationdate() {
 		return publicationdate;
 	}
+
+
 	public void setPublicationdate(Date publicationdate) {
 		this.publicationdate = publicationdate;
 	}
+
+
 	public String getSuggestion() {
 		return suggestion;
 	}
+
+
 	public void setSuggestion(String suggestion) {
 		this.suggestion = suggestion;
 	}
+
+
 	public Date getReportdate() {
 		return reportdate;
 	}
+
+
 	public void setReportdate(Date reportdate) {
 		this.reportdate = reportdate;
 	}
+
+
 	public String getReportperson() {
 		return reportperson;
 	}
+
+
 	public void setReportperson(String reportperson) {
 		this.reportperson = reportperson;
 	}
- 
+
+
+	public ProjectEntity getProjectEntity() {
+		return projectEntity;
+	}
+
+
+	public void setProjectEntity(ProjectEntity projectEntity) {
+		this.projectEntity = projectEntity;
+	}
+	
  
 
 }

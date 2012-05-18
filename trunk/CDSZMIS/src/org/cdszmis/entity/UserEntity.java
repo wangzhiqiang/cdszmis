@@ -25,7 +25,7 @@ import org.hibernate.annotations.Proxy;
 public class UserEntity implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Integer id;
 	private String usname;
 	private String gender;
 	private String uspass;
@@ -54,11 +54,11 @@ public class UserEntity implements Serializable {
 	private String uspositions;//职务id 以':'隔开
 	private Date createdate;//创建时间
 	private int status;// 激活  、注销
-	
-	public int getId() {
+	 
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getUsname() {

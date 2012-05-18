@@ -21,15 +21,16 @@ import javax.persistence.Table;
 public class TemplatesEntity implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Integer id;
 	private String name;// 模板名称
 	private String introduction;// 简介
 	private String type;// 模板类型
 	private Date createdate;// 创建时间
-	public int getId() {
+ 
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getName() {
