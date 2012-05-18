@@ -187,17 +187,7 @@ public class ProjectAction extends ActionSupport {
 //		String HSQL="from ProjectArrangementEntity ";//obj where obj.departids like '%"+1+"%'";
 		//项目安排信息
 //		List lsp=publicDao.findObjectListByHsql(HSQL);
-		System.out.println("******************************");
-		List  dd=publicDao.findObjectListByHsql("select count(obj.departname),obj.departname from DepartmentEntity obj ,ProjectArrangementEntity obj1 where obj.id=obj1.departids group by obj.departname");
-		 DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-		for(int l=0 ;l<dd.size();l++)
-		{
-			  Object[] obj = (Object []) dd.get(l);
-//			System.out.println("------"+obj[0] );
-			   dataset.addValue(Integer.valueOf(obj[0].toString()), obj[1].toString(),"");
-		}
 //		
-//		System.out.println("******************************");
 //		Map<Integer,String> map=new HashedMap();
 //		
 //		ProjectArrangementEntity pae=null ;
@@ -250,6 +240,14 @@ public class ProjectAction extends ActionSupport {
 //			 dataset.addValue(Integer.valueOf(cmap.get(in)[2]),"",cmap.get(in)[1]);
 //		 }
 		 //dataset数据处理end
+		//新dataset数据处理
+		List  dd=publicDao.findObjectListByHsql("select count(obj.departname),obj.departname from DepartmentEntity obj ,ProjectArrangementEntity obj1 where obj.id=obj1.departids group by obj.departname");
+		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+		for(int l=0 ;l<dd.size();l++)
+		{
+			  Object[] obj = (Object []) dd.get(l);
+			   dataset.addValue(Integer.valueOf(obj[0].toString()), obj[1].toString(),"");
+		}
 		chart = ChartFactory.createBarChart3D(
 				"部门项目分配情况", // 图表标题
 				"部门", // 目录轴的显示标签
