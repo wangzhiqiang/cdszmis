@@ -85,7 +85,7 @@ public class ProjectAction extends ActionSupport {
 		ActionContext.getContext().put("allnoarrangdepart", plist);
 		return "arrangedepart";	
 		}
-	     //（所级安排）安排负责人后，项目状态为“方案1”
+	     //（所级安排）安排负责人后，项目状态为“方案1” ---查询只能是被人所在部门的
 	@SuppressWarnings("unchecked")
 	public String arrangePerson(){
 		//查询并显示
@@ -100,7 +100,7 @@ public class ProjectAction extends ActionSupport {
 			projectstatus.setStatus(1);
 		}
 		//查询所有状态为“任务下达0”的项目
-		List <ProjectEntity> plist = publicDao.findObjectListByHsql("select distinct obj from ProjectEntity obj  where obj.id  not in (select obj1.projectEntity.id from ProjectStatusEntity obj1 where obj1.status=0)");
+		List <ProjectEntity> plist = publicDao.findObjectListByHsql("select obj.projectEntity from ProjectStatusEntity obj where obj.status=0");
 		ActionContext.getContext().put("allnoarrangperson", plist);
 		return "arrangeperson";
 	}
