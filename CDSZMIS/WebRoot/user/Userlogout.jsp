@@ -21,7 +21,7 @@
 			<div class='td' style="width: 100px;">手机</div>
 			<div class='td' style="width: 100px;">办公室电话</div>
 			<div class='td' style="width: 110px;">身份证</div>
-			<div class='td' style="width: 150px;">用户组</div>
+			<div class='td' style="width: 100px;">用户组</div>
 			<div class='td' style="width: 150px;">用户状态</div>
 			<div class='td' style="width: 150px;">状态更改</div>
 	</tr>
@@ -33,7 +33,13 @@
 		<div class='td' style="width: 100px;">${l.phone}</div>
 		<div class='td' style="width: 100px;">${l.officenum}</div>
 		<div class='td' style="width: 110px;">${l.idcard}</div>
-		<div class='td' style="width: 150px;">${l.usgroups }</div>	
+		<div class='td' style="width: 100px;overflow: hidden;">
+						<c:forEach items="${l.userGroupEntity }" var="u">
+							${u.groupname}
+						</c:forEach>
+		</div>
+		
+		
 		<div class='td' style="width: 150px;"><c:if test="${l.status ==0}">激活</c:if> <c:if test="${l.status ==1}">未激活</c:if></div>
 			
 			

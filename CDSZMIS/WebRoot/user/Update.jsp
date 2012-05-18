@@ -55,7 +55,15 @@
 				alert("手机号错误 ");
 				return false;
 				}
- 
+			
+			//办公室电话 
+			if(!(officenum.search(/^\d{3}-\d{8}$/) == 1 || officenum.length == 0))
+				{
+					alert("办公室电话错误 ")
+					return false;
+
+				}
+			 
 			//身份证验证 
 			if(idcard != null){
 				 

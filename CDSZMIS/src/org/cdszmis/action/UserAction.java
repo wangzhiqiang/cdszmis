@@ -49,7 +49,7 @@ public class UserAction extends BaseAction {
 	private String groupids;
 	private Integer departid;
 	private String keyword;
-	private String idcard;
+	private Integer ids;
 	private String birthday;
 	/**
 	 * 用户登录
@@ -321,12 +321,13 @@ public class UserAction extends BaseAction {
 	 */
 	public String userContent(){
 		
-		String card = null;
+		int i = 0;
 		
-		if(idcard !=null ){
-			card = idcard;
+		if(ids !=null ){
+			 i = ids;
 		}
-		List c = userService.selectList(card);
+		System.out.print(i);
+		List c = userService.userLogout(i);
 		ActionContext.getContext().getSession().put("content", c );
 		return "Content";
 	}
@@ -434,13 +435,7 @@ public class UserAction extends BaseAction {
 		return keyword;
 	}
 
-	public void setIdcard(String idcard) {
-		this.idcard = idcard;
-	}
 
-	public String getIdcard() {
-		return idcard;
-	}
 
 	public void setBirthday(String birthday) {
 		this.birthday = birthday;
@@ -448,6 +443,14 @@ public class UserAction extends BaseAction {
 
 	public String getBirthday() {
 		return birthday;
+	}
+
+	public void setIds(Integer ids) {
+		this.ids = ids;
+	}
+
+	public Integer getIds() {
+		return ids;
 	}
 
 
