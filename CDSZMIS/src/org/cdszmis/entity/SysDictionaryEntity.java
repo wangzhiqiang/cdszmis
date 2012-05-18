@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.criteria.CriteriaBuilder.In;
 
 /**
  * 系统字典表
@@ -21,18 +22,19 @@ import javax.persistence.Table;
 public class SysDictionaryEntity implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Integer id;
 	private String properties;// 字典属性
 	private String name;// 字典名称 用作显示
 	private String seq;// 字典划分标识 例如 dic_12,dic_13
 	private int status;// 字典使用状态 1激活 0注销
 	private Date createdate;
 
-	public int getId() {
+ 
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
