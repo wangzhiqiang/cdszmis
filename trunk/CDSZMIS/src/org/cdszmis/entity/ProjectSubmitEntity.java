@@ -26,8 +26,8 @@ public class ProjectSubmitEntity implements Serializable{
 	 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	private int projectid;
+	private Integer id;
+	private Integer projectid;
 	private Date enddate;//实际设计结束时间
 	private String opinion ;//总工审查意见
 	private String nopass;//未通过原因
@@ -49,16 +49,17 @@ public class ProjectSubmitEntity implements Serializable{
 		this.projectEntity = projectEntity;
 	}
 	
-	public int getId() {
+	 
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
-	public int getProjectid() {
+	public Integer getProjectid() {
 		return projectid;
 	}
-	public void setProjectid(int projectid) {
+	public void setProjectid(Integer projectid) {
 		this.projectid = projectid;
 	}
 	public Date getEnddate() {

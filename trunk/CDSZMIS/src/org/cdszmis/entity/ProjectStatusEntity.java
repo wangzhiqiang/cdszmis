@@ -26,7 +26,8 @@ import org.hibernate.annotations.Proxy;
 public class ProjectStatusEntity implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Integer id;
+	
 	private int projectid;//项目id
 	private int status;//项目状态
 	private String history;//状态更新历史
@@ -46,10 +47,11 @@ public class ProjectStatusEntity implements Serializable {
 		this.projectEntity = projectEntity;
 	}
 	
-	public int getId() {
+	 
+	public Integer getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public int getProjectid() {
