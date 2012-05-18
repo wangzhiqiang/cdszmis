@@ -17,6 +17,8 @@ import org.cdszmis.entity.ProjectStatusEntity;
 import org.cdszmis.service.DepartService;
 import org.cdszmis.service.ProjectService;
 import org.cdszmis.service.UserService;
+import org.cdszmis.utils.HibernateUtils;
+
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import org.jfree.chart.ChartFactory;
@@ -28,8 +30,9 @@ import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.title.TextTitle;
 import org.jfree.data.category.DefaultCategoryDataset;
 @SuppressWarnings ("serial")
-public class ProjectAction extends ActionSupport {
 
+public class ProjectAction extends ActionSupport {
+	@Resource HibernateUtils hibernateUtils;
 	@Resource private ProjectService projectservice;
 	@Resource private  DepartService  departService;
 	@Resource private UserService userService;
@@ -90,16 +93,24 @@ public class ProjectAction extends ActionSupport {
 		//查询并显示
 		ActionContext.getContext().getSession().put("userlist", userService.selectList(null));
 		if(pdaentity!=null){
-			
 			ProjectEntity  pro = new ProjectEntity();
-			pro = (ProjectEntity)publicDao.queryObject(ProjectEntity.class, project.getId());
-			pdaentity.setProjectEntity(pro);
-			projectservice.arrangeChargePerson(pdaentity);
-			projectstatus.setProjectEntity(pro);
-			projectstatus.setStatus(1);
+			pro = (ProjectEntity)publicDao.queryObject(ProjectEntity.class, pdaentity.getProjectid());
+			projectstatus = (ProjectStatusEntity) hibernateUtils.findobjByHsql("select s from ProjectStatusEntity,ProjectEntity p where s.projectentity.id=p.id and p.id= "+pdaentity.getProjectid());
+			try {
+				projectstatus.setProjectEntity(pro);
+				projectstatus.setStatus(1);
+				publicDao.saveOrupdateObject(projectstatus);
+				pdaentity.setProjectEntity(pro);
+				publicDao.saveOrupdateObject(pdaentity);
+				
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 		}
 		//查询所有状态为“任务下达0”的项目
-		List <ProjectEntity> plist = publicDao.findObjectListByHsql("select obj.projectEntity from ProjectStatusEntity obj where obj.status=0");
+		List <ProjectEntity> plist = publicDao.findObjectListByHsql("select distinct obj.projectEntity from ProjectStatusEntity obj where obj.status=0");
 		ActionContext.getContext().put("allnoarrangperson", plist);
 		return "arrangeperson";
 	}
@@ -108,9 +119,7 @@ public class ProjectAction extends ActionSupport {
 
 	public String projectImpl(){
 		if(projectstatus!=null){
-		
 			projectservice.changeStatus(projectstatus);
-		
 		}
 		List<ProjectEntity> plist = projectservice.implStatusList();
 		ActionContext.getContext().put("allnoimplpro", plist);

@@ -37,11 +37,9 @@
 		<tr>
 			<td>项目负责人</td>
 			<td>
-					<select name="userid">
-					<c:forEach items="${userlist }" var="ul">
-					  
+					<select  id="chargeperson" name="pdaentity.chargeperson">
+					<c:forEach items="${userlist }" var="ul">  
 					<option  value="${ul.id}">${ul.usname}</option>
-					
 					</c:forEach>
 				</select>   
 				 </td>

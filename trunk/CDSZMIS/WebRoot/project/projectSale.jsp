@@ -35,18 +35,18 @@
 			</label></td>
 		</tr>
 		<tr>
-			<td>状态更新 </td><td> <input id="history" type="text" name="projectstatus.history" onclick="alert(this.value);"  readonly/></td>
+			<td>状态更新 </td><td> <input id="history" type="text" name="projectstatus.history" /></td>
 		</tr>
 		<tr>
-			<td>创建时间</td><td> <input id="createdate" type="text" name="projectstatus.createdate" onclick="alert(this.value);"  readonly/> 
+			<td>创建时间</td><td> <input id="createdate" type="text" name="projectstatus.createdate" /> 
 			
 			</td>  
 		</tr>
 		<tr>
-			<td>填报时间</td><td> <input id="reportdate" type="text" name="projectstatus.reportdate" onclick="alert(this.value);"  readonly/></td>
+			<td>填报时间</td><td> <input id="reportdate" type="text" name="projectstatus.reportdate" /></td>
 		</tr>
 		<tr>
-			<td> 填报人</td><td> <input id="reportperson" type="text" name="projectstatus.reportperson" onclick="alert(this.value);"  readonly/></td> 
+			<td> 填报人</td><td> <input id="reportperson" type="text" name="projectstatus.reportperson" /></td> 
 		</tr>
 	</table>
 	  
@@ -75,7 +75,7 @@
 	   <c:forEach items="${allnosalepro }" var="ls">
 		   <div class="tr"  >
 			   
-			<div class="td" style="width:35px"><input class="pjsid" type="radio" name="pjid"/></div> 
+			<div class="td" style="width:35px"><input class="pjsid" type="radio" name="pjsid"/></div> 
 			<div class="td" style="width:35px"> ${ls.id }</div>
 			<div class="td" style="width: 56px;overflow: hidden;">${ls.serialnumbers }</div>
 			<div class="td" style="width: 56px;overflow: hidden;">${ls.prijectname } </div>

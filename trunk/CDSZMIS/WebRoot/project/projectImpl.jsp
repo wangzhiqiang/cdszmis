@@ -12,9 +12,7 @@
 
 	$(document).ready(function(){
 		 $(".pjsid").click(function(){
-        $("#projectid").val($.trim($(this).parent().parent().children().eq(1).html()));	   
-        
-			 
+        $("#projectid").val($.trim($(this).parent().parent().children().eq(1).html()));	   	 
 		});
 	});
 </script>
@@ -26,7 +24,7 @@
 
 	<table id="detil">
 		<tr style="border-bottom-color: #FFF;border-bottom-style: solid;border-bottom: 1px;">
-			<td >项目ID</td><td> <input id="projectid"  name="projectstatus.projectid" type="text" onclick="alert(this.value);"  readonly/></td>
+			<td >项目ID</td><td> <input id="projectid"  name="projectstatus.projectid" type="text" /></td>
 		</tr>
 		<tr>
 			<td> 项目状态</td><td><label name="projectstatus.status">
@@ -36,22 +34,22 @@
 			</label></td>
 		</tr>
 		<tr>
-			<td >状态更新 </td><td> <input id="history"  name="projectstatus.history" type="text" onclick="alert(this.value);"  readonly/></td>
+			<td >状态更新 </td><td> <input id="history"  name="projectstatus.history" type="text" /></td>
 		</tr>
 		<tr>
-			<td >创建时间</td><td> <input id="createdate"  name="projectstatus.createdate" type="text" onclick="alert(this.value);"  readonly/> 
+			<td >创建时间</td><td> <input id="createdate"  name="projectstatus.createdate" type="text" /> 
 			
 			</td>  
 		</tr>
 		<tr>
-			<td >填报时间</td><td> <input id="reportdate"  name="projectstatus.reportdate" type="text" onclick="alert(this.value);"  readonly/></td>
+			<td >填报时间</td><td> <input id="reportdate"  name="projectstatus.reportdate" type="text" /></td>
 		</tr>
 		<tr>
-			<td > 填报人</td><td> <input id="reportperson"  name="projectstatus.reportperson" type="text" onclick="alert(this.value);"  readonly/></td> 
+			<td > 填报人</td><td> <input id="reportperson"  name="projectstatus.reportperson" type="text" /></td> 
 		</tr>
 	</table>
 	  
-     <input id="id" name="projectstatus.id" type="hidden" onclick="alert(this.value);"  readonly></input>
+     <input id="id" name="projectstatus.id" type="hidden" ></input>
 	 <input  type="submit" value="提交"/><br>
 	</form>
 	<div class="table" style="width:1000px" >
@@ -76,7 +74,7 @@
 	   <c:forEach items="${allnoimplpro }" var="ls">
 		   <div class="tr"  >
 			   
-			<div class="td" style="width:35px"><input class="pjid" type="radio" name="pjsid"/></div> 
+			<div class="td" style="width:35px"><input class="pjsid" type="radio" name="pjsid"/></div> 
 			<div class="td" style="width:35px"> ${ls.id }</div>
 			<div class="td" style="width: 56px;overflow: hidden;">${ls.serialnumbers }</div>
 			<div class="td" style="width: 56px;overflow: hidden;">${ls.prijectname } </div>
