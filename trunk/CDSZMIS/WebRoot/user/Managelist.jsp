@@ -41,6 +41,7 @@
 			 var phone =  $("#phone").val();
 			 var idcard = $("#idcard").val();
 			 var birthday = $("#birthday").val();
+			 var officenum =$("#officenum").val();
 		
 	　　　　　//密码长度
 	     	if (uspass.length<6||uspass.length>20)
@@ -62,13 +63,21 @@
 				return false;
 				}
  
-
+			//生日验证 
 			if( birthday.search(/^\d{4}-\d{2}-\d{2}$/) == -1)
 			{
 				alert("生日格式错误 yyyy-mm-dd");
 				return false;
 			}
 
+			//办公室电话 
+			if(!(officenum.search(/^\d{3}-\d{8}$/) == 1 || officenum.length == 0))
+				{
+					alert("办公室电话错误 ")
+					return false;
+
+				}
+			
 			//身份证验证
 			if(idcard != null){
 				 

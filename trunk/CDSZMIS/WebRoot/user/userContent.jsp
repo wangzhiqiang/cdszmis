@@ -21,8 +21,19 @@
 		办公室电话:${c.officenum}<br>
 		身份证:${c.idcard}<br>
 		出生日期:${c.birthday}<br>
-		用户组:${c.usgroups}<br>
-		部门:${c.usdeparts }<br>
+		
+		用户组:	<c:forEach items="${c.userGroupEntity }" var="u">
+							${u.groupname}
+				</c:forEach><br>
+	
+		
+		部门:<c:forEach items="${departlist}" var="dl">
+					<c:if test="${c.usdeparts == dl.id }">${dl.departname}</c:if> 
+			 </c:forEach><br>
+			
+		
+		
+		
 		调动情况:${c.conditions }<br>
   		简介:${c.introduction}<br>
   	

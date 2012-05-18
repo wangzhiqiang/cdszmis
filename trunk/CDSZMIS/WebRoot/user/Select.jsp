@@ -31,7 +31,7 @@
 	
 	<c:forEach items="${list}" var="l">
 	<div class='tr'>
-		<div class='td' style="width: 50px;"><a href="/user/user_userContent?idcard=${l.idcard}" >${l.usname}</div>
+		<div class='td' style="width: 50px;"><a href="/user/user_userContent?ids=${l.id}" >${l.usname}</div>
 		<td></td><div class='td' style="width: 50px;">${l.gender }</div>
 		<td></td><div class='td' style="width: 110px;">${l.idcard }</div>
 		
