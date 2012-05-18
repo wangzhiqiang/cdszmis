@@ -8,7 +8,6 @@
 	 	<link href="${rooturl }/styles/common.css" rel="stylesheet" type="text/css" />
 		<link href="${rooturl }/scripts/jquery/jquery.multiSelect.css" rel="stylesheet" type="text/css" />
 		<link href="${rooturl }/styles/banner.css" rel="stylesheet" type="text/css" />
-		<link href="${rooturl }/styles/common.css" rel="stylesheet" type="text/css" />
 		<link href="${rooturl }/styles/groupmenu.css" rel="stylesheet" type="text/css" />
 		<script language="JavaScript" src="${rooturl }/scripts/jquery/jquery-1.5.2.js"></script>
 		<script language="JavaScript" src="${rooturl }/scripts/jquery/jquery.bgiframe.min.js"></script>
@@ -40,7 +39,7 @@
 					<div class='td' style="width: 30px">${user.id }</div>
 					<div class='td' style="width: 50px">${user.usname }</div>
 					<div class='td' style="width: 50px">${user.loginname }</div>
-					<div class='td' style="width: 249px;overflow: hidden;"><c:forEach items="${user.userGroupEntity }" var="ug">${ug.groupname}</c:forEach></div>
+					<div class='td' style="width: 249px;overflow: hidden;"><c:forEach items="${user.userGroupEntity }" var="ug">${ug.groupname} </c:forEach></div>
 					<div class='groupids' style="display: none;"><c:forEach items="${user.userGroupEntity }" var="ug" varStatus="stat">${ug.id}<c:if test="${!stat.last}">,</c:if></c:forEach></div>
 				</div>
 			</c:forEach>

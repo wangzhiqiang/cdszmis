@@ -54,12 +54,15 @@
 
 .rigthtitle{
 	width: 100%;
-	height: 25px;
-	line-height: 24px;
+	height: 30px;
+	line-height: 28px;
 	font-size: 16px;
 	color: #080808;
+	padding:0px 20px;
 	margin: 5px 10px 5px 0px;
+	font:"华文彩云";
 }
+ 
 .view:HOVER{
 	cursor: pointer;
 	color: red;
