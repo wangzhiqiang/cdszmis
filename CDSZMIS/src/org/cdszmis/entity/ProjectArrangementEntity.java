@@ -35,8 +35,8 @@ public class ProjectArrangementEntity implements Serializable {
 	private String reportperson;//填报人
 	
 
-	@OneToOne (targetEntity=ProjectEntity.class,cascade={CascadeType.ALL})
-	@PrimaryKeyJoinColumn
+	
+	@OneToOne ( cascade={CascadeType.ALL})
 	private ProjectEntity projectEntity;//项目信息
 
 

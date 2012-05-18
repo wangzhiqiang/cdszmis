@@ -66,11 +66,19 @@ public class ProjectAction extends ActionSupport {
         if(paentity!=null){
 			ProjectEntity  pro = new ProjectEntity();
 			pro = (ProjectEntity)publicDao.queryObject(ProjectEntity.class,paentity.getProjectid());
-			paentity.setProjectEntity(pro);
-		//	projectservice.arrangeDepart(paentity);
-			publicDao.saveOrupdateObject(paentity);
-			projectstatus.setProjectEntity(pro);
-			projectstatus.setStatus(0);
+			try
+			{	
+				projectstatus=new ProjectStatusEntity();
+				projectstatus.setProjectEntity(pro);
+				projectstatus.setStatus(0);
+				publicDao.saveOrupdateObject(projectstatus);
+				paentity.setProjectEntity(pro);
+				publicDao.saveOrupdateObject(paentity);
+
+			} catch(Exception e) 
+			{
+				e.printStackTrace();
+			}
 		}
           //查询所有在安排表中没有的项目 
 		List <ProjectEntity> plist= publicDao.findObjectListByHsql("select distinct obj from ProjectEntity obj  where obj.id not in (select obj1.projectEntity.id from ProjectStatusEntity obj1 )");

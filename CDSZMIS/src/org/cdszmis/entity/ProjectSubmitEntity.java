@@ -38,8 +38,7 @@ public class ProjectSubmitEntity implements Serializable{
 //	private ProjectEntity projectEntity;
 //	
 	
-	@OneToOne (targetEntity=ProjectEntity.class,cascade={CascadeType.ALL})
-	@PrimaryKeyJoinColumn
+	@OneToOne (cascade={CascadeType.ALL})
 	private ProjectEntity projectEntity;//项目信息
 	
 	public ProjectEntity getProjectEntity() {
