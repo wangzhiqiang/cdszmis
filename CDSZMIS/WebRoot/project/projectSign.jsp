@@ -30,7 +30,7 @@
 		</tr>
 		<tr>
 			<td> 项目状态</td><td><label name="projectstatus.status">
-			<input name="projectstatus.status" type="radio" value="4" />出版
+			<input name="projectstatus.status" type="radio" value="5" checked="checked"/>出版
 			</label></td>
 		</tr>
 		<tr>

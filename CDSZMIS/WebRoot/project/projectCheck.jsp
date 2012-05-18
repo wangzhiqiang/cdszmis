@@ -29,23 +29,23 @@
 		</tr>
 		<tr>
 			<td> 项目状态</td><td><label name="projectstatus.status">
-			<input name="projectstatus.status" type="radio" value="2" />施工图
-			<input  name="projectstatus.status" type="radio" value="3" />院长签发
+			<input name="projectstatus.status" type="radio" value="3" checked="checked"/>施工图
+			<input  name="projectstatus.status" type="radio" value="4" />院长签发
 			</label></td>
 		</tr>
 		<tr>
-			<td>状态更新 </td><td> <input id="history" type="text" name="projectstatus.history" onclick="alert(this.value);"  readonly/></td>
+			<td>状态更新 </td><td> <input id="history" type="text" name="projectstatus.history" /></td>
 		</tr>
 		<tr>
-			<td>创建时间</td><td> <input id="createdate" type="text" name="projectstatus.createdate" onclick="alert(this.value);"  readonly/> 
+			<td>创建时间</td><td> <input id="createdate" type="text" name="projectstatus.createdate" /> 
 			
 			</td>  
 		</tr>
 		<tr>
-			<td>填报时间</td><td> <input id="reportdate" type="text" name="projectstatus.reportdate" onclick="alert(this.value);"  readonly/></td>
+			<td>填报时间</td><td> <input id="reportdate" type="text" name="projectstatus.reportdate" /></td>
 		</tr>
 		<tr>
-			<td> 填报人</td><td> <input id="reportperson" type="text" name="projectstatus.reportperson" onclick="alert(this.value);"  readonly/></td> 
+			<td> 填报人</td><td> <input id="reportperson" type="text" name="projectstatus.reportperson" /></td> 
 		</tr>
 	</table>
 	  

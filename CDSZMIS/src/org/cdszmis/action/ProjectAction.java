@@ -68,11 +68,15 @@ public class ProjectAction extends ActionSupport {
         if(paentity!=null){
 			ProjectEntity  pro = new ProjectEntity();
 			pro = (ProjectEntity)publicDao.queryObject(ProjectEntity.class,paentity.getProjectid());
+			//ProjectStatusEntity proj= new ProjectStatusEntity();
+			//proj.setProjectid(paentity.getProjectid());
+		if(pro!=null){
 			try
 			{	
 				projectstatus=new ProjectStatusEntity();
 				projectstatus.setProjectEntity(pro);
 				projectstatus.setStatus(0);
+				projectstatus.setProjectid(paentity.getProjectid());
 				publicDao.saveOrupdateObject(projectstatus);
 				paentity.setProjectEntity(pro);
 				publicDao.saveOrupdateObject(paentity);
@@ -81,6 +85,7 @@ public class ProjectAction extends ActionSupport {
 			{
 				e.printStackTrace();
 			}
+		}
 		}
           //查询所有在安排表中没有的项目 
 		List <ProjectEntity> plist= publicDao.findObjectListByHsql("select distinct obj from ProjectEntity obj  where obj.id not in (select obj1.projectEntity.id from ProjectStatusEntity obj1 )");
@@ -95,19 +100,19 @@ public class ProjectAction extends ActionSupport {
 		if(pdaentity!=null){
 			ProjectEntity  pro = new ProjectEntity();
 			pro = (ProjectEntity)publicDao.queryObject(ProjectEntity.class, pdaentity.getProjectid());
-			projectstatus = (ProjectStatusEntity) hibernateUtils.findobjByHsql("select s from ProjectStatusEntity,ProjectEntity p where s.projectentity.id=p.id and p.id= "+pdaentity.getProjectid());
+			ProjectStatusEntity proj= new ProjectStatusEntity();
+			proj = (ProjectStatusEntity) hibernateUtils.findobjByHsql("select s from ProjectStatusEntity s,ProjectEntity p where s.projectEntity.id=p.id and p.id= "+pdaentity.getProjectid());
 			try {
-				projectstatus.setProjectEntity(pro);
-				projectstatus.setStatus(1);
-				publicDao.saveOrupdateObject(projectstatus);
+				proj.setStatus(1);
+				proj.setProjectid(pdaentity.getProjectid());
+				publicDao.saveOrupdateObject(proj);
 				pdaentity.setProjectEntity(pro);
 				publicDao.saveOrupdateObject(pdaentity);
 				
 				
 			} catch (Exception e) {
 				e.printStackTrace();
-			}
-			
+			}	
 		}
 		//查询所有状态为“任务下达0”的项目
 		List <ProjectEntity> plist = publicDao.findObjectListByHsql("select distinct obj.projectEntity from ProjectStatusEntity obj where obj.status=0");
@@ -119,7 +124,19 @@ public class ProjectAction extends ActionSupport {
 
 	public String projectImpl(){
 		if(projectstatus!=null){
-			projectservice.changeStatus(projectstatus);
+			ProjectEntity  pro = new ProjectEntity();
+			pro = (ProjectEntity)publicDao.queryObject(ProjectEntity.class, projectstatus.getProjectid());
+			ProjectStatusEntity proj= new ProjectStatusEntity();
+			proj = (ProjectStatusEntity) hibernateUtils.findobjByHsql("select s from ProjectStatusEntity s,ProjectEntity p where s.projectEntity.id=p.id and p.id= "+ projectstatus.getProjectid());
+			projectstatus.setId(proj.getId());
+			if(pro!=null){
+				try {
+					projectstatus.setProjectEntity(pro);
+					publicDao.saveOrupdateObject(projectstatus);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		List<ProjectEntity> plist = projectservice.implStatusList();
 		ActionContext.getContext().put("allnoimplpro", plist);
@@ -127,7 +144,19 @@ public class ProjectAction extends ActionSupport {
 	}
 	public String projectCheck()  {
 		if(projectstatus!=null){	
-				projectservice.changeStatus(projectstatus);
+			ProjectEntity  pro = new ProjectEntity();
+			pro = (ProjectEntity)publicDao.queryObject(ProjectEntity.class, projectstatus.getProjectid());
+			ProjectStatusEntity proj= new ProjectStatusEntity();
+			proj = (ProjectStatusEntity) hibernateUtils.findobjByHsql("select s from ProjectStatusEntity s,ProjectEntity p where s.projectEntity.id=p.id and p.id= "+ projectstatus.getProjectid());
+			projectstatus.setId(proj.getId());
+			if(pro!=null){
+				try {
+					projectstatus.setProjectEntity(pro);
+					publicDao.saveOrupdateObject(projectstatus);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 			
 		}
 		List<ProjectEntity> plist = projectservice.checkStatusList();
@@ -137,8 +166,19 @@ public class ProjectAction extends ActionSupport {
 
 	public String projectSign(){
 		if(projectstatus!=null){
-		
-			projectservice.changeStatus(projectstatus);
+			ProjectEntity  pro = new ProjectEntity();
+			pro = (ProjectEntity)publicDao.queryObject(ProjectEntity.class, projectstatus.getProjectid());
+			ProjectStatusEntity proj= new ProjectStatusEntity();
+			proj = (ProjectStatusEntity) hibernateUtils.findobjByHsql("select s from ProjectStatusEntity s,ProjectEntity p where s.projectEntity.id=p.id and p.id= "+ projectstatus.getProjectid());
+			projectstatus.setId(proj.getId());
+			if(pro!=null){
+				try {
+					projectstatus.setProjectEntity(pro);
+					publicDao.saveOrupdateObject(projectstatus);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		
 		}
 		List<ProjectEntity> plist = projectservice.signStatusList();
@@ -148,9 +188,19 @@ public class ProjectAction extends ActionSupport {
 	
 	public String projectPublic(){
 		if(projectstatus!=null){
-		
-			projectservice.changeStatus(projectstatus);
-		
+			ProjectEntity  pro = new ProjectEntity();
+			pro = (ProjectEntity)publicDao.queryObject(ProjectEntity.class, projectstatus.getProjectid());
+			ProjectStatusEntity proj= new ProjectStatusEntity();
+			proj = (ProjectStatusEntity) hibernateUtils.findobjByHsql("select s from ProjectStatusEntity s,ProjectEntity p where s.projectEntity.id=p.id and p.id= "+ projectstatus.getProjectid());
+			projectstatus.setId(proj.getId());
+			if(pro!=null){
+				try {
+					projectstatus.setProjectEntity(pro);
+					publicDao.saveOrupdateObject(projectstatus);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		List<ProjectEntity> plist = projectservice.publicStatusList();
 		ActionContext.getContext().put("allnopublicpro", plist);
@@ -158,7 +208,19 @@ public class ProjectAction extends ActionSupport {
 	}
 	public String projectSale(){
 		if(projectstatus!=null){
-			projectservice.changeStatus(projectstatus);
+			ProjectEntity  pro = new ProjectEntity();
+			pro = (ProjectEntity)publicDao.queryObject(ProjectEntity.class, projectstatus.getProjectid());
+			ProjectStatusEntity proj= new ProjectStatusEntity();
+			proj = (ProjectStatusEntity) hibernateUtils.findobjByHsql("select s from ProjectStatusEntity s,ProjectEntity p where s.projectEntity.id=p.id and p.id= "+ projectstatus.getProjectid());
+			projectstatus.setId(proj.getId());
+			if(pro!=null){
+				try {
+					projectstatus.setProjectEntity(pro);
+					publicDao.saveOrupdateObject(projectstatus);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		}
 		List<ProjectEntity> plist = projectservice.saleStatusList();
 		ActionContext.getContext().put("allnosalepro", plist);
@@ -166,8 +228,19 @@ public class ProjectAction extends ActionSupport {
 	}
 	public String projectFilling(){
 		if(projectstatus!=null){
-		
-			projectservice.changeStatus(projectstatus);
+			ProjectEntity  pro = new ProjectEntity();
+			pro = (ProjectEntity)publicDao.queryObject(ProjectEntity.class, projectstatus.getProjectid());
+			ProjectStatusEntity proj= new ProjectStatusEntity();
+			proj = (ProjectStatusEntity) hibernateUtils.findobjByHsql("select s from ProjectStatusEntity s,ProjectEntity p where s.projectEntity.id=p.id and p.id= "+ projectstatus.getProjectid());
+			projectstatus.setId(proj.getId());
+			if(pro!=null){
+				try {
+					projectstatus.setProjectEntity(pro);
+					publicDao.saveOrupdateObject(projectstatus);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
 		
 		}
 		List<ProjectEntity> plist = projectservice.fillStatusList();

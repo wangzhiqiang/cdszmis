@@ -21,16 +21,15 @@
   <body>
     <div class="righttitle">ProjectImpl</div>
    <form action="${rooturl }/project/pro_projectImpl" method="get">
-
 	<table id="detil">
 		<tr style="border-bottom-color: #FFF;border-bottom-style: solid;border-bottom: 1px;">
-			<td >项目ID</td><td> <input id="projectid"  name="projectstatus.projectid" type="text" /></td>
+			<td >项目ID</td><td> <input id="projectid"  name="projectstatus.projectid" type="text" onclick="alert(this.value);"  readonly/></td>
 		</tr>
 		<tr>
 			<td> 项目状态</td><td><label name="projectstatus.status">
-			<input name="projectstatus.status" type="radio" value="0" />方案
-			<input  name="projectstatus.status" type="radio" value="1" />初设
-			<input  name="projectstatus.status" type="radio" value="2" />施工图
+			<input name="projectstatus.status" type="radio" value="1"  checked="checked" />方案
+			<input  name="projectstatus.status" type="radio" value="2" />初设
+			<input  name="projectstatus.status" type="radio" value="3" />施工图
 			</label></td>
 		</tr>
 		<tr>
@@ -49,7 +48,7 @@
 		</tr>
 	</table>
 	  
-     <input id="id" name="projectstatus.id" type="hidden" ></input>
+    
 	 <input  type="submit" value="提交"/><br>
 	</form>
 	<div class="table" style="width:1000px" >
