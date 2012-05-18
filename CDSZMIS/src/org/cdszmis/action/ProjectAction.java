@@ -182,61 +182,73 @@ public class ProjectAction extends ActionSupport {
 	public  String barPic(){
 		
 		//dataset的数据处理start
-		String HSQL="from ProjectArrangementEntity ";//obj where obj.departids like '%"+1+"%'";
+		
+		//select count(d.departname) ,d.departname from tb_depart  d,tb_projectarrangement pa where pa.departids=d.id group by d.departname
+//		String HSQL="from ProjectArrangementEntity ";//obj where obj.departids like '%"+1+"%'";
 		//项目安排信息
-		List lsp=publicDao.findObjectListByHsql(HSQL);
-		
-		Map<Integer,String> map=new HashedMap();
-		
-		ProjectArrangementEntity pae=null ;
-		DepartmentEntity depart=null;
-		
-		List <DepartmentEntity> lsd=new ArrayList <DepartmentEntity>();
-		for(int i=0;i<lsp.size();i++){
-			 pae=new ProjectArrangementEntity();
-			 pae=(ProjectArrangementEntity) lsp.get(i);
-			 depart=new DepartmentEntity();
-			 if(null!=pae.getDepartids()&&!"".equals(pae.getDepartids())){
-			 depart=(DepartmentEntity) publicDao.queryObject(DepartmentEntity.class,Integer.valueOf(pae.getDepartids()));
-			 lsd.add(depart);
-			 }
-		}
-		Map<Integer,String[]> cmap=new HashedMap();
-		String str[] = new String[3];
- 
+//		List lsp=publicDao.findObjectListByHsql(HSQL);
+		System.out.println("******************************");
+		List  dd=publicDao.findObjectListByHsql("select count(obj.departname),obj.departname from DepartmentEntity obj ,ProjectArrangementEntity obj1 where obj.id=obj1.departids group by obj.departname");
 		 DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-		 for(int j=0;j<lsd.size();j++){
-			 if(cmap.size()>0){
-				 String s[]=new String[3];
-				 s=cmap.get(lsd.get(j).getId());
-	//			 System.out.println(s[0]+"--"+s[1]+"--"+s[2]);
-				 if(null==s){
-					 s =new String[3];
-					 s[0]=String.valueOf(lsd.get(j).getId());
-					 s[1]=lsd.get(j).getDepartname();
-					 s[2]="1";
-					 cmap.put(lsd.get(j).getId(),s);
-				 }else{
-					 s[2]=String.valueOf((Integer.valueOf(s[2])+1));
-					 cmap.put(lsd.get(j).getId(),s);
-				 }
-			 }else{
-				 str[0]=String.valueOf(lsd.get(j).getId());
-				 str[1]=lsd.get(j).getDepartname();
-				 str[2]="1";
-				 cmap.put(lsd.get(j).getId(),str);
-			 }
-			 
-		 }
-		 
-		 Set<Integer> st=cmap.keySet();
-		 
-		 Iterator <Integer> it=st.iterator();
-		 while(it.hasNext()){
-			
-			 Integer in= it.next() ;
-			 dataset.addValue(Integer.valueOf(cmap.get(in)[2]),"",cmap.get(in)[1]);
-		 }
+		for(int l=0 ;l<dd.size();l++)
+		{
+			  Object[] obj = (Object []) dd.get(l);
+//			System.out.println("------"+obj[0] );
+			   dataset.addValue(Integer.valueOf(obj[0].toString()), obj[1].toString(),"");
+		}
+//		
+//		System.out.println("******************************");
+//		Map<Integer,String> map=new HashedMap();
+//		
+//		ProjectArrangementEntity pae=null ;
+//		DepartmentEntity depart=null;
+//		
+//		List <DepartmentEntity> lsd=new ArrayList <DepartmentEntity>();
+//		for(int i=0;i<lsp.size();i++){
+//			 pae=new ProjectArrangementEntity();
+//			 pae=(ProjectArrangementEntity) lsp.get(i);
+//			 depart=new DepartmentEntity();
+//			 if(null!=pae.getDepartids()&&!"".equals(pae.getDepartids())){
+//			 depart=(DepartmentEntity) publicDao.queryObject(DepartmentEntity.class,Integer.valueOf(pae.getDepartids()));
+//			 lsd.add(depart);
+//			 }
+//		}
+//		Map<Integer,String[]> cmap=new HashedMap();
+//		String str[] = new String[3];
+// 
+//		 DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+//		 for(int j=0;j<lsd.size();j++){
+//			 if(cmap.size()>0){
+//				 String s[]=new String[3];
+//				 s=cmap.get(lsd.get(j).getId());
+//	//			 System.out.println(s[0]+"--"+s[1]+"--"+s[2]);
+//				 if(null==s){
+//					 s =new String[3];
+//					 s[0]=String.valueOf(lsd.get(j).getId());
+//					 s[1]=lsd.get(j).getDepartname();
+//					 s[2]="1";
+//					 cmap.put(lsd.get(j).getId(),s);
+//				 }else{
+//					 s[2]=String.valueOf((Integer.valueOf(s[2])+1));
+//					 cmap.put(lsd.get(j).getId(),s);
+//				 }
+//			 }else{
+//				 str[0]=String.valueOf(lsd.get(j).getId());
+//				 str[1]=lsd.get(j).getDepartname();
+//				 str[2]="1";
+//				 cmap.put(lsd.get(j).getId(),str);
+//			 }
+//			 
+//		 }
+//		 
+//		 Set<Integer> st=cmap.keySet();
+//		 
+//		 Iterator <Integer> it=st.iterator();
+//		 while(it.hasNext()){
+//			
+//			 Integer in= it.next() ;
+//			 dataset.addValue(Integer.valueOf(cmap.get(in)[2]),"",cmap.get(in)[1]);
+//		 }
 		 //dataset数据处理end
 		chart = ChartFactory.createBarChart3D(
 				"部门项目分配情况", // 图表标题
@@ -244,7 +256,7 @@ public class ProjectAction extends ActionSupport {
 				"项目数", // 数值轴的显示标签
 				dataset, // 数据集
 				PlotOrientation.VERTICAL, // 图表方向：水平、垂直
-				false, 	// 是否显示图例(对于简单的柱状图必须是false)
+				true, 	// 是否显示图例(对于简单的柱状图必须是false)
 				true, 	// 是否生成工具
 				true 	// 是否生成URL链接
 				);
@@ -258,7 +270,7 @@ public class ProjectAction extends ActionSupport {
 		   domainAxis.setTickLabelFont(new Font("黑体",Font.BOLD,12));//x轴坐标上文字
 		   numberaxis.setLabelFont(new Font("宋体",Font.BOLD,14));//y轴标题文字
 		   numberaxis.setTickLabelFont(new Font("黑体",Font.BOLD,12));//y轴坐标上文字
-//		   chart.getLegend().setItemFont(new Font("黑体",Font.BOLD,12));//图例文字
+		   chart.getLegend().setItemFont(new Font("黑体",Font.BOLD,12));//图例文字
 //		   BarRenderer renderer = (BarRenderer) plot.getRenderer();
 //			renderer.setDrawBarOutline(false);
 //			renderer.setSeriesPaint(0, new GradientPaint(0.0f, 0.0f, Color.green, 0.0f, 0.0f, Color.lightGray));
