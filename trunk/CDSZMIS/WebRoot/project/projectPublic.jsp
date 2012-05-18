@@ -31,22 +31,22 @@
 		</tr>
 		<tr>
 			<td> 项目状态</td><td><label name="projectstatus.status">
-			<input name="projectstatus.status" type="radio" value="5"/>发行
+			<input name="projectstatus.status" type="radio" value="6" checked="checked"/>发行
 			</label></td>
 		</tr>
 		<tr>
-			<td>状态更新 </td><td> <input id="history" type="text" name="projectstatus.history" onclick="alert(this.value);"  readonly/></td>
+			<td>状态更新 </td><td> <input id="history" type="text" name="projectstatus.history" /></td>
 		</tr>
 		<tr>
-			<td>创建时间</td><td> <input id="createdate" type="text" name="projectstatus.createdate" onclick="alert(this.value);"  readonly/> 
+			<td>创建时间</td><td> <input id="createdate" type="text" name="projectstatus.createdate" /> 
 			
 			</td>  
 		</tr>
 		<tr>
-			<td>填报时间</td><td> <input id="reportdate" type="text" name="projectstatus.reportdate" onclick="alert(this.value);"  readonly/></td>
+			<td>填报时间</td><td> <input id="reportdate" type="text" name="projectstatus.reportdate" /></td>
 		</tr>
 		<tr>
-			<td> 填报人</td><td> <input id="reportperson" type="text" name="projectstatus.reportperson" onclick="alert(this.value);"  readonly/></td> 
+			<td> 填报人</td><td> <input id="reportperson" type="text" name="projectstatus.reportperson" /></td> 
 		</tr>
 	</table>
 	  

@@ -31,7 +31,7 @@
 		</tr>
 		<tr>
 			<td> 项目状态</td><td><label name="projectstatus.status">
-			<input name="projectstatus.status" type="radio" value="6"/>结束
+			<input name="projectstatus.status" type="radio" value="7" checked="checked"/>结束
 			</label></td>
 		</tr>
 		<tr>
