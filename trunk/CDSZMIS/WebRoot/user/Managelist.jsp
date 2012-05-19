@@ -42,6 +42,7 @@
 			 var idcard = $("#idcard").val();
 			 var birthday = $("#birthday").val();
 			 var officenum =$("#officenum").val();
+			 alert(officenum);
 		
 	　　　　　//密码长度
 	     	if (uspass.length<6||uspass.length>20)
@@ -69,15 +70,15 @@
 				alert("生日格式错误 yyyy-mm-dd");
 				return false;
 			}
-
-			//办公室电话 
 			
-			if(!(officenum.search(/^\d{3}-\d{8}$/) != -1 && officenum.length != 0))
+			//办公室电话 
+			if(officenum.length!=0){
+				if(!(officenum.search(/^\d{3}-\d{8}$/) != -1 ) )
 				{
 					alert("办公室电话错误 ")
 					return false;
-
 				}
+			}
 			
 			//身份证验证
 			if(idcard != null){
@@ -96,9 +97,6 @@
 			    //地区检验
 			    if(area[parseInt(idcard.substr(0,2))]==null) 
 					alert( Errors[4]);
-			  
-			    alert(idcard.length);
-
 			    //身份号码位数及格式检验
 			    switch(idcard.length){
 			        case 15:
