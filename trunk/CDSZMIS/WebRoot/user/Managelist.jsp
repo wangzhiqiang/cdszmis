@@ -22,7 +22,7 @@
         $("#phone").val($.trim($(this).parent().parent().children().eq(5).html()));	
         $("#officenum").val($.trim($(this).parent().parent().children().eq(6).html()));	
         $("#idcard").val($.trim($(this).parent().parent().children().eq(7).html()));	
-        $("#birthday").val($.trim($(this).parent().parent().children().eq(8).html()));	      
+        $("#birthday").val($.trim($(this).parent().parent().children().eq(8).html()).substring(0,10));	      
         $("#conditions").val($.trim($(this).parent().parent().children().eq(11).html()));	
         $("#introduction").val($.trim($(this).parent().parent().children().eq(12).html()));	
     
@@ -71,7 +71,8 @@
 			}
 
 			//办公室电话 
-			if(!(officenum.search(/^\d{3}-\d{8}$/) == 1 || officenum.length == 0))
+			
+			if(!(officenum.search(/^\d{3}-\d{8}$/) != -1 && officenum.length != 0))
 				{
 					alert("办公室电话错误 ")
 					return false;
@@ -281,39 +282,39 @@
 	</form>		
 	
 	
-<div class='table' style="width:1200px;margin-left: 5px;">
+<div class='table' style="width:1000px;margin-left: 5px;">
 	<div class='hd' style="width: 100%">
-				<div class='td' style="width: 50px;">选择</div>
+				<div class='td' style="width: 40px;">选择</div>
 				<div class='td' style="width: 50px;">用户名</div>
 				<div class='td' style="width: 50px;">登录名</div>
-				<div class='td' style="width: 50px;">性别</div>
-				<div class='td' style="width: 150px;">邮箱</div>
-				<div class='td' style="width: 100px;">手机</div>
-				<div class='td' style="width: 100px;">办公室电话</div>
+				<div class='td' style="width: 30px;">性别</div>
+				<div class='td' style="width: 100px;">邮箱</div>
+				<div class='td' style="width: 80px;">手机</div>
+				<div class='td' style="width: 80px;">办公室电话</div>
 				<div class='td' style="width: 110px;">身份证</div>
-				<div class='td' style="width: 150px;">出生日期</div>
+				<div class='td' style="width: 80px;">出生日期</div>
 				<div class='td' style="width: 100px;">用户组</div>
-				<div class='td' style="width: 100px;">调动情况</div>
+				<div class='td' style="width: 155px;">调动情况</div>
 
 	</div>
 	<c:forEach items="${list}" var="l">
 		<div class='tr'>
-			<div class='td'style="width: 50px;"><input class="dpid" type="radio" name="dpid" value="${l.id }"/></div>
+			<div class='td'style="width: 40px;"><input class="dpid" type="radio" name="dpid" value="${l.id }"/></div>
 			<div class='td' style="width: 50px;">${l.usname}</div>
 			<div class='td' style="width: 50px;">${l.loginname}</div>
-			<div class='td' style="width: 50px;">${l.gender}</div>
-			<div class='td' style="width: 150px;">${l.email}</div>
-			<div class='td' style="width: 100px;">${l.phone}</div>
-			<div class='td' style="width: 100px;">${l.officenum}</div>
+			<div class='td' style="width: 30px;">${l.gender}</div>
+			<div class='td' style="width: 100px;">${l.email}</div>
+			<div class='td' style="width: 80px;">${l.phone}</div>
+			<div class='td' style="width: 80px;">${l.officenum}</div>
 			<div class='td' style="width: 110px;">${l.idcard}</div>
-			<div class='td' style="width: 150px;">${l.birthday}</div>
+			<div class='td' style="width: 80px;overflow: hidden;">${l.birthday}</div>
 			<div class='td' style="width: 100px;overflow: hidden;">
 						<c:forEach items="${l.userGroupEntity }" var="u">
 							${u.groupname}
 						</c:forEach>
 			</div>
 			<div class='groupids' style="display: none;"><c:forEach items="${l.userGroupEntity }" var="ug" varStatus="stat">${ug.id}<c:if test="${!stat.last}">,</c:if></c:forEach></div>
-			<div class='td' style="width: 100px;">${l.conditions}</div>
+			<div class='td' style="width: 155px;">${l.conditions}</div>
 			<div class='introduction' style="display: none;">${l.introduction}</div>
 
 		</div>
