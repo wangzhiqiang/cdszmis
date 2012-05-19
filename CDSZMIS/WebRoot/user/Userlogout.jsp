@@ -6,6 +6,7 @@
 <html>
   <head>
     <link href="${rooturl }/styles/common.css" rel="stylesheet" type="text/css" />
+    <link href="${rooturl }/styles/banner.css" rel="stylesheet" type="text/css" />
     <title>用户注销</title>
 
 
