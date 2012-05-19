@@ -12,18 +12,14 @@
 
 	<!-- 配置自动扫描 -->
 	<context:component-scan base-package="org.cdszmis" />
-
-
 	<!-- jdbc.properties -->
 	<bean id="propertyConfigurer"
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="location" value="classpath:jdbc.properties" />
 	</bean>
-
 	<!-- 数据源配置 采用c3p0 -->
 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
 		destroy-method="close">
-
 		<!--数据库连接配置 -->
 		<property name="driverClass">
 			<value>${jdbc.driverClassName}</value>
@@ -69,7 +65,6 @@
 			<value>${breakAfterAcquireFailure}</value>
 		</property>
 	</bean>
-
 	<!-- Hibernate 配置 启用缓存 -->
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
@@ -87,7 +82,6 @@
 		</property>
 		<!-- 实体对象 -->
 		<property name="packagesToScan" value="org.cdszmis.entity" />
-
 	</bean>
 	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
 		<property name="sessionFactory" ref="sessionFactory" />
@@ -110,7 +104,6 @@
 			<tx:method name="*" rollback-for="Exception.class" />
 		</tx:attributes>
 	</tx:advice>
-
 	<!-- Advisor -->
 	<aop:config>
 		<aop:pointcut id="serviceManagerPointcut"
