@@ -26,7 +26,7 @@
 
 	<table id="detil">
 		<tr style="border-bottom-color: #FFF;border-bottom-style: solid;border-bottom: 1px;">
-			<td>项目ID</td><td> <input id="projectid" type="text" name="projectstatus.projectid" onclick="alert(this.value);"  readonly/></td>
+			<td>项目ID</td><td> <input id="projectid" type="text" name="projectstatus.projectid" /></td>
 		</tr>
 		<tr>
 			<td> 项目状态</td><td><label name="projectstatus.status">
