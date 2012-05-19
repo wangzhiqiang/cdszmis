@@ -93,11 +93,8 @@
 			<div class='td' style="width: 50px;">${l.usname}</div>
 			
 
-			<div class='td' style="width: 100px;overflow: hidden;">
-						<c:forEach items="${l.userGroupEntity }" var="u">
-							${u.groupname}
-						</c:forEach>
-			</div>
+			<div class='td' style="width: 100px;overflow: hidden;"><c:forEach items="${l.userGroupEntity }" var="u">${u.groupname} </c:forEach></div>
+			
 			<div class='groupids' style="display: none;"><c:forEach items="${l.userGroupEntity }" var="ug" varStatus="stat">${ug.id}<c:if test="${!stat.last}">,</c:if></c:forEach></div>
 			
 			

@@ -13,6 +13,7 @@
 			 var phone =  $("#phone").val();
 			 var idcard = $("#idcard").val();
 			 var birthday = $("#birthday").val();
+			 var officenum =$("#officenum").val();
 		//密码长度
 			if (uspass.length<6||uspass.length>20)
 		   	{
