@@ -70,81 +70,83 @@
 	  		  <c:if test="${prs.projectEntity.important==1 }">重要</c:if> 
 	  		  <c:if test="${prs.projectEntity.important==2 }">紧急</c:if> 
 	  	  </div>
-	  	  <div class='td view'style="width: 80px;color:red;"><a  class="thickbox" href="#TB_inline?height=350&width=300&inlineId=view">详细信息查看</a></div>	  	     	   
+	  	  <div class='td view'style="width: 80px;color:red;"><a  class="thickbox" href="#TB_inline?height=350&width=300&inlineId=view">详细信息查看</a> 
+	  	       <div class='hi' style="display: none;">		  
+			      <div class='tr' >
+	  	             <div class="td" style="width: 100px;">项目编号 </div>
+	  	             <div class="td" style="width: 150px;">${prs.projectEntity.serialnumbers} </div>
+	  	          </div>
+	  	          <div class='tr' >
+	  	             <div class="td" style="width: 100px;">项目(合同)名称:</div>
+	  	             <div class="td" style="width: 150px;">${prs.projectEntity.prijectname} </div>
+	  	          </div>
+	  	          <div class='tr' >
+	  	             <div class="td" style="width: 100px;">委托单位: </div>
+	  	             <div class="td" style="width: 150px;">${prs.projectEntity.commissionedname} </div>
+	  	          </div>
+	  	          <div class='tr' >
+	  	             <div class="td" style="width: 100px;">联系人: </div>
+	  	             <div class="td" style="width: 150px;">${prs.projectEntity.contactperson} </div>
+	  	          </div>
+	  	          <div class='tr' >
+	  	             <div class="td" style="width: 100px;">联系电话:</div>
+	  	             <div class="td" style="width: 150px;">${prs.projectEntity.contactphone} </div>
+	  	          </div>
+	  	          <div class='tr' >
+	  	             <div class="td" style="width: 100px;">费率: </div>
+	  	             <div class="td" style="width: 150px;">${prs.projectEntity.rate} </div>
+	  	          </div>
+	  	          <div class='tr' >
+	  	             <div class="td" style="width: 100px;">合同金额（万元）: </div>
+	  	             <div class="td" style="width: 150px;">${prs.projectEntity.money} </div>
+	  	          </div>
+	  	          <div class='tr' >
+	  	             <div class="td" style="width: 100px;">重要性: </div>
+	  	             <div class="td" style="width: 150px;">
+	  	                  <c:if test="${prs.projectEntity.important==0 }">一般</c:if> 
+		  		          <c:if test="${prs.projectEntity.important==1 }">重要</c:if> 
+		  		          <c:if test="${prs.projectEntity.important==2 }">紧急</c:if> 
+	  	              </div>
+	  	          </div>
+	  	          <div class='tr' >
+	  	             <div class="td" style="width: 100px;">项目启动时间:</div>
+	  	             <div class="td" style="width: 150px;">${prs.projectEntity.startdate} </div>
+	  	          </div>
+	  	          <div class='tr' >
+	  	             <div class="td" style="width: 100px;">合同结束时间: </div>
+	  	             <div class="td" style="width: 150px;">${prs.projectEntity.enddate}</div>
+	  	          </div>
+	  	          <div class='tr' >
+	  	             <div class="td" style="width: 100px;">合同项目情况: </div>
+	  	             <div class="td" style="width: 150px;">${prs.projectEntity.detail} </div>
+	  	          </div>
+	  	          <div class='tr' >
+	  	             <div class="td" style="width: 100px;">填报时间: </div>
+	  	             <div class="td" style="width: 150px;">${prs.projectEntity.createdate} </div>
+	  	          </div>
+	  	          <div class='tr' >
+	  	             <div class="td" style="width: 100px;">填报人: </div>
+	  	             <div class="td" style="width: 150px;">${prs.projectEntity.subperson}</div>
+	  	          </div>
+		       </div>
+		  </div>	  	     	   
+		    
 	    </div>
 	    
-	     <div id='view' style="display: none;">		  
-		  <div class="viewhtml">
-		   
-		      <div class='tr' >
-  	             <div class="td" style="width: 100px;">项目编号 </div>
-  	             <div class="td" style="width: 150px;">${prs.projectEntity.serialnumbers} </div>
-  	          </div>
-  	          <div class='tr' >
-  	             <div class="td" style="width: 100px;">项目(合同)名称:</div>
-  	             <div class="td" style="width: 150px;">${prs.projectEntity.prijectname} </div>
-  	          </div>
-  	          <div class='tr' >
-  	             <div class="td" style="width: 100px;">委托单位: </div>
-  	             <div class="td" style="width: 150px;">${prs.projectEntity.commissionedname} </div>
-  	          </div>
-  	          <div class='tr' >
-  	             <div class="td" style="width: 100px;">联系人: </div>
-  	             <div class="td" style="width: 150px;">${prs.projectEntity.contactperson} </div>
-  	          </div>
-  	          <div class='tr' >
-  	             <div class="td" style="width: 100px;">联系电话:</div>
-  	             <div class="td" style="width: 150px;">${prs.projectEntity.contactphone} </div>
-  	          </div>
-  	          <div class='tr' >
-  	             <div class="td" style="width: 100px;">费率: </div>
-  	             <div class="td" style="width: 150px;">${prs.projectEntity.rate} </div>
-  	          </div>
-  	          <div class='tr' >
-  	             <div class="td" style="width: 100px;">合同金额（万元）: </div>
-  	             <div class="td" style="width: 150px;">${prs.projectEntity.money} </div>
-  	          </div>
-  	          <div class='tr' >
-  	             <div class="td" style="width: 100px;">重要性: </div>
-  	             <div class="td" style="width: 150px;">
-  	                  <c:if test="${prs.projectEntity.important==0 }">一般</c:if> 
-	  		          <c:if test="${prs.projectEntity.important==1 }">重要</c:if> 
-	  		          <c:if test="${prs.projectEntity.important==2 }">紧急</c:if> 
-  	              </div>
-  	          </div>
-  	          <div class='tr' >
-  	             <div class="td" style="width: 100px;">项目启动时间:</div>
-  	             <div class="td" style="width: 150px;">${prs.projectEntity.startdate} </div>
-  	          </div>
-  	          <div class='tr' >
-  	             <div class="td" style="width: 100px;">合同结束时间: </div>
-  	             <div class="td" style="width: 150px;">${prs.projectEntity.enddate}</div>
-  	          </div>
-  	          <div class='tr' >
-  	             <div class="td" style="width: 100px;">合同项目情况: </div>
-  	             <div class="td" style="width: 150px;">${prs.projectEntity.detail} </div>
-  	          </div>
-  	          <div class='tr' >
-  	             <div class="td" style="width: 100px;">填报时间: </div>
-  	             <div class="td" style="width: 150px;">${prs.projectEntity.createdate} </div>
-  	          </div>
-  	          <div class='tr' >
-  	             <div class="td" style="width: 100px;">填报人: </div>
-  	             <div class="td" style="width: 150px;">${prs.projectEntity.subperson}</div>
-  	          </div>
-	          		 		  
-		  </div>
-		
-	</div>
+	    
 	</c:forEach>
 	
 </div>
-    
+    <div id='view' style="display: none;">
+    	<div class='viewhtml'>
+    	</div>
+    </div>
  <script>
 	$(function(){
  		$('.thickbox').click(function(){
  		  $('.tt').remove();
- 			var html=$(this).parent().parent().find('.hi').text();
+ 			var html=$(this).parent().find('.hi').html();
+ 			 
  			 $('.viewhtml').after("<div  class='tt'>"+html+"</div>");
  		});
  	 });
