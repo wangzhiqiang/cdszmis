@@ -19,7 +19,7 @@
 		        $("#phone").val($.trim($(this).parent().parent().children().eq(5).html()));	
 		        $("#officenum").val($.trim($(this).parent().parent().children().eq(6).html()));	
 		        $("#idcard").val($.trim($(this).parent().parent().children().eq(7).html()));	
-		        $("#birthday").val($.trim($(this).parent().parent().children().eq(8).html()));	
+		        $("#birthday").val($.trim($(this).parent().parent().children().eq(8).html()).substring(0,10));	
 		        $("#introduction").val($.trim($(this).parent().parent().children().eq(11).html()));
 		        $("#conditions").val($.trim($(this).parent().parent().children().eq(12).html()));
 		        $("#userid").val( $(this).val());
