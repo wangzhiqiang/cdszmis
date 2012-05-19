@@ -20,14 +20,15 @@
 		 	<div class='td'style="width: 155px;height:25px;line-height: 24px;"><input type='text' name='project.prijectname' style="padding: 1px;" /></div>
 		 <div class='td'style="width: 100px;height:25px;line-height: 24px;">
 			<select name="projectstatus.status">
-			<option value='0'>方案</option>
-			<option value='1'>初设</option>
-			<option value='2'>施工图</option>
-			<option value='3'>院长签发</option>
-			<option value='4'>出版</option>
-			<option value='5'>发行</option>
-			<option value='6'>项目结束</option>
-			<option value='7'>归档</option>
+			  <option value='0'>任务下达</option>
+			  <option value='1'>方案</option>
+			  <option value='2'>初设</option>
+			  <option value='3'>施工图</option>
+			  <option value='4'>院长签发</option>
+			  <option value='5'>出版</option>
+			  <option value='6'>发行</option>
+			  <option value='7'>项目结束</option>
+			  <option value='8'>归档</option>
 			</select>
 		</div>
 			<div class='td'style="width: 60px;"><input type='submit' value="查询"/></div>
@@ -47,14 +48,15 @@
 	  	  <div class="td" style="width: 100px;">${prs.projectEntity.serialnumbers } </div>
 	  	  <div class="td" style="width: 100px;">${prs.projectEntity.prijectname } </div>
 	  	   <div class="td" style="width: 100px;">
-	  		  <c:if test="${prs.status==0 }">方案</c:if> 
-	  		  <c:if test="${prs.status==1 }">初设</c:if> 
-	  		  <c:if test="${prs.status==2 }">施工图</c:if>
-	  		  <c:if test="${prs.status==3 }">院长签发</c:if> 
-	  		  <c:if test="${prs.status==4 }">出版</c:if>
-	  		  <c:if test="${prs.status==5 }">发行</c:if> 
-	  		  <c:if test="${prs.status==6 }">项目结束</c:if>  
-	  		  <c:if test="${prs.status==7 }">归档</c:if> 
+	  		  <c:if test="${prs.status==0 }">任务下达</c:if> 
+	  		  <c:if test="${prs.status==1 }">方案</c:if> 
+	  		  <c:if test="${prs.status==2 }">初设</c:if> 
+	  		  <c:if test="${prs.status==3 }">施工图</c:if>
+	  		  <c:if test="${prs.status==4 }">院长签发</c:if> 
+	  		  <c:if test="${prs.status==5 }">出版</c:if>
+	  		  <c:if test="${prs.status==6 }">发行</c:if> 
+	  		  <c:if test="${prs.status==7 }">项目结束</c:if>  
+	  		  <c:if test="${prs.status==8 }">归档</c:if>
 	  	  </div>
 	  	  <div class="td" style="width: 180px;">${prs.projectEntity.startdate} </div>
 	  	  <div class="td" style="width: 180px;">${prs.projectEntity.enddate}</div>
