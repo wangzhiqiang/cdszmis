@@ -23,7 +23,7 @@
    <form action="${rooturl }/project/pro_projectImpl" method="get">
 	<table id="detil">
 		<tr style="border-bottom-color: #FFF;border-bottom-style: solid;border-bottom: 1px;">
-			<td >项目ID</td><td> <input id="projectid"  name="projectstatus.projectid" type="text" onclick="alert(this.value);"  readonly/></td>
+			<td >项目ID</td><td> <input id="projectid"  name="projectstatus.projectid" type="text" /></td>
 		</tr>
 		<tr>
 			<td> 项目状态</td><td><label name="projectstatus.status">
