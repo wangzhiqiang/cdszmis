@@ -67,6 +67,14 @@
 			<result name="mouldtransact">/files/mouldTransact.jsp</result>
 			<result name="mouldTransactSuccess">/files/mouldTransactSuccess.jsp</result>
 			<result name="mouodlCopy">/files/mouodlCopy.jsp</result>
+			<result name="listfile">/files/ListFiles.jsp</result>
+		</action>
+		<action name="srcdownload" class="org.cdszmis.action.FilesAction" method="srcdownload">
+			<result name="success" type="stream">
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">
+					attachment;filename="${downFileName}" </param>
+			</result>
 		</action>
 	</package>
 	
