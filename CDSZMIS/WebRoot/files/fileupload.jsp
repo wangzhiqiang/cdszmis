@@ -13,13 +13,7 @@
   <body>
     <form method="POST" action="/files/files_fileUpload"  enctype="multipart/form-data">
     
-    	<table>
-    	文件名称 ，文件介绍，
-    	+-
-    	
-    	</table>
-    
-    
+ 
     	<input id='file'type="file" name = "file" value="选择上传的文件"/>
     	<input id='submit' type="submit" value="上传"/>
     </form>

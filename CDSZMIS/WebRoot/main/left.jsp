@@ -59,7 +59,7 @@
 			</c:forEach>
 			</span>
 		 </c:if>
-	</c:forEach>
+</c:forEach>
  
 </div>
 </body>
