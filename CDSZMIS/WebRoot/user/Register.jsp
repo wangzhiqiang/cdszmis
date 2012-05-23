@@ -235,7 +235,7 @@
 		</tr>
 		<tr>
 			<td>简介</td>
-			<td><textarea name="introduction" style="height: 50px;width: 200px;"></textarea></td>
+			<td><textarea name="user.introduction" style="height: 50px;width: 200px;"></textarea></td>
 		</tr>
 		
 		<tr>
