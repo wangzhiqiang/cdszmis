@@ -32,7 +32,6 @@ public class GroupAction extends ActionSupport {
 
 		List <UserGroupEntity> ugl = new ArrayList <UserGroupEntity>();
 		List <SysMenuEntity> sml = new ArrayList <SysMenuEntity>();
-		ugl = userGroupService.groupList();
 		sml = userGroupService.findAllMenu();
 		if(group != null && group.getGroupname() != null && !group.getGroupname().equals(""))
 		{
@@ -58,7 +57,8 @@ public class GroupAction extends ActionSupport {
 			}
 			userGroupService.groupManager(group);
 		}
-
+		ugl = userGroupService.groupList();
+		sml = userGroupService.findAllMenu();
 		ActionContext.getContext().put("ugl",ugl);
 		ActionContext.getContext().put("sml",sml);
 		return "add";

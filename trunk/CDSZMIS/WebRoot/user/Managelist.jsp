@@ -42,7 +42,6 @@
 			 var idcard = $("#idcard").val();
 			 var birthday = $("#birthday").val();
 			 var officenum =$("#officenum").val();
-			 alert(officenum);
 		
 	　　　　　//密码长度
 	     	if (uspass.length<6||uspass.length>20)
@@ -75,7 +74,7 @@
 			if(officenum.length!=0){
 				if(!(officenum.search(/^\d{3}-\d{8}$/) != -1 ) )
 				{
-					alert("办公室电话错误 ")
+					alert("办公室电话错误 类似028—888888888 ")
 					return false;
 				}
 			}

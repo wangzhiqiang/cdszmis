@@ -247,7 +247,7 @@
 			</tr>
 			<tr>
 				<td>简介</td>
-				<td><textarea style="height: 50px;width: 200px;"></textarea></td>
+				<td><textarea id="introduction" name="user.introduction" style="height: 50px;width: 200px;"></textarea></td>
 			</tr>
 			
 			<tr>
@@ -292,11 +292,8 @@
 			<div class='td' style="width: 80px;">${l.officenum}</div>
 			<div class='td' style="width: 110px;">${l.idcard}</div>
 			<div class='td' style="width: 80px;overflow: hidden;">${l.birthday}</div>
-			<div class='td' style="width: 100px;overflow: hidden;">
-						<c:forEach items="${l.userGroupEntity }" var="u">
-							${u.groupname}
-						</c:forEach>
-			</div>
+			<div class='td' style="width: 100px;overflow: hidden;"><c:forEach items="${l.userGroupEntity }" var="u">${u.groupname} </c:forEach></div>
+			
 			<div class='groupids' style="display: none;"><c:forEach items="${l.userGroupEntity }" var="ug" varStatus="stat">${ug.id}<c:if test="${!stat.last}">,</c:if></c:forEach></div>
 
 			<div class='td' style="width: 155px;">${l.introduction}</div>
