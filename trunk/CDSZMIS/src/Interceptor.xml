@@ -20,6 +20,6 @@
 		<global-results>
 			<result name="message">/message.jsp</result>
 		</global-results>
-
+	<default-interceptor-ref name="permissstack"></default-interceptor-ref>
 	</package>
 </struts>
