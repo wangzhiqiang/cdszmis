@@ -8,11 +8,18 @@ import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import javax.annotation.Resource;
 import javax.servlet.ServletContext;
+import jxl.Workbook;
+import jxl.write.Label;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
+import jxl.write.WriteException;
+import jxl.write.biff.RowsExceededException;
 import org.apache.commons.io.FileUtils;
 import org.apache.struts2.ServletActionContext;
 import org.cdszmis.dao.PublicDao;
@@ -86,9 +93,51 @@ public class FilesAction extends ActionSupport {
 		String realpath = ServletActionContext.getServletContext().getRealPath("");
 		AttachmentEntity atta=(AttachmentEntity) publicDao.queryObject(AttachmentEntity.class,id);
 //		System.out.println(atta.getFilename());
-		setFileName(atta.getFilename());
-		setFileURL(atta.getFileurl());
-		
+//		setFileName(atta.getFilename());
+//		setFileURL(atta.getFileurl());
+		Long time=new Date().getTime();
+		String rp = ServletActionContext.getServletContext().getRealPath("\\uploadFile");
+		setFileName(time.toString()+".xl");
+		String name=rp+"\\"+time+".xls";
+		setFileURL("\\uploadFile\\"+time+".xls");
+		try
+		{
+						WritableWorkbook book =	Workbook.createWorkbook(new File(name));
+						WritableSheet sheet = book.createSheet("Sheet_1", 0);
+						List ls=new ArrayList();
+						Object[] b=  new String[6];
+						b[0]="asdfasdf";
+						b[1]="的风格和";
+						b[2]="健康良好";
+						b[3]="bsdfgn";
+						b[4]="与iy";
+						b[5]="0.25628596254";
+						
+						 
+					 for(int k=0;k<60000;k++)
+					 {
+						ls.add(b);
+					 } 
+						//0->X; 0->Y  ;""->值 
+						Label label=null;
+						Object[] obj =null;
+						for(int i=0;i<ls.size();i++){
+							 obj =(Object []) ls.get(i);
+							for(int j=0;j<b.length;j++)
+							{
+								label=new Label(j,i,obj[j].toString());
+								sheet.setColumnView(j,20);
+								sheet.addCell(label);
+							}
+						}
+						book.write();
+						book.close();
+						
+		}  catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		  
 //		System.out.println(realpath+atta.getFileurl());
 //		File  f=new File(realpath+atta.getFileurl());
 //		try
@@ -103,13 +152,13 @@ public class FilesAction extends ActionSupport {
 	public String getDownloadFileName() {
 
 		String downFileName = getFileName();
-		System.out.println(getFileName()+"********8");
-		try {
-			downFileName = new String(getFileName().getBytes(),"ISO-8859-1");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		}
-		System.out.println(downFileName+"=============");
+//		System.out.println(getFileName()+"********8");
+//		try {
+//			downFileName = new String(getFileName().getBytes(),"ISO-8859-1");
+//		} catch (UnsupportedEncodingException e) {
+//			e.printStackTrace();
+//		}
+//		System.out.println(downFileName+"=============");
 		return downFileName;
 	}
 	public InputStream getInputStream() throws Exception {
