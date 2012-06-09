@@ -95,15 +95,6 @@ public class SessionAndAttributeListener implements
 	public void sessionCreated(HttpSessionEvent arg0) {
 
 		try {
- 
-//			try
-//			{
-//				arg0.getSession().getServletContext().setAttribute("grouplist", userGroupService.groupList());
-//				arg0.getSession().getServletContext().setAttribute("departlist",  departService.departList());
-//			} catch(Exception e)
-//			{
-//				e.printStackTrace();
-//			}
 			sessionids++;
 			arg0.getSession().getServletContext().setAttribute("sessionids", sessionids);
 			System.out.println("   SessionIDCreate:" + arg0.getSession().getId());
